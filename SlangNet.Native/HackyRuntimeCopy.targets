@@ -1,0 +1,26 @@
+<Project>
+  <!--
+    Unfortunately ProjectReference does not copy the native binaries.
+    This is a well-known problem but to my knowledge there is no non-invasive workaround,
+    but we also only need it for the test projects which we want to run so we do this
+    very hacky, manual copy of the intermediate files and hope for the best.
+  -->
+
+  <ItemGroup>
+    <HackRuntimes Include="linux-x64" LibraryName="libslang.so" />
+    <HackRuntimes Include="osx-x64" LibraryName="libslang.dylib" />
+    <HackRuntimes Include="osx-arm64" LibraryName="libslang.dylib" />
+    <HackRuntimes Include="win-x64" LibraryName="slang.dll" />
+  </ItemGroup>
+
+  <Target Name="HackyRuntimeCopy" AfterTargets="Build">
+    <ItemGroup>
+      <HackRuntimeFiles Include="$(MSBuildThisFileDirectory)SlangNet.Native.%(HackRuntimes.Identity)/obj/$(Configuration)/**/%(HackRuntimes.LibraryName)"/>
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(HackRuntimeFiles)"
+      DestinationFolder="$(OutputPath)"/>
+  </Target>
+
+</Project>

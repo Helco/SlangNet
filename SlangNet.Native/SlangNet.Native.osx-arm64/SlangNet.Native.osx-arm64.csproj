@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
+  <PropertyGroup>
+    <TargetFramework>native</TargetFramework>
+    <SlangRuntime>osx-arm64</SlangRuntime>
+    <SlangDownloadRuntime>macos-aarch64</SlangDownloadRuntime>
+    <SlangNativeDir>bin/macosx-aarch64/release</SlangNativeDir>
+    <SlangNativeName>libslang.dylib</SlangNativeName>
+  </PropertyGroup>
+</Project>

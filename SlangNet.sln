@@ -3,9 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet", "SlangNet\SlangNet.csproj", "{C8AAD5AA-9DFF-418F-86A6-5D883FD0B9B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Tests", "SlangNet.Tests\SlangNet.Tests.csproj", "{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet.Tests", "SlangNet.Tests\SlangNet.Tests.csproj", "{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Native", "Native", "{2D13B3DD-13B4-478B-A938-4CE73670CE60}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Native.linux-x64", "SlangNet.Native\SlangNet.Native.linux-x64\SlangNet.Native.linux-x64.csproj", "{340FA577-9996-4067-994C-1B93E1DD2488}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Native.osx-arm64", "SlangNet.Native\SlangNet.Native.osx-arm64\SlangNet.Native.osx-arm64.csproj", "{838F2E9F-4152-4445-BCEF-122839CF322C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Native.osx-x64", "SlangNet.Native\SlangNet.Native.osx-x64\SlangNet.Native.osx-x64.csproj", "{2F704325-0315-4F42-BAA9-5EAC013865D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Native.win-arm64", "SlangNet.Native\SlangNet.Native.win-arm64\SlangNet.Native.win-arm64.csproj", "{6BEA2F35-5095-484B-895B-A50824CA100C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Native.win-x64", "SlangNet.Native\SlangNet.Native.win-x64\SlangNet.Native.win-x64.csproj", "{0FD0D37E-468C-407E-9756-D98ABCE38C79}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Native.win-x86", "SlangNet.Native\SlangNet.Native.win-x86\SlangNet.Native.win-x86.csproj", "{B14E9EDD-99E7-44E0-BDDE-00AA81B5472F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ADD346F6-8A0A-40E0-B6C2-D06710C867A3}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Bindings", "SlangNet.Bindings\SlangNet.Bindings.csproj", "{36C8A3DE-A72A-43B7-9023-B35DA2241AE1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet", "SlangNet\SlangNet.csproj", "{4F754768-5AD8-46CA-8701-4818AE8CC393}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +34,53 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C8AAD5AA-9DFF-418F-86A6-5D883FD0B9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8AAD5AA-9DFF-418F-86A6-5D883FD0B9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8AAD5AA-9DFF-418F-86A6-5D883FD0B9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8AAD5AA-9DFF-418F-86A6-5D883FD0B9B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340FA577-9996-4067-994C-1B93E1DD2488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340FA577-9996-4067-994C-1B93E1DD2488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340FA577-9996-4067-994C-1B93E1DD2488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340FA577-9996-4067-994C-1B93E1DD2488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{838F2E9F-4152-4445-BCEF-122839CF322C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{838F2E9F-4152-4445-BCEF-122839CF322C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{838F2E9F-4152-4445-BCEF-122839CF322C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{838F2E9F-4152-4445-BCEF-122839CF322C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F704325-0315-4F42-BAA9-5EAC013865D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F704325-0315-4F42-BAA9-5EAC013865D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F704325-0315-4F42-BAA9-5EAC013865D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F704325-0315-4F42-BAA9-5EAC013865D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BEA2F35-5095-484B-895B-A50824CA100C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEA2F35-5095-484B-895B-A50824CA100C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEA2F35-5095-484B-895B-A50824CA100C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BEA2F35-5095-484B-895B-A50824CA100C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FD0D37E-468C-407E-9756-D98ABCE38C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FD0D37E-468C-407E-9756-D98ABCE38C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FD0D37E-468C-407E-9756-D98ABCE38C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FD0D37E-468C-407E-9756-D98ABCE38C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B14E9EDD-99E7-44E0-BDDE-00AA81B5472F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B14E9EDD-99E7-44E0-BDDE-00AA81B5472F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B14E9EDD-99E7-44E0-BDDE-00AA81B5472F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B14E9EDD-99E7-44E0-BDDE-00AA81B5472F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36C8A3DE-A72A-43B7-9023-B35DA2241AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36C8A3DE-A72A-43B7-9023-B35DA2241AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36C8A3DE-A72A-43B7-9023-B35DA2241AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36C8A3DE-A72A-43B7-9023-B35DA2241AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F754768-5AD8-46CA-8701-4818AE8CC393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F754768-5AD8-46CA-8701-4818AE8CC393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F754768-5AD8-46CA-8701-4818AE8CC393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F754768-5AD8-46CA-8701-4818AE8CC393}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{340FA577-9996-4067-994C-1B93E1DD2488} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
+		{838F2E9F-4152-4445-BCEF-122839CF322C} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
+		{2F704325-0315-4F42-BAA9-5EAC013865D3} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
+		{6BEA2F35-5095-484B-895B-A50824CA100C} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
+		{0FD0D37E-468C-407E-9756-D98ABCE38C79} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
+		{B14E9EDD-99E7-44E0-BDDE-00AA81B5472F} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A76EC01-CE0D-4E15-ACD3-FB86A95BCA4C}

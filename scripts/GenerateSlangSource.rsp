@@ -2,6 +2,6 @@
 --config
 generate-tests-nunit
 --output
-../SlangNet/Generated
+../SlangNet.Bindings/Generated
 --test-output
 ../SlangNet.Tests/Generated

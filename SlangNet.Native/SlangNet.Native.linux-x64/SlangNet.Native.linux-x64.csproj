@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
+  <PropertyGroup>
+    <TargetFramework>native</TargetFramework>
+    <SlangRuntime>linux-x64</SlangRuntime>
+    <SlangDownloadRuntime>linux-x86_64</SlangDownloadRuntime>
+    <SlangNativeDir>bin/linux-x64/release</SlangNativeDir>
+    <SlangNativeName>libslang.so</SlangNativeName>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,46 @@
+<Project>
+  <PropertyGroup>
+    <Title>SlangNet - Native binaries for $(SlangRuntime)</Title>
+    <Description>
+      These are the native binaries of a single platform for the SlangNet package, a .NET bindings library for shader-slang.
+      For SlangNet see https://github.com/Helco/SlangNet
+      For shader-slang see https://github.com/shader-slang/slang
+    </Description>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageId>SlangNet.Native.$(SlangRuntime)</PackageId>
+    <PackageTags>$(PackageTags);native</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>$(SlangNativeRepo)</RepositoryUrl>
+    <RepositoryBranch>v$(SlangVersion)</RepositoryBranch>
+    <RepositoryCommit>$(SlangNativeCommit)</RepositoryCommit>
+
+    <SlangTempArchiveName>slang-$(SlangRuntime).zip</SlangTempArchiveName>
+    <SlangTempArchiveDir>$(IntermediateOutputPath)</SlangTempArchiveDir>
+    <SlangTempArchivePath>$(SlangTempArchiveDir)$(SlangTempArchiveName)</SlangTempArchivePath>
+    <SlangTempOutputPath>$(IntermediateOutputPath)slang-$(SlangRuntime)</SlangTempOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)_._" Pack="true" PackagePath="lib/native/_._"/>
+    <Content Include="$(MSBuildThisFileDirectory)NativePackageReadme.md" Pack="true" PackagePath="readme.md"/>
+  </ItemGroup>
+
+  <Target Name="DownloadNative" BeforeTargets="Build">
+    <DownloadFile
+      SourceUrl="$(SlangNativeRepo)/releases/download/v$(SlangVersion)/slang-$(SlangVersion)-$(SlangDownloadRuntime).zip"
+      DestinationFolder="$(SlangTempArchiveDir)"
+      DestinationFileName="$(SlangTempArchiveName)"/>
+    <Unzip
+      SourceFiles="$(SlangTempArchivePath)"
+      DestinationFolder="$(SlangTempOutputPath)"/>
+    <ItemGroup>
+      <Content
+        Include="$(SlangTempOutputPath)/$(SlangNativeDir)/$(SlangNativeName)"
+        CopyToOutputDirectory="PreserveNewest"
+        Pack="true"
+        PackagePath="runtimes/$(SlangRuntime)/native/$(SlangNativeName)"
+        TargetPath="runtimes/$(SlangRuntime)/native/$(SlangNativeName)"/>
+    </ItemGroup>
+  </Target>
+
+</Project>

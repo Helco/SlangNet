@@ -1,9 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>preview</LangVersion>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-
+  
+  <ItemGroup>
+    <ProjectReference Include="../SlangNet.Bindings/SlangNet.Bindings.csproj">
+      <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.linux-x64/SlangNet.Native.linux-x64.csproj" />
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.osx-arm64/SlangNet.Native.osx-arm64.csproj" />
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.osx-x64/SlangNet.Native.osx-x64.csproj" />
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-arm64/SlangNet.Native.win-arm64.csproj" />
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-x64/SlangNet.Native.win-x64.csproj" />
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-x86/SlangNet.Native.win-x86.csproj" />
+  </ItemGroup>
 </Project>

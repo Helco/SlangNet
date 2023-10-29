@@ -9,7 +9,6 @@
   <ItemGroup>
     <HackRuntimes Include="linux-x64" LibraryName="libslang.so" />
     <HackRuntimes Include="osx-x64" LibraryName="libslang.dylib" />
-    <HackRuntimes Include="osx-arm64" LibraryName="libslang.dylib" />
     <HackRuntimes Include="win-x64" LibraryName="slang.dll" />
   </ItemGroup>
 

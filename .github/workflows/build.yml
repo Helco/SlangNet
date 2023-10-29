@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        required: true
+        type: string
+
+jobs:
+  Build:
+    runs-on: ${{ inputs.runs-on }}
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: false
+    - name: Setup .NET Core 6.0.x
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore --verbosity normal
+    - name: Test
+      run: dotnet test --configuration Release --no-restore --verbosity normal

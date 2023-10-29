@@ -1,0 +1,7 @@
+@GenerateSlangBase.rsp
+--config
+generate-tests-nunit
+--output
+../SlangNet/Generated
+--test-output
+../SlangNet.Tests/Generated

@@ -7,6 +7,7 @@ generate-doc-includes
 generate-helper-types
 exclude-funcs-with-body
 explicit-vtbls
+
 --namespace
 SlangNet
 --methodClassName
@@ -19,3 +20,11 @@ slang
 ../SlangNet.Tests/Generated
 --file
 ../slang/slang.h
+
+--prefixStrip
+sp
+--remap
+specialize=spspecialize
+specializeType=spspecializeType
+--with-type
+Kind=uint

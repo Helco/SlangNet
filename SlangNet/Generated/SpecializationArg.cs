@@ -27,7 +27,7 @@ public unsafe partial struct SpecializationArg
 
     /// <include file='Kind.xml' path='doc/member[@name="Kind"]/*' />
     [NativeTypeName("int32_t")]
-    public enum Kind
+    public enum Kind : uint
     {
         /// <include file='Kind.xml' path='doc/member[@name="Kind.Unknown"]/*' />
         Unknown,

@@ -8,6 +8,7 @@ public partial struct TypeReflection
 {
 
     /// <include file='Kind.xml' path='doc/member[@name="Kind"]/*' />
+    [NativeTypeName("int")]
     public enum Kind : uint
     {
         /// <include file='Kind.xml' path='doc/member[@name="Kind.None"]/*' />

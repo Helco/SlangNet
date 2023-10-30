@@ -3,9 +3,66 @@ compatible-codegen
 generate-file-scoped-namespaces
 generate-doc-includes
 generate-helper-types
+generate-macro-bindings
 exclude-funcs-with-body
 explicit-vtbls
 multi-file
+
+# Prevent platform-specific macros
+--define-macro
+SLANG_COMPILER
+SLANG_PLATFORM
+SLANG_WIN64
+# enable StdCall convention for virtual methods,
+# this does not affect non-Windows platforms, but is required there
+
+# Remove the rest of the platform-specific macros
+--exclude
+SLANG_ENABLE_DIRECTX
+SLANG_ENABLE_DXGI_DEBUG
+SLANG_ENABLE_DXBC_SUPPORT
+SLANG_ENABLE_PIX
+SLANG_ENABLE_DXVK
+SLANG_ENABLE_VKD3D
+SLANG_HAS_EXCEPTIONS
+SLANG_HAS_ENUM_CLASS
+SLANG_HAS_MOVE_SEMANTICS
+SLANG_PROCESSOR_X86_64
+SLANG_PROCESSOR_ARM
+SLANG_PROCESSOR_ARM_64
+SLANG_PROCESSOR_x86
+SLANG_PROCESSOR_POWER_PC
+SLANG_PROCESSOR_POWER_PC_64
+SLANG_PROCESSOR_FAMILY_X86
+SLANG_PROCESSOR_FAMILY_ARM
+SLANG_PROCESSOR_FAMILY_POWER_PC
+SLANG_PTR_IS_64
+SLANG_PTR_IS_32
+SLANG_LITTLE_ENDIAN
+SLANG_BIG_ENDIAN
+SLANG_UNALIGNED_ACCESS
+
+# Remove the UUIDs, they are generated incorrectly
+--exclude
+SLANG_UUID_ISlangUnknown
+SLANG_UUID_ISlangBlob
+SLANG_UUID_ISlangFileSystem
+SLANG_UUID_ISlangSharedLibrary
+SLANG_UUID_ISlangSharedLibrary_Dep1
+SLANG_UUID_ISlangSharedLibraryLoader
+SLANG_UUID_ISlangFileSystemExt
+SLANG_UUID_ISlangMutableFileSystem
+SLANG_UUID_ISlangWriter
+
+# Remove the function prefixes, also fix over-removing of prefixes
+--prefixStrip
+sp
+--remap
+specialize=spspecialize
+specializeType=spspecializeType
+
+--with-type
+Kind=uint
 
 --namespace
 SlangNet
@@ -15,11 +72,3 @@ Slang
 slang
 --file
 ../slang/slang.h
-
---prefixStrip
-sp
---remap
-specialize=spspecialize
-specializeType=spspecializeType
---with-type
-Kind=uint

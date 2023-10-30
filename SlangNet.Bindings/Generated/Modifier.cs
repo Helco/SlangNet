@@ -1,4 +1,4 @@
-using static SlangNet.SlangModifierID;
+using static SlangNet.Unsafe.SlangModifierID;
 
 namespace SlangNet.Unsafe;
 

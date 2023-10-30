@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangOptimizationLevel.xml' path='doc/member[@name="SlangOptimizationLevel"]/*' />
 [NativeTypeName("SlangOptimizationLevelIntegral")]

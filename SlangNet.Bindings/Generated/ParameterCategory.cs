@@ -1,5 +1,5 @@
 using SlangNet.Unsafe;
-using static SlangNet.SlangParameterCategory;
+using static SlangNet.Unsafe.SlangParameterCategory;
 
 namespace SlangNet;
 

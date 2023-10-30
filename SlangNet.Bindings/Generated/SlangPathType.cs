@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangPathType.xml' path='doc/member[@name="SlangPathType"]/*' />
 [NativeTypeName("SlangPathTypeIntegral")]

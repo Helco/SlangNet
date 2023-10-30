@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangSeverity.xml' path='doc/member[@name="SlangSeverity"]/*' />
 [NativeTypeName("SlangSeverityIntegral")]

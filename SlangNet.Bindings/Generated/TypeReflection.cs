@@ -1,5 +1,5 @@
-using static SlangNet.SlangScalarType;
-using static SlangNet.SlangTypeKind;
+using static SlangNet.Unsafe.SlangScalarType;
+using static SlangNet.Unsafe.SlangTypeKind;
 
 namespace SlangNet.Unsafe;
 

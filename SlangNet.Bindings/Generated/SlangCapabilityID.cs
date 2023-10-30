@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangCapabilityID.xml' path='doc/member[@name="SlangCapabilityID"]/*' />
 [NativeTypeName("SlangCapabilityIDIntegral")]

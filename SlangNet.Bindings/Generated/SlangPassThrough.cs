@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangPassThrough.xml' path='doc/member[@name="SlangPassThrough"]/*' />
 [NativeTypeName("SlangPassThroughIntegral")]

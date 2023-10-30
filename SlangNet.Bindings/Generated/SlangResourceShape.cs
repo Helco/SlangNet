@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape"]/*' />
 [NativeTypeName("SlangResourceShapeIntegral")]

@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangLayoutRules.xml' path='doc/member[@name="SlangLayoutRules"]/*' />
 [NativeTypeName("SlangLayoutRulesIntegral")]

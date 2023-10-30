@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangWriterChannel.xml' path='doc/member[@name="SlangWriterChannel"]/*' />
 [NativeTypeName("SlangWriterChannelIntegral")]

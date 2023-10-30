@@ -71,45 +71,16 @@ specializeType=spspecializeType
 --with-type
 Kind=uint
 
-# For the pretty bindings we generate everything but the enums and some PODs
+# For the pretty bindings we rewrite everything but some of the enums and PODs
 --namespace
 SlangNet.Unsafe
 --with-namespace
-# enums with duplicated declarations
 BindingType=SlangNet
-SlangBindingType=SlangNet
 ContainerType=SlangNet
-SlangContainerFormat=SlangNet
 LayoutRules=SlangNet
-SlangLayoutRules=SlangNet
 ParameterCategory=SlangNet
-SlangParameterCategory=SlangNet
 PathKind=SlangNet
-SlangPathType=SlangNet
-
 OSPathKind=SlangNet
-SlangArchiveType=SlangNet
-SlangBindableResourceType=SlangNet
-SlangCapabilityID=SlangNet
-SlangCompileTarget=SlangNet
-SlangDebugInfoFormat=SlangNet
-SlangDebugInfoLevel=SlangNet
-SlangFloatingPointMode=SlangNet
-SlangLineDirectiveMode=SlangNet
-SlangMatrixLayoutMode=SlangNet
-SlangModifierID=SlangNet
-SlangOptimizationLevel=SlangNet
-SlangPassThrough=SlangNet
-SlangProfileID=SlangNet
-SlangResourceAccess=SlangNet
-SlangResourceShape=SlangNet
-SlangScalarType=SlangNet
-SlangSeverity=SlangNet
-SlangSourceLanguage=SlangNet
-SlangStage=SlangNet
-SlangTypeKind=SlangNet
-SlangWriterChannel=SlangNet
-SlangWriterMode=SlangNet
 
 --methodClassName
 Slang

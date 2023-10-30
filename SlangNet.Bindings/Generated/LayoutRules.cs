@@ -1,5 +1,5 @@
 using SlangNet.Unsafe;
-using static SlangNet.SlangLayoutRules;
+using static SlangNet.Unsafe.SlangLayoutRules;
 
 namespace SlangNet;
 

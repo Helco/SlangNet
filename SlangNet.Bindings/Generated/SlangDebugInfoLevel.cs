@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangDebugInfoLevel.xml' path='doc/member[@name="SlangDebugInfoLevel"]/*' />
 [NativeTypeName("SlangDebugInfoLevelIntegral")]

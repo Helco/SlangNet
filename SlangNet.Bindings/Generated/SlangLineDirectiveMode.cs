@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangLineDirectiveMode.xml' path='doc/member[@name="SlangLineDirectiveMode"]/*' />
 [NativeTypeName("SlangLineDirectiveModeIntegral")]

@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangContainerFormat.xml' path='doc/member[@name="SlangContainerFormat"]/*' />
 [NativeTypeName("SlangContainerFormatIntegral")]

@@ -1,6 +1,4 @@
-using SlangNet.Unsafe;
-
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangFloatingPointMode.xml' path='doc/member[@name="SlangFloatingPointMode"]/*' />
 [NativeTypeName("SlangFloatingPointModeIntegral")]

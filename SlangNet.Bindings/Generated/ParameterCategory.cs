@@ -1,3 +1,4 @@
+using SlangNet.Unsafe;
 using static SlangNet.SlangParameterCategory;
 
 namespace SlangNet;

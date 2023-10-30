@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='ISlangFileSystem.xml' path='doc/member[@name="ISlangFileSystem"]/*' />
 [NativeTypeName("struct ISlangFileSystem : ISlangCastable")]
@@ -29,6 +30,7 @@ public unsafe partial struct ISlangFileSystem
     public delegate int _loadFile(ISlangFileSystem* pThis, [NativeTypeName("const char *")] sbyte* path, ISlangBlob** outBlob);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -39,6 +41,7 @@ public unsafe partial struct ISlangFileSystem
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -49,6 +52,7 @@ public unsafe partial struct ISlangFileSystem
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -59,6 +63,7 @@ public unsafe partial struct ISlangFileSystem
     }
 
     /// <inheritdoc cref="ISlangCastable.castAs" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void* castAs([NativeTypeName("const SlangUUID &")] SlangUUID* guid)
     {
         fixed (ISlangFileSystem* pThis = &this)
@@ -68,6 +73,7 @@ public unsafe partial struct ISlangFileSystem
     }
 
     /// <include file='ISlangFileSystem.xml' path='doc/member[@name="ISlangFileSystem.loadFile"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int loadFile([NativeTypeName("const char *")] sbyte* path, ISlangBlob** outBlob)
     {

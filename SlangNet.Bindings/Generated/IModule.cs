@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='IModule.xml' path='doc/member[@name="IModule"]/*' />
 [NativeTypeName("struct IModule : slang::IComponentType")]
@@ -73,6 +74,7 @@ public unsafe partial struct IModule
     public delegate int _getDefinedEntryPoint(IModule* pThis, [NativeTypeName("SlangInt32")] int index, IEntryPoint** outEntryPoint);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -83,6 +85,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -93,6 +96,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -103,6 +107,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.getSession" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::ISession *")]
     public ISession* getSession()
     {
@@ -113,6 +118,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.getLayout" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::ProgramLayout *")]
     public ShaderReflection* getLayout([NativeTypeName("SlangInt")] long targetIndex = 0, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null)
     {
@@ -123,6 +129,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.getSpecializationParamCount" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangInt")]
     public long getSpecializationParamCount()
     {
@@ -133,6 +140,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.getEntryPointCode" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getEntryPointCode([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, [NativeTypeName("IBlob **")] ISlangBlob** outCode, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null)
     {
@@ -143,6 +151,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.getResultAsFileSystem" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getResultAsFileSystem([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, ISlangMutableFileSystem** outFileSystem)
     {
@@ -153,6 +162,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.getEntryPointHash" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void getEntryPointHash([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, [NativeTypeName("IBlob **")] ISlangBlob** outHash)
     {
         fixed (IModule* pThis = &this)
@@ -162,6 +172,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.specialize" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int specialize([NativeTypeName("const SpecializationArg *")] SpecializationArg* specializationArgs, [NativeTypeName("SlangInt")] long specializationArgCount, IComponentType** outSpecializedComponentType, ISlangBlob** outDiagnostics = null)
     {
@@ -172,6 +183,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.link" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int link(IComponentType** outLinkedComponentType, ISlangBlob** outDiagnostics = null)
     {
@@ -182,6 +194,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.getEntryPointHostCallable" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getEntryPointHostCallable(int entryPointIndex, int targetIndex, ISlangSharedLibrary** outSharedLibrary, [NativeTypeName("slang::IBlob **")] ISlangBlob** outDiagnostics = null)
     {
@@ -192,6 +205,7 @@ public unsafe partial struct IModule
     }
 
     /// <inheritdoc cref="IComponentType.renameEntryPoint" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int renameEntryPoint([NativeTypeName("const char *")] sbyte* newName, IComponentType** outEntryPoint)
     {
@@ -202,6 +216,7 @@ public unsafe partial struct IModule
     }
 
     /// <include file='IModule.xml' path='doc/member[@name="IModule.findEntryPointByName"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int findEntryPointByName([NativeTypeName("const char *")] sbyte* name, IEntryPoint** outEntryPoint)
     {
@@ -212,6 +227,7 @@ public unsafe partial struct IModule
     }
 
     /// <include file='IModule.xml' path='doc/member[@name="IModule.getDefinedEntryPointCount"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangInt32")]
     public int getDefinedEntryPointCount()
     {
@@ -222,6 +238,7 @@ public unsafe partial struct IModule
     }
 
     /// <include file='IModule.xml' path='doc/member[@name="IModule.getDefinedEntryPoint"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getDefinedEntryPoint([NativeTypeName("SlangInt32")] int index, IEntryPoint** outEntryPoint)
     {

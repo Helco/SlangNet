@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System.Runtime.InteropServices;
 
-namespace SlangNet.UnitTests;
+namespace SlangNet.Unsafe.UnitTests;
 
 /// <summary>Provides validation of the <see cref="TypeLayoutReflection" /> struct.</summary>
 public static unsafe partial class TypeLayoutReflectionTests

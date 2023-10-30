@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='ISlangClonable.xml' path='doc/member[@name="ISlangClonable"]/*' />
 [NativeTypeName("struct ISlangClonable : ISlangCastable")]
@@ -28,6 +29,7 @@ public unsafe partial struct ISlangClonable
     public delegate void* _clone(ISlangClonable* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* guid);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -38,6 +40,7 @@ public unsafe partial struct ISlangClonable
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -48,6 +51,7 @@ public unsafe partial struct ISlangClonable
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -58,6 +62,7 @@ public unsafe partial struct ISlangClonable
     }
 
     /// <inheritdoc cref="ISlangCastable.castAs" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void* castAs([NativeTypeName("const SlangUUID &")] SlangUUID* guid)
     {
         fixed (ISlangClonable* pThis = &this)
@@ -67,6 +72,7 @@ public unsafe partial struct ISlangClonable
     }
 
     /// <include file='ISlangClonable.xml' path='doc/member[@name="ISlangClonable.clone"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void* clone([NativeTypeName("const SlangUUID &")] SlangUUID* guid)
     {
         fixed (ISlangClonable* pThis = &this)

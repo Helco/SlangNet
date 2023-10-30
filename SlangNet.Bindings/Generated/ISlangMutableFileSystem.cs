@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='ISlangMutableFileSystem.xml' path='doc/member[@name="ISlangMutableFileSystem"]/*' />
 [NativeTypeName("struct ISlangMutableFileSystem : ISlangFileSystemExt")]
@@ -71,6 +72,7 @@ public unsafe partial struct ISlangMutableFileSystem
     public delegate int _createDirectory(ISlangMutableFileSystem* pThis, [NativeTypeName("const char *")] sbyte* path);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -81,6 +83,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -91,6 +94,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -101,6 +105,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangCastable.castAs" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void* castAs([NativeTypeName("const SlangUUID &")] SlangUUID* guid)
     {
         fixed (ISlangMutableFileSystem* pThis = &this)
@@ -110,6 +115,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangFileSystem.loadFile" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int loadFile([NativeTypeName("const char *")] sbyte* path, ISlangBlob** outBlob)
     {
@@ -120,6 +126,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangFileSystemExt.getFileUniqueIdentity" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getFileUniqueIdentity([NativeTypeName("const char *")] sbyte* path, ISlangBlob** outUniqueIdentity)
     {
@@ -130,6 +137,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangFileSystemExt.calcCombinedPath" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int calcCombinedPath(SlangPathType fromPathType, [NativeTypeName("const char *")] sbyte* fromPath, [NativeTypeName("const char *")] sbyte* path, ISlangBlob** pathOut)
     {
@@ -140,6 +148,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangFileSystemExt.getPathType" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getPathType([NativeTypeName("const char *")] sbyte* path, SlangPathType* pathTypeOut)
     {
@@ -150,6 +159,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangFileSystemExt.getPath" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getPath(PathKind kind, [NativeTypeName("const char *")] sbyte* path, ISlangBlob** outPath)
     {
@@ -160,6 +170,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangFileSystemExt.clearCache" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void clearCache()
     {
         fixed (ISlangMutableFileSystem* pThis = &this)
@@ -169,6 +180,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangFileSystemExt.enumeratePathContents" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int enumeratePathContents([NativeTypeName("const char *")] sbyte* path, [NativeTypeName("FileSystemContentsCallBack")] IntPtr callback, void* userData)
     {
@@ -179,6 +191,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <inheritdoc cref="ISlangFileSystemExt.getOSPathKind" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public OSPathKind getOSPathKind()
     {
         fixed (ISlangMutableFileSystem* pThis = &this)
@@ -188,6 +201,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <include file='ISlangMutableFileSystem.xml' path='doc/member[@name="ISlangMutableFileSystem.saveFile"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int saveFile([NativeTypeName("const char *")] sbyte* path, [NativeTypeName("const void *")] void* data, [NativeTypeName("size_t")] UIntPtr size)
     {
@@ -198,6 +212,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <include file='ISlangMutableFileSystem.xml' path='doc/member[@name="ISlangMutableFileSystem.saveFileBlob"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int saveFileBlob([NativeTypeName("const char *")] sbyte* path, ISlangBlob* dataBlob)
     {
@@ -208,6 +223,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <include file='ISlangMutableFileSystem.xml' path='doc/member[@name="ISlangMutableFileSystem.remove"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int remove([NativeTypeName("const char *")] sbyte* path)
     {
@@ -218,6 +234,7 @@ public unsafe partial struct ISlangMutableFileSystem
     }
 
     /// <include file='ISlangMutableFileSystem.xml' path='doc/member[@name="ISlangMutableFileSystem.createDirectory"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int createDirectory([NativeTypeName("const char *")] sbyte* path)
     {

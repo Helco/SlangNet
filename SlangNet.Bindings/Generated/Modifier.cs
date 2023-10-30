@@ -1,6 +1,6 @@
 using static SlangNet.SlangModifierID;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='Modifier.xml' path='doc/member[@name="Modifier"]/*' />
 public partial struct Modifier

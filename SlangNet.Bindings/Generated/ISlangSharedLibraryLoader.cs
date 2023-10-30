@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='ISlangSharedLibraryLoader.xml' path='doc/member[@name="ISlangSharedLibraryLoader"]/*' />
 [NativeTypeName("struct ISlangSharedLibraryLoader : ISlangUnknown")]
@@ -26,6 +27,7 @@ public unsafe partial struct ISlangSharedLibraryLoader
     public delegate int _loadSharedLibrary(ISlangSharedLibraryLoader* pThis, [NativeTypeName("const char *")] sbyte* path, ISlangSharedLibrary** sharedLibraryOut);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -36,6 +38,7 @@ public unsafe partial struct ISlangSharedLibraryLoader
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -46,6 +49,7 @@ public unsafe partial struct ISlangSharedLibraryLoader
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -56,6 +60,7 @@ public unsafe partial struct ISlangSharedLibraryLoader
     }
 
     /// <include file='ISlangSharedLibraryLoader.xml' path='doc/member[@name="ISlangSharedLibraryLoader.loadSharedLibrary"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int loadSharedLibrary([NativeTypeName("const char *")] sbyte* path, ISlangSharedLibrary** sharedLibraryOut)
     {

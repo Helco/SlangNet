@@ -1,6 +1,7 @@
+using SlangNet.Unsafe;
 using static SlangNet.SlangBindingType;
 
-namespace SlangNet;
+namespace SlangNet # enums with duplicated declarations;
 
 /// <include file='BindingType.xml' path='doc/member[@name="BindingType"]/*' />
 [NativeTypeName("SlangBindingTypeIntegral")]

@@ -1,3 +1,5 @@
+using SlangNet.Unsafe;
+
 namespace SlangNet;
 
 /// <include file='SlangDebugInfoFormat.xml' path='doc/member[@name="SlangDebugInfoFormat"]/*' />

@@ -1,3 +1,5 @@
+using SlangNet.Unsafe;
+
 namespace SlangNet;
 
 /// <include file='SlangLayoutRules.xml' path='doc/member[@name="SlangLayoutRules"]/*' />

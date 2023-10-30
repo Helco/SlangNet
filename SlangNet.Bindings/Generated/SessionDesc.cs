@@ -1,6 +1,6 @@
 using System;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SessionDesc.xml' path='doc/member[@name="SessionDesc"]/*' />
 public unsafe partial struct SessionDesc

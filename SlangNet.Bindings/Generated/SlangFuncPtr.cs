@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
 public delegate void SlangFuncPtr();

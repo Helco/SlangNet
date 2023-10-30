@@ -1,4 +1,4 @@
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangUUID.xml' path='doc/member[@name="SlangUUID"]/*' />
 public unsafe partial struct SlangUUID

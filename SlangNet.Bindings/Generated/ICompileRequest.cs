@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest"]/*' />
 [NativeTypeName("struct ICompileRequest : ISlangUnknown")]
@@ -268,6 +269,7 @@ public unsafe partial struct ICompileRequest
     public delegate void _setReportPerfBenchmark(ICompileRequest* pThis, [NativeTypeName("bool")] byte value);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -278,6 +280,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -288,6 +291,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -298,6 +302,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setFileSystem"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setFileSystem(ISlangFileSystem* fileSystem)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -307,6 +312,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setCompileFlags"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setCompileFlags([NativeTypeName("SlangCompileFlags")] uint flags)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -316,6 +322,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getCompileFlags"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangCompileFlags")]
     public uint getCompileFlags()
     {
@@ -326,6 +333,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setDumpIntermediates"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDumpIntermediates(int enable)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -335,6 +343,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setDumpIntermediatePrefix"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDumpIntermediatePrefix([NativeTypeName("const char *")] sbyte* prefix)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -344,6 +353,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setLineDirectiveMode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setLineDirectiveMode(SlangLineDirectiveMode mode)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -353,6 +363,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setCodeGenTarget"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setCodeGenTarget(SlangCompileTarget target)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -362,6 +373,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addCodeGenTarget"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int addCodeGenTarget(SlangCompileTarget target)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -371,6 +383,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setTargetProfile"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setTargetProfile(int targetIndex, SlangProfileID profile)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -380,6 +393,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setTargetFlags"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setTargetFlags(int targetIndex, [NativeTypeName("SlangTargetFlags")] uint flags)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -389,6 +403,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setTargetFloatingPointMode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setTargetFloatingPointMode(int targetIndex, SlangFloatingPointMode mode)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -398,6 +413,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setTargetMatrixLayoutMode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setTargetMatrixLayoutMode(int targetIndex, SlangMatrixLayoutMode mode)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -407,6 +423,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setMatrixLayoutMode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setMatrixLayoutMode(SlangMatrixLayoutMode mode)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -416,6 +433,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setDebugInfoLevel"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDebugInfoLevel(SlangDebugInfoLevel level)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -425,6 +443,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setOptimizationLevel"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setOptimizationLevel(SlangOptimizationLevel level)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -434,6 +453,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setOutputContainerFormat"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setOutputContainerFormat(SlangContainerFormat format)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -443,6 +463,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setPassThrough"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setPassThrough(SlangPassThrough passThrough)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -452,6 +473,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setDiagnosticCallback"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDiagnosticCallback([NativeTypeName("SlangDiagnosticCallback")] IntPtr callback, [NativeTypeName("const void *")] void* userData)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -461,6 +483,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setWriter"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setWriter(SlangWriterChannel channel, ISlangWriter* writer)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -470,6 +493,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getWriter"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ISlangWriter* getWriter(SlangWriterChannel channel)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -479,6 +503,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addSearchPath"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void addSearchPath([NativeTypeName("const char *")] sbyte* searchDir)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -488,6 +513,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addPreprocessorDefine"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void addPreprocessorDefine([NativeTypeName("const char *")] sbyte* key, [NativeTypeName("const char *")] sbyte* value)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -497,6 +523,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.processCommandLineArguments"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int processCommandLineArguments([NativeTypeName("const char *const *")] sbyte** args, int argCount)
     {
@@ -507,6 +534,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addTranslationUnit"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int addTranslationUnit(SlangSourceLanguage language, [NativeTypeName("const char *")] sbyte* name)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -516,6 +544,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setDefaultModuleName"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDefaultModuleName([NativeTypeName("const char *")] sbyte* defaultModuleName)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -525,6 +554,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addTranslationUnitPreprocessorDefine"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void addTranslationUnitPreprocessorDefine(int translationUnitIndex, [NativeTypeName("const char *")] sbyte* key, [NativeTypeName("const char *")] sbyte* value)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -534,6 +564,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addTranslationUnitSourceFile"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void addTranslationUnitSourceFile(int translationUnitIndex, [NativeTypeName("const char *")] sbyte* path)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -543,6 +574,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addTranslationUnitSourceString"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void addTranslationUnitSourceString(int translationUnitIndex, [NativeTypeName("const char *")] sbyte* path, [NativeTypeName("const char *")] sbyte* source)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -552,6 +584,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addLibraryReference"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int addLibraryReference([NativeTypeName("const void *")] void* libData, [NativeTypeName("size_t")] UIntPtr libDataSize)
     {
@@ -562,6 +595,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addTranslationUnitSourceStringSpan"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void addTranslationUnitSourceStringSpan(int translationUnitIndex, [NativeTypeName("const char *")] sbyte* path, [NativeTypeName("const char *")] sbyte* sourceBegin, [NativeTypeName("const char *")] sbyte* sourceEnd)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -571,6 +605,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addTranslationUnitSourceBlob"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void addTranslationUnitSourceBlob(int translationUnitIndex, [NativeTypeName("const char *")] sbyte* path, ISlangBlob* sourceBlob)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -580,6 +615,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addEntryPoint"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int addEntryPoint(int translationUnitIndex, [NativeTypeName("const char *")] sbyte* name, SlangStage stage)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -589,6 +625,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addEntryPointEx"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int addEntryPointEx(int translationUnitIndex, [NativeTypeName("const char *")] sbyte* name, SlangStage stage, int genericArgCount, [NativeTypeName("const char **")] sbyte** genericArgs)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -598,6 +635,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setGlobalGenericArgs"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int setGlobalGenericArgs(int genericArgCount, [NativeTypeName("const char **")] sbyte** genericArgs)
     {
@@ -608,6 +646,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setTypeNameForGlobalExistentialTypeParam"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int setTypeNameForGlobalExistentialTypeParam(int slotIndex, [NativeTypeName("const char *")] sbyte* typeName)
     {
@@ -618,6 +657,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setTypeNameForEntryPointExistentialTypeParam"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int setTypeNameForEntryPointExistentialTypeParam(int entryPointIndex, int slotIndex, [NativeTypeName("const char *")] sbyte* typeName)
     {
@@ -628,6 +668,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.compile"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int compile()
     {
@@ -638,6 +679,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getDiagnosticOutput"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("const char *")]
     public sbyte* getDiagnosticOutput()
     {
@@ -648,6 +690,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getDiagnosticOutputBlob"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getDiagnosticOutputBlob(ISlangBlob** outBlob)
     {
@@ -658,6 +701,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getDependencyFileCount"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int getDependencyFileCount()
     {
         fixed (ICompileRequest* pThis = &this)
@@ -667,6 +711,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getDependencyFilePath"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("const char *")]
     public sbyte* getDependencyFilePath(int index)
     {
@@ -677,6 +722,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getTranslationUnitCount"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public int getTranslationUnitCount()
     {
         fixed (ICompileRequest* pThis = &this)
@@ -686,6 +732,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getEntryPointSource"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("const char *")]
     public sbyte* getEntryPointSource(int entryPointIndex)
     {
@@ -696,6 +743,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getEntryPointCode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("const void *")]
     public void* getEntryPointCode(int entryPointIndex, [NativeTypeName("size_t *")] UIntPtr* outSize)
     {
@@ -706,6 +754,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getEntryPointCodeBlob"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getEntryPointCodeBlob(int entryPointIndex, int targetIndex, ISlangBlob** outBlob)
     {
@@ -716,6 +765,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getEntryPointHostCallable"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getEntryPointHostCallable(int entryPointIndex, int targetIndex, ISlangSharedLibrary** outSharedLibrary)
     {
@@ -726,6 +776,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getTargetCodeBlob"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getTargetCodeBlob(int targetIndex, ISlangBlob** outBlob)
     {
@@ -736,6 +787,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getTargetHostCallable"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getTargetHostCallable(int targetIndex, ISlangSharedLibrary** outSharedLibrary)
     {
@@ -746,6 +798,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getCompileRequestCode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("const void *")]
     public void* getCompileRequestCode([NativeTypeName("size_t *")] UIntPtr* outSize)
     {
@@ -756,6 +809,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getCompileRequestResultAsFileSystem"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ISlangMutableFileSystem* getCompileRequestResultAsFileSystem()
     {
         fixed (ICompileRequest* pThis = &this)
@@ -765,6 +819,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getContainerCode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getContainerCode(ISlangBlob** outBlob)
     {
@@ -775,6 +830,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.loadRepro"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int loadRepro(ISlangFileSystem* fileSystem, [NativeTypeName("const void *")] void* data, [NativeTypeName("size_t")] UIntPtr size)
     {
@@ -785,6 +841,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.saveRepro"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int saveRepro(ISlangBlob** outBlob)
     {
@@ -795,6 +852,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.enableReproCapture"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int enableReproCapture()
     {
@@ -805,6 +863,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getProgram"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getProgram([NativeTypeName("slang::IComponentType **")] IComponentType** outProgram)
     {
@@ -815,6 +874,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getEntryPoint"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getEntryPoint([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("slang::IComponentType **")] IComponentType** outEntryPoint)
     {
@@ -825,6 +885,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getModule"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getModule([NativeTypeName("SlangInt")] long translationUnitIndex, [NativeTypeName("slang::IModule **")] IModule** outModule)
     {
@@ -835,6 +896,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getSession"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getSession([NativeTypeName("slang::ISession **")] ISession** outSession)
     {
@@ -845,6 +907,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getReflection"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangReflection *")]
     public SlangProgramLayout* getReflection()
     {
@@ -855,6 +918,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setCommandLineCompilerMode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setCommandLineCompilerMode()
     {
         fixed (ICompileRequest* pThis = &this)
@@ -864,6 +928,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.addTargetCapability"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int addTargetCapability([NativeTypeName("SlangInt")] long targetIndex, SlangCapabilityID capability)
     {
@@ -874,6 +939,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getProgramWithEntryPoints"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getProgramWithEntryPoints([NativeTypeName("slang::IComponentType **")] IComponentType** outProgram)
     {
@@ -884,6 +950,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.isParameterLocationUsed"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int isParameterLocationUsed([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, SlangParameterCategory category, [NativeTypeName("SlangUInt")] ulong spaceIndex, [NativeTypeName("SlangUInt")] ulong registerIndex, [NativeTypeName("bool &")] bool* outUsed)
     {
@@ -894,6 +961,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setTargetLineDirectiveMode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setTargetLineDirectiveMode([NativeTypeName("SlangInt")] long targetIndex, SlangLineDirectiveMode mode)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -903,6 +971,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setTargetForceGLSLScalarBufferLayout"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setTargetForceGLSLScalarBufferLayout(int targetIndex, [NativeTypeName("bool")] byte forceScalarLayout)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -912,6 +981,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.overrideDiagnosticSeverity"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void overrideDiagnosticSeverity([NativeTypeName("SlangInt")] long messageID, SlangSeverity overrideSeverity)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -921,6 +991,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.getDiagnosticFlags"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangDiagnosticFlags")]
     public int getDiagnosticFlags()
     {
@@ -931,6 +1002,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setDiagnosticFlags"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDiagnosticFlags([NativeTypeName("SlangDiagnosticFlags")] int flags)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -940,6 +1012,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setDebugInfoFormat"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDebugInfoFormat(SlangDebugInfoFormat debugFormat)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -949,6 +1022,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setEnableEffectAnnotations"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setEnableEffectAnnotations([NativeTypeName("bool")] byte value)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -958,6 +1032,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setReportDownstreamTime"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setReportDownstreamTime([NativeTypeName("bool")] byte value)
     {
         fixed (ICompileRequest* pThis = &this)
@@ -967,6 +1042,7 @@ public unsafe partial struct ICompileRequest
     }
 
     /// <include file='ICompileRequest.xml' path='doc/member[@name="ICompileRequest.setReportPerfBenchmark"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setReportPerfBenchmark([NativeTypeName("bool")] byte value)
     {
         fixed (ICompileRequest* pThis = &this)

@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType"]/*' />
 [NativeTypeName("struct IComponentType : ISlangUnknown")]
@@ -61,6 +62,7 @@ public unsafe partial struct IComponentType
     public delegate int _renameEntryPoint(IComponentType* pThis, [NativeTypeName("const char *")] sbyte* newName, IComponentType** outEntryPoint);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -71,6 +73,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -81,6 +84,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -91,6 +95,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.getSession"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::ISession *")]
     public ISession* getSession()
     {
@@ -101,6 +106,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.getLayout"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::ProgramLayout *")]
     public ShaderReflection* getLayout([NativeTypeName("SlangInt")] long targetIndex = 0, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null)
     {
@@ -111,6 +117,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.getSpecializationParamCount"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangInt")]
     public long getSpecializationParamCount()
     {
@@ -121,6 +128,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.getEntryPointCode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getEntryPointCode([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, [NativeTypeName("IBlob **")] ISlangBlob** outCode, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null)
     {
@@ -131,6 +139,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.getResultAsFileSystem"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getResultAsFileSystem([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, ISlangMutableFileSystem** outFileSystem)
     {
@@ -141,6 +150,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.getEntryPointHash"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void getEntryPointHash([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, [NativeTypeName("IBlob **")] ISlangBlob** outHash)
     {
         fixed (IComponentType* pThis = &this)
@@ -150,6 +160,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.specialize"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int specialize([NativeTypeName("const SpecializationArg *")] SpecializationArg* specializationArgs, [NativeTypeName("SlangInt")] long specializationArgCount, IComponentType** outSpecializedComponentType, ISlangBlob** outDiagnostics = null)
     {
@@ -160,6 +171,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.link"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int link(IComponentType** outLinkedComponentType, ISlangBlob** outDiagnostics = null)
     {
@@ -170,6 +182,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.getEntryPointHostCallable"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getEntryPointHostCallable(int entryPointIndex, int targetIndex, ISlangSharedLibrary** outSharedLibrary, [NativeTypeName("slang::IBlob **")] ISlangBlob** outDiagnostics = null)
     {
@@ -180,6 +193,7 @@ public unsafe partial struct IComponentType
     }
 
     /// <include file='IComponentType.xml' path='doc/member[@name="IComponentType.renameEntryPoint"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int renameEntryPoint([NativeTypeName("const char *")] sbyte* newName, IComponentType** outEntryPoint)
     {

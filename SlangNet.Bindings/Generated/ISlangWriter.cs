@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='ISlangWriter.xml' path='doc/member[@name="ISlangWriter"]/*' />
 [NativeTypeName("struct ISlangWriter : ISlangUnknown")]
@@ -45,6 +46,7 @@ public unsafe partial struct ISlangWriter
     public delegate int _setMode(ISlangWriter* pThis, SlangWriterMode mode);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -55,6 +57,7 @@ public unsafe partial struct ISlangWriter
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -65,6 +68,7 @@ public unsafe partial struct ISlangWriter
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -75,6 +79,7 @@ public unsafe partial struct ISlangWriter
     }
 
     /// <include file='ISlangWriter.xml' path='doc/member[@name="ISlangWriter.beginAppendBuffer"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("char *")]
     public sbyte* beginAppendBuffer([NativeTypeName("size_t")] UIntPtr maxNumChars)
     {
@@ -85,6 +90,7 @@ public unsafe partial struct ISlangWriter
     }
 
     /// <include file='ISlangWriter.xml' path='doc/member[@name="ISlangWriter.endAppendBuffer"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int endAppendBuffer([NativeTypeName("char *")] sbyte* buffer, [NativeTypeName("size_t")] UIntPtr numChars)
     {
@@ -95,6 +101,7 @@ public unsafe partial struct ISlangWriter
     }
 
     /// <include file='ISlangWriter.xml' path='doc/member[@name="ISlangWriter.write"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int write([NativeTypeName("const char *")] sbyte* chars, [NativeTypeName("size_t")] UIntPtr numChars)
     {
@@ -105,6 +112,7 @@ public unsafe partial struct ISlangWriter
     }
 
     /// <include file='ISlangWriter.xml' path='doc/member[@name="ISlangWriter.flush"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void flush()
     {
         fixed (ISlangWriter* pThis = &this)
@@ -114,6 +122,7 @@ public unsafe partial struct ISlangWriter
     }
 
     /// <include file='ISlangWriter.xml' path='doc/member[@name="ISlangWriter.isConsole"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangBool")]
     public bool isConsole()
     {
@@ -124,6 +133,7 @@ public unsafe partial struct ISlangWriter
     }
 
     /// <include file='ISlangWriter.xml' path='doc/member[@name="ISlangWriter.setMode"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int setMode(SlangWriterMode mode)
     {

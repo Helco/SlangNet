@@ -1,4 +1,4 @@
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SlangTerminatedChars.xml' path='doc/member[@name="SlangTerminatedChars"]/*' />
 public unsafe partial struct SlangTerminatedChars

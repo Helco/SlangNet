@@ -1,8 +1,9 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static SlangNet.LayoutRules;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='ISession.xml' path='doc/member[@name="ISession"]/*' />
 [NativeTypeName("struct ISession : ISlangUnknown")]
@@ -75,6 +76,7 @@ public unsafe partial struct ISession
     public delegate int _createTypeConformanceComponentType(ISession* pThis, [NativeTypeName("slang::TypeReflection *")] TypeReflection* type, [NativeTypeName("slang::TypeReflection *")] TypeReflection* interfaceType, ITypeConformance** outConformance, [NativeTypeName("SlangInt")] long conformanceIdOverride, ISlangBlob** outDiagnostics);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -85,6 +87,7 @@ public unsafe partial struct ISession
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -95,6 +98,7 @@ public unsafe partial struct ISession
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -105,6 +109,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.getGlobalSession"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::IGlobalSession *")]
     public IGlobalSession* getGlobalSession()
     {
@@ -115,6 +120,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.loadModule"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::IModule *")]
     public IModule* loadModule([NativeTypeName("const char *")] sbyte* moduleName, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null)
     {
@@ -125,6 +131,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.loadModuleFromSource"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::IModule *")]
     public IModule* loadModuleFromSource([NativeTypeName("const char *")] sbyte* moduleName, [NativeTypeName("const char *")] sbyte* path, [NativeTypeName("slang::IBlob *")] ISlangBlob* source, [NativeTypeName("slang::IBlob **")] ISlangBlob** outDiagnostics = null)
     {
@@ -135,6 +142,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.createCompositeComponentType"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int createCompositeComponentType([NativeTypeName("IComponentType *const *")] IComponentType** componentTypes, [NativeTypeName("SlangInt")] long componentTypeCount, IComponentType** outCompositeComponentType, ISlangBlob** outDiagnostics = null)
     {
@@ -145,6 +153,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.specializeType"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::TypeReflection *")]
     public TypeReflection* specializeType([NativeTypeName("slang::TypeReflection *")] TypeReflection* type, [NativeTypeName("const SpecializationArg *")] SpecializationArg* specializationArgs, [NativeTypeName("SlangInt")] long specializationArgCount, ISlangBlob** outDiagnostics = null)
     {
@@ -155,6 +164,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.getTypeLayout"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::TypeLayoutReflection *")]
     public TypeLayoutReflection* getTypeLayout([NativeTypeName("slang::TypeReflection *")] TypeReflection* type, [NativeTypeName("SlangInt")] long targetIndex = 0, [NativeTypeName("slang::LayoutRules")] LayoutRules rules = Default, ISlangBlob** outDiagnostics = null)
     {
@@ -165,6 +175,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.getContainerType"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::TypeReflection *")]
     public TypeReflection* getContainerType([NativeTypeName("slang::TypeReflection *")] TypeReflection* elementType, [NativeTypeName("slang::ContainerType")] ContainerType containerType, ISlangBlob** outDiagnostics = null)
     {
@@ -175,6 +186,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.getDynamicType"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("slang::TypeReflection *")]
     public TypeReflection* getDynamicType()
     {
@@ -185,6 +197,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.getTypeRTTIMangledName"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getTypeRTTIMangledName([NativeTypeName("slang::TypeReflection *")] TypeReflection* type, ISlangBlob** outNameBlob)
     {
@@ -195,6 +208,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.getTypeConformanceWitnessMangledName"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getTypeConformanceWitnessMangledName([NativeTypeName("slang::TypeReflection *")] TypeReflection* type, [NativeTypeName("slang::TypeReflection *")] TypeReflection* interfaceType, ISlangBlob** outNameBlob)
     {
@@ -205,6 +219,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.getTypeConformanceWitnessSequentialID"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int getTypeConformanceWitnessSequentialID([NativeTypeName("slang::TypeReflection *")] TypeReflection* type, [NativeTypeName("slang::TypeReflection *")] TypeReflection* interfaceType, [NativeTypeName("uint32_t *")] uint* outId)
     {
@@ -215,6 +230,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.createCompileRequest"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int createCompileRequest([NativeTypeName("SlangCompileRequest **")] ICompileRequest** outCompileRequest)
     {
@@ -225,6 +241,7 @@ public unsafe partial struct ISession
     }
 
     /// <include file='ISession.xml' path='doc/member[@name="ISession.createTypeConformanceComponentType"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int createTypeConformanceComponentType([NativeTypeName("slang::TypeReflection *")] TypeReflection* type, [NativeTypeName("slang::TypeReflection *")] TypeReflection* interfaceType, ITypeConformance** outConformance, [NativeTypeName("SlangInt")] long conformanceIdOverride, ISlangBlob** outDiagnostics)
     {

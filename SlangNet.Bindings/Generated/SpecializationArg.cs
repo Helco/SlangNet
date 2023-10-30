@@ -1,6 +1,7 @@
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='SpecializationArg.xml' path='doc/member[@name="SpecializationArg"]/*' />
 public unsafe partial struct SpecializationArg
@@ -16,6 +17,7 @@ public unsafe partial struct SpecializationArg
     /// <include file='_Anonymous_e__Union.xml' path='doc/member[@name="_Anonymous_e__Union.type"]/*' />
     public ref TypeReflection* type
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get
         {
             fixed (_Anonymous_e__Union* pField = &Anonymous)

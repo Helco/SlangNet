@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='ISlangBlob.xml' path='doc/member[@name="ISlangBlob"]/*' />
 [NativeTypeName("struct ISlangBlob : ISlangUnknown")]
@@ -30,6 +31,7 @@ public unsafe partial struct ISlangBlob
     public delegate UIntPtr _getBufferSize(ISlangBlob* pThis);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -40,6 +42,7 @@ public unsafe partial struct ISlangBlob
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -50,6 +53,7 @@ public unsafe partial struct ISlangBlob
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -60,6 +64,7 @@ public unsafe partial struct ISlangBlob
     }
 
     /// <include file='ISlangBlob.xml' path='doc/member[@name="ISlangBlob.getBufferPointer"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("const void *")]
     public void* getBufferPointer()
     {
@@ -70,6 +75,7 @@ public unsafe partial struct ISlangBlob
     }
 
     /// <include file='ISlangBlob.xml' path='doc/member[@name="ISlangBlob.getBufferSize"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("size_t")]
     public UIntPtr getBufferSize()
     {

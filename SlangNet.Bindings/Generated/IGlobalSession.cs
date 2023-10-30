@@ -1,7 +1,8 @@
 using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession"]/*' />
 [NativeTypeName("struct IGlobalSession : ISlangUnknown")]
@@ -104,6 +105,7 @@ public unsafe partial struct IGlobalSession
     public delegate int _setSPIRVCoreGrammar(IGlobalSession* pThis, [NativeTypeName("const char *")] sbyte* jsonPath);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
@@ -114,6 +116,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
@@ -124,6 +127,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
@@ -134,6 +138,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.createSession"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int createSession([NativeTypeName("const SessionDesc &")] SessionDesc* desc, ISession** outSession)
     {
@@ -144,6 +149,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.findProfile"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public SlangProfileID findProfile([NativeTypeName("const char *")] sbyte* name)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -153,6 +159,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.setDownstreamCompilerPath"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDownstreamCompilerPath(SlangPassThrough passThrough, [NativeTypeName("const char *")] sbyte* path)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -162,6 +169,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.setDownstreamCompilerPrelude"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDownstreamCompilerPrelude(SlangPassThrough passThrough, [NativeTypeName("const char *")] sbyte* preludeText)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -171,6 +179,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.getDownstreamCompilerPrelude"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void getDownstreamCompilerPrelude(SlangPassThrough passThrough, ISlangBlob** outPrelude)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -180,6 +189,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.getBuildTagString"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("const char *")]
     public sbyte* getBuildTagString()
     {
@@ -190,6 +200,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.setDefaultDownstreamCompiler"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int setDefaultDownstreamCompiler(SlangSourceLanguage sourceLanguage, SlangPassThrough defaultCompiler)
     {
@@ -200,6 +211,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.getDefaultDownstreamCompiler"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public SlangPassThrough getDefaultDownstreamCompiler(SlangSourceLanguage sourceLanguage)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -209,6 +221,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.setLanguagePrelude"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setLanguagePrelude(SlangSourceLanguage sourceLanguage, [NativeTypeName("const char *")] sbyte* preludeText)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -218,6 +231,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.getLanguagePrelude"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void getLanguagePrelude(SlangSourceLanguage sourceLanguage, ISlangBlob** outPrelude)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -227,6 +241,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.createCompileRequest"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int createCompileRequest([NativeTypeName("slang::ICompileRequest **")] ICompileRequest** outCompileRequest)
     {
@@ -237,6 +252,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.addBuiltins"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void addBuiltins([NativeTypeName("const char *")] sbyte* sourcePath, [NativeTypeName("const char *")] sbyte* sourceString)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -246,6 +262,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.setSharedLibraryLoader"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setSharedLibraryLoader(ISlangSharedLibraryLoader* loader)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -255,6 +272,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.getSharedLibraryLoader"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ISlangSharedLibraryLoader* getSharedLibraryLoader()
     {
         fixed (IGlobalSession* pThis = &this)
@@ -264,6 +282,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.checkCompileTargetSupport"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int checkCompileTargetSupport(SlangCompileTarget target)
     {
@@ -274,6 +293,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.checkPassThroughSupport"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int checkPassThroughSupport(SlangPassThrough passThrough)
     {
@@ -284,6 +304,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.compileStdLib"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int compileStdLib([NativeTypeName("slang::CompileStdLibFlags")] uint flags)
     {
@@ -294,6 +315,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.loadStdLib"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int loadStdLib([NativeTypeName("const void *")] void* stdLib, [NativeTypeName("size_t")] UIntPtr stdLibSizeInBytes)
     {
@@ -304,6 +326,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.saveStdLib"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int saveStdLib(SlangArchiveType archiveType, ISlangBlob** outBlob)
     {
@@ -314,6 +337,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.findCapability"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public SlangCapabilityID findCapability([NativeTypeName("const char *")] sbyte* name)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -323,6 +347,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.setDownstreamCompilerForTransition"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setDownstreamCompilerForTransition(SlangCompileTarget source, SlangCompileTarget target, SlangPassThrough compiler)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -332,6 +357,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.getDownstreamCompilerForTransition"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public SlangPassThrough getDownstreamCompilerForTransition(SlangCompileTarget source, SlangCompileTarget target)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -341,6 +367,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.getCompilerElapsedTime"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void getCompilerElapsedTime(double* outTotalTime, double* outDownstreamTime)
     {
         fixed (IGlobalSession* pThis = &this)
@@ -350,6 +377,7 @@ public unsafe partial struct IGlobalSession
     }
 
     /// <include file='IGlobalSession.xml' path='doc/member[@name="IGlobalSession.setSPIRVCoreGrammar"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int setSPIRVCoreGrammar([NativeTypeName("const char *")] sbyte* jsonPath)
     {

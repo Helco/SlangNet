@@ -4,6 +4,7 @@ generate-file-scoped-namespaces
 generate-doc-includes
 generate-helper-types
 generate-macro-bindings
+generate-aggressive-inlining
 exclude-funcs-with-body
 explicit-vtbls
 multi-file
@@ -62,11 +63,49 @@ sp
 specialize=spspecialize
 specializeType=spspecializeType
 
+# This fixes a ClangSharp issue with TypeReflection::Kind causing compile errors
 --with-type
 Kind=uint
 
+# For the pretty bindings we generate everything but the enums and some PODs
 --namespace
-SlangNet
+SlangNet.Unsafe
+--with-namespace
+BindingType=SlangNet # enums with duplicated declarations
+SlangBindingType=SlangNet
+ContainerType=SlangNet
+SlangContainerFormat=SlangNet
+LayoutRules=SlangNet
+SlangLayoutRules=SlangNet
+ParameterCategory=SlangNet
+SlangParameterCategory=SlangNet
+PathKind=SlangNet
+SlangPathType=SlangNet
+
+OSPathKind=SlangNet
+SlangArchiveType=SlangNet
+SlangBindableResourceType=SlangNet
+SlangCapabilityID=SlangNet
+SlangCompileTarget=SlangNet
+SlangDebugInfoFormat=SlangNet
+SlangDebugInfoLevel=SlangNet
+SlangFloatingPointMode=SlangNet
+SlangLineDirectiveMode=SlangNet
+SlangMatrixLayoutMode=SlangNet
+SlangModifierID=SlangNet
+SlangOptimizationLevel=SlangNet
+SlangPassThrough=SlangNet
+SlangProfileID=SlangNet
+SlangResourceAccess=SlangNet
+SlangResourceShape=SlangNet
+SlangScalarType=SlangNet
+SlangSeverity=SlangNet
+SlangSourceLanguage=SlangNet
+SlangStage=SlangNet
+SlangTypeKind=SlangNet
+SlangWriterChannel=SlangNet
+SlangWriterMode=SlangNet
+
 --methodClassName
 Slang
 --libraryPath

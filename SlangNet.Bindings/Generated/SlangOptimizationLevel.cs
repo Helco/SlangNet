@@ -1,3 +1,5 @@
+using SlangNet.Unsafe;
+
 namespace SlangNet;
 
 /// <include file='SlangOptimizationLevel.xml' path='doc/member[@name="SlangOptimizationLevel"]/*' />

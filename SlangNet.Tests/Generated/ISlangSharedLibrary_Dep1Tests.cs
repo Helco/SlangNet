@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Runtime.InteropServices;
 
-namespace SlangNet.UnitTests;
+namespace SlangNet.Unsafe.UnitTests;
 
 /// <summary>Provides validation of the <see cref="ISlangSharedLibrary_Dep1" /> struct.</summary>
 public static unsafe partial class ISlangSharedLibrary_Dep1Tests

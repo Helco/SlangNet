@@ -1,3 +1,5 @@
+using SlangNet.Unsafe;
+
 namespace SlangNet;
 
 /// <include file='SlangResourceAccess.xml' path='doc/member[@name="SlangResourceAccess"]/*' />

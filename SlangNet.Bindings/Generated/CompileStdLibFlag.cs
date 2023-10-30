@@ -1,4 +1,4 @@
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='CompileStdLibFlag.xml' path='doc/member[@name="CompileStdLibFlag"]/*' />
 public partial struct CompileStdLibFlag

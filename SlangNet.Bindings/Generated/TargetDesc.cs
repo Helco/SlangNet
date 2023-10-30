@@ -1,6 +1,6 @@
 using System;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
 /// <include file='TargetDesc.xml' path='doc/member[@name="TargetDesc"]/*' />
 public partial struct TargetDesc

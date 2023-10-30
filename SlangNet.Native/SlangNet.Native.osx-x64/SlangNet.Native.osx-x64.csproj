@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.Build.NoTargets/3.7.0">
   <PropertyGroup>
-    <TargetFramework>native</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <SlangRuntime>osx-x64</SlangRuntime>
     <SlangDownloadRuntime>macos-x64</SlangDownloadRuntime>
     <SlangNativeDir>bin/macosx-x64/release</SlangNativeDir>

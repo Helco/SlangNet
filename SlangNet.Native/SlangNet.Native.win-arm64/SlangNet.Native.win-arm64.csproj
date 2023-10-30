@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.Build.NoTargets/3.7.0">
   <PropertyGroup>
-    <TargetFramework>native</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <SlangRuntime>win-arm64</SlangRuntime>
     <SlangDownloadRuntime>win-arm64</SlangDownloadRuntime>
     <SlangNativeDir>bin/windows-aarch64/release</SlangNativeDir>

@@ -4,6 +4,28 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>preview</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <Title>SlangNet - Raw bindings of shader-slang</Title>
+    <Description>
+      These are the raw bindings of shader-slang for the SlangNet packages, a .NET bindings library.
+      For SlangNet see https://github.com/Helco/SlangNet
+      For shader-slang see https://github.com/shader-slang/slang
+    </Description>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageId>SlangNet.Bindings</PackageId>
+
+    <DebugType>embedded</DebugType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="BindingsPackageReadme.md" Pack="true" PackagePath="readme.md"/>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
+
+  <Import Project="../SetMyRepository.targets"/>
 </Project>

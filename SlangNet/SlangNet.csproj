@@ -1,17 +1,42 @@
 ﻿<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <Title>SlangNet</Title>
+    <Description>
+      These are the full bindings of shader-slang for the SlangNet packages, a .NET bindings library.
+      For SlangNet see https://github.com/Helco/SlangNet
+      For shader-slang see https://github.com/shader-slang/slang
+    </Description>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageId>SlangNet</PackageId>
   </PropertyGroup>
   
   <ItemGroup>
+    <Content Include="_._" Pack="true" PackagePath="lib/netstandard2.0/_._"/>
+    <Content Include="PackageReadme.md" Pack="true" PackagePath="readme.md"/>
     <ProjectReference Include="../SlangNet.Bindings/SlangNet.Bindings.csproj">
       <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.linux-x64/SlangNet.Native.linux-x64.csproj" />
-    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.osx-arm64/SlangNet.Native.osx-arm64.csproj" />
-    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.osx-x64/SlangNet.Native.osx-x64.csproj" />
-    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-arm64/SlangNet.Native.win-arm64.csproj" />
-    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-x64/SlangNet.Native.win-x64.csproj" />
-    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-x86/SlangNet.Native.win-x86.csproj" />
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.linux-x64/SlangNet.Native.linux-x64.csproj">
+      <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.osx-arm64/SlangNet.Native.osx-arm64.csproj" >
+      <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.osx-x64/SlangNet.Native.osx-x64.csproj" >
+      <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-arm64/SlangNet.Native.win-arm64.csproj" >
+    <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-x64/SlangNet.Native.win-x64.csproj" >
+      <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="../SlangNet.Native/SlangNet.Native.win-x86/SlangNet.Native.win-x86.csproj" >
+      <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
+
+  <Import Project="../SetMyRepository.targets"/>
 </Project>

@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Tests", "SlangNet.Tests\SlangNet.Tests.csproj", "{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Native", "Native", "{2D13B3DD-13B4-478B-A938-4CE73670CE60}"
+	ProjectSection(SolutionItems) = preProject
+		SlangNet.Native\Directory.Build.targets = SlangNet.Native\Directory.Build.targets
+		SlangNet.Native\HackyRuntimeCopy.targets = SlangNet.Native\HackyRuntimeCopy.targets
+		SlangNet.Native\NativePackageReadme.md = SlangNet.Native\NativePackageReadme.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Native.linux-x64", "SlangNet.Native\SlangNet.Native.linux-x64\SlangNet.Native.linux-x64.csproj", "{340FA577-9996-4067-994C-1B93E1DD2488}"
 EndProject
@@ -27,6 +32,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Bindings", "SlangNet.Bindings\SlangNet.Bindings.csproj", "{36C8A3DE-A72A-43B7-9023-B35DA2241AE1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet", "SlangNet\SlangNet.csproj", "{4F754768-5AD8-46CA-8701-4818AE8CC393}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{C6C1C38C-1298-444D-B383-E7B97BFD7C54}"
+	ProjectSection(SolutionItems) = preProject
+		examples\README.md = examples\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet.Example.HelloWorld.Unsafe", "examples\SlangNet.Example.HelloWorld.Unsafe\SlangNet.Example.HelloWorld.Unsafe.csproj", "{C4319D33-B411-4202-8D06-100EF298C2E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +82,10 @@ Global
 		{4F754768-5AD8-46CA-8701-4818AE8CC393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F754768-5AD8-46CA-8701-4818AE8CC393}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F754768-5AD8-46CA-8701-4818AE8CC393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4319D33-B411-4202-8D06-100EF298C2E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4319D33-B411-4202-8D06-100EF298C2E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4319D33-B411-4202-8D06-100EF298C2E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4319D33-B411-4202-8D06-100EF298C2E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +97,7 @@ Global
 		{6BEA2F35-5095-484B-895B-A50824CA100C} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
 		{0FD0D37E-468C-407E-9756-D98ABCE38C79} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
 		{B14E9EDD-99E7-44E0-BDDE-00AA81B5472F} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
+		{C4319D33-B411-4202-8D06-100EF298C2E0} = {C6C1C38C-1298-444D-B383-E7B97BFD7C54}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A76EC01-CE0D-4E15-ACD3-FB86A95BCA4C}

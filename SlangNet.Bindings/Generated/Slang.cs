@@ -906,9 +906,6 @@ public static unsafe partial class Slang
     [return: NativeTypeName("const char *")]
     public static extern sbyte* GetTranslationUnitSource([NativeTypeName("SlangCompileRequest *")] ICompileRequest* request, int translationUnitIndex);
 
-    [NativeTypeName("#define SLANG_PROCESSOR_X86 0")]
-    public const int SLANG_PROCESSOR_X86 = 0;
-
     [NativeTypeName("#define SLANG_FACILITY_WIN_GENERAL 0")]
     public const int SLANG_FACILITY_WIN_GENERAL = 0;
 

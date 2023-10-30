@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using SlangNet.Unsafe;
 
 namespace SlangNet.Tests;
 

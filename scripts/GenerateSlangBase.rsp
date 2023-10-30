@@ -56,6 +56,10 @@ SLANG_UUID_ISlangFileSystemExt
 SLANG_UUID_ISlangMutableFileSystem
 SLANG_UUID_ISlangWriter
 
+# This one is just broken
+--exclude
+SLANG_UNBOUNDED_SIZE
+
 # Remove the function prefixes, also fix over-removing of prefixes
 --prefixStrip
 sp
@@ -71,7 +75,8 @@ Kind=uint
 --namespace
 SlangNet.Unsafe
 --with-namespace
-BindingType=SlangNet # enums with duplicated declarations
+# enums with duplicated declarations
+BindingType=SlangNet
 SlangBindingType=SlangNet
 ContainerType=SlangNet
 SlangContainerFormat=SlangNet

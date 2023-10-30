@@ -978,9 +978,6 @@ public static unsafe partial class Slang
     [NativeTypeName("#define SLANG_E_TIME_OUT SLANG_MAKE_CORE_ERROR(8)")]
     public const int SLANG_E_TIME_OUT = unchecked((((int)(0x200)) << 16) | ((int)(8)) | (int)(0x80000000));
 
-    [NativeTypeName("#define SLANG_UNBOUNDED_SIZE (~size_t(0))")]
-    public const UIntPtr SLANG_UNBOUNDED_SIZE = (~(nuint)(0));
-
     [NativeTypeName("#define SLANG_API_VERSION 0")]
     public const int SLANG_API_VERSION = 0;
 

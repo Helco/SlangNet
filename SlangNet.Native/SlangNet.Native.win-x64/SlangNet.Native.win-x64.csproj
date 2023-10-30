@@ -1,9 +1,12 @@
-<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
+﻿<Project Sdk="Microsoft.Build.NoTargets/3.7.0">
   <PropertyGroup>
     <TargetFramework>native</TargetFramework>
     <SlangRuntime>win-x64</SlangRuntime>
     <SlangDownloadRuntime>win64</SlangDownloadRuntime>
     <SlangNativeDir>bin/windows-x64/release</SlangNativeDir>
-    <SlangNativeName>slang.dll</SlangNativeName>
   </PropertyGroup>
+  <ItemGroup>
+    <SlangNativeNames Include="slang.dll"/>
+    <SlangNativeNames Include="slang-glslang.dll"/>
+  </ItemGroup>
 </Project>

@@ -33,13 +33,16 @@
     <Unzip
       SourceFiles="$(SlangTempArchivePath)"
       DestinationFolder="$(SlangTempOutputPath)"/>
+    <ItemGroup Condition="'@(SlangNativeNames)' == ''">
+      <SlangNativeNames Include="$(SlangNativeName)"/>
+    </ItemGroup>
     <ItemGroup>
       <Content
-        Include="$(SlangTempOutputPath)/$(SlangNativeDir)/$(SlangNativeName)"
+        Include="$(SlangTempOutputPath)/$(SlangNativeDir)/%(SlangNativeNames.Identity)"
         CopyToOutputDirectory="PreserveNewest"
         Pack="true"
-        PackagePath="runtimes/$(SlangRuntime)/native/$(SlangNativeName)"
-        TargetPath="runtimes/$(SlangRuntime)/native/$(SlangNativeName)"/>
+        PackagePath="runtimes/$(SlangRuntime)/native/%(SlangNativeNames.Identity)"
+        TargetPath="runtimes/$(SlangRuntime)/native/%(SlangNativeNames.Identity)"/>
     </ItemGroup>
   </Target>
 

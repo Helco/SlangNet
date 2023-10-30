@@ -4,6 +4,9 @@
     <SlangRuntime>win-x86</SlangRuntime>
     <SlangDownloadRuntime>win32</SlangDownloadRuntime>
     <SlangNativeDir>bin/windows-x86/release</SlangNativeDir>
-    <SlangNativeName>slang.dll</SlangNativeName>
   </PropertyGroup>
+  <ItemGroup>
+    <SlangNativeNames Include="slang.dll"/>
+    <SlangNativeNames Include="slang-glslang.dll"/>
+  </ItemGroup>
 </Project>

@@ -3,6 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using SlangNet.Unsafe;
 using static SlangNet.Unsafe.Slang;
+using static SlangNet.InteropUtils;
+using System.Buffers;
 
 namespace SlangNet;
 
@@ -66,11 +68,96 @@ public unsafe sealed partial class GlobalSession : Internal.COMObject<IGlobalSes
         return (CapabilityID)Pointer->findCapability(nameStr);
     }
 
-    // TODO: Missing members for GlobalSession
-    // public object SharedLibraryLoader { get; set; }
-    // public CompileRequest CreateCompileRequest();
-    // ExtractRepro
-    // LoadReproAsFileSystem
+    public void GetCompilerElapsedTime(out double totalTime, out double downstreamTime)
+    {
+        fixed (double* totalTimePtr = &totalTime)
+        fixed (double* downstreamTimePtr = &downstreamTime)
+            Pointer->getCompilerElapsedTime(totalTimePtr, downstreamTimePtr);
+    }
+
+    public void SetDownstreamCompilerPath(PassThrough passThrough, string path)
+    {
+        using var pathStr = new Utf8String(path);
+        Pointer->setDownstreamCompilerPath((SlangPassThrough)passThrough, pathStr);
+    }
+
+    public void SetDownstreamCompilerPath(PassThrough passThrough, ReadOnlySpan<byte> path)
+    {
+        fixed (byte* pathPtr = path)
+            Pointer->setDownstreamCompilerPath((SlangPassThrough)passThrough, (sbyte*)pathPtr);
+    }
+
+    public PassThrough GetDefaultDownstreamCompiler(SourceLanguage sourceLanguage) =>
+        (PassThrough)Pointer->getDefaultDownstreamCompiler((SlangSourceLanguage)sourceLanguage);
+
+    public SlangResult TrySetDefaultDownstreamCompiler(SourceLanguage sourceLanguage, PassThrough defaultCompiler) =>
+        new(Pointer->setDefaultDownstreamCompiler((SlangSourceLanguage)sourceLanguage, (SlangPassThrough)defaultCompiler));
+
+    public PassThrough GetDownstreamCompilerForTransition(CompileTarget source, CompileTarget target) =>
+        (PassThrough)Pointer->getDownstreamCompilerForTransition((SlangCompileTarget)source, (SlangCompileTarget)target);
+
+    public void SetDownstreamCompilerForTransition(CompileTarget source, CompileTarget target, PassThrough compiler) =>
+        Pointer->setDownstreamCompilerForTransition((SlangCompileTarget)source, (SlangCompileTarget)target, (SlangPassThrough)compiler);
+
+    public string? GetLanguagePrelude(SourceLanguage sourceLanguage)
+    {
+        using var preludeBlob = new COMPointer<ISlangBlob>();
+        Pointer->getLanguagePrelude((SlangSourceLanguage)sourceLanguage, &preludeBlob.Pointer);
+        return preludeBlob.GetAsString();
+    }
+
+    public void SetLanguagePrelude(SourceLanguage sourceLanguage, string? prelude)
+    {
+        using var preludeStr = new Utf8String(prelude);
+        Pointer->setLanguagePrelude((SlangSourceLanguage)sourceLanguage, preludeStr.Memory);
+    }
+
+    public void SetLanguagePrelude(SourceLanguage sourceLanguage, ReadOnlySpan<byte> prelude)
+    {
+        fixed (byte* preludePtr = prelude)
+            Pointer->setLanguagePrelude((SlangSourceLanguage)sourceLanguage, (sbyte*)preludePtr);
+    }
+
+    public string? BuildTagString => PtrToStringUTF8(Pointer->getBuildTagString());
+
+    public SlangResult TryCompileStdLib(CompileStdLibFlags flags) =>
+        new(Pointer->compileStdLib((uint)flags));
+
+    public SlangResult TryLoadStdLib(ReadOnlySpan<byte> stdLib)
+    {
+        fixed (byte* stdLibPtr = stdLib)
+            return new(Pointer->loadStdLib(stdLibPtr, new((uint)stdLib.Length)));
+    }
+
+    public SlangResult TrySaveStdLib(ArchiveType archiveType, [NotNullWhen(true)] out IMemoryOwner<byte>? stdlib)
+    {
+        stdlib = null;
+        ISlangBlob* blob;
+        var result = Pointer->saveStdLib((SlangArchiveType)archiveType, &blob);
+        if (blob != null)
+            stdlib = new BlobMemoryManager(blob);
+        return new(result);
+    }
 
 
+    public SlangResult TrySetSPIRVCoreGrammar(string jsonPath)
+    {
+        using var jsonPathStr = new Utf8String(jsonPath);
+        return new(Pointer->setSPIRVCoreGrammar(jsonPathStr));
+    }
+
+    public SlangResult TrySetSPIRVCoreGrammar(ReadOnlySpan<byte> jsonPath)
+    {
+        fixed (byte* jsonPathPtr = jsonPath)
+            return new(Pointer->setSPIRVCoreGrammar((sbyte*)jsonPathPtr));
+    }
+
+    /*public ISharedLibraryLoader? SharedLibraryLoader
+    {
+        get;
+        set;
+    }*/
+
+    //public SlangResult TryCreateSession(in SessionDescription desc, [NotNullWhen(true)] out Session? session);
+    //public SlangResult TryCreateCompileRequest([NotNullWhen(true)] out CompileRequest? request);
 }

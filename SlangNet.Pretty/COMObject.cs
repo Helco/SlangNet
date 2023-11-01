@@ -3,7 +3,7 @@ using SlangNet.Unsafe;
 
 namespace SlangNet.Internal;
 
-public abstract class COMObject<T> : IDisposable where T : unmanaged
+public class COMObject<T> : IDisposable where T : unmanaged
 {
     private unsafe T* pointer;
     private bool disposedValue;
@@ -13,14 +13,14 @@ public abstract class COMObject<T> : IDisposable where T : unmanaged
     public unsafe T* Pointer => pointer;
     public bool IsDisposed => disposedValue;
 
-    protected unsafe COMObject(T* pointer)
+    protected internal unsafe COMObject(T* pointer)
     {
         this.pointer = pointer;
         if (pointer == null)
             throw new NullReferenceException("Slang operation returned a null object");
     }
 
-    protected void ThrowIfDisposed()
+    protected internal void ThrowIfDisposed()
     {
         if (IsDisposed)
             throw new ObjectDisposedException(GetType().Name);

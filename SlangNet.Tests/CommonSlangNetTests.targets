@@ -1,13 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+<Project>
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
     <IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,9 +22,5 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SlangNet\SlangNet.csproj" />
-  </ItemGroup>
   <Import Project="../SlangNet.Native/HackyRuntimeCopy.targets" />
-
 </Project>

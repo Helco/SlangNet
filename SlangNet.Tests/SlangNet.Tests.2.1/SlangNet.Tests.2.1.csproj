@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SlangNet\SlangNet.csproj">
+      <Targets>netstandard2.1</Targets>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Import Project="..\SlangNet.Tests.Shared\SlangNet.Tests.Shared.projitems" Label="Shared" />
+
+  <Import Project="../CommonSlangNetTests.targets" />
+
+</Project>

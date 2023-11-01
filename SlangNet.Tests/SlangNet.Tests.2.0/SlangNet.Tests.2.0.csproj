@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <NetStandardImplicitPackageVersion>2.0</NetStandardImplicitPackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SlangNet\SlangNet.csproj" />
+    <ProjectReference Include="..\..\SlangNet.Bindings\SlangNet.Bindings.csproj" SetTargetFramework="TargetFramework=netstandard2.0"/>
+    <ProjectReference Include="..\..\SlangNet.Pretty\SlangNet.Pretty.csproj" SetTargetFramework="TargetFramework=netstandard2.0"/>
+    
+  </ItemGroup>
+
+  <Import Project="..\SlangNet.Tests.Shared\SlangNet.Tests.Shared.projitems" Label="Shared" />
+
+  <Import Project="../CommonSlangNetTests.targets" />
+
+</Project>

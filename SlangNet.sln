@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Tests", "SlangNet.Tests\SlangNet.Tests.csproj", "{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Native", "Native", "{2D13B3DD-13B4-478B-A938-4CE73670CE60}"
 	ProjectSection(SolutionItems) = preProject
 		SlangNet.Native\Directory.Build.targets = SlangNet.Native\Directory.Build.targets
@@ -40,9 +38,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{C6
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Example.HelloWorld.Unsafe", "examples\SlangNet.Example.HelloWorld.Unsafe\SlangNet.Example.HelloWorld.Unsafe.csproj", "{C4319D33-B411-4202-8D06-100EF298C2E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet.Pretty", "SlangNet.Pretty\SlangNet.Pretty.csproj", "{C81CD288-5E90-4105-9287-F694770B1369}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Pretty", "SlangNet.Pretty\SlangNet.Pretty.csproj", "{C81CD288-5E90-4105-9287-F694770B1369}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet.Pretty.SourceGenerator", "SlangNet.Pretty.SourceGenerator\SlangNet.Pretty.SourceGenerator.csproj", "{7BB40E72-E475-4C46-98BD-F0D4EA20DBF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Pretty.SourceGenerator", "SlangNet.Pretty.SourceGenerator\SlangNet.Pretty.SourceGenerator.csproj", "{7BB40E72-E475-4C46-98BD-F0D4EA20DBF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4A6B9893-5FE6-419E-82C7-A31A5A7ECC78}"
+	ProjectSection(SolutionItems) = preProject
+		SlangNet.Tests\CommonSlangNetTests.targets = SlangNet.Tests\CommonSlangNetTests.targets
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Tests.2.0", "SlangNet.Tests\SlangNet.Tests.2.0\SlangNet.Tests.2.0.csproj", "{17A4B9C9-E595-42E3-B49D-09C26871C692}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Tests.2.1", "SlangNet.Tests\SlangNet.Tests.2.1\SlangNet.Tests.2.1.csproj", "{238ADC42-92F4-49AC-8D2C-2029AB484211}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SlangNet.Tests.Shared", "SlangNet.Tests\SlangNet.Tests.Shared\SlangNet.Tests.Shared.shproj", "{BE320E4F-1ED3-45BC-B3CD-E25721A17A25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +59,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE27AB99-E5E2-4900-93AD-0F19F7F1C25A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{340FA577-9996-4067-994C-1B93E1DD2488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{340FA577-9996-4067-994C-1B93E1DD2488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{340FA577-9996-4067-994C-1B93E1DD2488}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -98,6 +103,14 @@ Global
 		{7BB40E72-E475-4C46-98BD-F0D4EA20DBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BB40E72-E475-4C46-98BD-F0D4EA20DBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BB40E72-E475-4C46-98BD-F0D4EA20DBF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17A4B9C9-E595-42E3-B49D-09C26871C692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17A4B9C9-E595-42E3-B49D-09C26871C692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17A4B9C9-E595-42E3-B49D-09C26871C692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17A4B9C9-E595-42E3-B49D-09C26871C692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238ADC42-92F4-49AC-8D2C-2029AB484211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238ADC42-92F4-49AC-8D2C-2029AB484211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238ADC42-92F4-49AC-8D2C-2029AB484211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238ADC42-92F4-49AC-8D2C-2029AB484211}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,8 +123,16 @@ Global
 		{0FD0D37E-468C-407E-9756-D98ABCE38C79} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
 		{B14E9EDD-99E7-44E0-BDDE-00AA81B5472F} = {2D13B3DD-13B4-478B-A938-4CE73670CE60}
 		{C4319D33-B411-4202-8D06-100EF298C2E0} = {C6C1C38C-1298-444D-B383-E7B97BFD7C54}
+		{17A4B9C9-E595-42E3-B49D-09C26871C692} = {4A6B9893-5FE6-419E-82C7-A31A5A7ECC78}
+		{238ADC42-92F4-49AC-8D2C-2029AB484211} = {4A6B9893-5FE6-419E-82C7-A31A5A7ECC78}
+		{BE320E4F-1ED3-45BC-B3CD-E25721A17A25} = {4A6B9893-5FE6-419E-82C7-A31A5A7ECC78}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A76EC01-CE0D-4E15-ACD3-FB86A95BCA4C}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SlangNet.Tests\SlangNet.Tests.Shared\SlangNet.Tests.Shared.projitems*{17a4b9c9-e595-42e3-b49d-09c26871c692}*SharedItemsImports = 5
+		SlangNet.Tests\SlangNet.Tests.Shared\SlangNet.Tests.Shared.projitems*{238adc42-92f4-49ac-8d2c-2029ab484211}*SharedItemsImports = 5
+		SlangNet.Tests\SlangNet.Tests.Shared\SlangNet.Tests.Shared.projitems*{be320e4f-1ed3-45bc-b3cd-e25721a17a25}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

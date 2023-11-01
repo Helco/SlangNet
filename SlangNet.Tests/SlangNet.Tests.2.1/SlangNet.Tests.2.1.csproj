@@ -6,9 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SlangNet\SlangNet.csproj">
-      <Targets>netstandard2.1</Targets>
-    </ProjectReference>
+    <ProjectReference Include="..\..\SlangNet\SlangNet.csproj"/>
   </ItemGroup>
 
   <Import Project="..\SlangNet.Tests.Shared\SlangNet.Tests.Shared.projitems" Label="Shared" />

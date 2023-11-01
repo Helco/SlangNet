@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)_._" Pack="true" PackagePath="lib/netstandard2.0/_._"/>
+    <Content Include="$(MSBuildThisFileDirectory)_._" Pack="true" PackagePath="lib/netstandard2.1/_._"/>
     <Content Include="$(MSBuildThisFileDirectory)NativePackageReadme.md" Pack="true" PackagePath="readme.md"/>
   </ItemGroup>
 

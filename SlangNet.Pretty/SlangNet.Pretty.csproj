@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <RootNamespace>SlangNet</RootNamespace>
+
+    <Title>SlangNet - Idiomatic bindings of shader-slang</Title>
+    <Description>
+      These are the idiomatic bindings of shader-slang for the SlangNet packages, a .NET bindings library.
+      For SlangNet see https://github.com/Helco/SlangNet
+      For shader-slang see https://github.com/shader-slang/slang
+    </Description>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageId>SlangNet.Pretty</PackageId>
+
+    <DebugType>embedded</DebugType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="PrettyPackageReadme.md" Pack="true" PackagePath="readme.md"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IsExternalInit" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Nullable" Version="1.3.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Memory" Version="4.5.5" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SlangNet.Bindings\SlangNet.Bindings.csproj" />
+    <ProjectReference Include="..\SlangNet.Pretty.SourceGenerator\SlangNet.Pretty.SourceGenerator.csproj">
+      <OutputItemType>Analyzer</OutputItemType>
+      <PrivateAssets>all</PrivateAssets>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Import Project="../SetMyRepository.targets"/>
+
+</Project>

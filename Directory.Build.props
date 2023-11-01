@@ -9,4 +9,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>slang;shader;C#;csharp</PackageTags>
   </PropertyGroup>
+
+  <Target Name="GitVersion" />
 </Project>

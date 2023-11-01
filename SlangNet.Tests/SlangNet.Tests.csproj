@@ -27,6 +27,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SlangNet\SlangNet.csproj" />
   </ItemGroup>
-  <Import Project="../SlangNet.Native/HackyRuntimeCopy.targets"/>
+  <Import Project="../SlangNet.Native/HackyRuntimeCopy.targets" />
 
 </Project>

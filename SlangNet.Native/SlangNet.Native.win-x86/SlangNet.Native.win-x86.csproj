@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.Build.NoTargets/3.7.0">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <SlangRuntime>win-x86</SlangRuntime>
     <SlangDownloadRuntime>win32</SlangDownloadRuntime>
     <SlangNativeDir>bin/windows-x86/release</SlangNativeDir>

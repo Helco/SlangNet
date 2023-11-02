@@ -2,6 +2,7 @@
 using System.Text;
 using System.Runtime.InteropServices;
 using SlangNet.Unsafe;
+using System.Collections.Generic;
 
 namespace SlangNet;
 
@@ -23,7 +24,7 @@ internal unsafe static class InteropUtils
     public static string? GetAsString(this COMPointer<ISlangBlob> pointer) => BlobToString(pointer);
 
     public static string? PtrToStringUTF8(void* ptr)
-#if NETSTANDARD2_2_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER
         => Marshal.PtrToStringUTF8(new(ptr));
 #else
     {
@@ -46,4 +47,12 @@ internal unsafe static class InteropUtils
         for (; *ptr != 0; ptr++, length++) ;
         return length;
     }
+
+#if !NETSTANDARD2_1_OR_GREATER
+    public static void Deconstruct<TKey, TValue>(this KeyValuePair<TKey, TValue> pair, out TKey key, out TValue value)
+    {
+        key = pair.Key;
+        value = pair.Value;
+    }
+#endif
 }

@@ -158,6 +158,16 @@ public unsafe sealed partial class GlobalSession : Internal.COMObject<IGlobalSes
         set;
     }*/
 
-    //public SlangResult TryCreateSession(in SessionDescription desc, [NotNullWhen(true)] out Session? session);
+    public SlangResult TryCreateSession(SessionDescription desc, [NotNullWhen(true)] out Session? session)
+    {
+        session = null;
+        using var nativeDesc = desc.AsNative();
+        ISession* sessionPtr;
+        var result = Pointer->createSession(&nativeDesc.Native, &sessionPtr);
+        if (sessionPtr != null)
+            session = new(sessionPtr);
+        return new(result);
+    }
+    
     //public SlangResult TryCreateCompileRequest([NotNullWhen(true)] out CompileRequest? request);
 }

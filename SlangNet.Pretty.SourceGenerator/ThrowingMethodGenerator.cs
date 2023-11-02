@@ -43,7 +43,7 @@ public class ThrowingMethodGenerator : ISourceGenerator
             if (outputParam?.RefKind == RefKind.Out)
             {
                 parameters.RemoveAt(parameters.Count - 1);
-                returnType = outputParam.Type.ToDisplayString();
+                returnType = outputParam.Type.ToDisplayString().TrimEnd('?');
             }
             else
                 outputParam = null;
@@ -82,7 +82,7 @@ public class ThrowingMethodGenerator : ISourceGenerator
                 source.Append("out var ");
                 source.Append(outputParam.Name);
             }
-            source.AppendLine(");");
+            source.AppendLine(").ThrowIfFailed();");
 
             if (outputParam != null)
             {

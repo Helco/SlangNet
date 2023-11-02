@@ -11,7 +11,7 @@ namespace SlangNet;
 [GenerateThrowingMethods]
 public unsafe sealed partial class GlobalSession : Internal.COMObject<IGlobalSession>
 {
-    private GlobalSession(IGlobalSession* pointer) : base(pointer) { }
+    internal GlobalSession(IGlobalSession* pointer) : base(pointer) { }
 
     public static SlangResult TryCreate([NotNullWhen(true)] out GlobalSession? session)
         => TryCreate(SLANG_API_VERSION, out session);
@@ -103,7 +103,7 @@ public unsafe sealed partial class GlobalSession : Internal.COMObject<IGlobalSes
     {
         using var preludeBlob = new COMPointer<ISlangBlob>();
         Pointer->getLanguagePrelude((SlangSourceLanguage)sourceLanguage, &preludeBlob.Pointer);
-        return preludeBlob.GetAsString();
+        return preludeBlob.AsString();
     }
 
     public void SetLanguagePrelude(SourceLanguage sourceLanguage, string? prelude)

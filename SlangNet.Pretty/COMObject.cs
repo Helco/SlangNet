@@ -3,14 +3,21 @@ using SlangNet.Unsafe;
 
 namespace SlangNet.Internal;
 
-public class COMObject<T> : IDisposable where T : unmanaged
+public class COMObject<T> : IDisposable, IEquatable<COMObject<T>> where T : unmanaged
 {
     private unsafe T* pointer;
     private bool disposedValue;
 
     /// <summary>Returns the raw pointer underneath the wrapper</summary>
     /// <remarks>The reference counter is not incremented</remarks>
-    public unsafe T* Pointer => pointer;
+    public unsafe T* Pointer
+    {
+        get
+        {
+            ThrowIfDisposed();
+            return pointer;
+        }
+    }
     public bool IsDisposed => disposedValue;
 
     protected internal unsafe COMObject(T* pointer)
@@ -19,6 +26,17 @@ public class COMObject<T> : IDisposable where T : unmanaged
         if (pointer == null)
             throw new NullReferenceException("Slang operation returned a null object");
     }
+
+    public unsafe bool Equals(COMObject<T> other) => other == null!
+        ? pointer == null
+        : other.pointer == pointer;
+
+    public override bool Equals(object obj) => obj is COMObject<T> other && Equals(other);
+    public static bool operator ==(COMObject<T> a, COMObject<T> b) => a == null! || b == null!
+        ? ReferenceEquals(a, b)
+        : a.Equals(b);
+    public static bool operator !=(COMObject<T> a, COMObject<T> b) => !(a == b);
+    public unsafe override int GetHashCode() => new IntPtr(pointer).GetHashCode();
 
     protected internal void ThrowIfDisposed()
     {

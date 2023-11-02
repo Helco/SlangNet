@@ -21,7 +21,7 @@ internal unsafe static class InteropUtils
         return Encoding.UTF8.GetString((byte*)pointer, size);
     }
 
-    public static string? GetAsString(this COMPointer<ISlangBlob> pointer) => BlobToString(pointer);
+    public static string? AsString(this COMPointer<ISlangBlob> pointer) => BlobToString(pointer);
 
     public static string? PtrToStringUTF8(void* ptr)
 #if NETSTANDARD2_1_OR_GREATER

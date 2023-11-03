@@ -131,4 +131,8 @@ public sealed class SlangException : Exception
     public SlangException(SerializationInfo info, StreamingContext context) : base(info, context)
     {
     }
+
+    public SlangException(string message) : this(message, SlangResult.Fail)
+    {
+    }
 }

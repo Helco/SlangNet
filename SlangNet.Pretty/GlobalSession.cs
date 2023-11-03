@@ -169,5 +169,11 @@ public unsafe sealed partial class GlobalSession : Internal.COMObject<IGlobalSes
         return new(result);
     }
     
-    //public SlangResult TryCreateCompileRequest([NotNullWhen(true)] out CompileRequest? request);
+    public SlangResult TryCreateCompileRequest([NotNullWhen(true)] out CompileRequest? request)
+    {
+        ICompileRequest* requestPtr = null;
+        var result = Pointer->createCompileRequest(&requestPtr);
+        request = requestPtr == null ? null : new(requestPtr);
+        return new(result);
+    }
 }

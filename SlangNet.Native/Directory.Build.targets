@@ -31,6 +31,8 @@
       SourceUrl="$(SlangNativeRepo)/releases/download/v$(SlangVersion)/slang-$(SlangVersion)-$(SlangDownloadRuntime).zip"
       DestinationFolder="$(SlangTempArchiveDir)"
       DestinationFileName="$(SlangTempArchiveName)"/>
+  </Target>
+  <Target Name="UnzipNative" BeforeTargets="Build" AfterTargets="DownloadNative">
     <Unzip
       SourceFiles="$(SlangTempArchivePath)"
       DestinationFolder="$(SlangTempOutputPath)"/>

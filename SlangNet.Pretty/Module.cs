@@ -1,12 +1,13 @@
 ﻿using System;
-using SlangNet.Internal;
 using SlangNet.Unsafe;
 
 namespace SlangNet;
 
-public unsafe sealed class Module : COMObject<IModule>
+public unsafe sealed class Module : ComponentType
 {
-    internal Module(IModule* pointer) : base(pointer)
+    public new IModule* Pointer => (IModule*)base.Pointer;
+
+    internal Module(IModule* pointer) : base((IComponentType*)pointer)
     {
     }
 }

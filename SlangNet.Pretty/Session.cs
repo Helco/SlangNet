@@ -8,21 +8,14 @@ using SlangNet.Unsafe;
 
 namespace SlangNet;
 
-public unsafe sealed class Session : Internal.COMObject<ISession>
+[GenerateThrowingMethods]
+public unsafe sealed partial class Session : Internal.COMObject<ISession>
 {
     internal Session(ISession* pointer) : base(pointer)
     {
     }
 
-    public GlobalSession GlobalSession
-    {
-        get
-        {
-            var globalSession = Pointer->getGlobalSession();
-            globalSession->addRef();
-            return new GlobalSession(globalSession);
-        }
-    }
+    public GlobalSession GlobalSession => new GlobalSession(Pointer->getGlobalSession());
 
     public Module? TryLoadModule(ReadOnlySpan<byte> moduleName, out string? diagnostics)
     {

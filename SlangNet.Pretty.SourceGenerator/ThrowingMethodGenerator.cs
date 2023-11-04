@@ -73,6 +73,10 @@ public class ThrowingMethodGenerator : ISourceGenerator
             {
                 if (!ReferenceEquals(param, parameters.First()))
                     source.Append(", ");
+                if (param.RefKind == RefKind.Out)
+                    source.Append("out ");
+                if (param.RefKind == RefKind.Ref)
+                    source.Append("ref ");
                 source.Append(param.Name);
             }
             if (outputParam != null)

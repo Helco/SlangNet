@@ -30,11 +30,13 @@
     <DownloadFile
       SourceUrl="$(SlangNativeRepo)/releases/download/v$(SlangVersion)/slang-$(SlangVersion)-$(SlangDownloadRuntime).zip"
       DestinationFolder="$(SlangTempArchiveDir)"
-      DestinationFileName="$(SlangTempArchiveName)"/>
+      DestinationFileName="$(SlangTempArchiveName)">
+      <Output TaskParameter="DownloadedFile" ItemName="SlangArchive"/>
+    </DownloadFile>
   </Target>
   <Target Name="UnzipNative" BeforeTargets="Build" AfterTargets="DownloadNative">
     <Unzip
-      SourceFiles="$(SlangTempArchivePath)"
+      SourceFiles="@(SlangArchive)"
       DestinationFolder="$(SlangTempOutputPath)"/>
     <ItemGroup Condition="'@(SlangNativeNames)' == ''">
       <SlangNativeNames Include="$(SlangNativeName)"/>

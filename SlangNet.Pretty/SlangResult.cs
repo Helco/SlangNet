@@ -99,7 +99,7 @@ public readonly record struct SlangResult(int RawValue)
         return builder.ToString();
     }
 
-    public void ThrowIfFailed()
+    public void ThrowIfFailed(string? diagnostics = null)
     {
         if (Succeeded)
             return;
@@ -107,6 +107,8 @@ public readonly record struct SlangResult(int RawValue)
             Marshal.ThrowExceptionForHR(RawValue, new IntPtr(-1));
 
         var message = $"Slang operation returned an error: {this}";
+        if (diagnostics != null)
+            message += $"\nDiagnostics:\n{diagnostics}";
         if (this == BufferTooSmall) throw new ArgumentException(message);
         if (this == CannotOpen) throw new IOException(message, RawValue);
         if (this == NotFound) throw new FileNotFoundException(message);

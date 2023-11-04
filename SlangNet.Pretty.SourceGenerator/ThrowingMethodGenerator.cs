@@ -38,6 +38,7 @@ public class ThrowingMethodGenerator : ISourceGenerator
                 continue;
 
             var returnType = "void";
+            var hasDiagnosticParam = false;
             var parameters = method.Parameters.ToList();
             var outputParam = parameters.LastOrDefault();
             if (outputParam?.RefKind == RefKind.Out)
@@ -47,6 +48,11 @@ public class ThrowingMethodGenerator : ISourceGenerator
             }
             else
                 outputParam = null;
+            if (parameters.LastOrDefault()?.ToDisplayString() == "out string? diagnostics")
+            {
+                parameters.RemoveAt(parameters.Count - 1);
+                hasDiagnosticParam = true;
+            }
 
             source.Append("    public ");
             if (method.IsStatic)
@@ -79,14 +85,23 @@ public class ThrowingMethodGenerator : ISourceGenerator
                     source.Append("ref ");
                 source.Append(param.Name);
             }
-            if (outputParam != null)
+            if (hasDiagnosticParam)
             {
                 if (parameters.Any())
+                    source.Append(", ");
+                source.Append("out var diagnostics");
+            }
+            if (outputParam != null)
+            {
+                if (parameters.Any() || hasDiagnosticParam)
                     source.Append(", ");
                 source.Append("out var ");
                 source.Append(outputParam.Name);
             }
-            source.AppendLine(").ThrowIfFailed();");
+            source.Append(").ThrowIfFailed(");
+            if (hasDiagnosticParam)
+                source.Append("diagnostics");
+            source.AppendLine(");");
 
             if (outputParam != null)
             {

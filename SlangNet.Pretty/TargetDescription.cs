@@ -21,7 +21,7 @@ public struct TargetDescription
     public TargetFlags Flags
     {
         get => (TargetFlags)native.flags;
-        set => native.flags = (uint)Flags;
+        set => native.flags = (uint)value;
     }
 
     public FloatingPointMode FloatingPointMode
@@ -42,5 +42,9 @@ public struct TargetDescription
         set => native.forceGLSLScalarBufferLayout = value ? (byte)1 : (byte)0;
     }
 
-    internal unsafe void AsNative(TargetDesc* ptr) => *ptr = native;
+    internal unsafe void AsNative(TargetDesc* ptr)
+    {
+        native.structureSize = new((uint)sizeof(TargetDesc));
+        *ptr = native;
+    }
 }

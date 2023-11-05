@@ -26,7 +26,7 @@ public class ThrowingMethodGenerator : ISourceGenerator
         var source = new StringBuilder();
         source.AppendLine("#nullable enable");
         source.AppendLine($"namespace {clazz.ContainingNamespace.ToDisplayString()};");
-        source.AppendLine($"partial class {clazz.Name}");
+        source.AppendLine($"partial {(clazz.TypeKind == TypeKind.Class ? "class" : "struct")} {clazz.Name}");
         source.AppendLine("{");
 
         foreach (var method in clazz.GetMembers().OfType<IMethodSymbol>())
@@ -128,8 +128,8 @@ public class ThrowingMethodGenerator : ISourceGenerator
 
         public void OnVisitSyntaxNode(GeneratorSyntaxContext context)
         {
-            if (context.Node is not ClassDeclarationSyntax classSyntax ||
-                context.SemanticModel.GetDeclaredSymbol(classSyntax) is not ITypeSymbol classSymbol)
+            if (context.Node is not ClassDeclarationSyntax and not StructDeclarationSyntax ||
+                context.SemanticModel.GetDeclaredSymbol(context.Node) is not ITypeSymbol classSymbol)
                 return;
 
             var attributeData = classSymbol

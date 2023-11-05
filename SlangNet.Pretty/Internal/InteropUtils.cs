@@ -55,4 +55,22 @@ internal unsafe static class InteropUtils
         value = pair.Value;
     }
 #endif
+
+    public static int CombineHash<T1, T2>(T1 v1, T2 v2)
+        where T1 : unmanaged
+        where T2 : unmanaged
+#if NETSTANDARD2_1_OR_GREATER
+        => HashCode.Combine(v1, v2);
+#else
+    {
+        // FNV-1a 
+        unchecked
+        {
+            int hash = (int)2166136261;
+            hash = (hash ^ v1.GetHashCode()) * 16777619;
+            hash = (hash ^ v2.GetHashCode()) * 16777619;
+            return hash;
+        }
+    }
+#endif
 }

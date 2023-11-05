@@ -2,7 +2,7 @@
 
 namespace SlangNet;
 
-[AttributeUsage(AttributeTargets.Class)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
 internal sealed class GenerateThrowingMethodsAttribute : Attribute
 {
 }

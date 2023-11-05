@@ -48,7 +48,7 @@ public unsafe sealed class Module : ComponentType
         return entryPoint!;
     }
 
-    private class EntryPointList : NativeReadOnlyList<EntryPoint>
+    private class EntryPointList : NativeResultReadOnlyList<EntryPoint>
     {
         private readonly Module module;
 
@@ -56,7 +56,7 @@ public unsafe sealed class Module : ComponentType
 
         public override int Count => module.Pointer->getDefinedEntryPointCount();
 
-        internal override SlangResult TryGetAt(int index, [NotNullWhen(true)] out EntryPoint? entryPoint)
+        public override SlangResult TryGetAt(int index, [NotNullWhen(true)] out EntryPoint? entryPoint)
         {
             IEntryPoint* entryPointPtr = null;
             var result = module.Pointer->getDefinedEntryPoint(index, &entryPointPtr);

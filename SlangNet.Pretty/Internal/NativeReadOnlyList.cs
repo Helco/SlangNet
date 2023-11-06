@@ -34,22 +34,24 @@ internal abstract class NativeResultReadOnlyList<T> : IReadOnlyList<T>
 internal unsafe readonly struct NativeBoundedReadOnlyList<TContainer, TElement> : IReadOnlyList<TElement>
     where TContainer : unmanaged
 {
-    public delegate uint GetCountFunc(TContainer* container);
-    public delegate bool TryGetAtFunc(TContainer* container, uint index, out TElement element);
+    public delegate long GetCountFunc(TContainer* container);
+    public delegate bool TryGetAtFunc(TContainer* container, long index, out TElement element);
 
     public TContainer* Container { get; init; }
     public GetCountFunc GetCount { get; init; }
     public TryGetAtFunc TryGetAt { get; init; }
 
-    public int Count => checked((int)GetCount(Container));
+    public long Count => GetCount(Container);
+    int IReadOnlyCollection<TElement>.Count => checked((int)Count);
 
-    public TElement this[int index]
+    public TElement this[int index] => this[index];
+    public TElement this[long index]
     {
         get
         {
             if (index < 0 || index >= Count)
                 throw new ArgumentOutOfRangeException("index");
-            return TryGetAt(Container, checked((uint)index), out var element)
+            return TryGetAt(Container, index, out var element)
                 ? element
                 : throw new SlangException("Slang list returned a null pointer");
         }

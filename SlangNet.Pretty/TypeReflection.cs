@@ -27,20 +27,20 @@ public unsafe readonly partial struct TypeReflection : IEquatable<TypeReflection
         UserAttributes = new NativeBoundedReadOnlyList<SlangReflectionType, UserAttribute>
         {
             Container = InternalPointer,
-            GetCount = GetUserAttributeCount,
-            TryGetAt = TryGetUserAttributeAt
+            GetCount = &GetUserAttributeCount,
+            TryGetAt = &TryGetUserAttributeAt
         };
         Fields = new NativeBoundedReadOnlyList<SlangReflectionType, VariableReflection>
         {
             Container = InternalPointer,
-            GetCount = GetFieldCount,
-            TryGetAt = TryGetFieldAt
+            GetCount = &GetFieldCount,
+            TryGetAt = &TryGetFieldAt
         };
         SpecializedTypeArgTypes = new NativeBoundedReadOnlyList<SlangReflectionType, TypeReflection?>
         {
             Container = InternalPointer,
-            GetCount = ReflectionType_getSpecializedTypeArgCount,
-            TryGetAt = TryGetSpecializedTypeArgTypeAt
+            GetCount = &ReflectionType_getSpecializedTypeArgCount,
+            TryGetAt = &TryGetSpecializedTypeArgTypeAt
         };
     }
 
@@ -63,7 +63,7 @@ public unsafe readonly partial struct TypeReflection : IEquatable<TypeReflection
     private static long GetUserAttributeCount(SlangReflectionType* type) =>
         ReflectionType_GetUserAttributeCount(type);
 
-    private static bool TryGetUserAttributeAt(SlangReflectionType* type, long index, out UserAttribute attribute)
+    private static bool TryGetUserAttributeAt(SlangReflectionType* type, long index, ref UserAttribute attribute)
     {
         var ptr = ReflectionType_GetUserAttribute(type, checked((uint)index));
         attribute = new UserAttribute(ptr);
@@ -96,7 +96,7 @@ public unsafe readonly partial struct TypeReflection : IEquatable<TypeReflection
     private static long GetFieldCount(SlangReflectionType* type) =>
         ReflectionType_GetFieldCount(type);
 
-    private static bool TryGetFieldAt(SlangReflectionType* type, long index, out VariableReflection variable)
+    private static bool TryGetFieldAt(SlangReflectionType* type, long index, ref VariableReflection variable)
     {
         var ptr = ReflectionType_GetFieldByIndex(type, checked((uint)index));
         variable = new VariableReflection(ptr);
@@ -137,7 +137,7 @@ public unsafe readonly partial struct TypeReflection : IEquatable<TypeReflection
     // this is weird in the Slang API, for now we have a list for the types with null elements for future non-types
     // but for anything further we have to wait for the changes in the Slang API
 
-    private static bool TryGetSpecializedTypeArgTypeAt(SlangReflectionType* type, long index, out TypeReflection? arg)
+    private static bool TryGetSpecializedTypeArgTypeAt(SlangReflectionType* type, long index, ref TypeReflection? arg)
     {
         var ptr = ReflectionType_getSpecializedTypeArgType(type, index);
         arg = ptr == null ? null : new(ptr);

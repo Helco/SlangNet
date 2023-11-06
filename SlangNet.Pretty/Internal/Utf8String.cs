@@ -9,10 +9,12 @@ internal unsafe struct Utf8String : IDisposable
 
 #if NETSTANDARD2_1_OR_GREATER
     public sbyte* Memory { get; private set; }
+    public sbyte* MemoryEnd { get; private set; }
 
     public Utf8String(string? text)
     {
         Memory = (sbyte*)Marshal.StringToCoTaskMemUTF8(text);
+        MemoryEnd = Memory + InteropUtils.StrLen(Memory);
     }
 
     public void Dispose()
@@ -20,7 +22,7 @@ internal unsafe struct Utf8String : IDisposable
         if (Memory != null)
         {
             Marshal.FreeCoTaskMem(new(Memory));
-            Memory = null;
+            Memory = MemoryEnd = null;
         }
     }
 
@@ -29,6 +31,7 @@ internal unsafe struct Utf8String : IDisposable
     public sbyte* Memory => handle == default
         ? null
         : (sbyte*)handle.AddrOfPinnedObject();
+    public sbyte* MemoryEnd { get; }
 
     public Utf8String(string? text)
     {
@@ -37,6 +40,7 @@ internal unsafe struct Utf8String : IDisposable
             return;
         var bytes = System.Text.Encoding.UTF8.GetBytes(text);
         handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+        MemoryEnd = Memory + bytes.Length;
     }
 
     public void Dispose()

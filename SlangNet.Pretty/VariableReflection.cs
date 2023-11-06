@@ -26,8 +26,8 @@ public unsafe readonly struct VariableReflection : IEquatable<VariableReflection
         UserAttributes = new NativeBoundedReadOnlyList<SlangReflectionVariable, UserAttribute>
         {
             Container = InternalPointer,
-            GetCount = GetUserAttributeCount,
-            TryGetAt = TryGetUserAttributeAt
+            GetCount = &GetUserAttributeCount,
+            TryGetAt = &TryGetUserAttributeAt
         };
     }
 
@@ -66,7 +66,7 @@ public unsafe readonly struct VariableReflection : IEquatable<VariableReflection
     private static long GetUserAttributeCount(SlangReflectionVariable* type) =>
         ReflectionVariable_GetUserAttributeCount(type);
 
-    private static bool TryGetUserAttributeAt(SlangReflectionVariable* type, long index, out UserAttribute attribute)
+    private static bool TryGetUserAttributeAt(SlangReflectionVariable* type, long index, ref UserAttribute attribute)
     {
         var ptr = ReflectionVariable_GetUserAttribute(type, checked((uint)index));
         attribute = new UserAttribute(ptr);

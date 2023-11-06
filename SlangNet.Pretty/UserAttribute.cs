@@ -26,8 +26,8 @@ public unsafe readonly struct UserAttribute : IEquatable<UserAttribute>
         Arguments = new NativeBoundedReadOnlyList<SlangReflectionUserAttribute, UserAttributeArgument>
         {
             Container = InternalPointer,
-            GetCount = GetArgumentCount,
-            TryGetAt = TryGetArgumentAt
+            GetCount = &GetArgumentCount,
+            TryGetAt = &TryGetArgumentAt
         };
     }
 
@@ -49,7 +49,7 @@ public unsafe readonly struct UserAttribute : IEquatable<UserAttribute>
     private static long GetArgumentCount(SlangReflectionUserAttribute* container) =>
         ReflectionUserAttribute_GetArgumentCount(container);
 
-    private static bool TryGetArgumentAt(SlangReflectionUserAttribute* container, long index, out UserAttributeArgument element)
+    private static bool TryGetArgumentAt(SlangReflectionUserAttribute* container, long index, ref UserAttributeArgument element)
     {
         element = new UserAttributeArgument
         {

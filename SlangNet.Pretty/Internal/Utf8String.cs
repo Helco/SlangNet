@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace SlangNet;
@@ -52,4 +55,43 @@ internal unsafe struct Utf8String : IDisposable
         }
     }
 #endif
+}
+
+internal unsafe struct Utf8StringArray : IDisposable
+{
+    public sbyte** Memory { get; private set; }
+    public int Count { get; private set; }
+    private Utf8String[] strings;
+
+    public Utf8StringArray(IEnumerable<string> managedStrings)
+    {
+        Count = managedStrings.Count();
+        strings = new Utf8String[Count];
+        try
+        {
+            Memory = (sbyte**)Marshal.AllocCoTaskMem(sizeof(sbyte*) * Count);
+            int i = 0;
+            foreach (var str in managedStrings)
+            {
+                strings[i] = new Utf8String(str);
+                Memory[i] = strings[i];
+                i++;
+            }
+        }
+        finally
+        {
+            Dispose();
+        }
+    }
+
+    public void Dispose()
+    {
+        if (Memory != null)
+        {
+            Marshal.FreeCoTaskMem(new(Memory));
+            Memory = null;
+        }
+        foreach (var str in strings)
+            str.Dispose();
+    }
 }

@@ -75,7 +75,7 @@ public unsafe partial struct ICompileRequest
     public delegate void _setPassThrough(ICompileRequest* pThis, SlangPassThrough passThrough);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void _setDiagnosticCallback(ICompileRequest* pThis, [NativeTypeName("SlangDiagnosticCallback")] IntPtr callback, [NativeTypeName("const void *")] void* userData);
+    public delegate void _setDiagnosticCallback(ICompileRequest* pThis, [NativeTypeName("Read")] IntPtr callback, [NativeTypeName("const void *")] void* userData);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void _setWriter(ICompileRequest* pThis, SlangWriterChannel channel, ISlangWriter* writer);

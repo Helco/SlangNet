@@ -17,7 +17,7 @@ internal unsafe readonly struct NativeBoundedReadOnlyList<TContainer, TElement> 
     public long Count => GetCount(Container);
     int IReadOnlyCollection<TElement>.Count => checked((int)Count);
 
-    public TElement this[int index] => this[index];
+    public TElement this[int index] => this[(long)index];
     public TElement this[long index]
     {
         get

@@ -65,6 +65,25 @@ jobs:
         run: |
           dotnet test SlangNet.Tests/SlangNet.Tests.2.0 -c Release --verbosity Normal -p:UseLocalVersion=${GITHUB_SHA::7}
           dotnet test SlangNet.Tests/SlangNet.Tests.2.1 -c Release --verbosity Normal -p:UseLocalVersion=${GITHUB_SHA::7}
+  publish-packages:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Setup .NET Core 6.0.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Download packages
+        uses: actions/download-artifact@v3
+        with:
+          name: packages
+          path: nuget-feed
+      - name: Publish packages
+        run: dotnet nuget push nuget-feed/*.nupkg --skip-duplicate -k ${GITHUB_TOKEN} -s "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   todo-to-issue:
     runs-on: ubuntu-latest
     steps:

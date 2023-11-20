@@ -5,12 +5,8 @@
     <DefineConstants>$(DefineConstants);SHOULD_BE_2_1</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\SlangNet\SlangNet.csproj"/>
-  </ItemGroup>
-
   <Import Project="..\SlangNet.Tests.Shared\SlangNet.Tests.Shared.projitems" Label="Shared" />
-
+  <Import Project="../../ImportMainProject.targets" />
   <Import Project="../CommonSlangNetTests.targets" />
 
 </Project>

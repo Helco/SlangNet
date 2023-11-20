@@ -1,0 +1,27 @@
+<Project>
+  <!-- Thanks to PackageSourceMapping we *have* to use a custom nuget.config to set the local feed -->
+
+  <ItemGroup Condition="'$(UseLocalVersion)' == ''">
+    <ProjectReference Include="..\..\SlangNet\SlangNet.csproj"/>
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseLocalVersion)' != ''">
+    <PackageReference Include="SlangNet" Version="$(VersionPrefix)-$(UseLocalVersion)"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseLocalVersion)' == '' And '$(ForceTargetFramework)' != ''">
+    <ProjectReference Include="..\..\SlangNet.Bindings\SlangNet.Bindings.csproj" SetTargetFramework="TargetFramework=$(ForceTargetFramework)" />
+    <ProjectReference Include="..\..\SlangNet.Pretty\SlangNet.Pretty.csproj" SetTargetFramework="TargetFramework=$(ForceTargetFramework)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseLocalVersion)' != '' And '$(ForceTargetFramework)' != ''">
+    <PackageReference Include="SlangNet.Bindings" Version="$(VersionPrefix)-$(UseLocalVersion)" ExcludeAssets="Compile" GeneratePathProperty="true"/>
+    <PackageReference Include="SlangNet.Pretty" Version="$(VersionPrefix)-$(UseLocalVersion)" ExcludeAssets="Compile" GeneratePathProperty="true"/>
+
+    <Reference Include="SlangNet.Bindings">
+      <HintPath>$(PkgSlangNet_Bindings)/lib/$(ForceTargetFramework)/SlangNet.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="SlangNet.Pretty">
+      <HintPath>$(PkgSlangNet_Pretty)/lib/$(ForceTargetFramework)/SlangNet.Pretty.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

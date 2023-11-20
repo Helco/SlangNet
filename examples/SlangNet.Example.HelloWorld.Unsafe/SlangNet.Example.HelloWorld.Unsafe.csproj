@@ -19,9 +19,7 @@
   <ItemGroup>
     <PackageReference Include="Veldrid" Version="4.9.0" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\SlangNet\SlangNet.csproj" />
-  </ItemGroup>
+  <Import Project="../../ImportMainProject.targets" />
   <Import Project="../../SlangNet.Native/HackyRuntimeCopy.targets"/>
 
 </Project>

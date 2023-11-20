@@ -6,13 +6,65 @@ on:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Setup .NET Core 6.0.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore
+        run: dotnet restore
+      - name: Build packages
+        run: |
+          for project in linux-x64 osx-arm64 osx-x64 win-arm64 win-x64 win-x86; do
+            dotnet pack SlangNet.Native/SlangNet.Native.$project/SlangNet.Native.$project.csproj -o nuget-feed -c Release --version-suffix ${GITHUB_SHA::7}
+          done
+          for project in .Bindings .Pretty ''; do
+            dotnet pack SlangNet$project/SlangNet$project.csproj -o nuget-feed -c Release --version-suffix ${GITHUB_SHA::7}
+          done
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: packages
+          path: nuget-feed/*
+  test:
+    needs: build
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-    uses: ./.github/workflows/build.yml
-    with:
-      runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Setup .NET Core 6.0.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Download packages
+        uses: actions/download-artifact@v3
+        with:
+          name: packages
+          path: nuget-feed
+      - name: Prepare local NuGet feed
+        run:
+          cp UseLocalNugetFeed.config nuget.config
+      - name: Build examples
+        run: |
+          for example in HelloWorld HelloWorld.Unsafe; do
+            dotnet build examples/SlangNet.Example.$example -c Release --verbosity Normal -p:UseLocalVersion=${GITHUB_SHA::7}
+          done
+      - name: Run tests
+        run: |
+          dotnet test SlangNet.Tests/SlangNet.Tests.2.0 -c Release --verbosity Normal -p:UseLocalVersion=${GITHUB_SHA::7}
+          dotnet test SlangNet.Tests/SlangNet.Tests.2.1 -c Release --verbosity Normal -p:UseLocalVersion=${GITHUB_SHA::7}
   todo-to-issue:
     runs-on: ubuntu-latest
     steps:

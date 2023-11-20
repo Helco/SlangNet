@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using SlangNet.Unsafe;
 
 namespace SlangNet;
 
 unsafe partial class CompileRequest
 {
-    public readonly struct TranslationUnit : IEquatable<TranslationUnit>
+    [GenerateThrowingMethods]
+    public readonly partial struct TranslationUnit : IEquatable<TranslationUnit>
     {
         private readonly ICompileRequest* pointer;
         public int Index { get; }
@@ -83,6 +85,14 @@ unsafe partial class CompileRequest
             using var nameStr = new Utf8String(name);
             using var genericArgsArray = new Utf8StringArray(genericArgs);
             return pointer->addEntryPointEx(Index, nameStr, (SlangStage)stage, genericArgsArray.Count, genericArgsArray.Memory);
+        }
+
+        public SlangResult TryGetModule([NotNullWhen(true)] out Module? module)
+        {
+            IModule* modulePtr = null;
+            var result = pointer->getModule(Index, &modulePtr);
+            module = modulePtr == null ? null : new(modulePtr);
+            return new(result);
         }
     }
 

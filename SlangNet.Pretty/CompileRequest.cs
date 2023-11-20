@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
+using System.Buffers;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 using SlangNet.Internal;
 using SlangNet.Unsafe;
 
@@ -192,5 +192,153 @@ public unsafe sealed partial class CompileRequest : COMObject<ICompileRequest>
     public IReadOnlyList<string> DependencyFilePaths { get; }
     public TranslationUnitList TranslationUnits { get; }
 
+    public string? GetEntryPointSource(int index) =>
+        InteropUtils.PtrToStringUTF8(Pointer->getEntryPointSource(index));
 
+    public ReadOnlySpan<byte> GetEntryPointCode(int index)
+    {
+        UIntPtr size = default;
+        var ptr = Pointer->getEntryPointCode(index, &size);
+        if (ptr == null)
+            throw new NullReferenceException($"CompileRequest::getEntryPointCode returned a null pointer");
+        return new ReadOnlySpan<byte>(ptr, checked((int)size.ToUInt64()));
+    }
+
+    public SlangResult TryGetEntryPointCodeBlob(int entryPointIndex, int targetIndex, [NotNullWhen(true)] out IMemoryOwner<byte>? blob)
+    {
+        ISlangBlob* blobPtr = null;
+        var result = Pointer->getEntryPointCodeBlob(entryPointIndex, targetIndex, &blobPtr);
+        blob = blobPtr == null ? null : new BlobMemoryManager(blobPtr);
+        return new(result);
+    }
+
+    // TODO: Add CompileRequest::getEntryPointHostCallable
+    // TODO: Add CompileRequest::getTargetHostCallable
+
+    public SlangResult TryGetTargetCodeBlob(int targetIndex, [NotNullWhen(true)] out IMemoryOwner<byte>? blob)
+    {
+        ISlangBlob* blobPtr = null;
+        var result = Pointer->getTargetCodeBlob(targetIndex, &blobPtr);
+        blob = blobPtr == null ? null : new BlobMemoryManager(blobPtr);
+        return new(result);
+    }
+
+    public ReadOnlySpan<byte> CompileRequestCode
+    {
+        get
+        {
+            UIntPtr size = default;
+            var ptr = Pointer->getCompileRequestCode(&size);
+            if (ptr == null)
+                throw new NullReferenceException($"CompileRequest::getCompileRequestCode returned a null pointer");
+            return new ReadOnlySpan<byte>(ptr, checked((int)size.ToUInt64()));
+        }
+    }
+
+    // TODO: Add CompileRequest::loadRepro
+
+    public SlangResult TrySaveRepro([NotNullWhen(true)] out IMemoryOwner<byte>? blob)
+    {
+        ISlangBlob* blobPtr = null;
+        var result = Pointer->saveRepro(&blobPtr);
+        blob = blobPtr == null ? null : new BlobMemoryManager(blobPtr);
+        return new(result);
+    }
+
+    public SlangResult TryEnableReproCapture() =>
+        new(Pointer->enableReproCapture());
+
+    public SlangResult TryGetProgram([NotNullWhen(true)] out ComponentType? program)
+    {
+        IComponentType* programPtr = null;
+        var result = Pointer->getProgram(&programPtr);
+        program = ComponentType.CreateFromPointer(programPtr);
+        return new(result);
+    }
+
+    public SlangResult TryGetEntryPoint(long entryPointIndex, [NotNullWhen(true)] out ComponentType? entryPoint)
+    {
+        IComponentType* entryPointPtr = null;
+        var result = Pointer->getEntryPoint(entryPointIndex, &entryPointPtr);
+        entryPoint = ComponentType.CreateFromPointer(entryPointPtr);
+        return new(result);
+    }
+
+    public SlangResult TryGetSession([NotNullWhen(true)] out Session? session)
+    {
+        ISession* sessionPtr = null;
+        var result = Pointer->getSession(&sessionPtr);
+        session = sessionPtr == null ? null : new(sessionPtr);
+        return new(result);
+    }
+
+    public ShaderReflection? Reflection
+    {
+        get
+        {
+            var ptr = Pointer->getReflection();
+            return ptr == null ? null : new(ptr);
+        }
+    }
+
+    public void SetCommandLineCompilerMode() =>
+        Pointer->setCommandLineCompilerMode();
+
+    public SlangResult TryAddTargetCapability(long targetIndex, SlangCapabilityID capability) =>
+        new(Pointer->addTargetCapability(targetIndex, capability));
+
+    public SlangResult TryGetProgramWithEntryPoints([NotNullWhen(true)] out ComponentType? program)
+    {
+        IComponentType* programPtr = null;
+        var result = Pointer->getProgramWithEntryPoints(&programPtr);
+        program = ComponentType.CreateFromPointer(programPtr);
+        return new(result);
+    }
+
+    public SlangResult TryIsParameterLocationUsed(
+        long entryPointIndex,
+        long targetIndex,
+        SlangParameterCategory category,
+        ulong spaceIndex,
+        ulong registerIndex,
+        out bool used)
+    {
+        fixed (bool* usedPtr = &used)
+            return new(Pointer->isParameterLocationUsed(entryPointIndex, targetIndex, category, spaceIndex, registerIndex, usedPtr));
+    }
+
+    public void SetTargetLineDirectiveMode(long targetIndex, LineDirectiveMode mode) =>
+        Pointer->setTargetLineDirectiveMode(targetIndex, (SlangLineDirectiveMode)mode);
+
+    public void SetTargetForceGLSLScalarBufferLayout(int targetIndex, bool forceScalarLayout) =>
+        Pointer->setTargetForceGLSLScalarBufferLayout(targetIndex, forceScalarLayout ? (byte)1 : (byte)0);
+
+    public void OverrideDiagnosticSeverity(long messageID, Severity overrideSeverity) =>
+        Pointer->overrideDiagnosticSeverity(messageID, (SlangSeverity)overrideSeverity);
+
+    public DiagnosticFlags DiagnosticFlags
+    {
+        get => (DiagnosticFlags)Pointer->getDiagnosticFlags();
+        set => Pointer->setDiagnosticFlags((int)value);
+    }
+
+    public DebugInfoFormat DebugInfoFormat
+    {
+        set => Pointer->setDebugInfoFormat((SlangDebugInfoFormat)value);
+    }
+
+    public bool EnableEffectAnnotations
+    {
+        set => Pointer->setEnableEffectAnnotations((byte)(value ? 1 : 0));
+    }
+
+    public bool ReportDownstreamTime
+    {
+        set => Pointer->setReportDownstreamTime((byte)(value ? 1 : 0));
+    }
+
+    public bool ReportPerfBenchmark
+    {
+        set => Pointer->setReportPerfBenchmark((byte)(value ? 1 : 0));
+    }
 }

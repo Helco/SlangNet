@@ -26,6 +26,15 @@ public class ThrowingMethodGenerator : ISourceGenerator
         var source = new StringBuilder();
         source.AppendLine("#nullable enable");
         source.AppendLine($"namespace {clazz.ContainingNamespace.ToDisplayString()};");
+
+        var curContainer = clazz.ContainingType;
+        while (curContainer != null)
+        {
+            source.AppendLine($"partial {(curContainer.TypeKind == TypeKind.Class ? "class" : "struct")} {curContainer.Name}");
+            source.AppendLine("{");
+            curContainer = curContainer.ContainingType;
+        }
+
         source.AppendLine($"partial {(clazz.TypeKind == TypeKind.Class ? "class" : "struct")} {clazz.Name}");
         source.AppendLine("{");
 
@@ -114,6 +123,13 @@ public class ThrowingMethodGenerator : ISourceGenerator
         }
 
         source.AppendLine("}");
+        curContainer = clazz.ContainingType;
+        while (curContainer != null)
+        {
+            source.AppendLine("}");
+            curContainer = curContainer.ContainingType;
+        }
+
         context.AddSource($"{clazz.Name}_throwing.g.cs", SourceText.From(source.ToString(), Encoding.UTF8));
     }
 

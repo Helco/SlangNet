@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <NetStandardImplicitPackageVersion>2.0</NetStandardImplicitPackageVersion>
     <DefineConstants>$(DefineConstants);SHOULD_BE_2_0</DefineConstants>
     <ForceTargetFramework>netstandard2.0</ForceTargetFramework>

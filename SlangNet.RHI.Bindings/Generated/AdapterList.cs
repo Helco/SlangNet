@@ -4,5 +4,6 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct AdapterList
 {
     /// <include file='AdapterList.xml' path='doc/member[@name="AdapterList.m_blob"]/*' />
-    private ComPtr<ISlangBlob> m_blob;
+    [NativeTypeName("ComPtr<ISlangBlob>")]
+    private SlangNet.Unsafe.COMPointer<ISlangBlob> m_blob;
 }

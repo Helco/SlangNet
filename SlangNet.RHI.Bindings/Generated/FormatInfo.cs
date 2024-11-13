@@ -1,4 +1,3 @@
-using System;
 using System.Runtime.CompilerServices;
 
 namespace SlangNet.RHI.Unsafe;
@@ -20,7 +19,7 @@ public unsafe partial struct FormatInfo
 
     /// <include file='FormatInfo.xml' path='doc/member[@name="FormatInfo.blockSizeInBytes"]/*' />
     [NativeTypeName("rhi::Size")]
-    public UIntPtr blockSizeInBytes;
+    public ulong blockSizeInBytes;
 
     /// <include file='FormatInfo.xml' path='doc/member[@name="FormatInfo.pixelsPerBlock"]/*' />
     [NativeTypeName("rhi::GfxCount")]

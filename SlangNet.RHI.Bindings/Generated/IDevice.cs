@@ -32,7 +32,7 @@ public unsafe partial struct IDevice
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _getFeatures(IDevice* pThis, [NativeTypeName("const char **")] sbyte** outFeatures, [NativeTypeName("rhi::Size")] UIntPtr bufferSize, [NativeTypeName("rhi::GfxCount *")] int* outFeatureCount);
+    public delegate int _getFeatures(IDevice* pThis, [NativeTypeName("const char **")] sbyte** outFeatures, [NativeTypeName("rhi::Size")] ulong bufferSize, [NativeTypeName("rhi::GfxCount *")] int* outFeatureCount);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
@@ -52,7 +52,7 @@ public unsafe partial struct IDevice
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _createTextureFromSharedHandle(IDevice* pThis, [NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const TextureDesc &")] TextureDesc* srcDesc, [NativeTypeName("const Size")] UIntPtr size, ITexture** outTexture);
+    public delegate int _createTextureFromSharedHandle(IDevice* pThis, [NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const TextureDesc &")] TextureDesc* srcDesc, [NativeTypeName("const Size")] ulong size, ITexture** outTexture);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
@@ -128,11 +128,11 @@ public unsafe partial struct IDevice
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _readTexture(IDevice* pThis, [NativeTypeName("rhi::ITexture *")] ITexture* texture, ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] UIntPtr* outRowPitch, [NativeTypeName("rhi::Size *")] UIntPtr* outPixelSize);
+    public delegate int _readTexture(IDevice* pThis, [NativeTypeName("rhi::ITexture *")] ITexture* texture, ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] ulong* outRowPitch, [NativeTypeName("rhi::Size *")] ulong* outPixelSize);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _readBuffer(IDevice* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] nuint offset, [NativeTypeName("rhi::Size")] UIntPtr size, ISlangBlob** outBlob);
+    public delegate int _readBuffer(IDevice* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, ISlangBlob** outBlob);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("const DeviceInfo &")]
@@ -160,11 +160,11 @@ public unsafe partial struct IDevice
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _getTextureAllocationInfo(IDevice* pThis, [NativeTypeName("const TextureDesc &")] TextureDesc* desc, [NativeTypeName("rhi::Size *")] UIntPtr* outSize, [NativeTypeName("rhi::Size *")] UIntPtr* outAlignment);
+    public delegate int _getTextureAllocationInfo(IDevice* pThis, [NativeTypeName("const TextureDesc &")] TextureDesc* desc, [NativeTypeName("rhi::Size *")] ulong* outSize, [NativeTypeName("rhi::Size *")] ulong* outAlignment);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _getTextureRowAlignment(IDevice* pThis, [NativeTypeName("rhi::Size *")] UIntPtr* outAlignment);
+    public delegate int _getTextureRowAlignment(IDevice* pThis, [NativeTypeName("rhi::Size *")] ulong* outAlignment);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -223,7 +223,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getFeatures"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getFeatures([NativeTypeName("const char **")] sbyte** outFeatures, [NativeTypeName("rhi::Size")] UIntPtr bufferSize, [NativeTypeName("rhi::GfxCount *")] int* outFeatureCount)
+    public int getFeatures([NativeTypeName("const char **")] sbyte** outFeatures, [NativeTypeName("rhi::Size")] ulong bufferSize, [NativeTypeName("rhi::GfxCount *")] int* outFeatureCount)
     {
         fixed (IDevice* pThis = &this)
         {
@@ -278,7 +278,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createTextureFromSharedHandle"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int createTextureFromSharedHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const TextureDesc &")] TextureDesc* srcDesc, [NativeTypeName("const Size")] UIntPtr size, ITexture** outTexture)
+    public int createTextureFromSharedHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const TextureDesc &")] TextureDesc* srcDesc, [NativeTypeName("const Size")] ulong size, ITexture** outTexture)
     {
         fixed (IDevice* pThis = &this)
         {
@@ -487,7 +487,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.readTexture"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int readTexture([NativeTypeName("rhi::ITexture *")] ITexture* texture, ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] UIntPtr* outRowPitch, [NativeTypeName("rhi::Size *")] UIntPtr* outPixelSize)
+    public int readTexture([NativeTypeName("rhi::ITexture *")] ITexture* texture, ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] ulong* outRowPitch, [NativeTypeName("rhi::Size *")] ulong* outPixelSize)
     {
         fixed (IDevice* pThis = &this)
         {
@@ -498,7 +498,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.readBuffer"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int readBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] nuint offset, [NativeTypeName("rhi::Size")] UIntPtr size, ISlangBlob** outBlob)
+    public int readBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, ISlangBlob** outBlob)
     {
         fixed (IDevice* pThis = &this)
         {
@@ -575,7 +575,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getTextureAllocationInfo"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getTextureAllocationInfo([NativeTypeName("const TextureDesc &")] TextureDesc* desc, [NativeTypeName("rhi::Size *")] UIntPtr* outSize, [NativeTypeName("rhi::Size *")] UIntPtr* outAlignment)
+    public int getTextureAllocationInfo([NativeTypeName("const TextureDesc &")] TextureDesc* desc, [NativeTypeName("rhi::Size *")] ulong* outSize, [NativeTypeName("rhi::Size *")] ulong* outAlignment)
     {
         fixed (IDevice* pThis = &this)
         {
@@ -586,7 +586,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getTextureRowAlignment"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getTextureRowAlignment([NativeTypeName("rhi::Size *")] UIntPtr* outAlignment)
+    public int getTextureRowAlignment([NativeTypeName("rhi::Size *")] ulong* outAlignment)
     {
         fixed (IDevice* pThis = &this)
         {

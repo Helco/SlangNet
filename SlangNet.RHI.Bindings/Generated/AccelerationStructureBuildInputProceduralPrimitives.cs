@@ -1,5 +1,3 @@
-using System;
-
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives"]/*' />
@@ -20,7 +18,7 @@ public unsafe partial struct AccelerationStructureBuildInputProceduralPrimitives
 
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.aabbStride"]/*' />
     [NativeTypeName("rhi::Size")]
-    public UIntPtr aabbStride;
+    public ulong aabbStride;
 
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.primitiveCount"]/*' />
     [NativeTypeName("rhi::GfxCount")]

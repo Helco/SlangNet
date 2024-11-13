@@ -28,11 +28,11 @@ public unsafe partial struct IShaderTable
     {
         /// <include file='ShaderRecordOverwrite.xml' path='doc/member[@name="ShaderRecordOverwrite.offset"]/*' />
         [NativeTypeName("rhi::Offset")]
-        public nuint offset;
+        public ulong offset;
 
         /// <include file='ShaderRecordOverwrite.xml' path='doc/member[@name="ShaderRecordOverwrite.size"]/*' />
         [NativeTypeName("rhi::Size")]
-        public UIntPtr size;
+        public ulong size;
 
         /// <include file='ShaderRecordOverwrite.xml' path='doc/member[@name="ShaderRecordOverwrite.data"]/*' />
         [NativeTypeName("uint8_t[8]")]

@@ -17,7 +17,7 @@ public unsafe partial struct InputElementDesc
 
     /// <include file='InputElementDesc.xml' path='doc/member[@name="InputElementDesc.offset"]/*' />
     [NativeTypeName("rhi::Offset")]
-    public nuint offset;
+    public ulong offset;
 
     /// <include file='InputElementDesc.xml' path='doc/member[@name="InputElementDesc.bufferSlotIndex"]/*' />
     [NativeTypeName("rhi::GfxIndex")]

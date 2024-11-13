@@ -41,7 +41,7 @@ public unsafe partial struct IShaderObject
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _setData(IShaderObject* pThis, [NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const void *")] void* data, [NativeTypeName("rhi::Size")] UIntPtr size);
+    public delegate int _setData(IShaderObject* pThis, [NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const void *")] void* data, [NativeTypeName("rhi::Size")] ulong size);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
@@ -65,7 +65,7 @@ public unsafe partial struct IShaderObject
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Size")]
-    public delegate UIntPtr _getSize(IShaderObject* pThis);
+    public delegate ulong _getSize(IShaderObject* pThis);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
@@ -158,7 +158,7 @@ public unsafe partial struct IShaderObject
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setData"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int setData([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const void *")] void* data, [NativeTypeName("rhi::Size")] UIntPtr size)
+    public int setData([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const void *")] void* data, [NativeTypeName("rhi::Size")] ulong size)
     {
         fixed (IShaderObject* pThis = &this)
         {
@@ -224,7 +224,7 @@ public unsafe partial struct IShaderObject
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getSize"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Size")]
-    public UIntPtr getSize()
+    public ulong getSize()
     {
         fixed (IShaderObject* pThis = &this)
         {

@@ -61,6 +61,7 @@ SLANG_UUID_ISlangWriter
 --remap
 rhi::Offset=ulong
 rhi::Size=ulong
+ComPtr=SlangNet.Unsafe.COMPointer
 
 # This fixes a ClangSharp issue with TypeReflection::Kind causing compile errors
 --with-type
@@ -68,6 +69,7 @@ Kind=uint
 
 --with-namespace
 SlangUUID=SlangNet.Unsafe
+ISlangBlob=SlangNet.Unsafe
 
 # For the pretty bindings we rewrite everything but some of the enums and PODs
 --namespace

@@ -24,19 +24,19 @@ public unsafe partial struct ICommandEncoder
     public delegate uint _release(ICommandEncoder* pThis);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void _copyBuffer(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] nuint dstOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* src, [NativeTypeName("rhi::Offset")] nuint srcOffset, [NativeTypeName("rhi::Size")] UIntPtr size);
+    public delegate void _copyBuffer(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong dstOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* src, [NativeTypeName("rhi::Offset")] ulong srcOffset, [NativeTypeName("rhi::Size")] ulong size);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void _copyTexture(ICommandEncoder* pThis, [NativeTypeName("rhi::ITexture *")] ITexture* dst, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange dstSubresource, [NativeTypeName("rhi::Offset3D")] Offset3D dstOffset, [NativeTypeName("rhi::ITexture *")] ITexture* src, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange srcSubresource, [NativeTypeName("rhi::Offset3D")] Offset3D srcOffset, [NativeTypeName("rhi::Extents")] Extents extent);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void _copyTextureToBuffer(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] nuint dstOffset, [NativeTypeName("rhi::Size")] UIntPtr dstSize, [NativeTypeName("rhi::Size")] UIntPtr dstRowStride, [NativeTypeName("rhi::ITexture *")] ITexture* src, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange srcSubresource, [NativeTypeName("rhi::Offset3D")] Offset3D srcOffset, [NativeTypeName("rhi::Extents")] Extents extent);
+    public delegate void _copyTextureToBuffer(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong dstOffset, [NativeTypeName("rhi::Size")] ulong dstSize, [NativeTypeName("rhi::Size")] ulong dstRowStride, [NativeTypeName("rhi::ITexture *")] ITexture* src, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange srcSubresource, [NativeTypeName("rhi::Offset3D")] Offset3D srcOffset, [NativeTypeName("rhi::Extents")] Extents extent);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void _uploadTextureData(ICommandEncoder* pThis, [NativeTypeName("rhi::ITexture *")] ITexture* dst, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, [NativeTypeName("rhi::Offset3D")] Offset3D offset, [NativeTypeName("rhi::Extents")] Extents extent, [NativeTypeName("rhi::SubresourceData *")] SubresourceData* subresourceData, [NativeTypeName("rhi::GfxCount")] int subresourceDataCount);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void _uploadBufferData(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] nuint offset, [NativeTypeName("rhi::Size")] UIntPtr size, void* data);
+    public delegate void _uploadBufferData(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, void* data);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void _clearBuffer(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("const BufferRange *")] BufferRange* range = null);
@@ -45,7 +45,7 @@ public unsafe partial struct ICommandEncoder
     public delegate void _clearTexture(ICommandEncoder* pThis, [NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("const ClearValue &")] ClearValue* clearValue = null, [NativeTypeName("const SubresourceRange *")] SubresourceRange* subresourceRange = null, bool clearDepth = true, bool clearStencil = true);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void _resolveQuery(ICommandEncoder* pThis, [NativeTypeName("rhi::IQueryPool *")] IQueryPool* queryPool, [NativeTypeName("rhi::GfxIndex")] int index, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] nuint offset);
+    public delegate void _resolveQuery(ICommandEncoder* pThis, [NativeTypeName("rhi::IQueryPool *")] IQueryPool* queryPool, [NativeTypeName("rhi::GfxIndex")] int index, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void _beginRenderPass(ICommandEncoder* pThis, [NativeTypeName("const RenderPassDesc &")] RenderPassDesc* desc);
@@ -63,10 +63,10 @@ public unsafe partial struct ICommandEncoder
     public delegate void _drawIndexed(ICommandEncoder* pThis, [NativeTypeName("const DrawArguments &")] DrawArguments* args);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void _drawIndirect(ICommandEncoder* pThis, [NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] nuint argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] nuint countOffset = 0);
+    public delegate void _drawIndirect(ICommandEncoder* pThis, [NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] ulong countOffset = 0);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void _drawIndexedIndirect(ICommandEncoder* pThis, [NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] nuint argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] nuint countOffset = 0);
+    public delegate void _drawIndexedIndirect(ICommandEncoder* pThis, [NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] ulong countOffset = 0);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void _drawMeshTasks(ICommandEncoder* pThis, int x, int y, int z);
@@ -84,7 +84,7 @@ public unsafe partial struct ICommandEncoder
     public delegate void _dispatchCompute(ICommandEncoder* pThis, int x, int y, int z);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate void _dispatchComputeIndirect(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] nuint offset);
+    public delegate void _dispatchComputeIndirect(ICommandEncoder* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong offset);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     public delegate void _beginRayTracingPass(ICommandEncoder* pThis);
@@ -171,7 +171,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.copyBuffer"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void copyBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] nuint dstOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* src, [NativeTypeName("rhi::Offset")] nuint srcOffset, [NativeTypeName("rhi::Size")] UIntPtr size)
+    public void copyBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong dstOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* src, [NativeTypeName("rhi::Offset")] ulong srcOffset, [NativeTypeName("rhi::Size")] ulong size)
     {
         fixed (ICommandEncoder* pThis = &this)
         {
@@ -191,7 +191,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.copyTextureToBuffer"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void copyTextureToBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] nuint dstOffset, [NativeTypeName("rhi::Size")] UIntPtr dstSize, [NativeTypeName("rhi::Size")] UIntPtr dstRowStride, [NativeTypeName("rhi::ITexture *")] ITexture* src, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange srcSubresource, [NativeTypeName("rhi::Offset3D")] Offset3D srcOffset, [NativeTypeName("rhi::Extents")] Extents extent)
+    public void copyTextureToBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong dstOffset, [NativeTypeName("rhi::Size")] ulong dstSize, [NativeTypeName("rhi::Size")] ulong dstRowStride, [NativeTypeName("rhi::ITexture *")] ITexture* src, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange srcSubresource, [NativeTypeName("rhi::Offset3D")] Offset3D srcOffset, [NativeTypeName("rhi::Extents")] Extents extent)
     {
         fixed (ICommandEncoder* pThis = &this)
         {
@@ -211,7 +211,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.uploadBufferData"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void uploadBufferData([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] nuint offset, [NativeTypeName("rhi::Size")] UIntPtr size, void* data)
+    public void uploadBufferData([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, void* data)
     {
         fixed (ICommandEncoder* pThis = &this)
         {
@@ -241,7 +241,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.resolveQuery"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void resolveQuery([NativeTypeName("rhi::IQueryPool *")] IQueryPool* queryPool, [NativeTypeName("rhi::GfxIndex")] int index, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] nuint offset)
+    public void resolveQuery([NativeTypeName("rhi::IQueryPool *")] IQueryPool* queryPool, [NativeTypeName("rhi::GfxIndex")] int index, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset)
     {
         fixed (ICommandEncoder* pThis = &this)
         {
@@ -301,7 +301,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.drawIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndirect([NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] nuint argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] nuint countOffset = 0)
+    public void drawIndirect([NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] ulong countOffset = 0)
     {
         fixed (ICommandEncoder* pThis = &this)
         {
@@ -311,7 +311,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.drawIndexedIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndexedIndirect([NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] nuint argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] nuint countOffset = 0)
+    public void drawIndexedIndirect([NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] ulong countOffset = 0)
     {
         fixed (ICommandEncoder* pThis = &this)
         {
@@ -371,7 +371,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.dispatchComputeIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void dispatchComputeIndirect([NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] nuint offset)
+    public void dispatchComputeIndirect([NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong offset)
     {
         fixed (ICommandEncoder* pThis = &this)
         {

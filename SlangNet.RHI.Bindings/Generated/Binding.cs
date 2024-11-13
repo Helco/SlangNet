@@ -11,10 +11,12 @@ public unsafe partial struct Binding
     public BindingType type;
 
     /// <include file='Binding.xml' path='doc/member[@name="Binding.resource"]/*' />
-    public ComPtr<IResource> resource;
+    [NativeTypeName("ComPtr<IResource>")]
+    public SlangNet.Unsafe.COMPointer<IResource> resource;
 
     /// <include file='Binding.xml' path='doc/member[@name="Binding.resource2"]/*' />
-    public ComPtr<IResource> resource2;
+    [NativeTypeName("ComPtr<IResource>")]
+    public SlangNet.Unsafe.COMPointer<IResource> resource2;
 
     /// <include file='Binding.xml' path='doc/member[@name="Binding.Anonymous"]/*' />
     [NativeTypeName("__AnonymousRecord_slang-rhi_L1099_C5")]

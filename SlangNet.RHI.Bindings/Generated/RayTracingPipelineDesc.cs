@@ -1,5 +1,3 @@
-using System;
-
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='RayTracingPipelineDesc.xml' path='doc/member[@name="RayTracingPipelineDesc"]/*' />
@@ -22,11 +20,11 @@ public unsafe partial struct RayTracingPipelineDesc
 
     /// <include file='RayTracingPipelineDesc.xml' path='doc/member[@name="RayTracingPipelineDesc.maxRayPayloadSize"]/*' />
     [NativeTypeName("rhi::Size")]
-    public UIntPtr maxRayPayloadSize;
+    public ulong maxRayPayloadSize;
 
     /// <include file='RayTracingPipelineDesc.xml' path='doc/member[@name="RayTracingPipelineDesc.maxAttributeSizeInBytes"]/*' />
     [NativeTypeName("rhi::Size")]
-    public UIntPtr maxAttributeSizeInBytes;
+    public ulong maxAttributeSizeInBytes;
 
     /// <include file='RayTracingPipelineDesc.xml' path='doc/member[@name="RayTracingPipelineDesc.flags"]/*' />
     [NativeTypeName("rhi::RayTracingPipelineFlags")]

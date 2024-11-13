@@ -1,9 +1,10 @@
 ﻿using System;
-using SlangNet.Unsafe;
+using System.Runtime.InteropServices;
 
-namespace SlangNet;
+namespace SlangNet.Unsafe;
 
-internal unsafe struct COMPointer<T> : IDisposable where T : unmanaged
+[StructLayout(LayoutKind.Sequential)] // TODO: Add tests for alignment and size
+public unsafe struct COMPointer<T> : IDisposable where T : unmanaged
 {
     public T* Pointer;
 

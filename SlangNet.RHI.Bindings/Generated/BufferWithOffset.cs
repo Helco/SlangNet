@@ -9,5 +9,5 @@ public unsafe partial struct BufferWithOffset
 
     /// <include file='BufferWithOffset.xml' path='doc/member[@name="BufferWithOffset.offset"]/*' />
     [NativeTypeName("rhi::Offset")]
-    public nuint offset;
+    public ulong offset;
 }

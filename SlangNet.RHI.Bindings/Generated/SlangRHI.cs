@@ -23,9 +23,6 @@ public static unsafe partial class SlangRHI
         layerCount = 0x7fffffff,
     });
 
-    [NativeTypeName("const GfxCount")]
-    public const int kRemainingTextureSize = unchecked(0xffffffff);
-
     public const int EnableNone = 0;
     public const int EnableRed = 0x01;
     public const int EnableGreen = 0x02;

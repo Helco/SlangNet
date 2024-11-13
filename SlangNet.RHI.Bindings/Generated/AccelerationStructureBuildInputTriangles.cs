@@ -1,5 +1,3 @@
-using System;
-
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles"]/*' />
@@ -28,7 +26,7 @@ public unsafe partial struct AccelerationStructureBuildInputTriangles
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.vertexStride"]/*' />
     [NativeTypeName("rhi::Size")]
-    public UIntPtr vertexStride;
+    public ulong vertexStride;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.indexBuffer"]/*' />
     [NativeTypeName("rhi::BufferWithOffset")]

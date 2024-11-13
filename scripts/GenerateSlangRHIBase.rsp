@@ -70,6 +70,13 @@ Kind=uint
 --with-namespace
 SlangUUID=SlangNet.Unsafe
 ISlangBlob=SlangNet.Unsafe
+ISlangUnknown=SlangNet.Unsafe
+IComponentType=SlangNet.Unsafe
+IGlobalSession=SlangNet.Unsafe
+SlangMatrixLayoutMode=SlangNet.Unsafe
+PreprocessorMacroDesc=SlangNet.Unsafe
+SlangOptimizationLevel=SlangNet.Unsafe
+SlangLineDirectiveMode=SlangNet.Unsafe
 
 # For the pretty bindings we rewrite everything but some of the enums and PODs
 --namespace

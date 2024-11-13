@@ -4,4 +4,4 @@ generate-tests-nunit
 --output
 ../SlangNet.Bindings/Generated
 --test-output
-../SlangNet.Tests/Generated
+../SlangNet.Tests/SlangNet.Tests.Shared/Generated

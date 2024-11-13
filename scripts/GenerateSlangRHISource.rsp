@@ -1,0 +1,7 @@
+@GenerateSlangRHIBase.rsp
+--config
+generate-tests-nunit
+--output
+../SlangNet.RHI.Bindings/Generated
+--test-output
+../SlangNet.RHI.Tests/SlangNet.RHI.Tests.Shared/Generated

@@ -1,3 +1,6 @@
 [submodule "slang"]
 	path = slang
 	url = https://github.com/shader-slang/slang
+[submodule "slang-rhi"]
+	path = slang-rhi
+	url = https://github.com/shader-slang/slang-rhi.git

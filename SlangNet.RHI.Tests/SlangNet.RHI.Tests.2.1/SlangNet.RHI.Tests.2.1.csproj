@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <DefineConstants>$(DefineConstants);SHOULD_BE_2_1</DefineConstants>
+  </PropertyGroup>
+
+  <Import Project="..\SlangNet.RHI.Tests.Shared\SlangNet.RHI.Tests.Shared.projitems" Label="Shared" />
+  <Import Project="../../ImportMainRHIProject.targets" />
+  <Import Project="../CommonSlangNetRHITests.targets" />
+
+</Project>

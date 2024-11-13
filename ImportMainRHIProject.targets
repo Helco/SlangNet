@@ -1,0 +1,22 @@
+<Project>
+  <!-- Thanks to PackageSourceMapping we *have* to use a custom nuget.config to set the local feed -->
+
+  <ItemGroup Condition="'$(UseLocalVersion)' == ''">
+    <ProjectReference Include="..\..\SlangNet.RHI\SlangNet.RHI.csproj"/>
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseLocalVersion)' != ''">
+    <PackageReference Include="SlangNet.RHI" Version="$(VersionPrefix)-$(UseLocalVersion)"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseLocalVersion)' == '' And '$(ForceTargetFramework)' != ''">
+    <ProjectReference Include="..\..\SlangNet.RHI.Bindings\SlangNet.RHI.Bindings.csproj" SetTargetFramework="TargetFramework=$(ForceTargetFramework)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseLocalVersion)' != '' And '$(ForceTargetFramework)' != ''">
+    <PackageReference Include="SlangNet.RHI.Bindings" Version="$(VersionPrefix)-$(UseLocalVersion)" ExcludeAssets="Compile" GeneratePathProperty="true"/>
+
+    <Reference Include="SlangNet.RHI.Bindings">
+      <HintPath>$(PkgSlangNet_RHI_Bindings)/lib/$(ForceTargetFramework)/SlangNet.RHI.Bindings.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

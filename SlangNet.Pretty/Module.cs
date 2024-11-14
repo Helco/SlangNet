@@ -14,6 +14,7 @@ public unsafe sealed class Module : ComponentType
 
     internal Module(IModule* pointer) : base((IComponentType*)pointer)
     {
+        pointer->addRef(); // currently all Module constructions receive a non-owning pointer
         entryPoints = new(this);
     }
 

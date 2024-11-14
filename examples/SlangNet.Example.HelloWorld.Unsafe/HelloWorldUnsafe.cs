@@ -101,6 +101,7 @@ internal unsafe class HelloWorldUnsafe
             DiagnoseIfNeeded(diagnosticsBlob);
             if (module == null)
                 throw new Exception("Module was not loaded");
+            module->addRef();
 
             // Now that the module is loaded we can look up those entry points by name.
             fixed (byte* entryPointName = "computeMain"u8)

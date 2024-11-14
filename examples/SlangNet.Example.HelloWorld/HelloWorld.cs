@@ -32,6 +32,10 @@ internal unsafe class HelloWorldUnsafe
             PrintComputeResults();
 
         }
+        catch(Exception e)
+        {
+            Console.WriteLine(e);
+        }
         finally
         {
             inputBuffer0?.Dispose();

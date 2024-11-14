@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <SlangRuntime>win-x64</SlangRuntime>
-    <SlangDownloadRuntime>win64</SlangDownloadRuntime>
-    <SlangNativeDir>bin/windows-x64/release</SlangNativeDir>
+    <SlangDownloadRuntime>windows-x86_64</SlangDownloadRuntime>
+    <SlangNativeDir>bin</SlangNativeDir>
   </PropertyGroup>
   <ItemGroup>
     <SlangNativeNames Include="slang.dll"/>

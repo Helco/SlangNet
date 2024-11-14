@@ -2,8 +2,11 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <SlangRuntime>win-arm64</SlangRuntime>
-    <SlangDownloadRuntime>win-arm64</SlangDownloadRuntime>
-    <SlangNativeDir>bin/windows-aarch64/release</SlangNativeDir>
-    <SlangNativeName>slang.dll</SlangNativeName>
+    <SlangDownloadRuntime>windows-aarch64</SlangDownloadRuntime>
+    <SlangNativeDir>bin</SlangNativeDir>
   </PropertyGroup>
+  <ItemGroup>
+    <SlangNativeNames Include="slang.dll"/>
+    <SlangNativeNames Include="slang-glslang.dll"/>
+  </ItemGroup>
 </Project>

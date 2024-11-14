@@ -49,8 +49,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SlangNet.Tests.Shared", "Sl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlangNet.Example.HelloWorld", "examples\SlangNet.Example.HelloWorld\SlangNet.Example.HelloWorld.csproj", "{C2E63985-09C3-48B4-A414-E827F791B23B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet.RHI.Bindings", "SlangNet.RHI.Bindings\SlangNet.RHI.Bindings.csproj", "{EAEB5242-DA0B-4E89-886B-A0C8B0509636}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,10 +99,6 @@ Global
 		{C2E63985-09C3-48B4-A414-E827F791B23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E63985-09C3-48B4-A414-E827F791B23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E63985-09C3-48B4-A414-E827F791B23B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EAEB5242-DA0B-4E89-886B-A0C8B0509636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EAEB5242-DA0B-4E89-886B-A0C8B0509636}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EAEB5242-DA0B-4E89-886B-A0C8B0509636}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EAEB5242-DA0B-4E89-886B-A0C8B0509636}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

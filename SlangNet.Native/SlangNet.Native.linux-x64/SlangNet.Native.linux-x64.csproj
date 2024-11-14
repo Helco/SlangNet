@@ -3,7 +3,7 @@
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <SlangRuntime>linux-x64</SlangRuntime>
     <SlangDownloadRuntime>linux-x86_64</SlangDownloadRuntime>
-    <SlangNativeDir>bin/linux-x64/release</SlangNativeDir>
+    <SlangNativeDir>lib</SlangNativeDir>
   </PropertyGroup>
   <ItemGroup>
     <SlangNativeNames Include="libslang.so"/>

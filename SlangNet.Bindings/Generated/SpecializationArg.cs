@@ -11,7 +11,7 @@ public unsafe partial struct SpecializationArg
     public Kind kind;
 
     /// <include file='SpecializationArg.xml' path='doc/member[@name="SpecializationArg.Anonymous"]/*' />
-    [NativeTypeName("__AnonymousRecord_slang_L4685_C9")]
+    [NativeTypeName("__AnonymousRecord_slang_L4356_C5")]
     public _Anonymous_e__Union Anonymous;
 
     /// <include file='_Anonymous_e__Union.xml' path='doc/member[@name="_Anonymous_e__Union.type"]/*' />

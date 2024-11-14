@@ -120,26 +120,6 @@ public unsafe sealed partial class GlobalSession : Internal.COMObject<IGlobalSes
 
     public string? BuildTagString => PtrToStringUTF8(Pointer->getBuildTagString());
 
-    public SlangResult TryCompileStdLib(CompileStdLibFlags flags) =>
-        new(Pointer->compileStdLib((uint)flags));
-
-    public SlangResult TryLoadStdLib(ReadOnlySpan<byte> stdLib)
-    {
-        fixed (byte* stdLibPtr = stdLib)
-            return new(Pointer->loadStdLib(stdLibPtr, new((uint)stdLib.Length)));
-    }
-
-    public SlangResult TrySaveStdLib(ArchiveType archiveType, [NotNullWhen(true)] out IMemoryOwner<byte>? stdlib)
-    {
-        stdlib = null;
-        ISlangBlob* blob;
-        var result = Pointer->saveStdLib((SlangArchiveType)archiveType, &blob);
-        if (blob != null)
-            stdlib = new BlobMemoryManager(blob);
-        return new(result);
-    }
-
-
     public SlangResult TrySetSPIRVCoreGrammar(string jsonPath)
     {
         using var jsonPathStr = new Utf8String(jsonPath);
@@ -166,14 +146,6 @@ public unsafe sealed partial class GlobalSession : Internal.COMObject<IGlobalSes
         var result = Pointer->createSession(&nativeDesc.Native, &sessionPtr);
         if (sessionPtr != null)
             session = new(sessionPtr);
-        return new(result);
-    }
-    
-    public SlangResult TryCreateCompileRequest([NotNullWhen(true)] out CompileRequest? request)
-    {
-        ICompileRequest* requestPtr = null;
-        var result = Pointer->createCompileRequest(&requestPtr);
-        request = requestPtr == null ? null : new(requestPtr);
         return new(result);
     }
 }

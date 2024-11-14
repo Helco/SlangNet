@@ -27,11 +27,11 @@ public static unsafe partial class SessionDescTests
     {
         if (Environment.Is64BitProcess)
         {
-            Assert.That(sizeof(SessionDesc), Is.EqualTo(80));
+            Assert.That(sizeof(SessionDesc), Is.EqualTo(96));
         }
         else
         {
-            Assert.That(sizeof(SessionDesc), Is.EqualTo(64));
+            Assert.That(sizeof(SessionDesc), Is.EqualTo(72));
         }
     }
 }

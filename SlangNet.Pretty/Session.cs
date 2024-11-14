@@ -198,14 +198,6 @@ public unsafe sealed partial class Session : Internal.COMObject<ISession>
             return new(Pointer->getTypeConformanceWitnessSequentialID(type.Pointer, interfaceType.Pointer, idPtr));
     }
 
-    public SlangResult TryCreateCompileRequest(out CompileRequest? request)
-    {
-        ICompileRequest* requestPtr = null;
-        var result = Pointer->createCompileRequest(&requestPtr);
-        request = requestPtr == null ? null : new(requestPtr);
-        return new(result);
-    }
-
     public SlangResult TryCreateTypeConformanceComponentType(
         TypeReflection type,
         TypeReflection interfaceType,

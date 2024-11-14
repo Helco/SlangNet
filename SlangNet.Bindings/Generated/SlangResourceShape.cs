@@ -37,11 +37,17 @@ public enum SlangResourceShape : uint
     /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape.SLANG_ACCELERATION_STRUCTURE"]/*' />
     SLANG_ACCELERATION_STRUCTURE = 0x09,
 
+    /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape.SLANG_TEXTURE_SUBPASS"]/*' />
+    SLANG_TEXTURE_SUBPASS = 0x0A,
+
     /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape.SLANG_RESOURCE_EXT_SHAPE_MASK"]/*' />
     SLANG_RESOURCE_EXT_SHAPE_MASK = 0xF0,
 
     /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape.SLANG_TEXTURE_FEEDBACK_FLAG"]/*' />
     SLANG_TEXTURE_FEEDBACK_FLAG = 0x10,
+
+    /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape.SLANG_TEXTURE_SHADOW_FLAG"]/*' />
+    SLANG_TEXTURE_SHADOW_FLAG = 0x20,
 
     /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape.SLANG_TEXTURE_ARRAY_FLAG"]/*' />
     SLANG_TEXTURE_ARRAY_FLAG = 0x40,
@@ -63,4 +69,7 @@ public enum SlangResourceShape : uint
 
     /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape.SLANG_TEXTURE_2D_MULTISAMPLE_ARRAY"]/*' />
     SLANG_TEXTURE_2D_MULTISAMPLE_ARRAY = SLANG_TEXTURE_2D | SLANG_TEXTURE_MULTISAMPLE_FLAG | SLANG_TEXTURE_ARRAY_FLAG,
+
+    /// <include file='SlangResourceShape.xml' path='doc/member[@name="SlangResourceShape.SLANG_TEXTURE_SUBPASS_MULTISAMPLE"]/*' />
+    SLANG_TEXTURE_SUBPASS_MULTISAMPLE = SLANG_TEXTURE_SUBPASS | SLANG_TEXTURE_MULTISAMPLE_FLAG,
 }

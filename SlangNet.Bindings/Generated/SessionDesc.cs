@@ -46,4 +46,16 @@ public unsafe partial struct SessionDesc
     /// <include file='SessionDesc.xml' path='doc/member[@name="SessionDesc.enableEffectAnnotations"]/*' />
     [NativeTypeName("bool")]
     public byte enableEffectAnnotations;
+
+    /// <include file='SessionDesc.xml' path='doc/member[@name="SessionDesc.allowGLSLSyntax"]/*' />
+    [NativeTypeName("bool")]
+    public byte allowGLSLSyntax;
+
+    /// <include file='SessionDesc.xml' path='doc/member[@name="SessionDesc.compilerOptionEntries"]/*' />
+    [NativeTypeName("slang::CompilerOptionEntry *")]
+    public CompilerOptionEntry* compilerOptionEntries;
+
+    /// <include file='SessionDesc.xml' path='doc/member[@name="SessionDesc.compilerOptionEntryCount"]/*' />
+    [NativeTypeName("uint32_t")]
+    public uint compilerOptionEntryCount;
 }

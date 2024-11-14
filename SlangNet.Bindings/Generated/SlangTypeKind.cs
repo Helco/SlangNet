@@ -61,6 +61,9 @@ public enum SlangTypeKind : uint
     /// <include file='SlangTypeKind.xml' path='doc/member[@name="SlangTypeKind.SLANG_TYPE_KIND_POINTER"]/*' />
     SLANG_TYPE_KIND_POINTER,
 
+    /// <include file='SlangTypeKind.xml' path='doc/member[@name="SlangTypeKind.SLANG_TYPE_KIND_DYNAMIC_RESOURCE"]/*' />
+    SLANG_TYPE_KIND_DYNAMIC_RESOURCE,
+
     /// <include file='SlangTypeKind.xml' path='doc/member[@name="SlangTypeKind.SLANG_TYPE_KIND_COUNT"]/*' />
     SLANG_TYPE_KIND_COUNT,
 }

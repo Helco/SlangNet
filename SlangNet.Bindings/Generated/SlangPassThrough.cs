@@ -40,6 +40,12 @@ public enum SlangPassThrough
     /// <include file='SlangPassThrough.xml' path='doc/member[@name="SlangPassThrough.SLANG_PASS_THROUGH_SPIRV_OPT"]/*' />
     SLANG_PASS_THROUGH_SPIRV_OPT,
 
+    /// <include file='SlangPassThrough.xml' path='doc/member[@name="SlangPassThrough.SLANG_PASS_THROUGH_METAL"]/*' />
+    SLANG_PASS_THROUGH_METAL,
+
+    /// <include file='SlangPassThrough.xml' path='doc/member[@name="SlangPassThrough.SLANG_PASS_THROUGH_TINT"]/*' />
+    SLANG_PASS_THROUGH_TINT,
+
     /// <include file='SlangPassThrough.xml' path='doc/member[@name="SlangPassThrough.SLANG_PASS_THROUGH_COUNT_OF"]/*' />
     SLANG_PASS_THROUGH_COUNT_OF,
 }

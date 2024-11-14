@@ -13,11 +13,11 @@ public enum SlangCompileTarget
     /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_GLSL"]/*' />
     SLANG_GLSL,
 
-    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_GLSL_VULKAN"]/*' />
-    SLANG_GLSL_VULKAN,
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_GLSL_VULKAN_DEPRECATED"]/*' />
+    SLANG_GLSL_VULKAN_DEPRECATED,
 
-    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_GLSL_VULKAN_ONE_DESC"]/*' />
-    SLANG_GLSL_VULKAN_ONE_DESC,
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_GLSL_VULKAN_ONE_DESC_DEPRECATED"]/*' />
+    SLANG_GLSL_VULKAN_ONE_DESC_DEPRECATED,
 
     /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_HLSL"]/*' />
     SLANG_HLSL,
@@ -75,6 +75,27 @@ public enum SlangCompileTarget
 
     /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_CPP_PYTORCH_BINDING"]/*' />
     SLANG_CPP_PYTORCH_BINDING,
+
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_METAL"]/*' />
+    SLANG_METAL,
+
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_METAL_LIB"]/*' />
+    SLANG_METAL_LIB,
+
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_METAL_LIB_ASM"]/*' />
+    SLANG_METAL_LIB_ASM,
+
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_HOST_SHARED_LIBRARY"]/*' />
+    SLANG_HOST_SHARED_LIBRARY,
+
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_WGSL"]/*' />
+    SLANG_WGSL,
+
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_WGSL_SPIRV_ASM"]/*' />
+    SLANG_WGSL_SPIRV_ASM,
+
+    /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_WGSL_SPIRV"]/*' />
+    SLANG_WGSL_SPIRV,
 
     /// <include file='SlangCompileTarget.xml' path='doc/member[@name="SlangCompileTarget.SLANG_TARGET_COUNT_OF"]/*' />
     SLANG_TARGET_COUNT_OF,

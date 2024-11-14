@@ -67,6 +67,27 @@ public enum ParameterCategory : uint
     /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.ExistentialObjectParam"]/*' />
     ExistentialObjectParam = SLANG_PARAMETER_CATEGORY_EXISTENTIAL_OBJECT_PARAM,
 
+    /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.SubElementRegisterSpace"]/*' />
+    SubElementRegisterSpace = SLANG_PARAMETER_CATEGORY_SUB_ELEMENT_REGISTER_SPACE,
+
+    /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.InputAttachmentIndex"]/*' />
+    InputAttachmentIndex = SLANG_PARAMETER_CATEGORY_SUBPASS,
+
+    /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.MetalBuffer"]/*' />
+    MetalBuffer = SLANG_PARAMETER_CATEGORY_CONSTANT_BUFFER,
+
+    /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.MetalTexture"]/*' />
+    MetalTexture = SLANG_PARAMETER_CATEGORY_METAL_TEXTURE,
+
+    /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.MetalArgumentBufferElement"]/*' />
+    MetalArgumentBufferElement = SLANG_PARAMETER_CATEGORY_METAL_ARGUMENT_BUFFER_ELEMENT,
+
+    /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.MetalAttribute"]/*' />
+    MetalAttribute = SLANG_PARAMETER_CATEGORY_METAL_ATTRIBUTE,
+
+    /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.MetalPayload"]/*' />
+    MetalPayload = SLANG_PARAMETER_CATEGORY_METAL_PAYLOAD,
+
     /// <include file='ParameterCategory.xml' path='doc/member[@name="ParameterCategory.VertexInput"]/*' />
     VertexInput = SLANG_PARAMETER_CATEGORY_VERTEX_INPUT,
 

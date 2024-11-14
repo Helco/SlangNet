@@ -7,8 +7,6 @@ public enum CompileTarget
     Unknown = SLANG_TARGET_UNKNOWN,
     None = SLANG_TARGET_NONE,
     GLSL = SLANG_GLSL,
-    GLSLVulkan = SLANG_GLSL_VULKAN,
-    GLSLVulkanOneDesc = SLANG_GLSL_VULKAN_ONE_DESC,
     HLSL = SLANG_HLSL,
     SPIRV = SLANG_SPIRV,
     SPIRVAssembly = SLANG_SPIRV_ASM,

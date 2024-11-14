@@ -28,6 +28,12 @@ public enum SlangSourceLanguage
     /// <include file='SlangSourceLanguage.xml' path='doc/member[@name="SlangSourceLanguage.SLANG_SOURCE_LANGUAGE_SPIRV"]/*' />
     SLANG_SOURCE_LANGUAGE_SPIRV,
 
+    /// <include file='SlangSourceLanguage.xml' path='doc/member[@name="SlangSourceLanguage.SLANG_SOURCE_LANGUAGE_METAL"]/*' />
+    SLANG_SOURCE_LANGUAGE_METAL,
+
+    /// <include file='SlangSourceLanguage.xml' path='doc/member[@name="SlangSourceLanguage.SLANG_SOURCE_LANGUAGE_WGSL"]/*' />
+    SLANG_SOURCE_LANGUAGE_WGSL,
+
     /// <include file='SlangSourceLanguage.xml' path='doc/member[@name="SlangSourceLanguage.SLANG_SOURCE_LANGUAGE_COUNT_OF"]/*' />
     SLANG_SOURCE_LANGUAGE_COUNT_OF,
 }

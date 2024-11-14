@@ -55,6 +55,7 @@ SLANG_UUID_ISlangSharedLibraryLoader
 SLANG_UUID_ISlangFileSystemExt
 SLANG_UUID_ISlangMutableFileSystem
 SLANG_UUID_ISlangWriter
+SLANG_UUID_ISlangProfiler
 
 # This one is just broken
 --exclude
@@ -66,6 +67,7 @@ sp
 --remap
 specialize=spspecialize
 specializeType=spspecializeType
+slang::ICompileRequest=void
 
 # This fixes a ClangSharp issue with TypeReflection::Kind causing compile errors
 --with-type
@@ -87,7 +89,9 @@ Slang
 --libraryPath
 slang
 --file
-../slang/slang.h
+../slang/include/slang.h
+./my-slang-deprecated.h
+
 
 # Silence ClangSharp warnings
 --exclude

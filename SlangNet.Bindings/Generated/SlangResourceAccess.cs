@@ -24,4 +24,10 @@ public enum SlangResourceAccess : uint
 
     /// <include file='SlangResourceAccess.xml' path='doc/member[@name="SlangResourceAccess.SLANG_RESOURCE_ACCESS_WRITE"]/*' />
     SLANG_RESOURCE_ACCESS_WRITE,
+
+    /// <include file='SlangResourceAccess.xml' path='doc/member[@name="SlangResourceAccess.SLANG_RESOURCE_ACCESS_FEEDBACK"]/*' />
+    SLANG_RESOURCE_ACCESS_FEEDBACK,
+
+    /// <include file='SlangResourceAccess.xml' path='doc/member[@name="SlangResourceAccess.SLANG_RESOURCE_ACCESS_UNKNOWN"]/*' />
+    SLANG_RESOURCE_ACCESS_UNKNOWN = 0x7FFFFFFF,
 }

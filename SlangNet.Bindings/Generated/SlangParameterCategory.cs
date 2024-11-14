@@ -64,12 +64,39 @@ public enum SlangParameterCategory : uint
     /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_EXISTENTIAL_OBJECT_PARAM"]/*' />
     SLANG_PARAMETER_CATEGORY_EXISTENTIAL_OBJECT_PARAM,
 
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_SUB_ELEMENT_REGISTER_SPACE"]/*' />
+    SLANG_PARAMETER_CATEGORY_SUB_ELEMENT_REGISTER_SPACE,
+
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_SUBPASS"]/*' />
+    SLANG_PARAMETER_CATEGORY_SUBPASS,
+
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_METAL_ARGUMENT_BUFFER_ELEMENT"]/*' />
+    SLANG_PARAMETER_CATEGORY_METAL_ARGUMENT_BUFFER_ELEMENT,
+
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_METAL_ATTRIBUTE"]/*' />
+    SLANG_PARAMETER_CATEGORY_METAL_ATTRIBUTE,
+
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_METAL_PAYLOAD"]/*' />
+    SLANG_PARAMETER_CATEGORY_METAL_PAYLOAD,
+
     /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_COUNT"]/*' />
     SLANG_PARAMETER_CATEGORY_COUNT,
+
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_METAL_BUFFER"]/*' />
+    SLANG_PARAMETER_CATEGORY_METAL_BUFFER = SLANG_PARAMETER_CATEGORY_CONSTANT_BUFFER,
+
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_METAL_TEXTURE"]/*' />
+    SLANG_PARAMETER_CATEGORY_METAL_TEXTURE = SLANG_PARAMETER_CATEGORY_SHADER_RESOURCE,
+
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_METAL_SAMPLER"]/*' />
+    SLANG_PARAMETER_CATEGORY_METAL_SAMPLER = SLANG_PARAMETER_CATEGORY_SAMPLER_STATE,
 
     /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_VERTEX_INPUT"]/*' />
     SLANG_PARAMETER_CATEGORY_VERTEX_INPUT = SLANG_PARAMETER_CATEGORY_VARYING_INPUT,
 
     /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_FRAGMENT_OUTPUT"]/*' />
     SLANG_PARAMETER_CATEGORY_FRAGMENT_OUTPUT = SLANG_PARAMETER_CATEGORY_VARYING_OUTPUT,
+
+    /// <include file='SlangParameterCategory.xml' path='doc/member[@name="SlangParameterCategory.SLANG_PARAMETER_CATEGORY_COUNT_V1"]/*' />
+    SLANG_PARAMETER_CATEGORY_COUNT_V1 = SLANG_PARAMETER_CATEGORY_SUBPASS,
 }

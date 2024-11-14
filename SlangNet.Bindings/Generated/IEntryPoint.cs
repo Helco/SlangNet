@@ -61,6 +61,26 @@ public unsafe partial struct IEntryPoint
     [return: NativeTypeName("SlangResult")]
     public delegate int _renameEntryPoint(IEntryPoint* pThis, [NativeTypeName("const char *")] sbyte* newName, IComponentType** outEntryPoint);
 
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [return: NativeTypeName("SlangResult")]
+    public delegate int _linkWithOptions(IEntryPoint* pThis, IComponentType** outLinkedComponentType, [NativeTypeName("uint32_t")] uint compilerOptionEntryCount, [NativeTypeName("slang::CompilerOptionEntry *")] CompilerOptionEntry* compilerOptionEntries, ISlangBlob** outDiagnostics = null);
+
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [return: NativeTypeName("SlangResult")]
+    public delegate int _getTargetCode(IEntryPoint* pThis, [NativeTypeName("SlangInt")] long targetIndex, [NativeTypeName("IBlob **")] ISlangBlob** outCode, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null);
+
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [return: NativeTypeName("SlangResult")]
+    public delegate int _getTargetMetadata(IEntryPoint* pThis, [NativeTypeName("SlangInt")] long targetIndex, IMetadata** outMetadata, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null);
+
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [return: NativeTypeName("SlangResult")]
+    public delegate int _getEntryPointMetadata(IEntryPoint* pThis, [NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, IMetadata** outMetadata, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null);
+
+    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [return: NativeTypeName("slang::FunctionReflection *")]
+    public delegate FunctionReflection* _getFunctionReflection(IEntryPoint* pThis);
+
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
@@ -203,6 +223,61 @@ public unsafe partial struct IEntryPoint
         }
     }
 
+    /// <inheritdoc cref="IComponentType.linkWithOptions" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("SlangResult")]
+    public int linkWithOptions(IComponentType** outLinkedComponentType, [NativeTypeName("uint32_t")] uint compilerOptionEntryCount, [NativeTypeName("slang::CompilerOptionEntry *")] CompilerOptionEntry* compilerOptionEntries, ISlangBlob** outDiagnostics = null)
+    {
+        fixed (IEntryPoint* pThis = &this)
+        {
+            return Marshal.GetDelegateForFunctionPointer<_linkWithOptions>(lpVtbl->linkWithOptions)(pThis, outLinkedComponentType, compilerOptionEntryCount, compilerOptionEntries, outDiagnostics);
+        }
+    }
+
+    /// <inheritdoc cref="IComponentType.getTargetCode" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("SlangResult")]
+    public int getTargetCode([NativeTypeName("SlangInt")] long targetIndex, [NativeTypeName("IBlob **")] ISlangBlob** outCode, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null)
+    {
+        fixed (IEntryPoint* pThis = &this)
+        {
+            return Marshal.GetDelegateForFunctionPointer<_getTargetCode>(lpVtbl->getTargetCode)(pThis, targetIndex, outCode, outDiagnostics);
+        }
+    }
+
+    /// <inheritdoc cref="IComponentType.getTargetMetadata" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("SlangResult")]
+    public int getTargetMetadata([NativeTypeName("SlangInt")] long targetIndex, IMetadata** outMetadata, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null)
+    {
+        fixed (IEntryPoint* pThis = &this)
+        {
+            return Marshal.GetDelegateForFunctionPointer<_getTargetMetadata>(lpVtbl->getTargetMetadata)(pThis, targetIndex, outMetadata, outDiagnostics);
+        }
+    }
+
+    /// <inheritdoc cref="IComponentType.getEntryPointMetadata" />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("SlangResult")]
+    public int getEntryPointMetadata([NativeTypeName("SlangInt")] long entryPointIndex, [NativeTypeName("SlangInt")] long targetIndex, IMetadata** outMetadata, [NativeTypeName("IBlob **")] ISlangBlob** outDiagnostics = null)
+    {
+        fixed (IEntryPoint* pThis = &this)
+        {
+            return Marshal.GetDelegateForFunctionPointer<_getEntryPointMetadata>(lpVtbl->getEntryPointMetadata)(pThis, entryPointIndex, targetIndex, outMetadata, outDiagnostics);
+        }
+    }
+
+    /// <include file='IEntryPoint.xml' path='doc/member[@name="IEntryPoint.getFunctionReflection"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("slang::FunctionReflection *")]
+    public FunctionReflection* getFunctionReflection()
+    {
+        fixed (IEntryPoint* pThis = &this)
+        {
+            return Marshal.GetDelegateForFunctionPointer<_getFunctionReflection>(lpVtbl->getFunctionReflection)(pThis);
+        }
+    }
+
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
@@ -243,5 +318,20 @@ public unsafe partial struct IEntryPoint
 
         [NativeTypeName("SlangResult (const char *, IComponentType **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public IntPtr renameEntryPoint;
+
+        [NativeTypeName("SlangResult (IComponentType **, uint32_t, CompilerOptionEntry *, ISlangBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public IntPtr linkWithOptions;
+
+        [NativeTypeName("SlangResult (SlangInt, IBlob **, IBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public IntPtr getTargetCode;
+
+        [NativeTypeName("SlangResult (SlangInt, IMetadata **, IBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public IntPtr getTargetMetadata;
+
+        [NativeTypeName("SlangResult (SlangInt, SlangInt, IMetadata **, IBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public IntPtr getEntryPointMetadata;
+
+        [NativeTypeName("FunctionReflection *() __attribute__((nothrow)) __attribute__((stdcall))")]
+        public IntPtr getFunctionReflection;
     }
 }

@@ -64,6 +64,9 @@ public partial struct TypeReflection
 
         /// <include file='Kind.xml' path='doc/member[@name="Kind.Pointer"]/*' />
         Pointer = SLANG_TYPE_KIND_POINTER,
+
+        /// <include file='Kind.xml' path='doc/member[@name="Kind.DynamicResource"]/*' />
+        DynamicResource = SLANG_TYPE_KIND_DYNAMIC_RESOURCE,
     }
 
     /// <include file='ScalarType.xml' path='doc/member[@name="ScalarType"]/*' />

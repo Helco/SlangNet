@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,35 +9,12 @@ public unsafe partial struct ISampler
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(ISampler* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(ISampler* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(ISampler* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getNativeHandle(ISampler* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("const SamplerDesc &")]
-    public delegate SamplerDesc* _getDesc(ISampler* pThis);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (ISampler* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((ISampler*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -47,10 +22,7 @@ public unsafe partial struct ISampler
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (ISampler* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((ISampler*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -58,10 +30,7 @@ public unsafe partial struct ISampler
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (ISampler* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((ISampler*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="IResource.getNativeHandle" />
@@ -69,10 +38,7 @@ public unsafe partial struct ISampler
     [return: NativeTypeName("rhi::Result")]
     public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (ISampler* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getNativeHandle>(lpVtbl->getNativeHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getNativeHandle((ISampler*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     /// <include file='ISampler.xml' path='doc/member[@name="ISampler.getDesc"]/*' />
@@ -80,27 +46,24 @@ public unsafe partial struct ISampler
     [return: NativeTypeName("const SamplerDesc &")]
     public SamplerDesc* getDesc()
     {
-        fixed (ISampler* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getDesc>(lpVtbl->getDesc)(pThis);
-        }
+        return lpVtbl->getDesc((ISampler*)Unsafe.AsPointer(ref this));
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<ISampler*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<ISampler*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<ISampler*, uint> release;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getNativeHandle;
+        public delegate* unmanaged[Stdcall]<ISampler*, NativeHandle*, int> getNativeHandle;
 
         [NativeTypeName("const SamplerDesc &() __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getDesc;
+        public delegate* unmanaged[Stdcall]<ISampler*, SamplerDesc*> getDesc;
     }
 }

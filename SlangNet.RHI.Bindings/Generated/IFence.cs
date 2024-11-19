@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,43 +9,12 @@ public unsafe partial struct IFence
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IFence* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IFence* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IFence* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getCurrentValue(IFence* pThis, [NativeTypeName("uint64_t *")] ulong* outValue);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _setCurrentValue(IFence* pThis, [NativeTypeName("uint64_t")] ulong value);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getNativeHandle(IFence* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getSharedHandle(IFence* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IFence* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IFence*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -55,10 +22,7 @@ public unsafe partial struct IFence
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IFence* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IFence*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -66,10 +30,7 @@ public unsafe partial struct IFence
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IFence* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IFence*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IFence.xml' path='doc/member[@name="IFence.getCurrentValue"]/*' />
@@ -77,10 +38,7 @@ public unsafe partial struct IFence
     [return: NativeTypeName("rhi::Result")]
     public int getCurrentValue([NativeTypeName("uint64_t *")] ulong* outValue)
     {
-        fixed (IFence* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getCurrentValue>(lpVtbl->getCurrentValue)(pThis, outValue);
-        }
+        return lpVtbl->getCurrentValue((IFence*)Unsafe.AsPointer(ref this), outValue);
     }
 
     /// <include file='IFence.xml' path='doc/member[@name="IFence.setCurrentValue"]/*' />
@@ -88,10 +46,7 @@ public unsafe partial struct IFence
     [return: NativeTypeName("rhi::Result")]
     public int setCurrentValue([NativeTypeName("uint64_t")] ulong value)
     {
-        fixed (IFence* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_setCurrentValue>(lpVtbl->setCurrentValue)(pThis, value);
-        }
+        return lpVtbl->setCurrentValue((IFence*)Unsafe.AsPointer(ref this), value);
     }
 
     /// <include file='IFence.xml' path='doc/member[@name="IFence.getNativeHandle"]/*' />
@@ -99,10 +54,7 @@ public unsafe partial struct IFence
     [return: NativeTypeName("rhi::Result")]
     public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (IFence* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getNativeHandle>(lpVtbl->getNativeHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getNativeHandle((IFence*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     /// <include file='IFence.xml' path='doc/member[@name="IFence.getSharedHandle"]/*' />
@@ -110,33 +62,30 @@ public unsafe partial struct IFence
     [return: NativeTypeName("rhi::Result")]
     public int getSharedHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (IFence* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getSharedHandle>(lpVtbl->getSharedHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getSharedHandle((IFence*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IFence*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IFence*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IFence*, uint> release;
 
         [NativeTypeName("Result (uint64_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getCurrentValue;
+        public delegate* unmanaged[Stdcall]<IFence*, ulong*, int> getCurrentValue;
 
         [NativeTypeName("Result (uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr setCurrentValue;
+        public delegate* unmanaged[Stdcall]<IFence*, ulong, int> setCurrentValue;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getNativeHandle;
+        public delegate* unmanaged[Stdcall]<IFence*, NativeHandle*, int> getNativeHandle;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getSharedHandle;
+        public delegate* unmanaged[Stdcall]<IFence*, NativeHandle*, int> getSharedHandle;
     }
 }

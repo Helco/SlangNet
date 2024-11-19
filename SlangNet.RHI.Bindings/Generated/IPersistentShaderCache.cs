@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,35 +9,12 @@ public unsafe partial struct IPersistentShaderCache
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IPersistentShaderCache* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IPersistentShaderCache* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IPersistentShaderCache* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _writeCache(IPersistentShaderCache* pThis, [NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* key, [NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* data);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _queryCache(IPersistentShaderCache* pThis, [NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* key, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outData);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IPersistentShaderCache* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IPersistentShaderCache*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -47,10 +22,7 @@ public unsafe partial struct IPersistentShaderCache
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IPersistentShaderCache* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IPersistentShaderCache*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -58,10 +30,7 @@ public unsafe partial struct IPersistentShaderCache
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IPersistentShaderCache* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IPersistentShaderCache*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IPersistentShaderCache.xml' path='doc/member[@name="IPersistentShaderCache.writeCache"]/*' />
@@ -69,10 +38,7 @@ public unsafe partial struct IPersistentShaderCache
     [return: NativeTypeName("rhi::Result")]
     public int writeCache([NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* key, [NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* data)
     {
-        fixed (IPersistentShaderCache* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_writeCache>(lpVtbl->writeCache)(pThis, key, data);
-        }
+        return lpVtbl->writeCache((IPersistentShaderCache*)Unsafe.AsPointer(ref this), key, data);
     }
 
     /// <include file='IPersistentShaderCache.xml' path='doc/member[@name="IPersistentShaderCache.queryCache"]/*' />
@@ -80,27 +46,24 @@ public unsafe partial struct IPersistentShaderCache
     [return: NativeTypeName("rhi::Result")]
     public int queryCache([NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* key, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outData)
     {
-        fixed (IPersistentShaderCache* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryCache>(lpVtbl->queryCache)(pThis, key, outData);
-        }
+        return lpVtbl->queryCache((IPersistentShaderCache*)Unsafe.AsPointer(ref this), key, outData);
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IPersistentShaderCache*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IPersistentShaderCache*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IPersistentShaderCache*, uint> release;
 
         [NativeTypeName("Result (ISlangBlob *, ISlangBlob *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr writeCache;
+        public delegate* unmanaged[Stdcall]<IPersistentShaderCache*, SlangNet.Unsafe.ISlangBlob*, SlangNet.Unsafe.ISlangBlob*, int> writeCache;
 
         [NativeTypeName("Result (ISlangBlob *, ISlangBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryCache;
+        public delegate* unmanaged[Stdcall]<IPersistentShaderCache*, SlangNet.Unsafe.ISlangBlob*, SlangNet.Unsafe.ISlangBlob**, int> queryCache;
     }
 }

@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,39 +9,12 @@ public unsafe partial struct ITexture
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(ITexture* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(ITexture* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(ITexture* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getNativeHandle(ITexture* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("const TextureDesc &")]
-    public delegate TextureDesc* _getDesc(ITexture* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getSharedHandle(ITexture* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (ITexture* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((ITexture*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -51,10 +22,7 @@ public unsafe partial struct ITexture
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (ITexture* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((ITexture*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -62,10 +30,7 @@ public unsafe partial struct ITexture
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (ITexture* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((ITexture*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="IResource.getNativeHandle" />
@@ -73,10 +38,7 @@ public unsafe partial struct ITexture
     [return: NativeTypeName("rhi::Result")]
     public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (ITexture* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getNativeHandle>(lpVtbl->getNativeHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getNativeHandle((ITexture*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     /// <include file='ITexture.xml' path='doc/member[@name="ITexture.getDesc"]/*' />
@@ -84,10 +46,7 @@ public unsafe partial struct ITexture
     [return: NativeTypeName("const TextureDesc &")]
     public TextureDesc* getDesc()
     {
-        fixed (ITexture* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getDesc>(lpVtbl->getDesc)(pThis);
-        }
+        return lpVtbl->getDesc((ITexture*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='ITexture.xml' path='doc/member[@name="ITexture.getSharedHandle"]/*' />
@@ -95,30 +54,27 @@ public unsafe partial struct ITexture
     [return: NativeTypeName("rhi::Result")]
     public int getSharedHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (ITexture* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getSharedHandle>(lpVtbl->getSharedHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getSharedHandle((ITexture*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<ITexture*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<ITexture*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<ITexture*, uint> release;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getNativeHandle;
+        public delegate* unmanaged[Stdcall]<ITexture*, NativeHandle*, int> getNativeHandle;
 
         [NativeTypeName("const TextureDesc &() __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getDesc;
+        public delegate* unmanaged[Stdcall]<ITexture*, TextureDesc*> getDesc;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getSharedHandle;
+        public delegate* unmanaged[Stdcall]<ITexture*, NativeHandle*, int> getSharedHandle;
     }
 }

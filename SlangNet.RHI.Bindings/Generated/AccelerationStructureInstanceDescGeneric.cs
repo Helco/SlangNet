@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='AccelerationStructureInstanceDescGeneric.xml' path='doc/member[@name="AccelerationStructureInstanceDescGeneric"]/*' />
-public unsafe partial struct AccelerationStructureInstanceDescGeneric
+public partial struct AccelerationStructureInstanceDescGeneric
 {
     /// <include file='AccelerationStructureInstanceDescGeneric.xml' path='doc/member[@name="AccelerationStructureInstanceDescGeneric.transform"]/*' />
     [NativeTypeName("float[3][4]")]
-    public fixed float transform[3 * 4];
+    public _transform_e__FixedBuffer transform;
 
     public uint _bitfield1;
 
@@ -16,7 +16,7 @@ public unsafe partial struct AccelerationStructureInstanceDescGeneric
     public uint instanceID
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return _bitfield1 & 0xFFFFFFu;
         }
@@ -33,7 +33,7 @@ public unsafe partial struct AccelerationStructureInstanceDescGeneric
     public uint instanceMask
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return (_bitfield1 >> 24) & 0xFFu;
         }
@@ -52,7 +52,7 @@ public unsafe partial struct AccelerationStructureInstanceDescGeneric
     public uint instanceContributionToHitGroupIndex
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return _bitfield2 & 0xFFFFFFu;
         }
@@ -69,7 +69,7 @@ public unsafe partial struct AccelerationStructureInstanceDescGeneric
     public AccelerationStructureInstanceFlags flags
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return (AccelerationStructureInstanceFlags)((_bitfield2 >> 24) & 0xFFu);
         }
@@ -84,4 +84,11 @@ public unsafe partial struct AccelerationStructureInstanceDescGeneric
     /// <include file='AccelerationStructureInstanceDescGeneric.xml' path='doc/member[@name="AccelerationStructureInstanceDescGeneric.accelerationStructure"]/*' />
     [NativeTypeName("rhi::AccelerationStructureHandle")]
     public AccelerationStructureHandle accelerationStructure;
+
+    /// <include file='_transform_e__FixedBuffer.xml' path='doc/member[@name="_transform_e__FixedBuffer"]/*' />
+    [InlineArray(3 * 4)]
+    public partial struct _transform_e__FixedBuffer
+    {
+        public float e0_0;
+    }
 }

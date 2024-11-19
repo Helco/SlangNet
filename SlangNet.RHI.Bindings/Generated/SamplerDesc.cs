@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc"]/*' />
@@ -44,7 +46,7 @@ public unsafe partial struct SamplerDesc
 
     /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc.borderColor"]/*' />
     [NativeTypeName("float[4]")]
-    public fixed float borderColor[4];
+    public _borderColor_e__FixedBuffer borderColor;
 
     /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc.minLOD"]/*' />
     public float minLOD;
@@ -55,4 +57,11 @@ public unsafe partial struct SamplerDesc
     /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc.label"]/*' />
     [NativeTypeName("const char *")]
     public sbyte* label;
+
+    /// <include file='_borderColor_e__FixedBuffer.xml' path='doc/member[@name="_borderColor_e__FixedBuffer"]/*' />
+    [InlineArray(4)]
+    public partial struct _borderColor_e__FixedBuffer
+    {
+        public float e0;
+    }
 }

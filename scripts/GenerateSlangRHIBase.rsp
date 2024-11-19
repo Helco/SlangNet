@@ -1,5 +1,5 @@
 --config
-compatible-codegen
+preview-codegen
 generate-file-scoped-namespaces
 generate-doc-includes
 generate-helper-types

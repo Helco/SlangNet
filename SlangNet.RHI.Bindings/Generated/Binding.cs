@@ -1,10 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='Binding.xml' path='doc/member[@name="Binding"]/*' />
-public unsafe partial struct Binding
+public partial struct Binding
 {
     /// <include file='Binding.xml' path='doc/member[@name="Binding.type"]/*' />
     [NativeTypeName("rhi::BindingType")]
@@ -23,15 +24,13 @@ public unsafe partial struct Binding
     public _Anonymous_e__Union Anonymous;
 
     /// <include file='_Anonymous_e__Union.xml' path='doc/member[@name="_Anonymous_e__Union.bufferRange"]/*' />
+    [UnscopedRef]
     public ref BufferRange bufferRange
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get
         {
-            fixed (_Anonymous_e__Union* pField = &Anonymous)
-            {
-                return ref pField->bufferRange;
-            }
+            return ref Anonymous.bufferRange;
         }
     }
 

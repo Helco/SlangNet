@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,35 +9,12 @@ public unsafe partial struct IComputePipeline
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IComputePipeline* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IComputePipeline* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IComputePipeline* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::IShaderProgram *")]
-    public delegate IShaderProgram* _getProgram(IComputePipeline* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getNativeHandle(IComputePipeline* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IComputePipeline* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IComputePipeline*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -47,10 +22,7 @@ public unsafe partial struct IComputePipeline
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IComputePipeline* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IComputePipeline*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -58,10 +30,7 @@ public unsafe partial struct IComputePipeline
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IComputePipeline* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IComputePipeline*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="IPipeline.getProgram" />
@@ -69,10 +38,7 @@ public unsafe partial struct IComputePipeline
     [return: NativeTypeName("rhi::IShaderProgram *")]
     public IShaderProgram* getProgram()
     {
-        fixed (IComputePipeline* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getProgram>(lpVtbl->getProgram)(pThis);
-        }
+        return lpVtbl->getProgram((IComputePipeline*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="IPipeline.getNativeHandle" />
@@ -80,27 +46,24 @@ public unsafe partial struct IComputePipeline
     [return: NativeTypeName("rhi::Result")]
     public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (IComputePipeline* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getNativeHandle>(lpVtbl->getNativeHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getNativeHandle((IComputePipeline*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IComputePipeline*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IComputePipeline*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IComputePipeline*, uint> release;
 
         [NativeTypeName("IShaderProgram *() __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getProgram;
+        public delegate* unmanaged[Stdcall]<IComputePipeline*, IShaderProgram*> getProgram;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getNativeHandle;
+        public delegate* unmanaged[Stdcall]<IComputePipeline*, NativeHandle*, int> getNativeHandle;
     }
 }

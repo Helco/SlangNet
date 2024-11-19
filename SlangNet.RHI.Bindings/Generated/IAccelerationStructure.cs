@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,39 +9,12 @@ public unsafe partial struct IAccelerationStructure
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IAccelerationStructure* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IAccelerationStructure* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IAccelerationStructure* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getNativeHandle(IAccelerationStructure* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::AccelerationStructureHandle")]
-    public delegate AccelerationStructureHandle* _getHandle(IAccelerationStructure* pThis, AccelerationStructureHandle* _result);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::DeviceAddress")]
-    public delegate ulong _getDeviceAddress(IAccelerationStructure* pThis);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IAccelerationStructure* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IAccelerationStructure*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -51,10 +22,7 @@ public unsafe partial struct IAccelerationStructure
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IAccelerationStructure* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IAccelerationStructure*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -62,10 +30,7 @@ public unsafe partial struct IAccelerationStructure
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IAccelerationStructure* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IAccelerationStructure*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="IResource.getNativeHandle" />
@@ -73,10 +38,7 @@ public unsafe partial struct IAccelerationStructure
     [return: NativeTypeName("rhi::Result")]
     public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (IAccelerationStructure* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getNativeHandle>(lpVtbl->getNativeHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getNativeHandle((IAccelerationStructure*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     /// <include file='IAccelerationStructure.xml' path='doc/member[@name="IAccelerationStructure.getHandle"]/*' />
@@ -84,11 +46,8 @@ public unsafe partial struct IAccelerationStructure
     [return: NativeTypeName("rhi::AccelerationStructureHandle")]
     public AccelerationStructureHandle getHandle()
     {
-        fixed (IAccelerationStructure* pThis = &this)
-        {
-            AccelerationStructureHandle result;
-            return *Marshal.GetDelegateForFunctionPointer<_getHandle>(lpVtbl->getHandle)(pThis, &result);
-        }
+        AccelerationStructureHandle result;
+        return *lpVtbl->getHandle((IAccelerationStructure*)Unsafe.AsPointer(ref this), &result);
     }
 
     /// <include file='IAccelerationStructure.xml' path='doc/member[@name="IAccelerationStructure.getDeviceAddress"]/*' />
@@ -96,30 +55,27 @@ public unsafe partial struct IAccelerationStructure
     [return: NativeTypeName("rhi::DeviceAddress")]
     public ulong getDeviceAddress()
     {
-        fixed (IAccelerationStructure* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getDeviceAddress>(lpVtbl->getDeviceAddress)(pThis);
-        }
+        return lpVtbl->getDeviceAddress((IAccelerationStructure*)Unsafe.AsPointer(ref this));
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IAccelerationStructure*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IAccelerationStructure*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IAccelerationStructure*, uint> release;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getNativeHandle;
+        public delegate* unmanaged[Stdcall]<IAccelerationStructure*, NativeHandle*, int> getNativeHandle;
 
         [NativeTypeName("AccelerationStructureHandle () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getHandle;
+        public delegate* unmanaged[Stdcall]<IAccelerationStructure*, AccelerationStructureHandle*, AccelerationStructureHandle*> getHandle;
 
         [NativeTypeName("DeviceAddress () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getDeviceAddress;
+        public delegate* unmanaged[Stdcall]<IAccelerationStructure*, ulong> getDeviceAddress;
     }
 }

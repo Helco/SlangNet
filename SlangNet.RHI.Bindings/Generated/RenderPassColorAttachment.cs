@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='RenderPassColorAttachment.xml' path='doc/member[@name="RenderPassColorAttachment"]/*' />
@@ -21,5 +23,12 @@ public unsafe partial struct RenderPassColorAttachment
 
     /// <include file='RenderPassColorAttachment.xml' path='doc/member[@name="RenderPassColorAttachment.clearValue"]/*' />
     [NativeTypeName("float[4]")]
-    public fixed float clearValue[4];
+    public _clearValue_e__FixedBuffer clearValue;
+
+    /// <include file='_clearValue_e__FixedBuffer.xml' path='doc/member[@name="_clearValue_e__FixedBuffer"]/*' />
+    [InlineArray(4)]
+    public partial struct _clearValue_e__FixedBuffer
+    {
+        public float e0;
+    }
 }

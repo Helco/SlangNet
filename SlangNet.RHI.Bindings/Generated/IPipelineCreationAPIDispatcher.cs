@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,47 +9,12 @@ public unsafe partial struct IPipelineCreationAPIDispatcher
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IPipelineCreationAPIDispatcher* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IPipelineCreationAPIDispatcher* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IPipelineCreationAPIDispatcher* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _createComputePipeline(IPipelineCreationAPIDispatcher* pThis, [NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program, void* pipelineDesc, void** outPipelineState);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _createRenderPipeline(IPipelineCreationAPIDispatcher* pThis, [NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program, void* pipelineDesc, void** outPipelineState);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _createMeshPipeline(IPipelineCreationAPIDispatcher* pThis, [NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program, void* pipelineDesc, void** outPipelineState);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _beforeCreateRayTracingState(IPipelineCreationAPIDispatcher* pThis, [NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _afterCreateRayTracingState(IPipelineCreationAPIDispatcher* pThis, [NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IPipelineCreationAPIDispatcher* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IPipelineCreationAPIDispatcher*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -59,10 +22,7 @@ public unsafe partial struct IPipelineCreationAPIDispatcher
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IPipelineCreationAPIDispatcher* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IPipelineCreationAPIDispatcher*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -70,10 +30,7 @@ public unsafe partial struct IPipelineCreationAPIDispatcher
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IPipelineCreationAPIDispatcher* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IPipelineCreationAPIDispatcher*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IPipelineCreationAPIDispatcher.xml' path='doc/member[@name="IPipelineCreationAPIDispatcher.createComputePipeline"]/*' />
@@ -81,10 +38,7 @@ public unsafe partial struct IPipelineCreationAPIDispatcher
     [return: NativeTypeName("rhi::Result")]
     public int createComputePipeline([NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program, void* pipelineDesc, void** outPipelineState)
     {
-        fixed (IPipelineCreationAPIDispatcher* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_createComputePipeline>(lpVtbl->createComputePipeline)(pThis, device, program, pipelineDesc, outPipelineState);
-        }
+        return lpVtbl->createComputePipeline((IPipelineCreationAPIDispatcher*)Unsafe.AsPointer(ref this), device, program, pipelineDesc, outPipelineState);
     }
 
     /// <include file='IPipelineCreationAPIDispatcher.xml' path='doc/member[@name="IPipelineCreationAPIDispatcher.createRenderPipeline"]/*' />
@@ -92,10 +46,7 @@ public unsafe partial struct IPipelineCreationAPIDispatcher
     [return: NativeTypeName("rhi::Result")]
     public int createRenderPipeline([NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program, void* pipelineDesc, void** outPipelineState)
     {
-        fixed (IPipelineCreationAPIDispatcher* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_createRenderPipeline>(lpVtbl->createRenderPipeline)(pThis, device, program, pipelineDesc, outPipelineState);
-        }
+        return lpVtbl->createRenderPipeline((IPipelineCreationAPIDispatcher*)Unsafe.AsPointer(ref this), device, program, pipelineDesc, outPipelineState);
     }
 
     /// <include file='IPipelineCreationAPIDispatcher.xml' path='doc/member[@name="IPipelineCreationAPIDispatcher.createMeshPipeline"]/*' />
@@ -103,10 +54,7 @@ public unsafe partial struct IPipelineCreationAPIDispatcher
     [return: NativeTypeName("rhi::Result")]
     public int createMeshPipeline([NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program, void* pipelineDesc, void** outPipelineState)
     {
-        fixed (IPipelineCreationAPIDispatcher* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_createMeshPipeline>(lpVtbl->createMeshPipeline)(pThis, device, program, pipelineDesc, outPipelineState);
-        }
+        return lpVtbl->createMeshPipeline((IPipelineCreationAPIDispatcher*)Unsafe.AsPointer(ref this), device, program, pipelineDesc, outPipelineState);
     }
 
     /// <include file='IPipelineCreationAPIDispatcher.xml' path='doc/member[@name="IPipelineCreationAPIDispatcher.beforeCreateRayTracingState"]/*' />
@@ -114,10 +62,7 @@ public unsafe partial struct IPipelineCreationAPIDispatcher
     [return: NativeTypeName("rhi::Result")]
     public int beforeCreateRayTracingState([NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program)
     {
-        fixed (IPipelineCreationAPIDispatcher* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_beforeCreateRayTracingState>(lpVtbl->beforeCreateRayTracingState)(pThis, device, program);
-        }
+        return lpVtbl->beforeCreateRayTracingState((IPipelineCreationAPIDispatcher*)Unsafe.AsPointer(ref this), device, program);
     }
 
     /// <include file='IPipelineCreationAPIDispatcher.xml' path='doc/member[@name="IPipelineCreationAPIDispatcher.afterCreateRayTracingState"]/*' />
@@ -125,36 +70,33 @@ public unsafe partial struct IPipelineCreationAPIDispatcher
     [return: NativeTypeName("rhi::Result")]
     public int afterCreateRayTracingState([NativeTypeName("rhi::IDevice *")] IDevice* device, [NativeTypeName("slang::IComponentType *")] IComponentType* program)
     {
-        fixed (IPipelineCreationAPIDispatcher* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_afterCreateRayTracingState>(lpVtbl->afterCreateRayTracingState)(pThis, device, program);
-        }
+        return lpVtbl->afterCreateRayTracingState((IPipelineCreationAPIDispatcher*)Unsafe.AsPointer(ref this), device, program);
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IPipelineCreationAPIDispatcher*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IPipelineCreationAPIDispatcher*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IPipelineCreationAPIDispatcher*, uint> release;
 
         [NativeTypeName("Result (IDevice *, slang::IComponentType *, void *, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr createComputePipeline;
+        public delegate* unmanaged[Stdcall]<IPipelineCreationAPIDispatcher*, IDevice*, IComponentType*, void*, void**, int> createComputePipeline;
 
         [NativeTypeName("Result (IDevice *, slang::IComponentType *, void *, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr createRenderPipeline;
+        public delegate* unmanaged[Stdcall]<IPipelineCreationAPIDispatcher*, IDevice*, IComponentType*, void*, void**, int> createRenderPipeline;
 
         [NativeTypeName("Result (IDevice *, slang::IComponentType *, void *, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr createMeshPipeline;
+        public delegate* unmanaged[Stdcall]<IPipelineCreationAPIDispatcher*, IDevice*, IComponentType*, void*, void**, int> createMeshPipeline;
 
         [NativeTypeName("Result (IDevice *, slang::IComponentType *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr beforeCreateRayTracingState;
+        public delegate* unmanaged[Stdcall]<IPipelineCreationAPIDispatcher*, IDevice*, IComponentType*, int> beforeCreateRayTracingState;
 
         [NativeTypeName("Result (IDevice *, slang::IComponentType *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr afterCreateRayTracingState;
+        public delegate* unmanaged[Stdcall]<IPipelineCreationAPIDispatcher*, IDevice*, IComponentType*, int> afterCreateRayTracingState;
     }
 }

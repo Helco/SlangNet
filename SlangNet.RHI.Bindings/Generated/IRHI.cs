@@ -1,6 +1,4 @@
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -9,38 +7,12 @@ public unsafe partial struct IRHI
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("const FormatInfo &")]
-    public delegate FormatInfo* _getFormatInfo(IRHI* pThis, [NativeTypeName("rhi::Format")] Format format);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("const char *")]
-    public delegate sbyte* _getDeviceTypeName(IRHI* pThis, [NativeTypeName("rhi::DeviceType")] DeviceType type);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate bool _isDeviceTypeSupported(IRHI* pThis, [NativeTypeName("rhi::DeviceType")] DeviceType type);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getAdapters(IRHI* pThis, [NativeTypeName("rhi::DeviceType")] DeviceType type, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outAdaptersBlob);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _createDevice(IRHI* pThis, [NativeTypeName("const DeviceDesc &")] DeviceDesc* desc, IDevice** outDevice);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _reportLiveObjects(IRHI* pThis);
-
     /// <include file='IRHI.xml' path='doc/member[@name="IRHI.getFormatInfo"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("const FormatInfo &")]
     public FormatInfo* getFormatInfo([NativeTypeName("rhi::Format")] Format format)
     {
-        fixed (IRHI* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getFormatInfo>(lpVtbl->getFormatInfo)(pThis, format);
-        }
+        return lpVtbl->getFormatInfo((IRHI*)Unsafe.AsPointer(ref this), format);
     }
 
     /// <include file='IRHI.xml' path='doc/member[@name="IRHI.getDeviceTypeName"]/*' />
@@ -48,20 +20,14 @@ public unsafe partial struct IRHI
     [return: NativeTypeName("const char *")]
     public sbyte* getDeviceTypeName([NativeTypeName("rhi::DeviceType")] DeviceType type)
     {
-        fixed (IRHI* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getDeviceTypeName>(lpVtbl->getDeviceTypeName)(pThis, type);
-        }
+        return lpVtbl->getDeviceTypeName((IRHI*)Unsafe.AsPointer(ref this), type);
     }
 
     /// <include file='IRHI.xml' path='doc/member[@name="IRHI.isDeviceTypeSupported"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool isDeviceTypeSupported([NativeTypeName("rhi::DeviceType")] DeviceType type)
     {
-        fixed (IRHI* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_isDeviceTypeSupported>(lpVtbl->isDeviceTypeSupported)(pThis, type);
-        }
+        return lpVtbl->isDeviceTypeSupported((IRHI*)Unsafe.AsPointer(ref this), type);
     }
 
     /// <include file='IRHI.xml' path='doc/member[@name="IRHI.getAdapters"]/*' />
@@ -69,10 +35,7 @@ public unsafe partial struct IRHI
     [return: NativeTypeName("rhi::Result")]
     public int getAdapters([NativeTypeName("rhi::DeviceType")] DeviceType type, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outAdaptersBlob)
     {
-        fixed (IRHI* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getAdapters>(lpVtbl->getAdapters)(pThis, type, outAdaptersBlob);
-        }
+        return lpVtbl->getAdapters((IRHI*)Unsafe.AsPointer(ref this), type, outAdaptersBlob);
     }
 
     /// <include file='IRHI.xml' path='doc/member[@name="IRHI.createDevice"]/*' />
@@ -80,10 +43,7 @@ public unsafe partial struct IRHI
     [return: NativeTypeName("rhi::Result")]
     public int createDevice([NativeTypeName("const DeviceDesc &")] DeviceDesc* desc, IDevice** outDevice)
     {
-        fixed (IRHI* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_createDevice>(lpVtbl->createDevice)(pThis, desc, outDevice);
-        }
+        return lpVtbl->createDevice((IRHI*)Unsafe.AsPointer(ref this), desc, outDevice);
     }
 
     /// <include file='IRHI.xml' path='doc/member[@name="IRHI.reportLiveObjects"]/*' />
@@ -91,30 +51,27 @@ public unsafe partial struct IRHI
     [return: NativeTypeName("rhi::Result")]
     public int reportLiveObjects()
     {
-        fixed (IRHI* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_reportLiveObjects>(lpVtbl->reportLiveObjects)(pThis);
-        }
+        return lpVtbl->reportLiveObjects((IRHI*)Unsafe.AsPointer(ref this));
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("const FormatInfo &(Format) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getFormatInfo;
+        public delegate* unmanaged[Stdcall]<IRHI*, Format, FormatInfo*> getFormatInfo;
 
         [NativeTypeName("const char *(DeviceType) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getDeviceTypeName;
+        public delegate* unmanaged[Stdcall]<IRHI*, DeviceType, sbyte*> getDeviceTypeName;
 
         [NativeTypeName("bool (DeviceType) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr isDeviceTypeSupported;
+        public delegate* unmanaged[Stdcall]<IRHI*, DeviceType, bool> isDeviceTypeSupported;
 
         [NativeTypeName("Result (DeviceType, ISlangBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getAdapters;
+        public delegate* unmanaged[Stdcall]<IRHI*, DeviceType, SlangNet.Unsafe.ISlangBlob**, int> getAdapters;
 
         [NativeTypeName("Result (const DeviceDesc &, IDevice **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr createDevice;
+        public delegate* unmanaged[Stdcall]<IRHI*, DeviceDesc*, IDevice**, int> createDevice;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr reportLiveObjects;
+        public delegate* unmanaged[Stdcall]<IRHI*, int> reportLiveObjects;
     }
 }

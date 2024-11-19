@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='AccelerationStructureInstanceDescVulkan.xml' path='doc/member[@name="AccelerationStructureInstanceDescVulkan"]/*' />
-public unsafe partial struct AccelerationStructureInstanceDescVulkan
+public partial struct AccelerationStructureInstanceDescVulkan
 {
     /// <include file='AccelerationStructureInstanceDescVulkan.xml' path='doc/member[@name="AccelerationStructureInstanceDescVulkan.transform"]/*' />
     [NativeTypeName("float[4][3]")]
-    public fixed float transform[4 * 3];
+    public _transform_e__FixedBuffer transform;
 
     public uint _bitfield1;
 
@@ -16,7 +16,7 @@ public unsafe partial struct AccelerationStructureInstanceDescVulkan
     public uint instanceCustomIndex
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return _bitfield1 & 0xFFFFFFu;
         }
@@ -33,7 +33,7 @@ public unsafe partial struct AccelerationStructureInstanceDescVulkan
     public uint mask
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return (_bitfield1 >> 24) & 0xFFu;
         }
@@ -52,7 +52,7 @@ public unsafe partial struct AccelerationStructureInstanceDescVulkan
     public uint instanceShaderBindingTableRecordOffset
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return _bitfield2 & 0xFFFFFFu;
         }
@@ -69,7 +69,7 @@ public unsafe partial struct AccelerationStructureInstanceDescVulkan
     public uint flags
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return (_bitfield2 >> 24) & 0xFFu;
         }
@@ -84,4 +84,11 @@ public unsafe partial struct AccelerationStructureInstanceDescVulkan
     /// <include file='AccelerationStructureInstanceDescVulkan.xml' path='doc/member[@name="AccelerationStructureInstanceDescVulkan.accelerationStructureReference"]/*' />
     [NativeTypeName("uint64_t")]
     public ulong accelerationStructureReference;
+
+    /// <include file='_transform_e__FixedBuffer.xml' path='doc/member[@name="_transform_e__FixedBuffer"]/*' />
+    [InlineArray(4 * 3)]
+    public partial struct _transform_e__FixedBuffer
+    {
+        public float e0_0;
+    }
 }

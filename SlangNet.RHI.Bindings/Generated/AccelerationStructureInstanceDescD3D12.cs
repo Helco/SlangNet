@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='AccelerationStructureInstanceDescD3D12.xml' path='doc/member[@name="AccelerationStructureInstanceDescD3D12"]/*' />
-public unsafe partial struct AccelerationStructureInstanceDescD3D12
+public partial struct AccelerationStructureInstanceDescD3D12
 {
     /// <include file='AccelerationStructureInstanceDescD3D12.xml' path='doc/member[@name="AccelerationStructureInstanceDescD3D12.Transform"]/*' />
     [NativeTypeName("float[3][4]")]
-    public fixed float Transform[3 * 4];
+    public _Transform_e__FixedBuffer Transform;
 
     public uint _bitfield1;
 
@@ -16,7 +16,7 @@ public unsafe partial struct AccelerationStructureInstanceDescD3D12
     public uint InstanceID
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return _bitfield1 & 0xFFFFFFu;
         }
@@ -33,7 +33,7 @@ public unsafe partial struct AccelerationStructureInstanceDescD3D12
     public uint InstanceMask
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return (_bitfield1 >> 24) & 0xFFu;
         }
@@ -52,7 +52,7 @@ public unsafe partial struct AccelerationStructureInstanceDescD3D12
     public uint InstanceContributionToHitGroupIndex
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return _bitfield2 & 0xFFFFFFu;
         }
@@ -69,7 +69,7 @@ public unsafe partial struct AccelerationStructureInstanceDescD3D12
     public uint Flags
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get
+        readonly get
         {
             return (_bitfield2 >> 24) & 0xFFu;
         }
@@ -84,4 +84,11 @@ public unsafe partial struct AccelerationStructureInstanceDescD3D12
     /// <include file='AccelerationStructureInstanceDescD3D12.xml' path='doc/member[@name="AccelerationStructureInstanceDescD3D12.AccelerationStructure"]/*' />
     [NativeTypeName("uint64_t")]
     public ulong AccelerationStructure;
+
+    /// <include file='_Transform_e__FixedBuffer.xml' path='doc/member[@name="_Transform_e__FixedBuffer"]/*' />
+    [InlineArray(3 * 4)]
+    public partial struct _Transform_e__FixedBuffer
+    {
+        public float e0_0;
+    }
 }

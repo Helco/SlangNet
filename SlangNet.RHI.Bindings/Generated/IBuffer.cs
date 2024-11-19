@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,43 +9,12 @@ public unsafe partial struct IBuffer
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IBuffer* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IBuffer* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IBuffer* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getNativeHandle(IBuffer* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("const BufferDesc &")]
-    public delegate BufferDesc* _getDesc(IBuffer* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getSharedHandle(IBuffer* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::DeviceAddress")]
-    public delegate ulong _getDeviceAddress(IBuffer* pThis);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IBuffer* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IBuffer*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -55,10 +22,7 @@ public unsafe partial struct IBuffer
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IBuffer* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IBuffer*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -66,10 +30,7 @@ public unsafe partial struct IBuffer
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IBuffer* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IBuffer*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="IResource.getNativeHandle" />
@@ -77,10 +38,7 @@ public unsafe partial struct IBuffer
     [return: NativeTypeName("rhi::Result")]
     public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (IBuffer* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getNativeHandle>(lpVtbl->getNativeHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getNativeHandle((IBuffer*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     /// <include file='IBuffer.xml' path='doc/member[@name="IBuffer.getDesc"]/*' />
@@ -88,10 +46,7 @@ public unsafe partial struct IBuffer
     [return: NativeTypeName("const BufferDesc &")]
     public BufferDesc* getDesc()
     {
-        fixed (IBuffer* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getDesc>(lpVtbl->getDesc)(pThis);
-        }
+        return lpVtbl->getDesc((IBuffer*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IBuffer.xml' path='doc/member[@name="IBuffer.getSharedHandle"]/*' />
@@ -99,10 +54,7 @@ public unsafe partial struct IBuffer
     [return: NativeTypeName("rhi::Result")]
     public int getSharedHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (IBuffer* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getSharedHandle>(lpVtbl->getSharedHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getSharedHandle((IBuffer*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     /// <include file='IBuffer.xml' path='doc/member[@name="IBuffer.getDeviceAddress"]/*' />
@@ -110,33 +62,30 @@ public unsafe partial struct IBuffer
     [return: NativeTypeName("rhi::DeviceAddress")]
     public ulong getDeviceAddress()
     {
-        fixed (IBuffer* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getDeviceAddress>(lpVtbl->getDeviceAddress)(pThis);
-        }
+        return lpVtbl->getDeviceAddress((IBuffer*)Unsafe.AsPointer(ref this));
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IBuffer*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IBuffer*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IBuffer*, uint> release;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getNativeHandle;
+        public delegate* unmanaged[Stdcall]<IBuffer*, NativeHandle*, int> getNativeHandle;
 
         [NativeTypeName("const BufferDesc &() __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getDesc;
+        public delegate* unmanaged[Stdcall]<IBuffer*, BufferDesc*> getDesc;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getSharedHandle;
+        public delegate* unmanaged[Stdcall]<IBuffer*, NativeHandle*, int> getSharedHandle;
 
         [NativeTypeName("DeviceAddress () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getDeviceAddress;
+        public delegate* unmanaged[Stdcall]<IBuffer*, ulong> getDeviceAddress;
     }
 }

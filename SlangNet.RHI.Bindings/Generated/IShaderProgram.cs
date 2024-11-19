@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,31 +9,12 @@ public unsafe partial struct IShaderProgram
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IShaderProgram* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IShaderProgram* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IShaderProgram* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("slang::TypeReflection *")]
-    public delegate TypeReflection* _findTypeByName(IShaderProgram* pThis, [NativeTypeName("const char *")] sbyte* name);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IShaderProgram* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IShaderProgram*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -43,10 +22,7 @@ public unsafe partial struct IShaderProgram
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IShaderProgram* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IShaderProgram*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -54,10 +30,7 @@ public unsafe partial struct IShaderProgram
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IShaderProgram* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IShaderProgram*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IShaderProgram.xml' path='doc/member[@name="IShaderProgram.findTypeByName"]/*' />
@@ -65,24 +38,21 @@ public unsafe partial struct IShaderProgram
     [return: NativeTypeName("slang::TypeReflection *")]
     public TypeReflection* findTypeByName([NativeTypeName("const char *")] sbyte* name)
     {
-        fixed (IShaderProgram* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_findTypeByName>(lpVtbl->findTypeByName)(pThis, name);
-        }
+        return lpVtbl->findTypeByName((IShaderProgram*)Unsafe.AsPointer(ref this), name);
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IShaderProgram*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IShaderProgram*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IShaderProgram*, uint> release;
 
         [NativeTypeName("slang::TypeReflection *(const char *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr findTypeByName;
+        public delegate* unmanaged[Stdcall]<IShaderProgram*, sbyte*, TypeReflection*> findTypeByName;
     }
 }

@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,35 +9,12 @@ public unsafe partial struct IQueryPool
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IQueryPool* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IQueryPool* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IQueryPool* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getResult(IQueryPool* pThis, [NativeTypeName("rhi::GfxIndex")] int queryIndex, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("uint64_t *")] ulong* data);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _reset(IQueryPool* pThis);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IQueryPool* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IQueryPool*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -47,10 +22,7 @@ public unsafe partial struct IQueryPool
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IQueryPool* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IQueryPool*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -58,10 +30,7 @@ public unsafe partial struct IQueryPool
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IQueryPool* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IQueryPool*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IQueryPool.xml' path='doc/member[@name="IQueryPool.getResult"]/*' />
@@ -69,10 +38,7 @@ public unsafe partial struct IQueryPool
     [return: NativeTypeName("rhi::Result")]
     public int getResult([NativeTypeName("rhi::GfxIndex")] int queryIndex, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("uint64_t *")] ulong* data)
     {
-        fixed (IQueryPool* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getResult>(lpVtbl->getResult)(pThis, queryIndex, count, data);
-        }
+        return lpVtbl->getResult((IQueryPool*)Unsafe.AsPointer(ref this), queryIndex, count, data);
     }
 
     /// <include file='IQueryPool.xml' path='doc/member[@name="IQueryPool.reset"]/*' />
@@ -80,27 +46,24 @@ public unsafe partial struct IQueryPool
     [return: NativeTypeName("rhi::Result")]
     public int reset()
     {
-        fixed (IQueryPool* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_reset>(lpVtbl->reset)(pThis);
-        }
+        return lpVtbl->reset((IQueryPool*)Unsafe.AsPointer(ref this));
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IQueryPool*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IQueryPool*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IQueryPool*, uint> release;
 
         [NativeTypeName("Result (GfxIndex, GfxCount, uint64_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getResult;
+        public delegate* unmanaged[Stdcall]<IQueryPool*, int, int, ulong*, int> getResult;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr reset;
+        public delegate* unmanaged[Stdcall]<IQueryPool*, int> reset;
     }
 }

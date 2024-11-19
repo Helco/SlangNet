@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,47 +9,12 @@ public unsafe partial struct ISurface
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(ISurface* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(ISurface* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(ISurface* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("const SurfaceInfo &")]
-    public delegate SurfaceInfo* _getInfo(ISurface* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("const SurfaceConfig &")]
-    public delegate SurfaceConfig* _getConfig(ISurface* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _configure(ISurface* pThis, [NativeTypeName("const SurfaceConfig &")] SurfaceConfig* config);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getCurrentTexture(ISurface* pThis, ITexture** outTexture);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _present(ISurface* pThis);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (ISurface* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((ISurface*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -59,10 +22,7 @@ public unsafe partial struct ISurface
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (ISurface* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((ISurface*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -70,10 +30,7 @@ public unsafe partial struct ISurface
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (ISurface* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((ISurface*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='ISurface.xml' path='doc/member[@name="ISurface.getInfo"]/*' />
@@ -81,10 +38,7 @@ public unsafe partial struct ISurface
     [return: NativeTypeName("const SurfaceInfo &")]
     public SurfaceInfo* getInfo()
     {
-        fixed (ISurface* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getInfo>(lpVtbl->getInfo)(pThis);
-        }
+        return lpVtbl->getInfo((ISurface*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='ISurface.xml' path='doc/member[@name="ISurface.getConfig"]/*' />
@@ -92,10 +46,7 @@ public unsafe partial struct ISurface
     [return: NativeTypeName("const SurfaceConfig &")]
     public SurfaceConfig* getConfig()
     {
-        fixed (ISurface* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getConfig>(lpVtbl->getConfig)(pThis);
-        }
+        return lpVtbl->getConfig((ISurface*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='ISurface.xml' path='doc/member[@name="ISurface.configure"]/*' />
@@ -103,10 +54,7 @@ public unsafe partial struct ISurface
     [return: NativeTypeName("rhi::Result")]
     public int configure([NativeTypeName("const SurfaceConfig &")] SurfaceConfig* config)
     {
-        fixed (ISurface* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_configure>(lpVtbl->configure)(pThis, config);
-        }
+        return lpVtbl->configure((ISurface*)Unsafe.AsPointer(ref this), config);
     }
 
     /// <include file='ISurface.xml' path='doc/member[@name="ISurface.getCurrentTexture"]/*' />
@@ -114,10 +62,7 @@ public unsafe partial struct ISurface
     [return: NativeTypeName("rhi::Result")]
     public int getCurrentTexture(ITexture** outTexture)
     {
-        fixed (ISurface* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getCurrentTexture>(lpVtbl->getCurrentTexture)(pThis, outTexture);
-        }
+        return lpVtbl->getCurrentTexture((ISurface*)Unsafe.AsPointer(ref this), outTexture);
     }
 
     /// <include file='ISurface.xml' path='doc/member[@name="ISurface.present"]/*' />
@@ -125,36 +70,33 @@ public unsafe partial struct ISurface
     [return: NativeTypeName("rhi::Result")]
     public int present()
     {
-        fixed (ISurface* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_present>(lpVtbl->present)(pThis);
-        }
+        return lpVtbl->present((ISurface*)Unsafe.AsPointer(ref this));
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<ISurface*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<ISurface*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<ISurface*, uint> release;
 
         [NativeTypeName("const SurfaceInfo &() __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getInfo;
+        public delegate* unmanaged[Stdcall]<ISurface*, SurfaceInfo*> getInfo;
 
         [NativeTypeName("const SurfaceConfig &() __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getConfig;
+        public delegate* unmanaged[Stdcall]<ISurface*, SurfaceConfig*> getConfig;
 
         [NativeTypeName("Result (const SurfaceConfig &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr configure;
+        public delegate* unmanaged[Stdcall]<ISurface*, SurfaceConfig*, int> configure;
 
         [NativeTypeName("Result (ITexture **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getCurrentTexture;
+        public delegate* unmanaged[Stdcall]<ISurface*, ITexture**, int> getCurrentTexture;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr present;
+        public delegate* unmanaged[Stdcall]<ISurface*, int> present;
     }
 }

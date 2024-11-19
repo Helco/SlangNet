@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,82 +9,12 @@ public unsafe partial struct IShaderObject
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(IShaderObject* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(IShaderObject* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(IShaderObject* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("slang::TypeLayoutReflection *")]
-    public delegate TypeLayoutReflection* _getElementTypeLayout(IShaderObject* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::ShaderObjectContainerType")]
-    public delegate ShaderObjectContainerType _getContainerType(IShaderObject* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::GfxCount")]
-    public delegate int _getEntryPointCount(IShaderObject* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getEntryPoint(IShaderObject* pThis, [NativeTypeName("rhi::GfxIndex")] int index, IShaderObject** entryPoint);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _setData(IShaderObject* pThis, [NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const void *")] void* data, [NativeTypeName("rhi::Size")] ulong size);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getObject(IShaderObject* pThis, [NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, IShaderObject** @object);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _setObject(IShaderObject* pThis, [NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("rhi::IShaderObject *")] IShaderObject* @object);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _setBinding(IShaderObject* pThis, [NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("rhi::Binding")] Binding binding);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _setSpecializationArgs(IShaderObject* pThis, [NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const slang::SpecializationArg *")] SpecializationArg* args, [NativeTypeName("rhi::GfxCount")] int count);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("const void *")]
-    public delegate void* _getRawData(IShaderObject* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Size")]
-    public delegate ulong _getSize(IShaderObject* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _setConstantBufferOverride(IShaderObject* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* constantBuffer);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _finalize(IShaderObject* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    public delegate bool _isFinalized(IShaderObject* pThis);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((IShaderObject*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -94,10 +22,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -105,10 +30,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getElementTypeLayout"]/*' />
@@ -116,10 +38,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("slang::TypeLayoutReflection *")]
     public TypeLayoutReflection* getElementTypeLayout()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getElementTypeLayout>(lpVtbl->getElementTypeLayout)(pThis);
-        }
+        return lpVtbl->getElementTypeLayout((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getContainerType"]/*' />
@@ -127,10 +46,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::ShaderObjectContainerType")]
     public ShaderObjectContainerType getContainerType()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getContainerType>(lpVtbl->getContainerType)(pThis);
-        }
+        return lpVtbl->getContainerType((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getEntryPointCount"]/*' />
@@ -138,10 +54,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::GfxCount")]
     public int getEntryPointCount()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getEntryPointCount>(lpVtbl->getEntryPointCount)(pThis);
-        }
+        return lpVtbl->getEntryPointCount((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getEntryPoint"]/*' />
@@ -149,10 +62,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Result")]
     public int getEntryPoint([NativeTypeName("rhi::GfxIndex")] int index, IShaderObject** entryPoint)
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getEntryPoint>(lpVtbl->getEntryPoint)(pThis, index, entryPoint);
-        }
+        return lpVtbl->getEntryPoint((IShaderObject*)Unsafe.AsPointer(ref this), index, entryPoint);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setData"]/*' />
@@ -160,10 +70,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Result")]
     public int setData([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const void *")] void* data, [NativeTypeName("rhi::Size")] ulong size)
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_setData>(lpVtbl->setData)(pThis, offset, data, size);
-        }
+        return lpVtbl->setData((IShaderObject*)Unsafe.AsPointer(ref this), offset, data, size);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getObject"]/*' />
@@ -171,10 +78,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Result")]
     public int getObject([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, IShaderObject** @object)
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getObject>(lpVtbl->getObject)(pThis, offset, @object);
-        }
+        return lpVtbl->getObject((IShaderObject*)Unsafe.AsPointer(ref this), offset, @object);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setObject"]/*' />
@@ -182,10 +86,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Result")]
     public int setObject([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("rhi::IShaderObject *")] IShaderObject* @object)
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_setObject>(lpVtbl->setObject)(pThis, offset, @object);
-        }
+        return lpVtbl->setObject((IShaderObject*)Unsafe.AsPointer(ref this), offset, @object);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setBinding"]/*' />
@@ -193,10 +94,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Result")]
     public int setBinding([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("rhi::Binding")] Binding binding)
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_setBinding>(lpVtbl->setBinding)(pThis, offset, binding);
-        }
+        return lpVtbl->setBinding((IShaderObject*)Unsafe.AsPointer(ref this), offset, binding);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setSpecializationArgs"]/*' />
@@ -204,10 +102,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Result")]
     public int setSpecializationArgs([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const slang::SpecializationArg *")] SpecializationArg* args, [NativeTypeName("rhi::GfxCount")] int count)
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_setSpecializationArgs>(lpVtbl->setSpecializationArgs)(pThis, offset, args, count);
-        }
+        return lpVtbl->setSpecializationArgs((IShaderObject*)Unsafe.AsPointer(ref this), offset, args, count);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getRawData"]/*' />
@@ -215,10 +110,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("const void *")]
     public void* getRawData()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getRawData>(lpVtbl->getRawData)(pThis);
-        }
+        return lpVtbl->getRawData((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getSize"]/*' />
@@ -226,10 +118,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Size")]
     public ulong getSize()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getSize>(lpVtbl->getSize)(pThis);
-        }
+        return lpVtbl->getSize((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setConstantBufferOverride"]/*' />
@@ -237,10 +126,7 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Result")]
     public int setConstantBufferOverride([NativeTypeName("rhi::IBuffer *")] IBuffer* constantBuffer)
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_setConstantBufferOverride>(lpVtbl->setConstantBufferOverride)(pThis, constantBuffer);
-        }
+        return lpVtbl->setConstantBufferOverride((IShaderObject*)Unsafe.AsPointer(ref this), constantBuffer);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.finalize"]/*' />
@@ -248,73 +134,67 @@ public unsafe partial struct IShaderObject
     [return: NativeTypeName("rhi::Result")]
     public int finalize()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_finalize>(lpVtbl->finalize)(pThis);
-        }
+        return lpVtbl->finalize((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.isFinalized"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool isFinalized()
     {
-        fixed (IShaderObject* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_isFinalized>(lpVtbl->isFinalized)(pThis);
-        }
+        return lpVtbl->isFinalized((IShaderObject*)Unsafe.AsPointer(ref this));
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, uint> release;
 
         [NativeTypeName("slang::TypeLayoutReflection *() __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getElementTypeLayout;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, TypeLayoutReflection*> getElementTypeLayout;
 
         [NativeTypeName("ShaderObjectContainerType () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getContainerType;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderObjectContainerType> getContainerType;
 
         [NativeTypeName("GfxCount () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getEntryPointCount;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, int> getEntryPointCount;
 
         [NativeTypeName("Result (GfxIndex, IShaderObject **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getEntryPoint;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, int, IShaderObject**, int> getEntryPoint;
 
         [NativeTypeName("Result (const ShaderOffset &, const void *, Size) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr setData;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, void*, ulong, int> setData;
 
         [NativeTypeName("Result (const ShaderOffset &, IShaderObject **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getObject;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, IShaderObject**, int> getObject;
 
         [NativeTypeName("Result (const ShaderOffset &, IShaderObject *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr setObject;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, IShaderObject*, int> setObject;
 
         [NativeTypeName("Result (const ShaderOffset &, Binding) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr setBinding;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, Binding, int> setBinding;
 
         [NativeTypeName("Result (const ShaderOffset &, const slang::SpecializationArg *, GfxCount) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr setSpecializationArgs;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, SpecializationArg*, int, int> setSpecializationArgs;
 
         [NativeTypeName("const void *() __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getRawData;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, void*> getRawData;
 
         [NativeTypeName("Size () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getSize;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ulong> getSize;
 
         [NativeTypeName("Result (IBuffer *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr setConstantBufferOverride;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, IBuffer*, int> setConstantBufferOverride;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr finalize;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, int> finalize;
 
         [NativeTypeName("bool () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr isFinalized;
+        public delegate* unmanaged[Stdcall]<IShaderObject*, bool> isFinalized;
     }
 }

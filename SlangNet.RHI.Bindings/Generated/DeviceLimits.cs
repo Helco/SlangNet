@@ -1,7 +1,9 @@
+using System.Runtime.CompilerServices;
+
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='DeviceLimits.xml' path='doc/member[@name="DeviceLimits"]/*' />
-public unsafe partial struct DeviceLimits
+public partial struct DeviceLimits
 {
     /// <include file='DeviceLimits.xml' path='doc/member[@name="DeviceLimits.maxTextureDimension1D"]/*' />
     [NativeTypeName("uint32_t")]
@@ -45,11 +47,11 @@ public unsafe partial struct DeviceLimits
 
     /// <include file='DeviceLimits.xml' path='doc/member[@name="DeviceLimits.maxComputeThreadGroupSize"]/*' />
     [NativeTypeName("uint32_t[3]")]
-    public fixed uint maxComputeThreadGroupSize[3];
+    public _maxComputeThreadGroupSize_e__FixedBuffer maxComputeThreadGroupSize;
 
     /// <include file='DeviceLimits.xml' path='doc/member[@name="DeviceLimits.maxComputeDispatchThreadGroups"]/*' />
     [NativeTypeName("uint32_t[3]")]
-    public fixed uint maxComputeDispatchThreadGroups[3];
+    public _maxComputeDispatchThreadGroups_e__FixedBuffer maxComputeDispatchThreadGroups;
 
     /// <include file='DeviceLimits.xml' path='doc/member[@name="DeviceLimits.maxViewports"]/*' />
     [NativeTypeName("uint32_t")]
@@ -57,13 +59,41 @@ public unsafe partial struct DeviceLimits
 
     /// <include file='DeviceLimits.xml' path='doc/member[@name="DeviceLimits.maxViewportDimensions"]/*' />
     [NativeTypeName("uint32_t[2]")]
-    public fixed uint maxViewportDimensions[2];
+    public _maxViewportDimensions_e__FixedBuffer maxViewportDimensions;
 
     /// <include file='DeviceLimits.xml' path='doc/member[@name="DeviceLimits.maxFramebufferDimensions"]/*' />
     [NativeTypeName("uint32_t[3]")]
-    public fixed uint maxFramebufferDimensions[3];
+    public _maxFramebufferDimensions_e__FixedBuffer maxFramebufferDimensions;
 
     /// <include file='DeviceLimits.xml' path='doc/member[@name="DeviceLimits.maxShaderVisibleSamplers"]/*' />
     [NativeTypeName("uint32_t")]
     public uint maxShaderVisibleSamplers;
+
+    /// <include file='_maxComputeThreadGroupSize_e__FixedBuffer.xml' path='doc/member[@name="_maxComputeThreadGroupSize_e__FixedBuffer"]/*' />
+    [InlineArray(3)]
+    public partial struct _maxComputeThreadGroupSize_e__FixedBuffer
+    {
+        public uint e0;
+    }
+
+    /// <include file='_maxComputeDispatchThreadGroups_e__FixedBuffer.xml' path='doc/member[@name="_maxComputeDispatchThreadGroups_e__FixedBuffer"]/*' />
+    [InlineArray(3)]
+    public partial struct _maxComputeDispatchThreadGroups_e__FixedBuffer
+    {
+        public uint e0;
+    }
+
+    /// <include file='_maxViewportDimensions_e__FixedBuffer.xml' path='doc/member[@name="_maxViewportDimensions_e__FixedBuffer"]/*' />
+    [InlineArray(2)]
+    public partial struct _maxViewportDimensions_e__FixedBuffer
+    {
+        public uint e0;
+    }
+
+    /// <include file='_maxFramebufferDimensions_e__FixedBuffer.xml' path='doc/member[@name="_maxFramebufferDimensions_e__FixedBuffer"]/*' />
+    [InlineArray(3)]
+    public partial struct _maxFramebufferDimensions_e__FixedBuffer
+    {
+        public uint e0;
+    }
 }

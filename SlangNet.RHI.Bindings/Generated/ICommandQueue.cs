@@ -1,7 +1,5 @@
 using SlangNet.Unsafe;
-using System;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace SlangNet.RHI.Unsafe;
 
@@ -11,51 +9,12 @@ public unsafe partial struct ICommandQueue
 {
     public Vtbl* lpVtbl;
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("SlangResult")]
-    public delegate int _queryInterface(ICommandQueue* pThis, [NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _addRef(ICommandQueue* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("uint32_t")]
-    public delegate uint _release(ICommandQueue* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::QueueType")]
-    public delegate QueueType _getType(ICommandQueue* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _createCommandEncoder(ICommandQueue* pThis, ICommandEncoder** outEncoder);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _submit(ICommandQueue* pThis, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("ICommandBuffer *const *")] ICommandBuffer** commandBuffers, [NativeTypeName("rhi::IFence *")] IFence* fenceToSignal, [NativeTypeName("uint64_t")] ulong newFenceValue);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _getNativeHandle(ICommandQueue* pThis, [NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _waitOnHost(ICommandQueue* pThis);
-
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
-    [return: NativeTypeName("rhi::Result")]
-    public delegate int _waitForFenceValuesOnDevice(ICommandQueue* pThis, [NativeTypeName("rhi::GfxCount")] int fenceCount, IFence** fences, [NativeTypeName("uint64_t *")] ulong* waitValues);
-
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("SlangResult")]
     public int queryInterface([NativeTypeName("const SlangUUID &")] SlangUUID* uuid, void** outObject)
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_queryInterface>(lpVtbl->queryInterface)(pThis, uuid, outObject);
-        }
+        return lpVtbl->queryInterface((ICommandQueue*)Unsafe.AsPointer(ref this), uuid, outObject);
     }
 
     /// <inheritdoc cref="ISlangUnknown.addRef" />
@@ -63,10 +22,7 @@ public unsafe partial struct ICommandQueue
     [return: NativeTypeName("uint32_t")]
     public uint addRef()
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_addRef>(lpVtbl->addRef)(pThis);
-        }
+        return lpVtbl->addRef((ICommandQueue*)Unsafe.AsPointer(ref this));
     }
 
     /// <inheritdoc cref="ISlangUnknown.release" />
@@ -74,10 +30,7 @@ public unsafe partial struct ICommandQueue
     [return: NativeTypeName("uint32_t")]
     public uint release()
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_release>(lpVtbl->release)(pThis);
-        }
+        return lpVtbl->release((ICommandQueue*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.getType"]/*' />
@@ -85,10 +38,7 @@ public unsafe partial struct ICommandQueue
     [return: NativeTypeName("rhi::QueueType")]
     public QueueType getType()
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getType>(lpVtbl->getType)(pThis);
-        }
+        return lpVtbl->getType((ICommandQueue*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.createCommandEncoder"]/*' />
@@ -96,10 +46,7 @@ public unsafe partial struct ICommandQueue
     [return: NativeTypeName("rhi::Result")]
     public int createCommandEncoder(ICommandEncoder** outEncoder)
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_createCommandEncoder>(lpVtbl->createCommandEncoder)(pThis, outEncoder);
-        }
+        return lpVtbl->createCommandEncoder((ICommandQueue*)Unsafe.AsPointer(ref this), outEncoder);
     }
 
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.submit"]/*' />
@@ -107,10 +54,7 @@ public unsafe partial struct ICommandQueue
     [return: NativeTypeName("rhi::Result")]
     public int submit([NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("ICommandBuffer *const *")] ICommandBuffer** commandBuffers, [NativeTypeName("rhi::IFence *")] IFence* fenceToSignal, [NativeTypeName("uint64_t")] ulong newFenceValue)
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_submit>(lpVtbl->submit)(pThis, count, commandBuffers, fenceToSignal, newFenceValue);
-        }
+        return lpVtbl->submit((ICommandQueue*)Unsafe.AsPointer(ref this), count, commandBuffers, fenceToSignal, newFenceValue);
     }
 
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.getNativeHandle"]/*' />
@@ -118,10 +62,7 @@ public unsafe partial struct ICommandQueue
     [return: NativeTypeName("rhi::Result")]
     public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_getNativeHandle>(lpVtbl->getNativeHandle)(pThis, outHandle);
-        }
+        return lpVtbl->getNativeHandle((ICommandQueue*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.waitOnHost"]/*' />
@@ -129,10 +70,7 @@ public unsafe partial struct ICommandQueue
     [return: NativeTypeName("rhi::Result")]
     public int waitOnHost()
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_waitOnHost>(lpVtbl->waitOnHost)(pThis);
-        }
+        return lpVtbl->waitOnHost((ICommandQueue*)Unsafe.AsPointer(ref this));
     }
 
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.waitForFenceValuesOnDevice"]/*' />
@@ -140,39 +78,36 @@ public unsafe partial struct ICommandQueue
     [return: NativeTypeName("rhi::Result")]
     public int waitForFenceValuesOnDevice([NativeTypeName("rhi::GfxCount")] int fenceCount, IFence** fences, [NativeTypeName("uint64_t *")] ulong* waitValues)
     {
-        fixed (ICommandQueue* pThis = &this)
-        {
-            return Marshal.GetDelegateForFunctionPointer<_waitForFenceValuesOnDevice>(lpVtbl->waitForFenceValuesOnDevice)(pThis, fenceCount, fences, waitValues);
-        }
+        return lpVtbl->waitForFenceValuesOnDevice((ICommandQueue*)Unsafe.AsPointer(ref this), fenceCount, fences, waitValues);
     }
 
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr queryInterface;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, SlangUUID*, void**, int> queryInterface;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr addRef;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, uint> addRef;
 
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr release;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, uint> release;
 
         [NativeTypeName("QueueType () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getType;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, QueueType> getType;
 
         [NativeTypeName("Result (ICommandEncoder **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr createCommandEncoder;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, ICommandEncoder**, int> createCommandEncoder;
 
         [NativeTypeName("Result (GfxCount, ICommandBuffer *const *, IFence *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr submit;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, int, ICommandBuffer**, IFence*, ulong, int> submit;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr getNativeHandle;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, NativeHandle*, int> getNativeHandle;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr waitOnHost;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, int> waitOnHost;
 
         [NativeTypeName("Result (GfxCount, IFence **, uint64_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public IntPtr waitForFenceValuesOnDevice;
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, int, IFence**, ulong*, int> waitForFenceValuesOnDevice;
     }
 }

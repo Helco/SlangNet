@@ -62,6 +62,10 @@ SLANG_UUID_ISlangWriter
 rhi::Offset=ulong
 rhi::Size=ulong
 ComPtr=SlangNet.Unsafe.COMPointer
+ISlangBlob=SlangNet.Unsafe.ISlangBlob
+rhi::IShaderTable::Desc=IShaderTable_Desc
+# ^ apparently ClangSharp does not support with-namespace of template args e.g. COMPtr<ISlangBlob> to SlangNet.Unsafe.COMPointer<SlangNet.Unsafe.ISlangBlob>
+# ^ even more ClangSharp bugs
 
 # This fixes a ClangSharp issue with TypeReflection::Kind causing compile errors
 --with-type
@@ -77,6 +81,7 @@ SlangMatrixLayoutMode=SlangNet.Unsafe
 PreprocessorMacroDesc=SlangNet.Unsafe
 SlangOptimizationLevel=SlangNet.Unsafe
 SlangLineDirectiveMode=SlangNet.Unsafe
+CompilerOptionEntry=SlangNet.Unsafe
 
 # For the pretty bindings we rewrite everything but some of the enums and PODs
 --namespace

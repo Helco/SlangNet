@@ -25,11 +25,11 @@ public unsafe partial struct IPersistentShaderCache
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _writeCache(IPersistentShaderCache* pThis, ISlangBlob* key, ISlangBlob* data);
+    public delegate int _writeCache(IPersistentShaderCache* pThis, [NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* key, [NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* data);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _queryCache(IPersistentShaderCache* pThis, ISlangBlob* key, ISlangBlob** outData);
+    public delegate int _queryCache(IPersistentShaderCache* pThis, [NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* key, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outData);
 
     /// <inheritdoc cref="ISlangUnknown.queryInterface" />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -67,7 +67,7 @@ public unsafe partial struct IPersistentShaderCache
     /// <include file='IPersistentShaderCache.xml' path='doc/member[@name="IPersistentShaderCache.writeCache"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int writeCache(ISlangBlob* key, ISlangBlob* data)
+    public int writeCache([NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* key, [NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* data)
     {
         fixed (IPersistentShaderCache* pThis = &this)
         {
@@ -78,7 +78,7 @@ public unsafe partial struct IPersistentShaderCache
     /// <include file='IPersistentShaderCache.xml' path='doc/member[@name="IPersistentShaderCache.queryCache"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int queryCache(ISlangBlob* key, ISlangBlob** outData)
+    public int queryCache([NativeTypeName("ISlangBlob *")] SlangNet.Unsafe.ISlangBlob* key, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outData)
     {
         fixed (IPersistentShaderCache* pThis = &this)
         {

@@ -1,0 +1,1 @@
+global using IShaderTable_Desc = SlangNet.RHI.Unsafe.IShaderTable.IShaderTable_Desc;

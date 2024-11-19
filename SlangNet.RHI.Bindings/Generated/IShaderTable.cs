@@ -39,58 +39,58 @@ public unsafe partial struct IShaderTable
         public fixed byte data[8];
     }
 
-    /// <include file='Desc.xml' path='doc/member[@name="Desc"]/*' />
-    public unsafe partial struct Desc
+    /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc"]/*' />
+    public unsafe partial struct IShaderTable_Desc
     {
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.rayGenShaderCount"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.rayGenShaderCount"]/*' />
         [NativeTypeName("rhi::GfxCount")]
         public int rayGenShaderCount;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.rayGenShaderEntryPointNames"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.rayGenShaderEntryPointNames"]/*' />
         [NativeTypeName("const char **")]
         public sbyte** rayGenShaderEntryPointNames;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.rayGenShaderRecordOverwrites"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.rayGenShaderRecordOverwrites"]/*' />
         [NativeTypeName("const ShaderRecordOverwrite *")]
         public ShaderRecordOverwrite* rayGenShaderRecordOverwrites;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.missShaderCount"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.missShaderCount"]/*' />
         [NativeTypeName("rhi::GfxCount")]
         public int missShaderCount;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.missShaderEntryPointNames"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.missShaderEntryPointNames"]/*' />
         [NativeTypeName("const char **")]
         public sbyte** missShaderEntryPointNames;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.missShaderRecordOverwrites"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.missShaderRecordOverwrites"]/*' />
         [NativeTypeName("const ShaderRecordOverwrite *")]
         public ShaderRecordOverwrite* missShaderRecordOverwrites;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.hitGroupCount"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.hitGroupCount"]/*' />
         [NativeTypeName("rhi::GfxCount")]
         public int hitGroupCount;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.hitGroupNames"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.hitGroupNames"]/*' />
         [NativeTypeName("const char **")]
         public sbyte** hitGroupNames;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.hitGroupRecordOverwrites"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.hitGroupRecordOverwrites"]/*' />
         [NativeTypeName("const ShaderRecordOverwrite *")]
         public ShaderRecordOverwrite* hitGroupRecordOverwrites;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.callableShaderCount"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.callableShaderCount"]/*' />
         [NativeTypeName("rhi::GfxCount")]
         public int callableShaderCount;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.callableShaderEntryPointNames"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.callableShaderEntryPointNames"]/*' />
         [NativeTypeName("const char **")]
         public sbyte** callableShaderEntryPointNames;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.callableShaderRecordOverwrites"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.callableShaderRecordOverwrites"]/*' />
         [NativeTypeName("const ShaderRecordOverwrite *")]
         public ShaderRecordOverwrite* callableShaderRecordOverwrites;
 
-        /// <include file='Desc.xml' path='doc/member[@name="Desc.program"]/*' />
+        /// <include file='IShaderTable_Desc.xml' path='doc/member[@name="IShaderTable_Desc.program"]/*' />
         [NativeTypeName("rhi::IShaderProgram *")]
         public IShaderProgram* program;
     }

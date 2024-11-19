@@ -108,11 +108,11 @@ public unsafe partial struct IDevice
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _createShaderTable(IDevice* pThis, [NativeTypeName("const IShaderTable::Desc &")] Desc* desc, IShaderTable** outTable);
+    public delegate int _createShaderTable(IDevice* pThis, [NativeTypeName("const IShaderTable::Desc &")] IShaderTable_Desc* desc, IShaderTable** outTable);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _createShaderProgram(IDevice* pThis, [NativeTypeName("const ShaderProgramDesc &")] ShaderProgramDesc* desc, IShaderProgram** outProgram, ISlangBlob** outDiagnosticBlob = null);
+    public delegate int _createShaderProgram(IDevice* pThis, [NativeTypeName("const ShaderProgramDesc &")] ShaderProgramDesc* desc, IShaderProgram** outProgram, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outDiagnosticBlob = null);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
@@ -128,11 +128,11 @@ public unsafe partial struct IDevice
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _readTexture(IDevice* pThis, [NativeTypeName("rhi::ITexture *")] ITexture* texture, ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] ulong* outRowPitch, [NativeTypeName("rhi::Size *")] ulong* outPixelSize);
+    public delegate int _readTexture(IDevice* pThis, [NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] ulong* outRowPitch, [NativeTypeName("rhi::Size *")] ulong* outPixelSize);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _readBuffer(IDevice* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, ISlangBlob** outBlob);
+    public delegate int _readBuffer(IDevice* pThis, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outBlob);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("const DeviceInfo &")]
@@ -432,7 +432,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createShaderTable"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int createShaderTable([NativeTypeName("const IShaderTable::Desc &")] Desc* desc, IShaderTable** outTable)
+    public int createShaderTable([NativeTypeName("const IShaderTable::Desc &")] IShaderTable_Desc* desc, IShaderTable** outTable)
     {
         fixed (IDevice* pThis = &this)
         {
@@ -443,7 +443,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createShaderProgram"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int createShaderProgram([NativeTypeName("const ShaderProgramDesc &")] ShaderProgramDesc* desc, IShaderProgram** outProgram, ISlangBlob** outDiagnosticBlob = null)
+    public int createShaderProgram([NativeTypeName("const ShaderProgramDesc &")] ShaderProgramDesc* desc, IShaderProgram** outProgram, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outDiagnosticBlob = null)
     {
         fixed (IDevice* pThis = &this)
         {
@@ -487,7 +487,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.readTexture"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int readTexture([NativeTypeName("rhi::ITexture *")] ITexture* texture, ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] ulong* outRowPitch, [NativeTypeName("rhi::Size *")] ulong* outPixelSize)
+    public int readTexture([NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] ulong* outRowPitch, [NativeTypeName("rhi::Size *")] ulong* outPixelSize)
     {
         fixed (IDevice* pThis = &this)
         {
@@ -498,7 +498,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.readBuffer"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int readBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, ISlangBlob** outBlob)
+    public int readBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outBlob)
     {
         fixed (IDevice* pThis = &this)
         {

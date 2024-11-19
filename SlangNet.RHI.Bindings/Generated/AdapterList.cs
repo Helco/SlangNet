@@ -5,5 +5,5 @@ public partial struct AdapterList
 {
     /// <include file='AdapterList.xml' path='doc/member[@name="AdapterList.m_blob"]/*' />
     [NativeTypeName("ComPtr<ISlangBlob>")]
-    private SlangNet.Unsafe.COMPointer<ISlangBlob> m_blob;
+    private SlangNet.Unsafe.COMPointer<SlangNet.Unsafe.ISlangBlob> m_blob;
 }

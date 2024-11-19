@@ -1,4 +1,3 @@
-using SlangNet.Unsafe;
 using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -23,7 +22,7 @@ public unsafe partial struct IRHI
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
-    public delegate int _getAdapters(IRHI* pThis, [NativeTypeName("rhi::DeviceType")] DeviceType type, ISlangBlob** outAdaptersBlob);
+    public delegate int _getAdapters(IRHI* pThis, [NativeTypeName("rhi::DeviceType")] DeviceType type, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outAdaptersBlob);
 
     [UnmanagedFunctionPointer(CallingConvention.StdCall)]
     [return: NativeTypeName("rhi::Result")]
@@ -68,7 +67,7 @@ public unsafe partial struct IRHI
     /// <include file='IRHI.xml' path='doc/member[@name="IRHI.getAdapters"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getAdapters([NativeTypeName("rhi::DeviceType")] DeviceType type, ISlangBlob** outAdaptersBlob)
+    public int getAdapters([NativeTypeName("rhi::DeviceType")] DeviceType type, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outAdaptersBlob)
     {
         fixed (IRHI* pThis = &this)
         {

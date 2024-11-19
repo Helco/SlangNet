@@ -24,6 +24,9 @@ public enum BindingType
     /// <include file='BindingType.xml' path='doc/member[@name="BindingType.CombinedTextureSampler"]/*' />
     CombinedTextureSampler,
 
+    /// <include file='BindingType.xml' path='doc/member[@name="BindingType.CombinedTextureViewSampler"]/*' />
+    CombinedTextureViewSampler,
+
     /// <include file='BindingType.xml' path='doc/member[@name="BindingType.AccelerationStructure"]/*' />
     AccelerationStructure,
 }

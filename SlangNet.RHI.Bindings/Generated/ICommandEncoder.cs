@@ -33,6 +33,30 @@ public unsafe partial struct ICommandEncoder
         return lpVtbl->release((ICommandEncoder*)Unsafe.AsPointer(ref this));
     }
 
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.beginRenderPass"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::IRenderPassEncoder *")]
+    public IRenderPassEncoder* beginRenderPass([NativeTypeName("const RenderPassDesc &")] RenderPassDesc* desc)
+    {
+        return lpVtbl->beginRenderPass((ICommandEncoder*)Unsafe.AsPointer(ref this), desc);
+    }
+
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.beginComputePass"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::IComputePassEncoder *")]
+    public IComputePassEncoder* beginComputePass()
+    {
+        return lpVtbl->beginComputePass((ICommandEncoder*)Unsafe.AsPointer(ref this));
+    }
+
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.beginRayTracingPass"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::IRayTracingPassEncoder *")]
+    public IRayTracingPassEncoder* beginRayTracingPass()
+    {
+        return lpVtbl->beginRayTracingPass((ICommandEncoder*)Unsafe.AsPointer(ref this));
+    }
+
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.copyBuffer"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void copyBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong dstOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* src, [NativeTypeName("rhi::Offset")] ulong srcOffset, [NativeTypeName("rhi::Size")] ulong size)
@@ -89,125 +113,6 @@ public unsafe partial struct ICommandEncoder
         lpVtbl->resolveQuery((ICommandEncoder*)Unsafe.AsPointer(ref this), queryPool, index, count, buffer, offset);
     }
 
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.beginRenderPass"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void beginRenderPass([NativeTypeName("const RenderPassDesc &")] RenderPassDesc* desc)
-    {
-        lpVtbl->beginRenderPass((ICommandEncoder*)Unsafe.AsPointer(ref this), desc);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.endRenderPass"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void endRenderPass()
-    {
-        lpVtbl->endRenderPass((ICommandEncoder*)Unsafe.AsPointer(ref this));
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.setRenderState"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void setRenderState([NativeTypeName("const RenderState &")] RenderState* state)
-    {
-        lpVtbl->setRenderState((ICommandEncoder*)Unsafe.AsPointer(ref this), state);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.draw"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void draw([NativeTypeName("const DrawArguments &")] DrawArguments* args)
-    {
-        lpVtbl->draw((ICommandEncoder*)Unsafe.AsPointer(ref this), args);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.drawIndexed"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndexed([NativeTypeName("const DrawArguments &")] DrawArguments* args)
-    {
-        lpVtbl->drawIndexed((ICommandEncoder*)Unsafe.AsPointer(ref this), args);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.drawIndirect"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndirect([NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] ulong countOffset = 0)
-    {
-        lpVtbl->drawIndirect((ICommandEncoder*)Unsafe.AsPointer(ref this), maxDrawCount, argBuffer, argOffset, countBuffer, countOffset);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.drawIndexedIndirect"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndexedIndirect([NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] ulong countOffset = 0)
-    {
-        lpVtbl->drawIndexedIndirect((ICommandEncoder*)Unsafe.AsPointer(ref this), maxDrawCount, argBuffer, argOffset, countBuffer, countOffset);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.drawMeshTasks"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawMeshTasks(int x, int y, int z)
-    {
-        lpVtbl->drawMeshTasks((ICommandEncoder*)Unsafe.AsPointer(ref this), x, y, z);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.beginComputePass"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void beginComputePass()
-    {
-        lpVtbl->beginComputePass((ICommandEncoder*)Unsafe.AsPointer(ref this));
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.endComputePass"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void endComputePass()
-    {
-        lpVtbl->endComputePass((ICommandEncoder*)Unsafe.AsPointer(ref this));
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.setComputeState"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void setComputeState([NativeTypeName("const ComputeState &")] ComputeState* state)
-    {
-        lpVtbl->setComputeState((ICommandEncoder*)Unsafe.AsPointer(ref this), state);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.dispatchCompute"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void dispatchCompute(int x, int y, int z)
-    {
-        lpVtbl->dispatchCompute((ICommandEncoder*)Unsafe.AsPointer(ref this), x, y, z);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.dispatchComputeIndirect"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void dispatchComputeIndirect([NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong offset)
-    {
-        lpVtbl->dispatchComputeIndirect((ICommandEncoder*)Unsafe.AsPointer(ref this), argBuffer, offset);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.beginRayTracingPass"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void beginRayTracingPass()
-    {
-        lpVtbl->beginRayTracingPass((ICommandEncoder*)Unsafe.AsPointer(ref this));
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.endRayTracingPass"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void endRayTracingPass()
-    {
-        lpVtbl->endRayTracingPass((ICommandEncoder*)Unsafe.AsPointer(ref this));
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.setRayTracingState"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void setRayTracingState([NativeTypeName("const RayTracingState &")] RayTracingState* state)
-    {
-        lpVtbl->setRayTracingState((ICommandEncoder*)Unsafe.AsPointer(ref this), state);
-    }
-
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.dispatchRays"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void dispatchRays([NativeTypeName("rhi::GfxIndex")] int rayGenShaderIndex, [NativeTypeName("rhi::GfxCount")] int width, [NativeTypeName("rhi::GfxCount")] int height, [NativeTypeName("rhi::GfxCount")] int depth)
-    {
-        lpVtbl->dispatchRays((ICommandEncoder*)Unsafe.AsPointer(ref this), rayGenShaderIndex, width, height, depth);
-    }
-
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.buildAccelerationStructure"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void buildAccelerationStructure([NativeTypeName("const AccelerationStructureBuildDesc &")] AccelerationStructureBuildDesc* desc, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* dst, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* src, [NativeTypeName("rhi::BufferWithOffset")] BufferWithOffset scratchBuffer, [NativeTypeName("rhi::GfxCount")] int propertyQueryCount, [NativeTypeName("rhi::AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
@@ -257,18 +162,25 @@ public unsafe partial struct ICommandEncoder
         lpVtbl->setTextureState((ICommandEncoder*)Unsafe.AsPointer(ref this), texture, subresourceRange, state);
     }
 
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.beginDebugEvent"]/*' />
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.pushDebugGroup"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void beginDebugEvent([NativeTypeName("const char *")] sbyte* name, [NativeTypeName("float[3]")] float* rgbColor)
+    public void pushDebugGroup([NativeTypeName("const char *")] sbyte* name, [NativeTypeName("float[3]")] float* rgbColor)
     {
-        lpVtbl->beginDebugEvent((ICommandEncoder*)Unsafe.AsPointer(ref this), name, rgbColor);
+        lpVtbl->pushDebugGroup((ICommandEncoder*)Unsafe.AsPointer(ref this), name, rgbColor);
     }
 
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.endDebugEvent"]/*' />
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.popDebugGroup"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void endDebugEvent()
+    public void popDebugGroup()
     {
-        lpVtbl->endDebugEvent((ICommandEncoder*)Unsafe.AsPointer(ref this));
+        lpVtbl->popDebugGroup((ICommandEncoder*)Unsafe.AsPointer(ref this));
+    }
+
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.insertDebugMarker"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void insertDebugMarker([NativeTypeName("const char *")] sbyte* name, [NativeTypeName("float[3]")] float* rgbColor)
+    {
+        lpVtbl->insertDebugMarker((ICommandEncoder*)Unsafe.AsPointer(ref this), name, rgbColor);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.writeTimestamp"]/*' />
@@ -305,6 +217,15 @@ public unsafe partial struct ICommandEncoder
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, uint> release;
 
+        [NativeTypeName("IRenderPassEncoder *(const RenderPassDesc &) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, RenderPassDesc*, IRenderPassEncoder*> beginRenderPass;
+
+        [NativeTypeName("IComputePassEncoder *() __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IComputePassEncoder*> beginComputePass;
+
+        [NativeTypeName("IRayTracingPassEncoder *() __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IRayTracingPassEncoder*> beginRayTracingPass;
+
         [NativeTypeName("void (IBuffer *, Offset, IBuffer *, Offset, Size) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ulong, IBuffer*, ulong, ulong, void> copyBuffer;
 
@@ -329,57 +250,6 @@ public unsafe partial struct ICommandEncoder
         [NativeTypeName("void (IQueryPool *, GfxIndex, GfxCount, IBuffer *, Offset) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IQueryPool*, int, int, IBuffer*, ulong, void> resolveQuery;
 
-        [NativeTypeName("void (const RenderPassDesc &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, RenderPassDesc*, void> beginRenderPass;
-
-        [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, void> endRenderPass;
-
-        [NativeTypeName("void (const RenderState &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, RenderState*, void> setRenderState;
-
-        [NativeTypeName("void (const DrawArguments &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, DrawArguments*, void> draw;
-
-        [NativeTypeName("void (const DrawArguments &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, DrawArguments*, void> drawIndexed;
-
-        [NativeTypeName("void (GfxCount, IBuffer *, Offset, IBuffer *, Offset) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, int, IBuffer*, ulong, IBuffer*, ulong, void> drawIndirect;
-
-        [NativeTypeName("void (GfxCount, IBuffer *, Offset, IBuffer *, Offset) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, int, IBuffer*, ulong, IBuffer*, ulong, void> drawIndexedIndirect;
-
-        [NativeTypeName("void (int, int, int) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, int, int, int, void> drawMeshTasks;
-
-        [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, void> beginComputePass;
-
-        [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, void> endComputePass;
-
-        [NativeTypeName("void (const ComputeState &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ComputeState*, void> setComputeState;
-
-        [NativeTypeName("void (int, int, int) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, int, int, int, void> dispatchCompute;
-
-        [NativeTypeName("void (IBuffer *, Offset) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ulong, void> dispatchComputeIndirect;
-
-        [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, void> beginRayTracingPass;
-
-        [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, void> endRayTracingPass;
-
-        [NativeTypeName("void (const RayTracingState &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, RayTracingState*, void> setRayTracingState;
-
-        [NativeTypeName("void (GfxIndex, GfxCount, GfxCount, GfxCount) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, int, int, int, int, void> dispatchRays;
-
         [NativeTypeName("void (const AccelerationStructureBuildDesc &, IAccelerationStructure *, IAccelerationStructure *, BufferWithOffset, GfxCount, AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, AccelerationStructureBuildDesc*, IAccelerationStructure*, IAccelerationStructure*, BufferWithOffset, int, AccelerationStructureQueryDesc*, void> buildAccelerationStructure;
 
@@ -402,10 +272,13 @@ public unsafe partial struct ICommandEncoder
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, ResourceState, void> setTextureState;
 
         [NativeTypeName("void (const char *, float *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, sbyte*, float*, void> beginDebugEvent;
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, sbyte*, float*, void> pushDebugGroup;
 
         [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, void> endDebugEvent;
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, void> popDebugGroup;
+
+        [NativeTypeName("void (const char *, float *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, sbyte*, float*, void> insertDebugMarker;
 
         [NativeTypeName("void (IQueryPool *, GfxIndex) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IQueryPool*, int, void> writeTimestamp;

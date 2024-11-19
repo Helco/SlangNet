@@ -1,3 +1,4 @@
+// Temporary manual implementation because ClangSharpPInvokeGenerator does not support bool bitfields
 using System.Runtime.CompilerServices;
 
 namespace SlangNet.RHI.Unsafe;
@@ -33,7 +34,7 @@ public unsafe partial struct FormatInfo
     [NativeTypeName("rhi::GfxCount")]
     public int blockHeight;
 
-    public bool _bitfield;
+    public byte _bitfield;
 
     /// <include file='FormatInfo.xml' path='doc/member[@name="FormatInfo.isTypeless"]/*' />
     [NativeTypeName("bool : 1")]
@@ -42,13 +43,13 @@ public unsafe partial struct FormatInfo
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get
         {
-            return (bool)(_bitfield & 0x1);
+            return (_bitfield & 0x1) != 0;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         set
         {
-            _bitfield = (bool)((_bitfield & ~0x1) | (value & 0x1));
+            _bitfield = (byte)((_bitfield & ~0x1) | (value ? 1 : 0));
         }
     }
 
@@ -59,13 +60,13 @@ public unsafe partial struct FormatInfo
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get
         {
-            return (bool)((_bitfield >> 1) & 0x1);
+            return ((_bitfield >> 1) & 0x1) != 0;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         set
         {
-            _bitfield = (bool)((_bitfield & ~(0x1 << 1)) | ((value & 0x1) << 1));
+            _bitfield = (byte)((_bitfield & ~(0x1 << 1)) | ((value ? 1 : 0) << 1));
         }
     }
 }

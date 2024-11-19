@@ -45,6 +45,7 @@ SLANG_LITTLE_ENDIAN
 SLANG_BIG_ENDIAN
 SLANG_UNALIGNED_ACCESS
 rhi::kRemainingTextureSize
+rhi::FormatInfo
 
 # Remove the UUIDs, they are generated incorrectly
 --exclude

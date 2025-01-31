@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet.RHI.Bindings", "Sl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet.Example.RHI.HelloWorld.Unsafe", "examples\SlangNet.Example.RHI.HelloWorld.Unsafe\SlangNet.Example.RHI.HelloWorld.Unsafe.csproj", "{4F8C5D18-895C-40C2-8F1F-D6A5F68E43F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlangNet.Example.RHI.Original.Unsafe", "examples\SlangNet.Example.RHI.Original.Unsafe\SlangNet.Example.RHI.Original.Unsafe.csproj", "{71EB62DD-0BAE-4735-9CEA-E1A9ED1E8AC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{4F8C5D18-895C-40C2-8F1F-D6A5F68E43F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F8C5D18-895C-40C2-8F1F-D6A5F68E43F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F8C5D18-895C-40C2-8F1F-D6A5F68E43F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71EB62DD-0BAE-4735-9CEA-E1A9ED1E8AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71EB62DD-0BAE-4735-9CEA-E1A9ED1E8AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71EB62DD-0BAE-4735-9CEA-E1A9ED1E8AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71EB62DD-0BAE-4735-9CEA-E1A9ED1E8AC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +131,7 @@ Global
 		{BE320E4F-1ED3-45BC-B3CD-E25721A17A25} = {4A6B9893-5FE6-419E-82C7-A31A5A7ECC78}
 		{C2E63985-09C3-48B4-A414-E827F791B23B} = {C6C1C38C-1298-444D-B383-E7B97BFD7C54}
 		{4F8C5D18-895C-40C2-8F1F-D6A5F68E43F3} = {C6C1C38C-1298-444D-B383-E7B97BFD7C54}
+		{71EB62DD-0BAE-4735-9CEA-E1A9ED1E8AC2} = {C6C1C38C-1298-444D-B383-E7B97BFD7C54}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4A76EC01-CE0D-4E15-ACD3-FB86A95BCA4C}

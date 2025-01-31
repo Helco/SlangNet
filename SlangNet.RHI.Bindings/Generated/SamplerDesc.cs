@@ -5,6 +5,13 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc"]/*' />
 public unsafe partial struct SamplerDesc
 {
+    /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc.structType"]/*' />
+    [NativeTypeName("rhi::StructType")]
+    public StructType structType;
+
+    /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc.next"]/*' />
+    public void* next;
+
     /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc.minFilter"]/*' />
     [NativeTypeName("rhi::TextureFilteringMode")]
     public TextureFilteringMode minFilter;

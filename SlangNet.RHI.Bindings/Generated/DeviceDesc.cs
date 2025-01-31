@@ -5,6 +5,13 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc"]/*' />
 public unsafe partial struct DeviceDesc
 {
+    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.structType"]/*' />
+    [NativeTypeName("rhi::StructType")]
+    public StructType structType;
+
+    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.next"]/*' />
+    public void* next;
+
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.deviceType"]/*' />
     [NativeTypeName("rhi::DeviceType")]
     public DeviceType deviceType;
@@ -18,8 +25,8 @@ public unsafe partial struct DeviceDesc
     public AdapterLUID* adapterLUID;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.requiredFeatureCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int requiredFeatureCount;
+    [NativeTypeName("uint32_t")]
+    public uint requiredFeatureCount;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.requiredFeatures"]/*' />
     [NativeTypeName("const char **")]
@@ -27,10 +34,6 @@ public unsafe partial struct DeviceDesc
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.apiCommandDispatcher"]/*' />
     public ISlangUnknown* apiCommandDispatcher;
-
-    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.nvapiExtnSlot"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int nvapiExtnSlot;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.slang"]/*' />
     [NativeTypeName("rhi::SlangDesc")]
@@ -40,18 +43,22 @@ public unsafe partial struct DeviceDesc
     [NativeTypeName("rhi::IPersistentShaderCache *")]
     public IPersistentShaderCache* persistentShaderCache;
 
-    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.extendedDescCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int extendedDescCount;
+    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.nvapiExtUavSlot"]/*' />
+    [NativeTypeName("uint32_t")]
+    public uint nvapiExtUavSlot;
 
-    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.extendedDescs"]/*' />
-    public void** extendedDescs;
+    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.nvapiExtRegisterSpace"]/*' />
+    [NativeTypeName("uint32_t")]
+    public uint nvapiExtRegisterSpace;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.enableValidation"]/*' />
     public bool enableValidation;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.enableBackendValidation"]/*' />
     public bool enableBackendValidation;
+
+    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.enableRayTracingValidation"]/*' />
+    public bool enableRayTracingValidation;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.debugCallback"]/*' />
     [NativeTypeName("rhi::IDebugCallback *")]

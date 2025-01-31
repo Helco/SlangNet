@@ -52,7 +52,7 @@ public unsafe partial struct ICommandQueue
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.submit"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int submit([NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("ICommandBuffer *const *")] ICommandBuffer** commandBuffers, [NativeTypeName("rhi::IFence *")] IFence* fenceToSignal, [NativeTypeName("uint64_t")] ulong newFenceValue)
+    public int submit([NativeTypeName("uint32_t")] uint count, ICommandBuffer** commandBuffers, [NativeTypeName("rhi::IFence *")] IFence* fenceToSignal, [NativeTypeName("uint64_t")] ulong newFenceValue)
     {
         return lpVtbl->submit((ICommandQueue*)Unsafe.AsPointer(ref this), count, commandBuffers, fenceToSignal, newFenceValue);
     }
@@ -76,7 +76,7 @@ public unsafe partial struct ICommandQueue
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.waitForFenceValuesOnDevice"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int waitForFenceValuesOnDevice([NativeTypeName("rhi::GfxCount")] int fenceCount, IFence** fences, [NativeTypeName("uint64_t *")] ulong* waitValues)
+    public int waitForFenceValuesOnDevice([NativeTypeName("uint32_t")] uint fenceCount, IFence** fences, [NativeTypeName("uint64_t *")] ulong* waitValues)
     {
         return lpVtbl->waitForFenceValuesOnDevice((ICommandQueue*)Unsafe.AsPointer(ref this), fenceCount, fences, waitValues);
     }
@@ -98,8 +98,8 @@ public unsafe partial struct ICommandQueue
         [NativeTypeName("Result (ICommandEncoder **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandQueue*, ICommandEncoder**, int> createCommandEncoder;
 
-        [NativeTypeName("Result (GfxCount, ICommandBuffer *const *, IFence *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandQueue*, int, ICommandBuffer**, IFence*, ulong, int> submit;
+        [NativeTypeName("Result (uint32_t, ICommandBuffer **, IFence *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, uint, ICommandBuffer**, IFence*, ulong, int> submit;
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandQueue*, NativeHandle*, int> getNativeHandle;
@@ -107,7 +107,7 @@ public unsafe partial struct ICommandQueue
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandQueue*, int> waitOnHost;
 
-        [NativeTypeName("Result (GfxCount, IFence **, uint64_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandQueue*, int, IFence**, ulong*, int> waitForFenceValuesOnDevice;
+        [NativeTypeName("Result (uint32_t, IFence **, uint64_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, uint, IFence**, ulong*, int> waitForFenceValuesOnDevice;
     }
 }

@@ -3,13 +3,20 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc"]/*' />
 public unsafe partial struct BufferDesc
 {
+    /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.structType"]/*' />
+    [NativeTypeName("rhi::StructType")]
+    public StructType structType;
+
+    /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.next"]/*' />
+    public void* next;
+
     /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.size"]/*' />
-    [NativeTypeName("rhi::Size")]
+    [NativeTypeName("uint64_t")]
     public ulong size;
 
     /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.elementSize"]/*' />
-    [NativeTypeName("rhi::Size")]
-    public ulong elementSize;
+    [NativeTypeName("uint32_t")]
+    public uint elementSize;
 
     /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.format"]/*' />
     [NativeTypeName("rhi::Format")]

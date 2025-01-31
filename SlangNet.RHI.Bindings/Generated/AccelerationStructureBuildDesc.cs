@@ -8,8 +8,8 @@ public unsafe partial struct AccelerationStructureBuildDesc
     public AccelerationStructureBuildInput* inputs;
 
     /// <include file='AccelerationStructureBuildDesc.xml' path='doc/member[@name="AccelerationStructureBuildDesc.inputCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int inputCount;
+    [NativeTypeName("uint32_t")]
+    public uint inputCount;
 
     /// <include file='AccelerationStructureBuildDesc.xml' path='doc/member[@name="AccelerationStructureBuildDesc.motionOptions"]/*' />
     [NativeTypeName("rhi::AccelerationStructureBuildInputMotionOptions")]

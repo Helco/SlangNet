@@ -3,6 +3,13 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='ComputePipelineDesc.xml' path='doc/member[@name="ComputePipelineDesc"]/*' />
 public unsafe partial struct ComputePipelineDesc
 {
+    /// <include file='ComputePipelineDesc.xml' path='doc/member[@name="ComputePipelineDesc.structType"]/*' />
+    [NativeTypeName("rhi::StructType")]
+    public StructType structType;
+
+    /// <include file='ComputePipelineDesc.xml' path='doc/member[@name="ComputePipelineDesc.next"]/*' />
+    public void* next;
+
     /// <include file='ComputePipelineDesc.xml' path='doc/member[@name="ComputePipelineDesc.program"]/*' />
     [NativeTypeName("rhi::IShaderProgram *")]
     public IShaderProgram* program;

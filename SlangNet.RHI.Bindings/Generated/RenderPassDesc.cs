@@ -8,8 +8,8 @@ public unsafe partial struct RenderPassDesc
     public RenderPassColorAttachment* colorAttachments;
 
     /// <include file='RenderPassDesc.xml' path='doc/member[@name="RenderPassDesc.colorAttachmentCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int colorAttachmentCount;
+    [NativeTypeName("uint32_t")]
+    public uint colorAttachmentCount;
 
     /// <include file='RenderPassDesc.xml' path='doc/member[@name="RenderPassDesc.depthStencilAttachment"]/*' />
     [NativeTypeName("rhi::RenderPassDepthStencilAttachment *")]

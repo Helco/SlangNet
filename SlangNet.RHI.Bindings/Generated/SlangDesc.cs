@@ -17,16 +17,24 @@ public unsafe partial struct SlangDesc
     public sbyte** searchPaths;
 
     /// <include file='SlangDesc.xml' path='doc/member[@name="SlangDesc.searchPathCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int searchPathCount;
+    [NativeTypeName("uint32_t")]
+    public uint searchPathCount;
 
     /// <include file='SlangDesc.xml' path='doc/member[@name="SlangDesc.preprocessorMacros"]/*' />
     [NativeTypeName("const slang::PreprocessorMacroDesc *")]
     public PreprocessorMacroDesc* preprocessorMacros;
 
     /// <include file='SlangDesc.xml' path='doc/member[@name="SlangDesc.preprocessorMacroCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int preprocessorMacroCount;
+    [NativeTypeName("uint32_t")]
+    public uint preprocessorMacroCount;
+
+    /// <include file='SlangDesc.xml' path='doc/member[@name="SlangDesc.compilerOptionEntries"]/*' />
+    [NativeTypeName("slang::CompilerOptionEntry *")]
+    public CompilerOptionEntry* compilerOptionEntries;
+
+    /// <include file='SlangDesc.xml' path='doc/member[@name="SlangDesc.compilerOptionEntryCount"]/*' />
+    [NativeTypeName("uint32_t")]
+    public uint compilerOptionEntryCount;
 
     /// <include file='SlangDesc.xml' path='doc/member[@name="SlangDesc.targetProfile"]/*' />
     [NativeTypeName("const char *")]

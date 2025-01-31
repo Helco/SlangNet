@@ -4,22 +4,22 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct DrawArguments
 {
     /// <include file='DrawArguments.xml' path='doc/member[@name="DrawArguments.vertexCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int vertexCount;
+    [NativeTypeName("uint32_t")]
+    public uint vertexCount;
 
     /// <include file='DrawArguments.xml' path='doc/member[@name="DrawArguments.instanceCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int instanceCount;
+    [NativeTypeName("uint32_t")]
+    public uint instanceCount;
 
     /// <include file='DrawArguments.xml' path='doc/member[@name="DrawArguments.startVertexLocation"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int startVertexLocation;
+    [NativeTypeName("uint32_t")]
+    public uint startVertexLocation;
 
     /// <include file='DrawArguments.xml' path='doc/member[@name="DrawArguments.startInstanceLocation"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int startInstanceLocation;
+    [NativeTypeName("uint32_t")]
+    public uint startInstanceLocation;
 
     /// <include file='DrawArguments.xml' path='doc/member[@name="DrawArguments.startIndexLocation"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int startIndexLocation;
+    [NativeTypeName("uint32_t")]
+    public uint startIndexLocation;
 }

@@ -7,6 +7,9 @@ public unsafe partial struct D3D12ExperimentalFeaturesDesc
     [NativeTypeName("rhi::StructType")]
     public StructType structType;
 
+    /// <include file='D3D12ExperimentalFeaturesDesc.xml' path='doc/member[@name="D3D12ExperimentalFeaturesDesc.next"]/*' />
+    public void* next;
+
     /// <include file='D3D12ExperimentalFeaturesDesc.xml' path='doc/member[@name="D3D12ExperimentalFeaturesDesc.featureCount"]/*' />
     [NativeTypeName("uint32_t")]
     public uint featureCount;

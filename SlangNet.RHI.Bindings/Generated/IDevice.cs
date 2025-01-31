@@ -51,7 +51,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getFeatures"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getFeatures([NativeTypeName("const char **")] sbyte** outFeatures, [NativeTypeName("rhi::Size")] ulong bufferSize, [NativeTypeName("rhi::GfxCount *")] int* outFeatureCount)
+    public int getFeatures([NativeTypeName("const char **")] sbyte** outFeatures, [NativeTypeName("size_t")] nuint bufferSize, [NativeTypeName("uint32_t *")] uint* outFeatureCount)
     {
         return lpVtbl->getFeatures((IDevice*)Unsafe.AsPointer(ref this), outFeatures, bufferSize, outFeatureCount);
     }
@@ -203,7 +203,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createShaderTable"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int createShaderTable([NativeTypeName("const IShaderTable::Desc &")] IShaderTable_Desc* desc, IShaderTable** outTable)
+    public int createShaderTable([NativeTypeName("const ShaderTableDesc &")] ShaderTableDesc* desc, IShaderTable** outTable)
     {
         return lpVtbl->createShaderTable((IDevice*)Unsafe.AsPointer(ref this), desc, outTable);
     }
@@ -299,7 +299,7 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.waitForFences"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int waitForFences([NativeTypeName("rhi::GfxCount")] int fenceCount, IFence** fences, [NativeTypeName("uint64_t *")] ulong* values, bool waitForAll, [NativeTypeName("uint64_t")] ulong timeout)
+    public int waitForFences([NativeTypeName("uint32_t")] uint fenceCount, IFence** fences, [NativeTypeName("uint64_t *")] ulong* values, bool waitForAll, [NativeTypeName("uint64_t")] ulong timeout)
     {
         return lpVtbl->waitForFences((IDevice*)Unsafe.AsPointer(ref this), fenceCount, fences, values, waitForAll, timeout);
     }
@@ -337,8 +337,8 @@ public unsafe partial struct IDevice
         [NativeTypeName("bool (const char *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, sbyte*, bool> hasFeature;
 
-        [NativeTypeName("Result (const char **, Size, GfxCount *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IDevice*, sbyte**, ulong, int*, int> getFeatures;
+        [NativeTypeName("Result (const char **, size_t, uint32_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, sbyte**, nuint, uint*, int> getFeatures;
 
         [NativeTypeName("Result (Format, FormatSupport *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, Format, FormatSupport*, int> getFormatSupport;
@@ -394,8 +394,8 @@ public unsafe partial struct IDevice
         [NativeTypeName("Result (IShaderProgram *, IShaderObject **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, IShaderProgram*, IShaderObject**, int> createRootShaderObject;
 
-        [NativeTypeName("Result (const IShaderTable::Desc &, IShaderTable **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IDevice*, IShaderTable_Desc*, IShaderTable**, int> createShaderTable;
+        [NativeTypeName("Result (const ShaderTableDesc &, IShaderTable **) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, ShaderTableDesc*, IShaderTable**, int> createShaderTable;
 
         [NativeTypeName("Result (const ShaderProgramDesc &, IShaderProgram **, ISlangBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, ShaderProgramDesc*, IShaderProgram**, SlangNet.Unsafe.ISlangBlob**, int> createShaderProgram;
@@ -430,8 +430,8 @@ public unsafe partial struct IDevice
         [NativeTypeName("Result (const FenceDesc &, IFence **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, FenceDesc*, IFence**, int> createFence;
 
-        [NativeTypeName("Result (GfxCount, IFence **, uint64_t *, bool, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IDevice*, int, IFence**, ulong*, bool, ulong, int> waitForFences;
+        [NativeTypeName("Result (uint32_t, IFence **, uint64_t *, bool, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, uint, IFence**, ulong*, bool, ulong, int> waitForFences;
 
         [NativeTypeName("Result (const TextureDesc &, Size *, Size *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, TextureDesc*, ulong*, ulong*, int> getTextureAllocationInfo;

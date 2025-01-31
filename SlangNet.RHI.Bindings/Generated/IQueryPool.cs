@@ -36,7 +36,7 @@ public unsafe partial struct IQueryPool
     /// <include file='IQueryPool.xml' path='doc/member[@name="IQueryPool.getResult"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getResult([NativeTypeName("rhi::GfxIndex")] int queryIndex, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("uint64_t *")] ulong* data)
+    public int getResult([NativeTypeName("uint32_t")] uint queryIndex, [NativeTypeName("uint32_t")] uint count, [NativeTypeName("uint64_t *")] ulong* data)
     {
         return lpVtbl->getResult((IQueryPool*)Unsafe.AsPointer(ref this), queryIndex, count, data);
     }
@@ -60,8 +60,8 @@ public unsafe partial struct IQueryPool
         [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IQueryPool*, uint> release;
 
-        [NativeTypeName("Result (GfxIndex, GfxCount, uint64_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IQueryPool*, int, int, ulong*, int> getResult;
+        [NativeTypeName("Result (uint32_t, uint32_t, uint64_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IQueryPool*, uint, uint, ulong*, int> getResult;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IQueryPool*, int> reset;

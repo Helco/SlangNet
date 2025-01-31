@@ -80,7 +80,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.uploadTextureData"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void uploadTextureData([NativeTypeName("rhi::ITexture *")] ITexture* dst, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, [NativeTypeName("rhi::Offset3D")] Offset3D offset, [NativeTypeName("rhi::Extents")] Extents extent, [NativeTypeName("rhi::SubresourceData *")] SubresourceData* subresourceData, [NativeTypeName("rhi::GfxCount")] int subresourceDataCount)
+    public void uploadTextureData([NativeTypeName("rhi::ITexture *")] ITexture* dst, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, [NativeTypeName("rhi::Offset3D")] Offset3D offset, [NativeTypeName("rhi::Extents")] Extents extent, [NativeTypeName("rhi::SubresourceData *")] SubresourceData* subresourceData, [NativeTypeName("uint32_t")] uint subresourceDataCount)
     {
         lpVtbl->uploadTextureData((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, subresourceRange, offset, extent, subresourceData, subresourceDataCount);
     }
@@ -108,14 +108,14 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.resolveQuery"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void resolveQuery([NativeTypeName("rhi::IQueryPool *")] IQueryPool* queryPool, [NativeTypeName("rhi::GfxIndex")] int index, [NativeTypeName("rhi::GfxCount")] int count, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset)
+    public void resolveQuery([NativeTypeName("rhi::IQueryPool *")] IQueryPool* queryPool, [NativeTypeName("uint32_t")] uint index, [NativeTypeName("uint32_t")] uint count, [NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("uint64_t")] ulong offset)
     {
         lpVtbl->resolveQuery((ICommandEncoder*)Unsafe.AsPointer(ref this), queryPool, index, count, buffer, offset);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.buildAccelerationStructure"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void buildAccelerationStructure([NativeTypeName("const AccelerationStructureBuildDesc &")] AccelerationStructureBuildDesc* desc, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* dst, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* src, [NativeTypeName("rhi::BufferWithOffset")] BufferWithOffset scratchBuffer, [NativeTypeName("rhi::GfxCount")] int propertyQueryCount, [NativeTypeName("rhi::AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
+    public void buildAccelerationStructure([NativeTypeName("const AccelerationStructureBuildDesc &")] AccelerationStructureBuildDesc* desc, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* dst, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* src, [NativeTypeName("rhi::BufferWithOffset")] BufferWithOffset scratchBuffer, [NativeTypeName("uint32_t")] uint propertyQueryCount, [NativeTypeName("rhi::AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
     {
         lpVtbl->buildAccelerationStructure((ICommandEncoder*)Unsafe.AsPointer(ref this), desc, dst, src, scratchBuffer, propertyQueryCount, queryDescs);
     }
@@ -129,7 +129,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.queryAccelerationStructureProperties"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void queryAccelerationStructureProperties([NativeTypeName("rhi::GfxCount")] int accelerationStructureCount, [NativeTypeName("IAccelerationStructure *const *")] IAccelerationStructure** accelerationStructures, [NativeTypeName("rhi::GfxCount")] int queryCount, [NativeTypeName("rhi::AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
+    public void queryAccelerationStructureProperties([NativeTypeName("uint32_t")] uint accelerationStructureCount, IAccelerationStructure** accelerationStructures, [NativeTypeName("uint32_t")] uint queryCount, [NativeTypeName("rhi::AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
     {
         lpVtbl->queryAccelerationStructureProperties((ICommandEncoder*)Unsafe.AsPointer(ref this), accelerationStructureCount, accelerationStructures, queryCount, queryDescs);
     }
@@ -185,7 +185,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.writeTimestamp"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void writeTimestamp([NativeTypeName("rhi::IQueryPool *")] IQueryPool* queryPool, [NativeTypeName("rhi::GfxIndex")] int queryIndex)
+    public void writeTimestamp([NativeTypeName("rhi::IQueryPool *")] IQueryPool* queryPool, [NativeTypeName("uint32_t")] uint queryIndex)
     {
         lpVtbl->writeTimestamp((ICommandEncoder*)Unsafe.AsPointer(ref this), queryPool, queryIndex);
     }
@@ -235,8 +235,8 @@ public unsafe partial struct ICommandEncoder
         [NativeTypeName("void (IBuffer *, Offset, Size, Size, ITexture *, SubresourceRange, Offset3D, Extents) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ulong, ulong, ulong, ITexture*, SubresourceRange, Offset3D, Extents, void> copyTextureToBuffer;
 
-        [NativeTypeName("void (ITexture *, SubresourceRange, Offset3D, Extents, SubresourceData *, GfxCount) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, Offset3D, Extents, SubresourceData*, int, void> uploadTextureData;
+        [NativeTypeName("void (ITexture *, SubresourceRange, Offset3D, Extents, SubresourceData *, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, Offset3D, Extents, SubresourceData*, uint, void> uploadTextureData;
 
         [NativeTypeName("void (IBuffer *, Offset, Size, void *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ulong, ulong, void*, void> uploadBufferData;
@@ -247,17 +247,17 @@ public unsafe partial struct ICommandEncoder
         [NativeTypeName("void (ITexture *, const ClearValue &, const SubresourceRange *, bool, bool) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, ClearValue*, SubresourceRange*, bool, bool, void> clearTexture;
 
-        [NativeTypeName("void (IQueryPool *, GfxIndex, GfxCount, IBuffer *, Offset) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IQueryPool*, int, int, IBuffer*, ulong, void> resolveQuery;
+        [NativeTypeName("void (IQueryPool *, uint32_t, uint32_t, IBuffer *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IQueryPool*, uint, uint, IBuffer*, ulong, void> resolveQuery;
 
-        [NativeTypeName("void (const AccelerationStructureBuildDesc &, IAccelerationStructure *, IAccelerationStructure *, BufferWithOffset, GfxCount, AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, AccelerationStructureBuildDesc*, IAccelerationStructure*, IAccelerationStructure*, BufferWithOffset, int, AccelerationStructureQueryDesc*, void> buildAccelerationStructure;
+        [NativeTypeName("void (const AccelerationStructureBuildDesc &, IAccelerationStructure *, IAccelerationStructure *, BufferWithOffset, uint32_t, AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, AccelerationStructureBuildDesc*, IAccelerationStructure*, IAccelerationStructure*, BufferWithOffset, uint, AccelerationStructureQueryDesc*, void> buildAccelerationStructure;
 
         [NativeTypeName("void (IAccelerationStructure *, IAccelerationStructure *, AccelerationStructureCopyMode) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IAccelerationStructure*, IAccelerationStructure*, AccelerationStructureCopyMode, void> copyAccelerationStructure;
 
-        [NativeTypeName("void (GfxCount, IAccelerationStructure *const *, GfxCount, AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, int, IAccelerationStructure**, int, AccelerationStructureQueryDesc*, void> queryAccelerationStructureProperties;
+        [NativeTypeName("void (uint32_t, IAccelerationStructure **, uint32_t, AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, uint, IAccelerationStructure**, uint, AccelerationStructureQueryDesc*, void> queryAccelerationStructureProperties;
 
         [NativeTypeName("void (BufferWithOffset, IAccelerationStructure *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, BufferWithOffset, IAccelerationStructure*, void> serializeAccelerationStructure;
@@ -280,8 +280,8 @@ public unsafe partial struct ICommandEncoder
         [NativeTypeName("void (const char *, float *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, sbyte*, float*, void> insertDebugMarker;
 
-        [NativeTypeName("void (IQueryPool *, GfxIndex) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IQueryPool*, int, void> writeTimestamp;
+        [NativeTypeName("void (IQueryPool *, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IQueryPool*, uint, void> writeTimestamp;
 
         [NativeTypeName("Result (ICommandBuffer **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, ICommandBuffer**, int> finish;

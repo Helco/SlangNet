@@ -20,7 +20,7 @@ public unsafe partial struct Binding
     public IResource* resource2;
 
     /// <include file='Binding.xml' path='doc/member[@name="Binding.Anonymous"]/*' />
-    [NativeTypeName("__AnonymousRecord_slang-rhi_L1100_C5")]
+    [NativeTypeName("__AnonymousRecord_slang-rhi_L1136_C5")]
     public _Anonymous_e__Union Anonymous;
 
     /// <include file='_Anonymous_e__Union.xml' path='doc/member[@name="_Anonymous_e__Union.bufferRange"]/*' />

@@ -13,20 +13,20 @@ public unsafe partial struct AccelerationStructureBuildInputTriangles
     public BufferWithOffset* vertexBuffers;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.vertexBufferCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int vertexBufferCount;
+    [NativeTypeName("uint32_t")]
+    public uint vertexBufferCount;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.vertexFormat"]/*' />
     [NativeTypeName("rhi::Format")]
     public Format vertexFormat;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.vertexCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int vertexCount;
+    [NativeTypeName("uint32_t")]
+    public uint vertexCount;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.vertexStride"]/*' />
-    [NativeTypeName("rhi::Size")]
-    public ulong vertexStride;
+    [NativeTypeName("uint32_t")]
+    public uint vertexStride;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.indexBuffer"]/*' />
     [NativeTypeName("rhi::BufferWithOffset")]
@@ -37,8 +37,8 @@ public unsafe partial struct AccelerationStructureBuildInputTriangles
     public IndexFormat indexFormat;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.indexCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int indexCount;
+    [NativeTypeName("uint32_t")]
+    public uint indexCount;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.preTransformBuffer"]/*' />
     [NativeTypeName("rhi::BufferWithOffset")]

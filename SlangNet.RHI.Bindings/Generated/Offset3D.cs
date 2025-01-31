@@ -4,14 +4,14 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct Offset3D
 {
     /// <include file='Offset3D.xml' path='doc/member[@name="Offset3D.x"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
+    [NativeTypeName("int32_t")]
     public int x;
 
     /// <include file='Offset3D.xml' path='doc/member[@name="Offset3D.y"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
+    [NativeTypeName("int32_t")]
     public int y;
 
     /// <include file='Offset3D.xml' path='doc/member[@name="Offset3D.z"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
+    [NativeTypeName("int32_t")]
     public int z;
 }

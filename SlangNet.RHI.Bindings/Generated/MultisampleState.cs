@@ -4,8 +4,8 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct MultisampleState
 {
     /// <include file='MultisampleState.xml' path='doc/member[@name="MultisampleState.sampleCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int sampleCount;
+    [NativeTypeName("uint32_t")]
+    public uint sampleCount;
 
     /// <include file='MultisampleState.xml' path='doc/member[@name="MultisampleState.sampleMask"]/*' />
     [NativeTypeName("uint32_t")]

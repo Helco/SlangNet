@@ -12,16 +12,16 @@ public partial struct SurfaceConfig
     public TextureUsage usage;
 
     /// <include file='SurfaceConfig.xml' path='doc/member[@name="SurfaceConfig.width"]/*' />
-    [NativeTypeName("rhi::Size")]
-    public ulong width;
+    [NativeTypeName("uint32_t")]
+    public uint width;
 
     /// <include file='SurfaceConfig.xml' path='doc/member[@name="SurfaceConfig.height"]/*' />
-    [NativeTypeName("rhi::Size")]
-    public ulong height;
+    [NativeTypeName("uint32_t")]
+    public uint height;
 
     /// <include file='SurfaceConfig.xml' path='doc/member[@name="SurfaceConfig.desiredImageCount"]/*' />
-    [NativeTypeName("rhi::Size")]
-    public ulong desiredImageCount;
+    [NativeTypeName("uint32_t")]
+    public uint desiredImageCount;
 
     /// <include file='SurfaceConfig.xml' path='doc/member[@name="SurfaceConfig.vsync"]/*' />
     public bool vsync;

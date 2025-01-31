@@ -4,18 +4,18 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct SubresourceRange
 {
     /// <include file='SubresourceRange.xml' path='doc/member[@name="SubresourceRange.mipLevel"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int mipLevel;
+    [NativeTypeName("uint32_t")]
+    public uint mipLevel;
 
     /// <include file='SubresourceRange.xml' path='doc/member[@name="SubresourceRange.mipLevelCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int mipLevelCount;
+    [NativeTypeName("uint32_t")]
+    public uint mipLevelCount;
 
     /// <include file='SubresourceRange.xml' path='doc/member[@name="SubresourceRange.baseArrayLayer"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int baseArrayLayer;
+    [NativeTypeName("uint32_t")]
+    public uint baseArrayLayer;
 
     /// <include file='SubresourceRange.xml' path='doc/member[@name="SubresourceRange.layerCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int layerCount;
+    [NativeTypeName("uint32_t")]
+    public uint layerCount;
 }

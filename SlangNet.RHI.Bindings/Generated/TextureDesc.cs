@@ -3,6 +3,13 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc"]/*' />
 public unsafe partial struct TextureDesc
 {
+    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.structType"]/*' />
+    [NativeTypeName("rhi::StructType")]
+    public StructType structType;
+
+    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.next"]/*' />
+    public void* next;
+
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.type"]/*' />
     [NativeTypeName("rhi::TextureType")]
     public TextureType type;
@@ -27,23 +34,24 @@ public unsafe partial struct TextureDesc
     public Extents size;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.arrayLength"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int arrayLength;
+    [NativeTypeName("uint32_t")]
+    public uint arrayLength;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.mipLevelCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int mipLevelCount;
+    [NativeTypeName("uint32_t")]
+    public uint mipLevelCount;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.format"]/*' />
     [NativeTypeName("rhi::Format")]
     public Format format;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.sampleCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int sampleCount;
+    [NativeTypeName("uint32_t")]
+    public uint sampleCount;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.sampleQuality"]/*' />
-    public int sampleQuality;
+    [NativeTypeName("uint32_t")]
+    public uint sampleQuality;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.optimalClearValue"]/*' />
     [NativeTypeName("rhi::ClearValue *")]

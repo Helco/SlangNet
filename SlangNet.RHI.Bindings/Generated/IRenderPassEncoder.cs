@@ -84,21 +84,21 @@ public unsafe partial struct IRenderPassEncoder
 
     /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.drawIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndirect([NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] ulong countOffset = 0)
+    public void drawIndirect([NativeTypeName("uint32_t")] uint maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("uint64_t")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("uint64_t")] ulong countOffset = 0)
     {
         lpVtbl->drawIndirect((IRenderPassEncoder*)Unsafe.AsPointer(ref this), maxDrawCount, argBuffer, argOffset, countBuffer, countOffset);
     }
 
     /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.drawIndexedIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndexedIndirect([NativeTypeName("rhi::GfxCount")] int maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("rhi::Offset")] ulong countOffset = 0)
+    public void drawIndexedIndirect([NativeTypeName("uint32_t")] uint maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("uint64_t")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("uint64_t")] ulong countOffset = 0)
     {
         lpVtbl->drawIndexedIndirect((IRenderPassEncoder*)Unsafe.AsPointer(ref this), maxDrawCount, argBuffer, argOffset, countBuffer, countOffset);
     }
 
     /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.drawMeshTasks"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawMeshTasks([NativeTypeName("rhi::GfxCount")] int x, [NativeTypeName("rhi::GfxCount")] int y, [NativeTypeName("rhi::GfxCount")] int z)
+    public void drawMeshTasks([NativeTypeName("uint32_t")] uint x, [NativeTypeName("uint32_t")] uint y, [NativeTypeName("uint32_t")] uint z)
     {
         lpVtbl->drawMeshTasks((IRenderPassEncoder*)Unsafe.AsPointer(ref this), x, y, z);
     }
@@ -135,13 +135,13 @@ public unsafe partial struct IRenderPassEncoder
         [NativeTypeName("void (const DrawArguments &) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, DrawArguments*, void> drawIndexed;
 
-        [NativeTypeName("void (GfxCount, IBuffer *, Offset, IBuffer *, Offset) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, int, IBuffer*, ulong, IBuffer*, ulong, void> drawIndirect;
+        [NativeTypeName("void (uint32_t, IBuffer *, uint64_t, IBuffer *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, uint, IBuffer*, ulong, IBuffer*, ulong, void> drawIndirect;
 
-        [NativeTypeName("void (GfxCount, IBuffer *, Offset, IBuffer *, Offset) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, int, IBuffer*, ulong, IBuffer*, ulong, void> drawIndexedIndirect;
+        [NativeTypeName("void (uint32_t, IBuffer *, uint64_t, IBuffer *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, uint, IBuffer*, ulong, IBuffer*, ulong, void> drawIndexedIndirect;
 
-        [NativeTypeName("void (GfxCount, GfxCount, GfxCount) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, int, int, int, void> drawMeshTasks;
+        [NativeTypeName("void (uint32_t, uint32_t, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, uint, uint, uint, void> drawMeshTasks;
     }
 }

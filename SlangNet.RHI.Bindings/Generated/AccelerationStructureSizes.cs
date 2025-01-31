@@ -4,14 +4,14 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct AccelerationStructureSizes
 {
     /// <include file='AccelerationStructureSizes.xml' path='doc/member[@name="AccelerationStructureSizes.accelerationStructureSize"]/*' />
-    [NativeTypeName("rhi::Size")]
+    [NativeTypeName("uint64_t")]
     public ulong accelerationStructureSize;
 
     /// <include file='AccelerationStructureSizes.xml' path='doc/member[@name="AccelerationStructureSizes.scratchSize"]/*' />
-    [NativeTypeName("rhi::Size")]
+    [NativeTypeName("uint64_t")]
     public ulong scratchSize;
 
     /// <include file='AccelerationStructureSizes.xml' path='doc/member[@name="AccelerationStructureSizes.updateScratchSize"]/*' />
-    [NativeTypeName("rhi::Size")]
+    [NativeTypeName("uint64_t")]
     public ulong updateScratchSize;
 }

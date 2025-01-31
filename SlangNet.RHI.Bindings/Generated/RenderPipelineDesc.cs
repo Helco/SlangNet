@@ -3,6 +3,13 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc"]/*' />
 public unsafe partial struct RenderPipelineDesc
 {
+    /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.structType"]/*' />
+    [NativeTypeName("rhi::StructType")]
+    public StructType structType;
+
+    /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.next"]/*' />
+    public void* next;
+
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.program"]/*' />
     [NativeTypeName("rhi::IShaderProgram *")]
     public IShaderProgram* program;
@@ -20,8 +27,8 @@ public unsafe partial struct RenderPipelineDesc
     public ColorTargetState* targets;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.targetCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int targetCount;
+    [NativeTypeName("uint32_t")]
+    public uint targetCount;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.depthStencil"]/*' />
     [NativeTypeName("rhi::DepthStencilState")]

@@ -12,6 +12,6 @@ public unsafe partial struct AccelerationStructureQueryDesc
     public IQueryPool* queryPool;
 
     /// <include file='AccelerationStructureQueryDesc.xml' path='doc/member[@name="AccelerationStructureQueryDesc.firstQueryIndex"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int firstQueryIndex;
+    [NativeTypeName("uint32_t")]
+    public uint firstQueryIndex;
 }

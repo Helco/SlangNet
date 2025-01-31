@@ -22,24 +22,24 @@ public unsafe partial struct RenderState
     public _viewports_e__FixedBuffer viewports;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.viewportCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int viewportCount;
+    [NativeTypeName("uint32_t")]
+    public uint viewportCount;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.scissorRects"]/*' />
     [NativeTypeName("ScissorRect[16]")]
     public _scissorRects_e__FixedBuffer scissorRects;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.scissorRectCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int scissorRectCount;
+    [NativeTypeName("uint32_t")]
+    public uint scissorRectCount;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.vertexBuffers"]/*' />
     [NativeTypeName("BufferWithOffset[16]")]
     public _vertexBuffers_e__FixedBuffer vertexBuffers;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.vertexBufferCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int vertexBufferCount;
+    [NativeTypeName("uint32_t")]
+    public uint vertexBufferCount;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.indexBuffer"]/*' />
     [NativeTypeName("rhi::BufferWithOffset")]

@@ -13,10 +13,10 @@ public partial struct AccelerationStructureBuildInputInstances
     public BufferWithOffset instanceBuffer;
 
     /// <include file='AccelerationStructureBuildInputInstances.xml' path='doc/member[@name="AccelerationStructureBuildInputInstances.instanceStride"]/*' />
-    [NativeTypeName("rhi::Size")]
-    public ulong instanceStride;
+    [NativeTypeName("uint32_t")]
+    public uint instanceStride;
 
     /// <include file='AccelerationStructureBuildInputInstances.xml' path='doc/member[@name="AccelerationStructureBuildInputInstances.instanceCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int instanceCount;
+    [NativeTypeName("uint32_t")]
+    public uint instanceCount;
 }

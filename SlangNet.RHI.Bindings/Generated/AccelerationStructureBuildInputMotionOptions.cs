@@ -4,8 +4,8 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct AccelerationStructureBuildInputMotionOptions
 {
     /// <include file='AccelerationStructureBuildInputMotionOptions.xml' path='doc/member[@name="AccelerationStructureBuildInputMotionOptions.keyCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int keyCount;
+    [NativeTypeName("uint32_t")]
+    public uint keyCount;
 
     /// <include file='AccelerationStructureBuildInputMotionOptions.xml' path='doc/member[@name="AccelerationStructureBuildInputMotionOptions.timeStart"]/*' />
     public float timeStart;

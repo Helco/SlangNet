@@ -70,14 +70,14 @@ public unsafe partial struct IComputePassEncoder
 
     /// <include file='IComputePassEncoder.xml' path='doc/member[@name="IComputePassEncoder.dispatchCompute"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void dispatchCompute([NativeTypeName("rhi::GfxCount")] int x, [NativeTypeName("rhi::GfxCount")] int y, [NativeTypeName("rhi::GfxCount")] int z)
+    public void dispatchCompute([NativeTypeName("uint32_t")] uint x, [NativeTypeName("uint32_t")] uint y, [NativeTypeName("uint32_t")] uint z)
     {
         lpVtbl->dispatchCompute((IComputePassEncoder*)Unsafe.AsPointer(ref this), x, y, z);
     }
 
     /// <include file='IComputePassEncoder.xml' path='doc/member[@name="IComputePassEncoder.dispatchComputeIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void dispatchComputeIndirect([NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("rhi::Offset")] ulong offset)
+    public void dispatchComputeIndirect([NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("uint64_t")] ulong offset)
     {
         lpVtbl->dispatchComputeIndirect((IComputePassEncoder*)Unsafe.AsPointer(ref this), argBuffer, offset);
     }
@@ -108,10 +108,10 @@ public unsafe partial struct IComputePassEncoder
         [NativeTypeName("void (const ComputeState &) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IComputePassEncoder*, ComputeState*, void> setComputeState;
 
-        [NativeTypeName("void (GfxCount, GfxCount, GfxCount) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IComputePassEncoder*, int, int, int, void> dispatchCompute;
+        [NativeTypeName("void (uint32_t, uint32_t, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IComputePassEncoder*, uint, uint, uint, void> dispatchCompute;
 
-        [NativeTypeName("void (IBuffer *, Offset) __attribute__((nothrow)) __attribute__((stdcall))")]
+        [NativeTypeName("void (IBuffer *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IComputePassEncoder*, IBuffer*, ulong, void> dispatchComputeIndirect;
     }
 }

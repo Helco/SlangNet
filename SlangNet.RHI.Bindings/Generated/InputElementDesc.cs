@@ -8,18 +8,18 @@ public unsafe partial struct InputElementDesc
     public sbyte* semanticName;
 
     /// <include file='InputElementDesc.xml' path='doc/member[@name="InputElementDesc.semanticIndex"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int semanticIndex;
+    [NativeTypeName("uint32_t")]
+    public uint semanticIndex;
 
     /// <include file='InputElementDesc.xml' path='doc/member[@name="InputElementDesc.format"]/*' />
     [NativeTypeName("rhi::Format")]
     public Format format;
 
     /// <include file='InputElementDesc.xml' path='doc/member[@name="InputElementDesc.offset"]/*' />
-    [NativeTypeName("rhi::Offset")]
-    public ulong offset;
+    [NativeTypeName("uint32_t")]
+    public uint offset;
 
     /// <include file='InputElementDesc.xml' path='doc/member[@name="InputElementDesc.bufferSlotIndex"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int bufferSlotIndex;
+    [NativeTypeName("uint32_t")]
+    public uint bufferSlotIndex;
 }

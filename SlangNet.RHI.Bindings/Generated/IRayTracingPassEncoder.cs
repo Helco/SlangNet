@@ -70,7 +70,7 @@ public unsafe partial struct IRayTracingPassEncoder
 
     /// <include file='IRayTracingPassEncoder.xml' path='doc/member[@name="IRayTracingPassEncoder.dispatchRays"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void dispatchRays([NativeTypeName("rhi::GfxIndex")] int rayGenShaderIndex, [NativeTypeName("rhi::GfxCount")] int width, [NativeTypeName("rhi::GfxCount")] int height, [NativeTypeName("rhi::GfxCount")] int depth)
+    public void dispatchRays([NativeTypeName("uint32_t")] uint rayGenShaderIndex, [NativeTypeName("uint32_t")] uint width, [NativeTypeName("uint32_t")] uint height, [NativeTypeName("uint32_t")] uint depth)
     {
         lpVtbl->dispatchRays((IRayTracingPassEncoder*)Unsafe.AsPointer(ref this), rayGenShaderIndex, width, height, depth);
     }
@@ -101,7 +101,7 @@ public unsafe partial struct IRayTracingPassEncoder
         [NativeTypeName("void (const RayTracingState &) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRayTracingPassEncoder*, RayTracingState*, void> setRayTracingState;
 
-        [NativeTypeName("void (GfxIndex, GfxCount, GfxCount, GfxCount) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IRayTracingPassEncoder*, int, int, int, int, void> dispatchRays;
+        [NativeTypeName("void (uint32_t, uint32_t, uint32_t, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRayTracingPassEncoder*, uint, uint, uint, uint, void> dispatchRays;
     }
 }

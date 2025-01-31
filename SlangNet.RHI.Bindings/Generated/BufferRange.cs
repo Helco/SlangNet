@@ -4,10 +4,10 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct BufferRange
 {
     /// <include file='BufferRange.xml' path='doc/member[@name="BufferRange.offset"]/*' />
-    [NativeTypeName("rhi::Offset")]
+    [NativeTypeName("uint64_t")]
     public ulong offset;
 
     /// <include file='BufferRange.xml' path='doc/member[@name="BufferRange.size"]/*' />
-    [NativeTypeName("rhi::Size")]
+    [NativeTypeName("uint64_t")]
     public ulong size;
 }

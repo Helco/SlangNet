@@ -16,6 +16,6 @@ public unsafe partial struct SurfaceInfo
     public Format* formats;
 
     /// <include file='SurfaceInfo.xml' path='doc/member[@name="SurfaceInfo.formatCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int formatCount;
+    [NativeTypeName("uint32_t")]
+    public uint formatCount;
 }

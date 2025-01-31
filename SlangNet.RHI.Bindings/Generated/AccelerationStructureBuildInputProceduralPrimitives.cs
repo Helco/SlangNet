@@ -13,16 +13,16 @@ public unsafe partial struct AccelerationStructureBuildInputProceduralPrimitives
     public BufferWithOffset* aabbBuffers;
 
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.aabbBufferCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int aabbBufferCount;
+    [NativeTypeName("uint32_t")]
+    public uint aabbBufferCount;
 
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.aabbStride"]/*' />
-    [NativeTypeName("rhi::Size")]
-    public ulong aabbStride;
+    [NativeTypeName("uint32_t")]
+    public uint aabbStride;
 
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.primitiveCount"]/*' />
-    [NativeTypeName("rhi::GfxCount")]
-    public int primitiveCount;
+    [NativeTypeName("uint32_t")]
+    public uint primitiveCount;
 
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.flags"]/*' />
     [NativeTypeName("rhi::AccelerationStructureGeometryFlags")]

@@ -117,11 +117,20 @@ public enum NativeHandleType
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUstream"]/*' />
     CUstream = 0x00050004,
 
+    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUmodule"]/*' />
+    CUmodule = 0x00050005,
+
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.OptixDeviceContext"]/*' />
     OptixDeviceContext = 0x00060001,
 
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.OptixTraversableHandle"]/*' />
     OptixTraversableHandle = 0x00060002,
+
+    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.OptixModule"]/*' />
+    OptixModule = 0x00060003,
+
+    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.OptixPipeline"]/*' />
+    OptixPipeline = 0x00060004,
 
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.WGPUDevice"]/*' />
     WGPUDevice = 0x00070001,

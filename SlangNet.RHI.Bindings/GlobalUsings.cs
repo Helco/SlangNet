@@ -1,5 +1,3 @@
-global using IShaderTable_Desc = SlangNet.RHI.Unsafe.IShaderTable.IShaderTable_Desc;
-
 namespace SlangNet.RHI.Unsafe
 {
     static unsafe class Unsafe

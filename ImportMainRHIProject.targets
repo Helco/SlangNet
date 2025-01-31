@@ -1,11 +1,15 @@
 <Project>
   <!-- Thanks to PackageSourceMapping we *have* to use a custom nuget.config to set the local feed -->
 
-  <ItemGroup Condition="'$(UseLocalVersion)' == ''">
+  <!--<ItemGroup Condition="'$(UseLocalVersion)' == ''">
     <ProjectReference Include="..\..\SlangNet.RHI\SlangNet.RHI.csproj"/>
   </ItemGroup>
   <ItemGroup Condition="'$(UseLocalVersion)' != ''">
     <PackageReference Include="SlangNet.RHI" Version="$(VersionPrefix)-$(UseLocalVersion)"/>
+  </ItemGroup>-->
+
+  <ItemGroup>
+  <ProjectReference Include="..\..\SlangNet.RHI.Bindings\SlangNet.RHI.Bindings.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseLocalVersion)' == '' And '$(ForceTargetFramework)' != ''">

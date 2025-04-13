@@ -4,14 +4,14 @@ namespace SlangNet.RHI.Unsafe;
 public partial struct ShaderOffset
 {
     /// <include file='ShaderOffset.xml' path='doc/member[@name="ShaderOffset.uniformOffset"]/*' />
-    [NativeTypeName("SlangInt")]
-    public long uniformOffset;
+    [NativeTypeName("uint32_t")]
+    public uint uniformOffset;
 
     /// <include file='ShaderOffset.xml' path='doc/member[@name="ShaderOffset.bindingRangeIndex"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int bindingRangeIndex;
+    [NativeTypeName("uint32_t")]
+    public uint bindingRangeIndex;
 
     /// <include file='ShaderOffset.xml' path='doc/member[@name="ShaderOffset.bindingArrayIndex"]/*' />
-    [NativeTypeName("rhi::GfxIndex")]
-    public int bindingArrayIndex;
+    [NativeTypeName("uint32_t")]
+    public uint bindingArrayIndex;
 }

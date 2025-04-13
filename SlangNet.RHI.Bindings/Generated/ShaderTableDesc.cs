@@ -8,6 +8,7 @@ public unsafe partial struct ShaderTableDesc
     public StructType structType;
 
     /// <include file='ShaderTableDesc.xml' path='doc/member[@name="ShaderTableDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='ShaderTableDesc.xml' path='doc/member[@name="ShaderTableDesc.rayGenShaderCount"]/*' />

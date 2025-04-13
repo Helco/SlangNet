@@ -41,6 +41,22 @@ public unsafe partial struct ITextureView
         return lpVtbl->getNativeHandle((ITextureView*)Unsafe.AsPointer(ref this), outHandle);
     }
 
+    /// <include file='ITextureView.xml' path='doc/member[@name="ITextureView.getDesc"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("const TextureViewDesc &")]
+    public TextureViewDesc* getDesc()
+    {
+        return lpVtbl->getDesc((ITextureView*)Unsafe.AsPointer(ref this));
+    }
+
+    /// <include file='ITextureView.xml' path='doc/member[@name="ITextureView.getTexture"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::ITexture *")]
+    public ITexture* getTexture()
+    {
+        return lpVtbl->getTexture((ITextureView*)Unsafe.AsPointer(ref this));
+    }
+
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
@@ -54,5 +70,11 @@ public unsafe partial struct ITextureView
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ITextureView*, NativeHandle*, int> getNativeHandle;
+
+        [NativeTypeName("const TextureViewDesc &() __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ITextureView*, TextureViewDesc*> getDesc;
+
+        [NativeTypeName("ITexture *() __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ITextureView*, ITexture*> getTexture;
     }
 }

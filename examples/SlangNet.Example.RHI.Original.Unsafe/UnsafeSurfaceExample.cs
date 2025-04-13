@@ -49,7 +49,7 @@ public unsafe class UnsafeSurfaceExample : UnsafeExampleBase
     public override void Draw()
     {
         ITexture* texture = null;
-        surface->getCurrentTexture(&texture);
+        surface->acquireNextImage(&texture);
         if (texture == null)
             return;
         
@@ -58,7 +58,7 @@ public unsafe class UnsafeSurfaceExample : UnsafeExampleBase
         {
             structType = StructType.TextureViewDesc,
             next = null,
-            format = Format.Unknown,
+            format = Format.Undefined,
             aspect = TextureAspect.All,
             subresourceRange = new()
             {
@@ -106,14 +106,27 @@ public unsafe class UnsafeSurfaceExample : UnsafeExampleBase
         if (result.Succeeded && commandBuffer == null)
             result = SlangResult.GotNullPointer;
         result.ThrowIfFailed();
-        queue->submit(1, &commandBuffer, null, 0);
+        SubmitDesc submitDesc = new()
+        {
+            commandBufferCount = 1,
+            commandBuffers = &commandBuffer,
+            signalFenceCount = 0,
+            waitFenceCount = 0,
+        };
+        queue->submit(&submitDesc);
 
         result = new(surface->present());
         result.ThrowIfFailed();
 
         grey = (grey + (1f / 60f)) > 1f ? 0f : grey + (1f / 60f);
+
+            passEncoder->release();
+            encoder->release();
+            commandBuffer->release();
+            view->release();
+            texture->release();
     }
 
     public static void Main(string[] args) =>
-        Main<UnsafeSurfaceExample>(args);
+        Run<UnsafeSurfaceExample>(args);
 }

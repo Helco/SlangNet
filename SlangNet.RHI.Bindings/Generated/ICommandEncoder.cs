@@ -73,37 +73,67 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.copyTextureToBuffer"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void copyTextureToBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong dstOffset, [NativeTypeName("rhi::Size")] ulong dstSize, [NativeTypeName("rhi::Size")] ulong dstRowStride, [NativeTypeName("rhi::ITexture *")] ITexture* src, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange srcSubresource, [NativeTypeName("rhi::Offset3D")] Offset3D srcOffset, [NativeTypeName("rhi::Extents")] Extents extent)
+    public void copyTextureToBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong dstOffset, [NativeTypeName("rhi::Size")] ulong dstSize, [NativeTypeName("rhi::Size")] ulong dstRowPitch, [NativeTypeName("rhi::ITexture *")] ITexture* src, [NativeTypeName("uint32_t")] uint srcLayer, [NativeTypeName("uint32_t")] uint srcMipLevel, [NativeTypeName("rhi::Offset3D")] Offset3D srcOffset, [NativeTypeName("rhi::Extents")] Extents extent)
     {
-        lpVtbl->copyTextureToBuffer((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, dstOffset, dstSize, dstRowStride, src, srcSubresource, srcOffset, extent);
+        lpVtbl->copyTextureToBuffer((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, dstOffset, dstSize, dstRowPitch, src, srcLayer, srcMipLevel, srcOffset, extent);
+    }
+
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.copyBufferToTexture"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void copyBufferToTexture([NativeTypeName("rhi::ITexture *")] ITexture* dst, [NativeTypeName("uint32_t")] uint dstLayer, [NativeTypeName("uint32_t")] uint dstMipLevel, [NativeTypeName("rhi::Offset3D")] Offset3D dstOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* src, [NativeTypeName("rhi::Offset")] ulong srcOffset, [NativeTypeName("rhi::Size")] ulong srcSize, [NativeTypeName("rhi::Size")] ulong srcRowPitch, [NativeTypeName("rhi::Extents")] Extents extent)
+    {
+        lpVtbl->copyBufferToTexture((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, dstLayer, dstMipLevel, dstOffset, src, srcOffset, srcSize, srcRowPitch, extent);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.uploadTextureData"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void uploadTextureData([NativeTypeName("rhi::ITexture *")] ITexture* dst, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, [NativeTypeName("rhi::Offset3D")] Offset3D offset, [NativeTypeName("rhi::Extents")] Extents extent, [NativeTypeName("rhi::SubresourceData *")] SubresourceData* subresourceData, [NativeTypeName("uint32_t")] uint subresourceDataCount)
+    [return: NativeTypeName("rhi::Result")]
+    public int uploadTextureData([NativeTypeName("rhi::ITexture *")] ITexture* dst, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, [NativeTypeName("rhi::Offset3D")] Offset3D offset, [NativeTypeName("rhi::Extents")] Extents extent, [NativeTypeName("const SubresourceData *")] SubresourceData* subresourceData, [NativeTypeName("uint32_t")] uint subresourceDataCount)
     {
-        lpVtbl->uploadTextureData((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, subresourceRange, offset, extent, subresourceData, subresourceDataCount);
+        return lpVtbl->uploadTextureData((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, subresourceRange, offset, extent, subresourceData, subresourceDataCount);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.uploadBufferData"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void uploadBufferData([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, void* data)
+    [return: NativeTypeName("rhi::Result")]
+    public int uploadBufferData([NativeTypeName("rhi::IBuffer *")] IBuffer* dst, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, [NativeTypeName("const void *")] void* data)
     {
-        lpVtbl->uploadBufferData((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, offset, size, data);
+        return lpVtbl->uploadBufferData((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, offset, size, data);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.clearBuffer"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void clearBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("const BufferRange *")] BufferRange* range = null)
+    public void clearBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::BufferRange")] BufferRange range)
     {
         lpVtbl->clearBuffer((ICommandEncoder*)Unsafe.AsPointer(ref this), buffer, range);
     }
 
-    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.clearTexture"]/*' />
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.clearTextureFloat"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void clearTexture([NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("const ClearValue &")] ClearValue* clearValue = null, [NativeTypeName("const SubresourceRange *")] SubresourceRange* subresourceRange = null, bool clearDepth = true, bool clearStencil = true)
+    public void clearTextureFloat([NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, [NativeTypeName("float[4]")] float* clearValue)
     {
-        lpVtbl->clearTexture((ICommandEncoder*)Unsafe.AsPointer(ref this), texture, clearValue, subresourceRange, clearDepth, clearStencil);
+        lpVtbl->clearTextureFloat((ICommandEncoder*)Unsafe.AsPointer(ref this), texture, subresourceRange, clearValue);
+    }
+
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.clearTextureUint"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void clearTextureUint([NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, [NativeTypeName("uint32_t[4]")] uint* clearValue)
+    {
+        lpVtbl->clearTextureUint((ICommandEncoder*)Unsafe.AsPointer(ref this), texture, subresourceRange, clearValue);
+    }
+
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.clearTextureSint"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void clearTextureSint([NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, [NativeTypeName("int32_t[4]")] int* clearValue)
+    {
+        lpVtbl->clearTextureSint((ICommandEncoder*)Unsafe.AsPointer(ref this), texture, subresourceRange, clearValue);
+    }
+
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.clearTextureDepthStencil"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void clearTextureDepthStencil([NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("rhi::SubresourceRange")] SubresourceRange subresourceRange, bool clearDepth, float depthValue, bool clearStencil, [NativeTypeName("uint8_t")] byte stencilValue)
+    {
+        lpVtbl->clearTextureDepthStencil((ICommandEncoder*)Unsafe.AsPointer(ref this), texture, subresourceRange, clearDepth, depthValue, clearStencil, stencilValue);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.resolveQuery"]/*' />
@@ -115,7 +145,7 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.buildAccelerationStructure"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void buildAccelerationStructure([NativeTypeName("const AccelerationStructureBuildDesc &")] AccelerationStructureBuildDesc* desc, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* dst, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* src, [NativeTypeName("rhi::BufferWithOffset")] BufferWithOffset scratchBuffer, [NativeTypeName("uint32_t")] uint propertyQueryCount, [NativeTypeName("rhi::AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
+    public void buildAccelerationStructure([NativeTypeName("const AccelerationStructureBuildDesc &")] AccelerationStructureBuildDesc* desc, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* dst, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* src, [NativeTypeName("rhi::BufferOffsetPair")] BufferOffsetPair scratchBuffer, [NativeTypeName("uint32_t")] uint propertyQueryCount, [NativeTypeName("const AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
     {
         lpVtbl->buildAccelerationStructure((ICommandEncoder*)Unsafe.AsPointer(ref this), desc, dst, src, scratchBuffer, propertyQueryCount, queryDescs);
     }
@@ -129,23 +159,30 @@ public unsafe partial struct ICommandEncoder
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.queryAccelerationStructureProperties"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void queryAccelerationStructureProperties([NativeTypeName("uint32_t")] uint accelerationStructureCount, IAccelerationStructure** accelerationStructures, [NativeTypeName("uint32_t")] uint queryCount, [NativeTypeName("rhi::AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
+    public void queryAccelerationStructureProperties([NativeTypeName("uint32_t")] uint accelerationStructureCount, IAccelerationStructure** accelerationStructures, [NativeTypeName("uint32_t")] uint queryCount, [NativeTypeName("const AccelerationStructureQueryDesc *")] AccelerationStructureQueryDesc* queryDescs)
     {
         lpVtbl->queryAccelerationStructureProperties((ICommandEncoder*)Unsafe.AsPointer(ref this), accelerationStructureCount, accelerationStructures, queryCount, queryDescs);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.serializeAccelerationStructure"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void serializeAccelerationStructure([NativeTypeName("rhi::BufferWithOffset")] BufferWithOffset dst, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* src)
+    public void serializeAccelerationStructure([NativeTypeName("rhi::BufferOffsetPair")] BufferOffsetPair dst, [NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* src)
     {
         lpVtbl->serializeAccelerationStructure((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, src);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.deserializeAccelerationStructure"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void deserializeAccelerationStructure([NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* dst, [NativeTypeName("rhi::BufferWithOffset")] BufferWithOffset src)
+    public void deserializeAccelerationStructure([NativeTypeName("rhi::IAccelerationStructure *")] IAccelerationStructure* dst, [NativeTypeName("rhi::BufferOffsetPair")] BufferOffsetPair src)
     {
         lpVtbl->deserializeAccelerationStructure((ICommandEncoder*)Unsafe.AsPointer(ref this), dst, src);
+    }
+
+    /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.convertCooperativeVectorMatrix"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void convertCooperativeVectorMatrix([NativeTypeName("const ConvertCooperativeVectorMatrixDesc *")] ConvertCooperativeVectorMatrixDesc* descs, [NativeTypeName("uint32_t")] uint descCount)
+    {
+        lpVtbl->convertCooperativeVectorMatrix((ICommandEncoder*)Unsafe.AsPointer(ref this), descs, descCount);
     }
 
     /// <include file='ICommandEncoder.xml' path='doc/member[@name="ICommandEncoder.setBufferState"]/*' />
@@ -232,38 +269,53 @@ public unsafe partial struct ICommandEncoder
         [NativeTypeName("void (ITexture *, SubresourceRange, Offset3D, ITexture *, SubresourceRange, Offset3D, Extents) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, Offset3D, ITexture*, SubresourceRange, Offset3D, Extents, void> copyTexture;
 
-        [NativeTypeName("void (IBuffer *, Offset, Size, Size, ITexture *, SubresourceRange, Offset3D, Extents) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ulong, ulong, ulong, ITexture*, SubresourceRange, Offset3D, Extents, void> copyTextureToBuffer;
+        [NativeTypeName("void (IBuffer *, Offset, Size, Size, ITexture *, uint32_t, uint32_t, Offset3D, Extents) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ulong, ulong, ulong, ITexture*, uint, uint, Offset3D, Extents, void> copyTextureToBuffer;
 
-        [NativeTypeName("void (ITexture *, SubresourceRange, Offset3D, Extents, SubresourceData *, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, Offset3D, Extents, SubresourceData*, uint, void> uploadTextureData;
+        [NativeTypeName("void (ITexture *, uint32_t, uint32_t, Offset3D, IBuffer *, Offset, Size, Size, Extents) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, uint, uint, Offset3D, IBuffer*, ulong, ulong, ulong, Extents, void> copyBufferToTexture;
 
-        [NativeTypeName("void (IBuffer *, Offset, Size, void *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ulong, ulong, void*, void> uploadBufferData;
+        [NativeTypeName("Result (ITexture *, SubresourceRange, Offset3D, Extents, const SubresourceData *, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, Offset3D, Extents, SubresourceData*, uint, int> uploadTextureData;
 
-        [NativeTypeName("void (IBuffer *, const BufferRange *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, BufferRange*, void> clearBuffer;
+        [NativeTypeName("Result (IBuffer *, Offset, Size, const void *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ulong, ulong, void*, int> uploadBufferData;
 
-        [NativeTypeName("void (ITexture *, const ClearValue &, const SubresourceRange *, bool, bool) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, ClearValue*, SubresourceRange*, bool, bool, void> clearTexture;
+        [NativeTypeName("void (IBuffer *, BufferRange) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, BufferRange, void> clearBuffer;
+
+        [NativeTypeName("void (ITexture *, SubresourceRange, float *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, float*, void> clearTextureFloat;
+
+        [NativeTypeName("void (ITexture *, SubresourceRange, uint32_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, uint*, void> clearTextureUint;
+
+        [NativeTypeName("void (ITexture *, SubresourceRange, int32_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, int*, void> clearTextureSint;
+
+        [NativeTypeName("void (ITexture *, SubresourceRange, bool, float, bool, uint8_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ITexture*, SubresourceRange, bool, float, bool, byte, void> clearTextureDepthStencil;
 
         [NativeTypeName("void (IQueryPool *, uint32_t, uint32_t, IBuffer *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IQueryPool*, uint, uint, IBuffer*, ulong, void> resolveQuery;
 
-        [NativeTypeName("void (const AccelerationStructureBuildDesc &, IAccelerationStructure *, IAccelerationStructure *, BufferWithOffset, uint32_t, AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, AccelerationStructureBuildDesc*, IAccelerationStructure*, IAccelerationStructure*, BufferWithOffset, uint, AccelerationStructureQueryDesc*, void> buildAccelerationStructure;
+        [NativeTypeName("void (const AccelerationStructureBuildDesc &, IAccelerationStructure *, IAccelerationStructure *, BufferOffsetPair, uint32_t, const AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, AccelerationStructureBuildDesc*, IAccelerationStructure*, IAccelerationStructure*, BufferOffsetPair, uint, AccelerationStructureQueryDesc*, void> buildAccelerationStructure;
 
         [NativeTypeName("void (IAccelerationStructure *, IAccelerationStructure *, AccelerationStructureCopyMode) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IAccelerationStructure*, IAccelerationStructure*, AccelerationStructureCopyMode, void> copyAccelerationStructure;
 
-        [NativeTypeName("void (uint32_t, IAccelerationStructure **, uint32_t, AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        [NativeTypeName("void (uint32_t, IAccelerationStructure **, uint32_t, const AccelerationStructureQueryDesc *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, uint, IAccelerationStructure**, uint, AccelerationStructureQueryDesc*, void> queryAccelerationStructureProperties;
 
-        [NativeTypeName("void (BufferWithOffset, IAccelerationStructure *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, BufferWithOffset, IAccelerationStructure*, void> serializeAccelerationStructure;
+        [NativeTypeName("void (BufferOffsetPair, IAccelerationStructure *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, BufferOffsetPair, IAccelerationStructure*, void> serializeAccelerationStructure;
 
-        [NativeTypeName("void (IAccelerationStructure *, BufferWithOffset) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IAccelerationStructure*, BufferWithOffset, void> deserializeAccelerationStructure;
+        [NativeTypeName("void (IAccelerationStructure *, BufferOffsetPair) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, IAccelerationStructure*, BufferOffsetPair, void> deserializeAccelerationStructure;
+
+        [NativeTypeName("void (const ConvertCooperativeVectorMatrixDesc *, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandEncoder*, ConvertCooperativeVectorMatrixDesc*, uint, void> convertCooperativeVectorMatrix;
 
         [NativeTypeName("void (IBuffer *, ResourceState) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandEncoder*, IBuffer*, ResourceState, void> setBufferState;

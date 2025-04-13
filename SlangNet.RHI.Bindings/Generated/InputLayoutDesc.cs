@@ -8,6 +8,7 @@ public unsafe partial struct InputLayoutDesc
     public StructType structType;
 
     /// <include file='InputLayoutDesc.xml' path='doc/member[@name="InputLayoutDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='InputLayoutDesc.xml' path='doc/member[@name="InputLayoutDesc.inputElements"]/*' />

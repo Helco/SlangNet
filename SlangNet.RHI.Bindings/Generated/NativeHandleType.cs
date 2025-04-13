@@ -3,8 +3,8 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType"]/*' />
 public enum NativeHandleType
 {
-    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.Unknown"]/*' />
-    Unknown = 0x00000000,
+    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.Undefined"]/*' />
+    Undefined = 0x00000000,
 
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.Win32"]/*' />
     Win32 = 0x00000001,
@@ -111,14 +111,23 @@ public enum NativeHandleType
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUdeviceptr"]/*' />
     CUdeviceptr = 0x00050002,
 
-    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUtexObject"]/*' />
-    CUtexObject = 0x00050003,
-
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUstream"]/*' />
-    CUstream = 0x00050004,
+    CUstream = 0x00050003,
 
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUmodule"]/*' />
-    CUmodule = 0x00050005,
+    CUmodule = 0x00050004,
+
+    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUarray"]/*' />
+    CUarray = 0x00050005,
+
+    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUmipmappedArray"]/*' />
+    CUmipmappedArray = 0x00050006,
+
+    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUtexObject"]/*' />
+    CUtexObject = 0x00050007,
+
+    /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.CUsurfaceObject"]/*' />
+    CUsurfaceObject = 0x00050008,
 
     /// <include file='NativeHandleType.xml' path='doc/member[@name="NativeHandleType.OptixDeviceContext"]/*' />
     OptixDeviceContext = 0x00060001,

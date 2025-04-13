@@ -50,4 +50,7 @@ public enum StructType
 
     /// <include file='StructType.xml' path='doc/member[@name="StructType.D3D12ExperimentalFeaturesDesc"]/*' />
     D3D12ExperimentalFeaturesDesc,
+
+    /// <include file='StructType.xml' path='doc/member[@name="StructType.VulkanDeviceExtendedDesc"]/*' />
+    VulkanDeviceExtendedDesc,
 }

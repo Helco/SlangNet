@@ -10,6 +10,7 @@ public unsafe partial struct ShaderProgramDesc
     public StructType type;
 
     /// <include file='ShaderProgramDesc.xml' path='doc/member[@name="ShaderProgramDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='ShaderProgramDesc.xml' path='doc/member[@name="ShaderProgramDesc.linkingStyle"]/*' />

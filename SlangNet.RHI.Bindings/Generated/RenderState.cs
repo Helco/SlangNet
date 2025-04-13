@@ -3,16 +3,8 @@ using System.Runtime.CompilerServices;
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='RenderState.xml' path='doc/member[@name="RenderState"]/*' />
-public unsafe partial struct RenderState
+public partial struct RenderState
 {
-    /// <include file='RenderState.xml' path='doc/member[@name="RenderState.pipeline"]/*' />
-    [NativeTypeName("rhi::IRenderPipeline *")]
-    public IRenderPipeline* pipeline;
-
-    /// <include file='RenderState.xml' path='doc/member[@name="RenderState.rootObject"]/*' />
-    [NativeTypeName("rhi::IShaderObject *")]
-    public IShaderObject* rootObject;
-
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.stencilRef"]/*' />
     [NativeTypeName("uint32_t")]
     public uint stencilRef;
@@ -34,7 +26,7 @@ public unsafe partial struct RenderState
     public uint scissorRectCount;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.vertexBuffers"]/*' />
-    [NativeTypeName("BufferWithOffset[16]")]
+    [NativeTypeName("BufferOffsetPair[16]")]
     public _vertexBuffers_e__FixedBuffer vertexBuffers;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.vertexBufferCount"]/*' />
@@ -42,8 +34,8 @@ public unsafe partial struct RenderState
     public uint vertexBufferCount;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.indexBuffer"]/*' />
-    [NativeTypeName("rhi::BufferWithOffset")]
-    public BufferWithOffset indexBuffer;
+    [NativeTypeName("rhi::BufferOffsetPair")]
+    public BufferOffsetPair indexBuffer;
 
     /// <include file='RenderState.xml' path='doc/member[@name="RenderState.indexFormat"]/*' />
     [NativeTypeName("rhi::IndexFormat")]
@@ -67,6 +59,6 @@ public unsafe partial struct RenderState
     [InlineArray(16)]
     public partial struct _vertexBuffers_e__FixedBuffer
     {
-        public BufferWithOffset e0;
+        public BufferOffsetPair e0;
     }
 }

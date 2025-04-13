@@ -10,6 +10,7 @@ public unsafe partial struct SamplerDesc
     public StructType structType;
 
     /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='SamplerDesc.xml' path='doc/member[@name="SamplerDesc.minFilter"]/*' />

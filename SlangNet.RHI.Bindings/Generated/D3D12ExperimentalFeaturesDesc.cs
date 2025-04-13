@@ -8,6 +8,7 @@ public unsafe partial struct D3D12ExperimentalFeaturesDesc
     public StructType structType;
 
     /// <include file='D3D12ExperimentalFeaturesDesc.xml' path='doc/member[@name="D3D12ExperimentalFeaturesDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='D3D12ExperimentalFeaturesDesc.xml' path='doc/member[@name="D3D12ExperimentalFeaturesDesc.featureCount"]/*' />
@@ -19,9 +20,10 @@ public unsafe partial struct D3D12ExperimentalFeaturesDesc
     public void* featureIIDs;
 
     /// <include file='D3D12ExperimentalFeaturesDesc.xml' path='doc/member[@name="D3D12ExperimentalFeaturesDesc.configurationStructs"]/*' />
+    [NativeTypeName("const void *")]
     public void* configurationStructs;
 
     /// <include file='D3D12ExperimentalFeaturesDesc.xml' path='doc/member[@name="D3D12ExperimentalFeaturesDesc.configurationStructSizes"]/*' />
-    [NativeTypeName("uint32_t *")]
+    [NativeTypeName("const uint32_t *")]
     public uint* configurationStructSizes;
 }

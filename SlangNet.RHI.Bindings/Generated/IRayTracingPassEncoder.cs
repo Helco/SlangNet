@@ -61,11 +61,19 @@ public unsafe partial struct IRayTracingPassEncoder
         lpVtbl->end((IRayTracingPassEncoder*)Unsafe.AsPointer(ref this));
     }
 
-    /// <include file='IRayTracingPassEncoder.xml' path='doc/member[@name="IRayTracingPassEncoder.setRayTracingState"]/*' />
+    /// <include file='IRayTracingPassEncoder.xml' path='doc/member[@name="IRayTracingPassEncoder.bindPipeline"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void setRayTracingState([NativeTypeName("const RayTracingState &")] RayTracingState* state)
+    public void bindPipeline([NativeTypeName("rhi::IRayTracingPipeline *")] IRayTracingPipeline* pipeline, [NativeTypeName("rhi::IShaderTable *")] IShaderTable* shaderTable, [NativeTypeName("rhi::IShaderObject *")] IShaderObject* rootObject)
     {
-        lpVtbl->setRayTracingState((IRayTracingPassEncoder*)Unsafe.AsPointer(ref this), state);
+        lpVtbl->bindPipeline((IRayTracingPassEncoder*)Unsafe.AsPointer(ref this), pipeline, shaderTable, rootObject);
+    }
+
+    /// <include file='IRayTracingPassEncoder.xml' path='doc/member[@name="IRayTracingPassEncoder.bindPipeline"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::IShaderObject *")]
+    public IShaderObject* bindPipeline([NativeTypeName("rhi::IRayTracingPipeline *")] IRayTracingPipeline* pipeline, [NativeTypeName("rhi::IShaderTable *")] IShaderTable* shaderTable)
+    {
+        return lpVtbl->bindPipeline1((IRayTracingPassEncoder*)Unsafe.AsPointer(ref this), pipeline, shaderTable);
     }
 
     /// <include file='IRayTracingPassEncoder.xml' path='doc/member[@name="IRayTracingPassEncoder.dispatchRays"]/*' />
@@ -98,8 +106,11 @@ public unsafe partial struct IRayTracingPassEncoder
         [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRayTracingPassEncoder*, void> end;
 
-        [NativeTypeName("void (const RayTracingState &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IRayTracingPassEncoder*, RayTracingState*, void> setRayTracingState;
+        [NativeTypeName("void (IRayTracingPipeline *, IShaderTable *, IShaderObject *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRayTracingPassEncoder*, IRayTracingPipeline*, IShaderTable*, IShaderObject*, void> bindPipeline;
+
+        [NativeTypeName("IShaderObject *(IRayTracingPipeline *, IShaderTable *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRayTracingPassEncoder*, IRayTracingPipeline*, IShaderTable*, IShaderObject*> bindPipeline1;
 
         [NativeTypeName("void (uint32_t, uint32_t, uint32_t, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRayTracingPassEncoder*, uint, uint, uint, uint, void> dispatchRays;

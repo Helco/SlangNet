@@ -3,8 +3,8 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='WindowHandleType.xml' path='doc/member[@name="WindowHandleType"]/*' />
 public enum WindowHandleType
 {
-    /// <include file='WindowHandleType.xml' path='doc/member[@name="WindowHandleType.Unknown"]/*' />
-    Unknown,
+    /// <include file='WindowHandleType.xml' path='doc/member[@name="WindowHandleType.Undefined"]/*' />
+    Undefined,
 
     /// <include file='WindowHandleType.xml' path='doc/member[@name="WindowHandleType.HWND"]/*' />
     HWND,

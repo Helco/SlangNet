@@ -8,6 +8,7 @@ public unsafe partial struct ComputePipelineDesc
     public StructType structType;
 
     /// <include file='ComputePipelineDesc.xml' path='doc/member[@name="ComputePipelineDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='ComputePipelineDesc.xml' path='doc/member[@name="ComputePipelineDesc.program"]/*' />

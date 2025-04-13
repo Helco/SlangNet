@@ -51,8 +51,8 @@ public unsafe partial struct IShaderObject
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getEntryPointCount"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [return: NativeTypeName("rhi::GfxCount")]
-    public int getEntryPointCount()
+    [return: NativeTypeName("uint32_t")]
+    public uint getEntryPointCount()
     {
         return lpVtbl->getEntryPointCount((IShaderObject*)Unsafe.AsPointer(ref this));
     }
@@ -60,9 +60,9 @@ public unsafe partial struct IShaderObject
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getEntryPoint"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getEntryPoint([NativeTypeName("rhi::GfxIndex")] int index, IShaderObject** entryPoint)
+    public int getEntryPoint([NativeTypeName("uint32_t")] uint index, IShaderObject** outEntryPoint)
     {
-        return lpVtbl->getEntryPoint((IShaderObject*)Unsafe.AsPointer(ref this), index, entryPoint);
+        return lpVtbl->getEntryPoint((IShaderObject*)Unsafe.AsPointer(ref this), index, outEntryPoint);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setData"]/*' />
@@ -76,9 +76,9 @@ public unsafe partial struct IShaderObject
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.getObject"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getObject([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, IShaderObject** @object)
+    public int getObject([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, IShaderObject** outObject)
     {
-        return lpVtbl->getObject((IShaderObject*)Unsafe.AsPointer(ref this), offset, @object);
+        return lpVtbl->getObject((IShaderObject*)Unsafe.AsPointer(ref this), offset, outObject);
     }
 
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setObject"]/*' />
@@ -92,7 +92,7 @@ public unsafe partial struct IShaderObject
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setBinding"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int setBinding([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("rhi::Binding")] Binding binding)
+    public int setBinding([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const Binding &")] Binding* binding)
     {
         return lpVtbl->setBinding((IShaderObject*)Unsafe.AsPointer(ref this), offset, binding);
     }
@@ -100,7 +100,7 @@ public unsafe partial struct IShaderObject
     /// <include file='IShaderObject.xml' path='doc/member[@name="IShaderObject.setSpecializationArgs"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int setSpecializationArgs([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const slang::SpecializationArg *")] SpecializationArg* args, [NativeTypeName("rhi::GfxCount")] int count)
+    public int setSpecializationArgs([NativeTypeName("const ShaderOffset &")] ShaderOffset* offset, [NativeTypeName("const slang::SpecializationArg *")] SpecializationArg* args, [NativeTypeName("uint32_t")] uint count)
     {
         return lpVtbl->setSpecializationArgs((IShaderObject*)Unsafe.AsPointer(ref this), offset, args, count);
     }
@@ -161,11 +161,11 @@ public unsafe partial struct IShaderObject
         [NativeTypeName("ShaderObjectContainerType () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderObjectContainerType> getContainerType;
 
-        [NativeTypeName("GfxCount () __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IShaderObject*, int> getEntryPointCount;
+        [NativeTypeName("uint32_t () __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IShaderObject*, uint> getEntryPointCount;
 
-        [NativeTypeName("Result (GfxIndex, IShaderObject **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IShaderObject*, int, IShaderObject**, int> getEntryPoint;
+        [NativeTypeName("Result (uint32_t, IShaderObject **) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IShaderObject*, uint, IShaderObject**, int> getEntryPoint;
 
         [NativeTypeName("Result (const ShaderOffset &, const void *, Size) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, void*, ulong, int> setData;
@@ -176,11 +176,11 @@ public unsafe partial struct IShaderObject
         [NativeTypeName("Result (const ShaderOffset &, IShaderObject *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, IShaderObject*, int> setObject;
 
-        [NativeTypeName("Result (const ShaderOffset &, Binding) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, Binding, int> setBinding;
+        [NativeTypeName("Result (const ShaderOffset &, const Binding &) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, Binding*, int> setBinding;
 
-        [NativeTypeName("Result (const ShaderOffset &, const slang::SpecializationArg *, GfxCount) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, SpecializationArg*, int, int> setSpecializationArgs;
+        [NativeTypeName("Result (const ShaderOffset &, const slang::SpecializationArg *, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IShaderObject*, ShaderOffset*, SpecializationArg*, uint, int> setSpecializationArgs;
 
         [NativeTypeName("const void *() __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IShaderObject*, void*> getRawData;

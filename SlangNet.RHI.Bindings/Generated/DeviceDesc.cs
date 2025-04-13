@@ -10,6 +10,7 @@ public unsafe partial struct DeviceDesc
     public StructType structType;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.deviceType"]/*' />
@@ -54,13 +55,14 @@ public unsafe partial struct DeviceDesc
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.enableValidation"]/*' />
     public bool enableValidation;
 
-    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.enableBackendValidation"]/*' />
-    public bool enableBackendValidation;
-
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.enableRayTracingValidation"]/*' />
     public bool enableRayTracingValidation;
 
     /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.debugCallback"]/*' />
     [NativeTypeName("rhi::IDebugCallback *")]
     public IDebugCallback* debugCallback;
+
+    /// <include file='DeviceDesc.xml' path='doc/member[@name="DeviceDesc.stagingHeapPageSize"]/*' />
+    [NativeTypeName("rhi::Size")]
+    public ulong stagingHeapPageSize;
 }

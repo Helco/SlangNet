@@ -8,6 +8,7 @@ public unsafe partial struct RayTracingPipelineDesc
     public StructType structType;
 
     /// <include file='RayTracingPipelineDesc.xml' path='doc/member[@name="RayTracingPipelineDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='RayTracingPipelineDesc.xml' path='doc/member[@name="RayTracingPipelineDesc.program"]/*' />
@@ -19,7 +20,7 @@ public unsafe partial struct RayTracingPipelineDesc
     public uint hitGroupCount;
 
     /// <include file='RayTracingPipelineDesc.xml' path='doc/member[@name="RayTracingPipelineDesc.hitGroups"]/*' />
-    [NativeTypeName("rhi::HitGroupDesc *")]
+    [NativeTypeName("const HitGroupDesc *")]
     public HitGroupDesc* hitGroups;
 
     /// <include file='RayTracingPipelineDesc.xml' path='doc/member[@name="RayTracingPipelineDesc.maxRecursion"]/*' />

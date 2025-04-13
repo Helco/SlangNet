@@ -29,7 +29,7 @@ public unsafe partial struct SlangDesc
     public uint preprocessorMacroCount;
 
     /// <include file='SlangDesc.xml' path='doc/member[@name="SlangDesc.compilerOptionEntries"]/*' />
-    [NativeTypeName("slang::CompilerOptionEntry *")]
+    [NativeTypeName("const slang::CompilerOptionEntry *")]
     public CompilerOptionEntry* compilerOptionEntries;
 
     /// <include file='SlangDesc.xml' path='doc/member[@name="SlangDesc.compilerOptionEntryCount"]/*' />

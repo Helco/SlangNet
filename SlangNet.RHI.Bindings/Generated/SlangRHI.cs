@@ -18,10 +18,31 @@ public static unsafe partial class SlangRHI
     public static readonly SubresourceRange kEntireTexture = (SubresourceRange)(new SubresourceRange
     {
         mipLevel = 0,
-        mipLevelCount = 0x7fffffff,
+        mipLevelCount = 0xffffffff,
         baseArrayLayer = 0,
-        layerCount = 0x7fffffff,
+        layerCount = 0xffffffff,
     });
+
+    [NativeTypeName("const size_t")]
+    public const nuint kDefaultAlignment = 0xffffffff;
+
+    [NativeTypeName("const uint32_t")]
+    public const uint kAllLayers = 0xffffffff;
+
+    [NativeTypeName("const uint32_t")]
+    public const uint kAllMipLevels = 0xffffffff;
+
+    [NativeTypeName("const SubresourceRange")]
+    public static readonly SubresourceRange kAllSubresources = new SubresourceRange
+    {
+        mipLevel = 0,
+        mipLevelCount = kAllMipLevels,
+        baseArrayLayer = 0,
+        layerCount = kAllLayers,
+    };
+
+    [NativeTypeName("const uint32_t")]
+    public const uint kMaxAccelerationStructureMotionKeyCount = 2;
 
     public const int EnableNone = 0;
     public const int EnableRed = 0x01;

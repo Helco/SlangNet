@@ -38,4 +38,7 @@ public enum BufferUsage
 
     /// <include file='BufferUsage.xml' path='doc/member[@name="BufferUsage.ShaderTable"]/*' />
     ShaderTable = (1 << 10),
+
+    /// <include file='BufferUsage.xml' path='doc/member[@name="BufferUsage.Shared"]/*' />
+    Shared = (1 << 11),
 }

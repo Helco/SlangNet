@@ -52,17 +52,9 @@ public unsafe partial struct ICommandQueue
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.submit"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int submit([NativeTypeName("uint32_t")] uint count, ICommandBuffer** commandBuffers, [NativeTypeName("rhi::IFence *")] IFence* fenceToSignal, [NativeTypeName("uint64_t")] ulong newFenceValue)
+    public int submit([NativeTypeName("const SubmitDesc &")] SubmitDesc* desc)
     {
-        return lpVtbl->submit((ICommandQueue*)Unsafe.AsPointer(ref this), count, commandBuffers, fenceToSignal, newFenceValue);
-    }
-
-    /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.getNativeHandle"]/*' />
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    [return: NativeTypeName("rhi::Result")]
-    public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
-    {
-        return lpVtbl->getNativeHandle((ICommandQueue*)Unsafe.AsPointer(ref this), outHandle);
+        return lpVtbl->submit((ICommandQueue*)Unsafe.AsPointer(ref this), desc);
     }
 
     /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.waitOnHost"]/*' />
@@ -73,12 +65,12 @@ public unsafe partial struct ICommandQueue
         return lpVtbl->waitOnHost((ICommandQueue*)Unsafe.AsPointer(ref this));
     }
 
-    /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.waitForFenceValuesOnDevice"]/*' />
+    /// <include file='ICommandQueue.xml' path='doc/member[@name="ICommandQueue.getNativeHandle"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int waitForFenceValuesOnDevice([NativeTypeName("uint32_t")] uint fenceCount, IFence** fences, [NativeTypeName("uint64_t *")] ulong* waitValues)
+    public int getNativeHandle([NativeTypeName("rhi::NativeHandle *")] NativeHandle* outHandle)
     {
-        return lpVtbl->waitForFenceValuesOnDevice((ICommandQueue*)Unsafe.AsPointer(ref this), fenceCount, fences, waitValues);
+        return lpVtbl->getNativeHandle((ICommandQueue*)Unsafe.AsPointer(ref this), outHandle);
     }
 
     public partial struct Vtbl
@@ -98,16 +90,13 @@ public unsafe partial struct ICommandQueue
         [NativeTypeName("Result (ICommandEncoder **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandQueue*, ICommandEncoder**, int> createCommandEncoder;
 
-        [NativeTypeName("Result (uint32_t, ICommandBuffer **, IFence *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandQueue*, uint, ICommandBuffer**, IFence*, ulong, int> submit;
-
-        [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandQueue*, NativeHandle*, int> getNativeHandle;
+        [NativeTypeName("Result (const SubmitDesc &) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, SubmitDesc*, int> submit;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ICommandQueue*, int> waitOnHost;
 
-        [NativeTypeName("Result (uint32_t, IFence **, uint64_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ICommandQueue*, uint, IFence**, ulong*, int> waitForFenceValuesOnDevice;
+        [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ICommandQueue*, NativeHandle*, int> getNativeHandle;
     }
 }

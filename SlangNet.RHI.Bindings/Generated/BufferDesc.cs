@@ -8,6 +8,7 @@ public unsafe partial struct BufferDesc
     public StructType structType;
 
     /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.size"]/*' />
@@ -33,9 +34,6 @@ public unsafe partial struct BufferDesc
     /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.defaultState"]/*' />
     [NativeTypeName("rhi::ResourceState")]
     public ResourceState defaultState;
-
-    /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.isShared"]/*' />
-    public bool isShared;
 
     /// <include file='BufferDesc.xml' path='doc/member[@name="BufferDesc.label"]/*' />
     [NativeTypeName("const char *")]

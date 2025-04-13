@@ -8,6 +8,7 @@ public unsafe partial struct RenderPipelineDesc
     public StructType structType;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.program"]/*' />
@@ -23,22 +24,22 @@ public unsafe partial struct RenderPipelineDesc
     public PrimitiveTopology primitiveTopology;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.targets"]/*' />
-    [NativeTypeName("rhi::ColorTargetState *")]
-    public ColorTargetState* targets;
+    [NativeTypeName("const ColorTargetDesc *")]
+    public ColorTargetDesc* targets;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.targetCount"]/*' />
     [NativeTypeName("uint32_t")]
     public uint targetCount;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.depthStencil"]/*' />
-    [NativeTypeName("rhi::DepthStencilState")]
-    public DepthStencilState depthStencil;
+    [NativeTypeName("rhi::DepthStencilDesc")]
+    public DepthStencilDesc depthStencil;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.rasterizer"]/*' />
     [NativeTypeName("rhi::RasterizerDesc")]
     public RasterizerDesc rasterizer;
 
     /// <include file='RenderPipelineDesc.xml' path='doc/member[@name="RenderPipelineDesc.multisample"]/*' />
-    [NativeTypeName("rhi::MultisampleState")]
-    public MultisampleState multisample;
+    [NativeTypeName("rhi::MultisampleDesc")]
+    public MultisampleDesc multisample;
 }

@@ -3,257 +3,218 @@ namespace SlangNet.RHI.Unsafe;
 /// <include file='Format.xml' path='doc/member[@name="Format"]/*' />
 public enum Format
 {
-    /// <include file='Format.xml' path='doc/member[@name="Format.Unknown"]/*' />
-    Unknown,
+    /// <include file='Format.xml' path='doc/member[@name="Format.Undefined"]/*' />
+    Undefined,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32B32A32_TYPELESS"]/*' />
-    R32G32B32A32_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R8Uint"]/*' />
+    R8Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32B32_TYPELESS"]/*' />
-    R32G32B32_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R8Sint"]/*' />
+    R8Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32_TYPELESS"]/*' />
-    R32G32_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R8Unorm"]/*' />
+    R8Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32_TYPELESS"]/*' />
-    R32_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R8Snorm"]/*' />
+    R8Snorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16B16A16_TYPELESS"]/*' />
-    R16G16B16A16_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG8Uint"]/*' />
+    RG8Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16_TYPELESS"]/*' />
-    R16G16_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG8Sint"]/*' />
+    RG8Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16_TYPELESS"]/*' />
-    R16_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG8Unorm"]/*' />
+    RG8Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8B8A8_TYPELESS"]/*' />
-    R8G8B8A8_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG8Snorm"]/*' />
+    RG8Snorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8_TYPELESS"]/*' />
-    R8G8_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA8Uint"]/*' />
+    RGBA8Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8_TYPELESS"]/*' />
-    R8_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA8Sint"]/*' />
+    RGBA8Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.B8G8R8A8_TYPELESS"]/*' />
-    B8G8R8A8_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA8Unorm"]/*' />
+    RGBA8Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32B32A32_FLOAT"]/*' />
-    R32G32B32A32_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA8UnormSrgb"]/*' />
+    RGBA8UnormSrgb,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32B32_FLOAT"]/*' />
-    R32G32B32_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA8Snorm"]/*' />
+    RGBA8Snorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32_FLOAT"]/*' />
-    R32G32_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BGRA8Unorm"]/*' />
+    BGRA8Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32_FLOAT"]/*' />
-    R32_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BGRA8UnormSrgb"]/*' />
+    BGRA8UnormSrgb,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16B16A16_FLOAT"]/*' />
-    R16G16B16A16_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BGRX8Unorm"]/*' />
+    BGRX8Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16_FLOAT"]/*' />
-    R16G16_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BGRX8UnormSrgb"]/*' />
+    BGRX8UnormSrgb,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16_FLOAT"]/*' />
-    R16_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R16Uint"]/*' />
+    R16Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32B32A32_UINT"]/*' />
-    R32G32B32A32_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R16Sint"]/*' />
+    R16Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32B32_UINT"]/*' />
-    R32G32B32_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R16Unorm"]/*' />
+    R16Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32_UINT"]/*' />
-    R32G32_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R16Snorm"]/*' />
+    R16Snorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32_UINT"]/*' />
-    R32_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R16Float"]/*' />
+    R16Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16B16A16_UINT"]/*' />
-    R16G16B16A16_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG16Uint"]/*' />
+    RG16Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16_UINT"]/*' />
-    R16G16_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG16Sint"]/*' />
+    RG16Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16_UINT"]/*' />
-    R16_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG16Unorm"]/*' />
+    RG16Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8B8A8_UINT"]/*' />
-    R8G8B8A8_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG16Snorm"]/*' />
+    RG16Snorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8_UINT"]/*' />
-    R8G8_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG16Float"]/*' />
+    RG16Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8_UINT"]/*' />
-    R8_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA16Uint"]/*' />
+    RGBA16Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32B32A32_SINT"]/*' />
-    R32G32B32A32_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA16Sint"]/*' />
+    RGBA16Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32B32_SINT"]/*' />
-    R32G32B32_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA16Unorm"]/*' />
+    RGBA16Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32G32_SINT"]/*' />
-    R32G32_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA16Snorm"]/*' />
+    RGBA16Snorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32_SINT"]/*' />
-    R32_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA16Float"]/*' />
+    RGBA16Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16B16A16_SINT"]/*' />
-    R16G16B16A16_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R32Uint"]/*' />
+    R32Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16_SINT"]/*' />
-    R16G16_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R32Sint"]/*' />
+    R32Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16_SINT"]/*' />
-    R16_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R32Float"]/*' />
+    R32Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8B8A8_SINT"]/*' />
-    R8G8B8A8_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG32Uint"]/*' />
+    RG32Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8_SINT"]/*' />
-    R8G8_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG32Sint"]/*' />
+    RG32Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8_SINT"]/*' />
-    R8_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RG32Float"]/*' />
+    RG32Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16B16A16_UNORM"]/*' />
-    R16G16B16A16_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGB32Uint"]/*' />
+    RGB32Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16_UNORM"]/*' />
-    R16G16_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGB32Sint"]/*' />
+    RGB32Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16_UNORM"]/*' />
-    R16_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGB32Float"]/*' />
+    RGB32Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8B8A8_UNORM"]/*' />
-    R8G8B8A8_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA32Uint"]/*' />
+    RGBA32Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8B8A8_UNORM_SRGB"]/*' />
-    R8G8B8A8_UNORM_SRGB,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA32Sint"]/*' />
+    RGBA32Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8_UNORM"]/*' />
-    R8G8_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGBA32Float"]/*' />
+    RGBA32Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8_UNORM"]/*' />
-    R8_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R64Uint"]/*' />
+    R64Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.B8G8R8A8_UNORM"]/*' />
-    B8G8R8A8_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R64Sint"]/*' />
+    R64Sint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.B8G8R8A8_UNORM_SRGB"]/*' />
-    B8G8R8A8_UNORM_SRGB,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BGRA4Unorm"]/*' />
+    BGRA4Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.B8G8R8X8_UNORM"]/*' />
-    B8G8R8X8_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.B5G6R5Unorm"]/*' />
+    B5G6R5Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.B8G8R8X8_UNORM_SRGB"]/*' />
-    B8G8R8X8_UNORM_SRGB,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BGR5A1Unorm"]/*' />
+    BGR5A1Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16B16A16_SNORM"]/*' />
-    R16G16B16A16_SNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGB9E5Ufloat"]/*' />
+    RGB9E5Ufloat,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16G16_SNORM"]/*' />
-    R16G16_SNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGB10A2Uint"]/*' />
+    RGB10A2Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R16_SNORM"]/*' />
-    R16_SNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.RGB10A2Unorm"]/*' />
+    RGB10A2Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8B8A8_SNORM"]/*' />
-    R8G8B8A8_SNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.R11G11B10Float"]/*' />
+    R11G11B10Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8G8_SNORM"]/*' />
-    R8G8_SNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.D32Float"]/*' />
+    D32Float,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R8_SNORM"]/*' />
-    R8_SNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.D16Unorm"]/*' />
+    D16Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.D32_FLOAT"]/*' />
-    D32_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.D32FloatS8Uint"]/*' />
+    D32FloatS8Uint,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.D16_UNORM"]/*' />
-    D16_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC1Unorm"]/*' />
+    BC1Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.D32_FLOAT_S8_UINT"]/*' />
-    D32_FLOAT_S8_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC1UnormSrgb"]/*' />
+    BC1UnormSrgb,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R32_FLOAT_X32_TYPELESS"]/*' />
-    R32_FLOAT_X32_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC2Unorm"]/*' />
+    BC2Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.B4G4R4A4_UNORM"]/*' />
-    B4G4R4A4_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC2UnormSrgb"]/*' />
+    BC2UnormSrgb,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.B5G6R5_UNORM"]/*' />
-    B5G6R5_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC3Unorm"]/*' />
+    BC3Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.B5G5R5A1_UNORM"]/*' />
-    B5G5R5A1_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC3UnormSrgb"]/*' />
+    BC3UnormSrgb,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R9G9B9E5_SHAREDEXP"]/*' />
-    R9G9B9E5_SHAREDEXP,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC4Unorm"]/*' />
+    BC4Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R10G10B10A2_TYPELESS"]/*' />
-    R10G10B10A2_TYPELESS,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC4Snorm"]/*' />
+    BC4Snorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R10G10B10A2_UNORM"]/*' />
-    R10G10B10A2_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC5Unorm"]/*' />
+    BC5Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R10G10B10A2_UINT"]/*' />
-    R10G10B10A2_UINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC5Snorm"]/*' />
+    BC5Snorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.R11G11B10_FLOAT"]/*' />
-    R11G11B10_FLOAT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC6HUfloat"]/*' />
+    BC6HUfloat,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC1_UNORM"]/*' />
-    BC1_UNORM,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC6HSfloat"]/*' />
+    BC6HSfloat,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC1_UNORM_SRGB"]/*' />
-    BC1_UNORM_SRGB,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC7Unorm"]/*' />
+    BC7Unorm,
 
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC2_UNORM"]/*' />
-    BC2_UNORM,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC2_UNORM_SRGB"]/*' />
-    BC2_UNORM_SRGB,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC3_UNORM"]/*' />
-    BC3_UNORM,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC3_UNORM_SRGB"]/*' />
-    BC3_UNORM_SRGB,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC4_UNORM"]/*' />
-    BC4_UNORM,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC4_SNORM"]/*' />
-    BC4_SNORM,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC5_UNORM"]/*' />
-    BC5_UNORM,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC5_SNORM"]/*' />
-    BC5_SNORM,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC6H_UF16"]/*' />
-    BC6H_UF16,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC6H_SF16"]/*' />
-    BC6H_SF16,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC7_UNORM"]/*' />
-    BC7_UNORM,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.BC7_UNORM_SRGB"]/*' />
-    BC7_UNORM_SRGB,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.R64_UINT"]/*' />
-    R64_UINT,
-
-    /// <include file='Format.xml' path='doc/member[@name="Format.R64_SINT"]/*' />
-    R64_SINT,
+    /// <include file='Format.xml' path='doc/member[@name="Format.BC7UnormSrgb"]/*' />
+    BC7UnormSrgb,
 
     /// <include file='Format.xml' path='doc/member[@name="Format._Count"]/*' />
     _Count,

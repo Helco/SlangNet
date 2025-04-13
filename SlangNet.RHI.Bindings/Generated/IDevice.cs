@@ -83,17 +83,17 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createTextureFromNativeHandle"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int createTextureFromNativeHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const TextureDesc &")] TextureDesc* srcDesc, ITexture** outTexture)
+    public int createTextureFromNativeHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const TextureDesc &")] TextureDesc* desc, ITexture** outTexture)
     {
-        return lpVtbl->createTextureFromNativeHandle((IDevice*)Unsafe.AsPointer(ref this), handle, srcDesc, outTexture);
+        return lpVtbl->createTextureFromNativeHandle((IDevice*)Unsafe.AsPointer(ref this), handle, desc, outTexture);
     }
 
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createTextureFromSharedHandle"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int createTextureFromSharedHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const TextureDesc &")] TextureDesc* srcDesc, [NativeTypeName("const Size")] ulong size, ITexture** outTexture)
+    public int createTextureFromSharedHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const TextureDesc &")] TextureDesc* desc, [NativeTypeName("const Size")] ulong size, ITexture** outTexture)
     {
-        return lpVtbl->createTextureFromSharedHandle((IDevice*)Unsafe.AsPointer(ref this), handle, srcDesc, size, outTexture);
+        return lpVtbl->createTextureFromSharedHandle((IDevice*)Unsafe.AsPointer(ref this), handle, desc, size, outTexture);
     }
 
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createBuffer"]/*' />
@@ -107,17 +107,17 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createBufferFromNativeHandle"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int createBufferFromNativeHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const BufferDesc &")] BufferDesc* srcDesc, IBuffer** outBuffer)
+    public int createBufferFromNativeHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const BufferDesc &")] BufferDesc* desc, IBuffer** outBuffer)
     {
-        return lpVtbl->createBufferFromNativeHandle((IDevice*)Unsafe.AsPointer(ref this), handle, srcDesc, outBuffer);
+        return lpVtbl->createBufferFromNativeHandle((IDevice*)Unsafe.AsPointer(ref this), handle, desc, outBuffer);
     }
 
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.createBufferFromSharedHandle"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int createBufferFromSharedHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const BufferDesc &")] BufferDesc* srcDesc, IBuffer** outBuffer)
+    public int createBufferFromSharedHandle([NativeTypeName("rhi::NativeHandle")] NativeHandle handle, [NativeTypeName("const BufferDesc &")] BufferDesc* desc, IBuffer** outBuffer)
     {
-        return lpVtbl->createBufferFromSharedHandle((IDevice*)Unsafe.AsPointer(ref this), handle, srcDesc, outBuffer);
+        return lpVtbl->createBufferFromSharedHandle((IDevice*)Unsafe.AsPointer(ref this), handle, desc, outBuffer);
     }
 
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.mapBuffer"]/*' />
@@ -243,9 +243,9 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.readTexture"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int readTexture([NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outBlob, [NativeTypeName("rhi::Size *")] ulong* outRowPitch, [NativeTypeName("rhi::Size *")] ulong* outPixelSize)
+    public int readTexture([NativeTypeName("rhi::ITexture *")] ITexture* texture, [NativeTypeName("uint32_t")] uint layer, [NativeTypeName("uint32_t")] uint mipLevel, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outBlob, [NativeTypeName("rhi::SubresourceLayout *")] SubresourceLayout* outLayout)
     {
-        return lpVtbl->readTexture((IDevice*)Unsafe.AsPointer(ref this), texture, outBlob, outRowPitch, outPixelSize);
+        return lpVtbl->readTexture((IDevice*)Unsafe.AsPointer(ref this), texture, layer, mipLevel, outBlob, outLayout);
     }
 
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.readBuffer"]/*' />
@@ -254,6 +254,14 @@ public unsafe partial struct IDevice
     public int readBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, [NativeTypeName("ISlangBlob **")] SlangNet.Unsafe.ISlangBlob** outBlob)
     {
         return lpVtbl->readBuffer((IDevice*)Unsafe.AsPointer(ref this), buffer, offset, size, outBlob);
+    }
+
+    /// <include file='IDevice.xml' path='doc/member[@name="IDevice.readBuffer"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::Result")]
+    public int readBuffer([NativeTypeName("rhi::IBuffer *")] IBuffer* buffer, [NativeTypeName("rhi::Offset")] ulong offset, [NativeTypeName("rhi::Size")] ulong size, void* outData)
+    {
+        return lpVtbl->readBuffer1((IDevice*)Unsafe.AsPointer(ref this), buffer, offset, size, outData);
     }
 
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getDeviceInfo"]/*' />
@@ -299,9 +307,9 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.waitForFences"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int waitForFences([NativeTypeName("uint32_t")] uint fenceCount, IFence** fences, [NativeTypeName("uint64_t *")] ulong* values, bool waitForAll, [NativeTypeName("uint64_t")] ulong timeout)
+    public int waitForFences([NativeTypeName("uint32_t")] uint fenceCount, IFence** fences, [NativeTypeName("const uint64_t *")] ulong* fenceValues, bool waitForAll, [NativeTypeName("uint64_t")] ulong timeout)
     {
-        return lpVtbl->waitForFences((IDevice*)Unsafe.AsPointer(ref this), fenceCount, fences, values, waitForAll, timeout);
+        return lpVtbl->waitForFences((IDevice*)Unsafe.AsPointer(ref this), fenceCount, fences, fenceValues, waitForAll, timeout);
     }
 
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getTextureAllocationInfo"]/*' />
@@ -315,9 +323,33 @@ public unsafe partial struct IDevice
     /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getTextureRowAlignment"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getTextureRowAlignment([NativeTypeName("rhi::Size *")] ulong* outAlignment)
+    public int getTextureRowAlignment([NativeTypeName("rhi::Format")] Format format, [NativeTypeName("rhi::Size *")] ulong* outAlignment)
     {
-        return lpVtbl->getTextureRowAlignment((IDevice*)Unsafe.AsPointer(ref this), outAlignment);
+        return lpVtbl->getTextureRowAlignment((IDevice*)Unsafe.AsPointer(ref this), format, outAlignment);
+    }
+
+    /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getCooperativeVectorProperties"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::Result")]
+    public int getCooperativeVectorProperties([NativeTypeName("rhi::CooperativeVectorProperties *")] CooperativeVectorProperties* properties, [NativeTypeName("uint32_t *")] uint* propertyCount)
+    {
+        return lpVtbl->getCooperativeVectorProperties((IDevice*)Unsafe.AsPointer(ref this), properties, propertyCount);
+    }
+
+    /// <include file='IDevice.xml' path='doc/member[@name="IDevice.convertCooperativeVectorMatrix"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::Result")]
+    public int convertCooperativeVectorMatrix([NativeTypeName("const ConvertCooperativeVectorMatrixDesc *")] ConvertCooperativeVectorMatrixDesc* descs, [NativeTypeName("uint32_t")] uint descCount)
+    {
+        return lpVtbl->convertCooperativeVectorMatrix((IDevice*)Unsafe.AsPointer(ref this), descs, descCount);
+    }
+
+    /// <include file='IDevice.xml' path='doc/member[@name="IDevice.getShaderCacheStats"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::Result")]
+    public int getShaderCacheStats([NativeTypeName("size_t *")] nuint* outCacheHitCount, [NativeTypeName("size_t *")] nuint* outCacheMissCount, [NativeTypeName("size_t *")] nuint* outCacheSize)
+    {
+        return lpVtbl->getShaderCacheStats((IDevice*)Unsafe.AsPointer(ref this), outCacheHitCount, outCacheMissCount, outCacheSize);
     }
 
     public partial struct Vtbl
@@ -409,11 +441,14 @@ public unsafe partial struct IDevice
         [NativeTypeName("Result (const RayTracingPipelineDesc &, IRayTracingPipeline **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, RayTracingPipelineDesc*, IRayTracingPipeline**, int> createRayTracingPipeline;
 
-        [NativeTypeName("Result (ITexture *, ISlangBlob **, Size *, Size *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IDevice*, ITexture*, SlangNet.Unsafe.ISlangBlob**, ulong*, ulong*, int> readTexture;
+        [NativeTypeName("Result (ITexture *, uint32_t, uint32_t, ISlangBlob **, SubresourceLayout *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, ITexture*, uint, uint, SlangNet.Unsafe.ISlangBlob**, SubresourceLayout*, int> readTexture;
 
         [NativeTypeName("Result (IBuffer *, Offset, Size, ISlangBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, IBuffer*, ulong, ulong, SlangNet.Unsafe.ISlangBlob**, int> readBuffer;
+
+        [NativeTypeName("Result (IBuffer *, Offset, Size, void *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, IBuffer*, ulong, ulong, void*, int> readBuffer1;
 
         [NativeTypeName("const DeviceInfo &() const __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, DeviceInfo*> getDeviceInfo;
@@ -430,13 +465,22 @@ public unsafe partial struct IDevice
         [NativeTypeName("Result (const FenceDesc &, IFence **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, FenceDesc*, IFence**, int> createFence;
 
-        [NativeTypeName("Result (uint32_t, IFence **, uint64_t *, bool, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        [NativeTypeName("Result (uint32_t, IFence **, const uint64_t *, bool, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, uint, IFence**, ulong*, bool, ulong, int> waitForFences;
 
         [NativeTypeName("Result (const TextureDesc &, Size *, Size *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IDevice*, TextureDesc*, ulong*, ulong*, int> getTextureAllocationInfo;
 
-        [NativeTypeName("Result (Size *) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IDevice*, ulong*, int> getTextureRowAlignment;
+        [NativeTypeName("Result (Format, Size *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, Format, ulong*, int> getTextureRowAlignment;
+
+        [NativeTypeName("Result (CooperativeVectorProperties *, uint32_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, CooperativeVectorProperties*, uint*, int> getCooperativeVectorProperties;
+
+        [NativeTypeName("Result (const ConvertCooperativeVectorMatrixDesc *, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, ConvertCooperativeVectorMatrixDesc*, uint, int> convertCooperativeVectorMatrix;
+
+        [NativeTypeName("Result (size_t *, size_t *, size_t *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IDevice*, nuint*, nuint*, nuint*, int> getShaderCacheStats;
     }
 }

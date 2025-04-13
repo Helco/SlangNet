@@ -7,11 +7,11 @@ public unsafe partial struct SubresourceData
     [NativeTypeName("const void *")]
     public void* data;
 
-    /// <include file='SubresourceData.xml' path='doc/member[@name="SubresourceData.strideY"]/*' />
+    /// <include file='SubresourceData.xml' path='doc/member[@name="SubresourceData.rowPitch"]/*' />
     [NativeTypeName("rhi::Size")]
-    public ulong strideY;
+    public ulong rowPitch;
 
-    /// <include file='SubresourceData.xml' path='doc/member[@name="SubresourceData.strideZ"]/*' />
+    /// <include file='SubresourceData.xml' path='doc/member[@name="SubresourceData.slicePitch"]/*' />
     [NativeTypeName("rhi::Size")]
-    public ulong strideZ;
+    public ulong slicePitch;
 }

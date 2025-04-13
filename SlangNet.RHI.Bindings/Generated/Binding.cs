@@ -5,22 +5,22 @@ using System.Runtime.InteropServices;
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='Binding.xml' path='doc/member[@name="Binding"]/*' />
-public unsafe partial struct Binding
+public partial struct Binding
 {
     /// <include file='Binding.xml' path='doc/member[@name="Binding.type"]/*' />
     [NativeTypeName("rhi::BindingType")]
     public BindingType type;
 
     /// <include file='Binding.xml' path='doc/member[@name="Binding.resource"]/*' />
-    [NativeTypeName("rhi::IResource *")]
-    public IResource* resource;
+    [NativeTypeName("ComPtr<IResource>")]
+    public SlangNet.Unsafe.COMPointer<IResource> resource;
 
     /// <include file='Binding.xml' path='doc/member[@name="Binding.resource2"]/*' />
-    [NativeTypeName("rhi::IResource *")]
-    public IResource* resource2;
+    [NativeTypeName("ComPtr<IResource>")]
+    public SlangNet.Unsafe.COMPointer<IResource> resource2;
 
     /// <include file='Binding.xml' path='doc/member[@name="Binding.Anonymous"]/*' />
-    [NativeTypeName("__AnonymousRecord_slang-rhi_L1136_C5")]
+    [NativeTypeName("__AnonymousRecord_slang-rhi_L1332_C5")]
     public _Anonymous_e__Union Anonymous;
 
     /// <include file='_Anonymous_e__Union.xml' path='doc/member[@name="_Anonymous_e__Union.bufferRange"]/*' />

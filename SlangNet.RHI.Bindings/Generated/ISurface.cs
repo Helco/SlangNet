@@ -57,12 +57,12 @@ public unsafe partial struct ISurface
         return lpVtbl->configure((ISurface*)Unsafe.AsPointer(ref this), config);
     }
 
-    /// <include file='ISurface.xml' path='doc/member[@name="ISurface.getCurrentTexture"]/*' />
+    /// <include file='ISurface.xml' path='doc/member[@name="ISurface.acquireNextImage"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
-    public int getCurrentTexture(ITexture** outTexture)
+    public int acquireNextImage(ITexture** outTexture)
     {
-        return lpVtbl->getCurrentTexture((ISurface*)Unsafe.AsPointer(ref this), outTexture);
+        return lpVtbl->acquireNextImage((ISurface*)Unsafe.AsPointer(ref this), outTexture);
     }
 
     /// <include file='ISurface.xml' path='doc/member[@name="ISurface.present"]/*' />
@@ -94,7 +94,7 @@ public unsafe partial struct ISurface
         public delegate* unmanaged[Stdcall]<ISurface*, SurfaceConfig*, int> configure;
 
         [NativeTypeName("Result (ITexture **) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<ISurface*, ITexture**, int> getCurrentTexture;
+        public delegate* unmanaged[Stdcall]<ISurface*, ITexture**, int> acquireNextImage;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ISurface*, int> present;

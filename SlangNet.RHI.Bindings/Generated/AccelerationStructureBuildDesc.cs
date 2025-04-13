@@ -4,7 +4,7 @@ namespace SlangNet.RHI.Unsafe;
 public unsafe partial struct AccelerationStructureBuildDesc
 {
     /// <include file='AccelerationStructureBuildDesc.xml' path='doc/member[@name="AccelerationStructureBuildDesc.inputs"]/*' />
-    [NativeTypeName("rhi::AccelerationStructureBuildInput *")]
+    [NativeTypeName("const AccelerationStructureBuildInput *")]
     public AccelerationStructureBuildInput* inputs;
 
     /// <include file='AccelerationStructureBuildDesc.xml' path='doc/member[@name="AccelerationStructureBuildDesc.inputCount"]/*' />

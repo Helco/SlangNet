@@ -84,7 +84,6 @@ public abstract unsafe class UnsafeExampleBase : IDisposable
             nvapiExtUavSlot = uint.MaxValue,
             deviceType = deviceType,
             enableValidation = true,
-            enableBackendValidation = true,
             debugCallback = DebugPrinter.Pointer
         };
         IDevice* device_ = null;
@@ -133,7 +132,7 @@ public abstract unsafe class UnsafeExampleBase : IDisposable
         });
     }
 
-    protected void CreateSurface(Format format = Format.Unknown)
+    protected void CreateSurface(Format format = Format.Undefined)
     {
         Debug.Assert(device != null && window != null);
         glfw.GetFramebufferSize(window, out var width, out var height);
@@ -171,12 +170,12 @@ public abstract unsafe class UnsafeExampleBase : IDisposable
     }
 
     private static readonly List<UnsafeExampleBase> examples = [];
-    public static void Main<TExample>(string[] args) where TExample : UnsafeExampleBase, new()
+    public static void Run<TExample>(string[] args) where TExample : UnsafeExampleBase, new()
     {
         glfw.Init();
         glfw.WindowHint(WindowHintClientApi.ClientApi, ClientApi.NoApi);
 
-        foreach (var deviceType in new[] { DeviceType.Default })
+        foreach (var deviceType in new[] { DeviceType.Vulkan })
         {
             var example = new TExample();
             examples.Add(example);

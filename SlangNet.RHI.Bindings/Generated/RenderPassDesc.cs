@@ -4,7 +4,7 @@ namespace SlangNet.RHI.Unsafe;
 public unsafe partial struct RenderPassDesc
 {
     /// <include file='RenderPassDesc.xml' path='doc/member[@name="RenderPassDesc.colorAttachments"]/*' />
-    [NativeTypeName("rhi::RenderPassColorAttachment *")]
+    [NativeTypeName("const RenderPassColorAttachment *")]
     public RenderPassColorAttachment* colorAttachments;
 
     /// <include file='RenderPassDesc.xml' path='doc/member[@name="RenderPassDesc.colorAttachmentCount"]/*' />
@@ -12,6 +12,6 @@ public unsafe partial struct RenderPassDesc
     public uint colorAttachmentCount;
 
     /// <include file='RenderPassDesc.xml' path='doc/member[@name="RenderPassDesc.depthStencilAttachment"]/*' />
-    [NativeTypeName("rhi::RenderPassDepthStencilAttachment *")]
+    [NativeTypeName("const RenderPassDepthStencilAttachment *")]
     public RenderPassDepthStencilAttachment* depthStencilAttachment;
 }

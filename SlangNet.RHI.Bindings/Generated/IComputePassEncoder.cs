@@ -61,11 +61,19 @@ public unsafe partial struct IComputePassEncoder
         lpVtbl->end((IComputePassEncoder*)Unsafe.AsPointer(ref this));
     }
 
-    /// <include file='IComputePassEncoder.xml' path='doc/member[@name="IComputePassEncoder.setComputeState"]/*' />
+    /// <include file='IComputePassEncoder.xml' path='doc/member[@name="IComputePassEncoder.bindPipeline"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void setComputeState([NativeTypeName("const ComputeState &")] ComputeState* state)
+    public void bindPipeline([NativeTypeName("rhi::IComputePipeline *")] IComputePipeline* pipeline, [NativeTypeName("rhi::IShaderObject *")] IShaderObject* rootObject)
     {
-        lpVtbl->setComputeState((IComputePassEncoder*)Unsafe.AsPointer(ref this), state);
+        lpVtbl->bindPipeline((IComputePassEncoder*)Unsafe.AsPointer(ref this), pipeline, rootObject);
+    }
+
+    /// <include file='IComputePassEncoder.xml' path='doc/member[@name="IComputePassEncoder.bindPipeline"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::IShaderObject *")]
+    public IShaderObject* bindPipeline([NativeTypeName("rhi::IComputePipeline *")] IComputePipeline* pipeline)
+    {
+        return lpVtbl->bindPipeline1((IComputePassEncoder*)Unsafe.AsPointer(ref this), pipeline);
     }
 
     /// <include file='IComputePassEncoder.xml' path='doc/member[@name="IComputePassEncoder.dispatchCompute"]/*' />
@@ -77,9 +85,9 @@ public unsafe partial struct IComputePassEncoder
 
     /// <include file='IComputePassEncoder.xml' path='doc/member[@name="IComputePassEncoder.dispatchComputeIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void dispatchComputeIndirect([NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("uint64_t")] ulong offset)
+    public void dispatchComputeIndirect([NativeTypeName("rhi::BufferOffsetPair")] BufferOffsetPair argBuffer)
     {
-        lpVtbl->dispatchComputeIndirect((IComputePassEncoder*)Unsafe.AsPointer(ref this), argBuffer, offset);
+        lpVtbl->dispatchComputeIndirect((IComputePassEncoder*)Unsafe.AsPointer(ref this), argBuffer);
     }
 
     public partial struct Vtbl
@@ -105,13 +113,16 @@ public unsafe partial struct IComputePassEncoder
         [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IComputePassEncoder*, void> end;
 
-        [NativeTypeName("void (const ComputeState &) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IComputePassEncoder*, ComputeState*, void> setComputeState;
+        [NativeTypeName("void (IComputePipeline *, IShaderObject *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IComputePassEncoder*, IComputePipeline*, IShaderObject*, void> bindPipeline;
+
+        [NativeTypeName("IShaderObject *(IComputePipeline *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IComputePassEncoder*, IComputePipeline*, IShaderObject*> bindPipeline1;
 
         [NativeTypeName("void (uint32_t, uint32_t, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IComputePassEncoder*, uint, uint, uint, void> dispatchCompute;
 
-        [NativeTypeName("void (IBuffer *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IComputePassEncoder*, IBuffer*, ulong, void> dispatchComputeIndirect;
+        [NativeTypeName("void (BufferOffsetPair) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IComputePassEncoder*, BufferOffsetPair, void> dispatchComputeIndirect;
     }
 }

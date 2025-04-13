@@ -8,6 +8,7 @@ public unsafe partial struct TextureViewDesc
     public StructType structType;
 
     /// <include file='TextureViewDesc.xml' path='doc/member[@name="TextureViewDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='TextureViewDesc.xml' path='doc/member[@name="TextureViewDesc.format"]/*' />

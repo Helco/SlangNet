@@ -90,6 +90,8 @@ SlangNet.RHI.Unsafe
 
 --include-directory
 ../slang/include
+--include-directory
+.
 
 --methodClassName
 SlangRHI

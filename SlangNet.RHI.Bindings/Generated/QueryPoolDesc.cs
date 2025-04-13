@@ -8,6 +8,7 @@ public unsafe partial struct QueryPoolDesc
     public StructType structType;
 
     /// <include file='QueryPoolDesc.xml' path='doc/member[@name="QueryPoolDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='QueryPoolDesc.xml' path='doc/member[@name="QueryPoolDesc.type"]/*' />

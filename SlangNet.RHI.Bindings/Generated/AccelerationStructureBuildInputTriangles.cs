@@ -1,16 +1,13 @@
+using System.Runtime.CompilerServices;
+
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles"]/*' />
-[NativeTypeName("struct AccelerationStructureBuildInputTriangles : rhi::AccelerationStructureBuildInput")]
-public unsafe partial struct AccelerationStructureBuildInputTriangles
+public partial struct AccelerationStructureBuildInputTriangles
 {
-    /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.type"]/*' />
-    [NativeTypeName("const AccelerationStructureBuildInputType")]
-    public AccelerationStructureBuildInputType type;
-
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.vertexBuffers"]/*' />
-    [NativeTypeName("rhi::BufferWithOffset *")]
-    public BufferWithOffset* vertexBuffers;
+    [NativeTypeName("BufferOffsetPair[2]")]
+    public _vertexBuffers_e__FixedBuffer vertexBuffers;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.vertexBufferCount"]/*' />
     [NativeTypeName("uint32_t")]
@@ -29,8 +26,8 @@ public unsafe partial struct AccelerationStructureBuildInputTriangles
     public uint vertexStride;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.indexBuffer"]/*' />
-    [NativeTypeName("rhi::BufferWithOffset")]
-    public BufferWithOffset indexBuffer;
+    [NativeTypeName("rhi::BufferOffsetPair")]
+    public BufferOffsetPair indexBuffer;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.indexFormat"]/*' />
     [NativeTypeName("rhi::IndexFormat")]
@@ -41,10 +38,17 @@ public unsafe partial struct AccelerationStructureBuildInputTriangles
     public uint indexCount;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.preTransformBuffer"]/*' />
-    [NativeTypeName("rhi::BufferWithOffset")]
-    public BufferWithOffset preTransformBuffer;
+    [NativeTypeName("rhi::BufferOffsetPair")]
+    public BufferOffsetPair preTransformBuffer;
 
     /// <include file='AccelerationStructureBuildInputTriangles.xml' path='doc/member[@name="AccelerationStructureBuildInputTriangles.flags"]/*' />
     [NativeTypeName("rhi::AccelerationStructureGeometryFlags")]
     public AccelerationStructureGeometryFlags flags;
+
+    /// <include file='_vertexBuffers_e__FixedBuffer.xml' path='doc/member[@name="_vertexBuffers_e__FixedBuffer"]/*' />
+    [InlineArray(2)]
+    public partial struct _vertexBuffers_e__FixedBuffer
+    {
+        public BufferOffsetPair e0;
+    }
 }

@@ -1,16 +1,13 @@
+using System.Runtime.CompilerServices;
+
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives"]/*' />
-[NativeTypeName("struct AccelerationStructureBuildInputProceduralPrimitives : rhi::AccelerationStructureBuildInput")]
-public unsafe partial struct AccelerationStructureBuildInputProceduralPrimitives
+public partial struct AccelerationStructureBuildInputProceduralPrimitives
 {
-    /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.type"]/*' />
-    [NativeTypeName("const AccelerationStructureBuildInputType")]
-    public AccelerationStructureBuildInputType type;
-
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.aabbBuffers"]/*' />
-    [NativeTypeName("rhi::BufferWithOffset *")]
-    public BufferWithOffset* aabbBuffers;
+    [NativeTypeName("BufferOffsetPair[2]")]
+    public _aabbBuffers_e__FixedBuffer aabbBuffers;
 
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.aabbBufferCount"]/*' />
     [NativeTypeName("uint32_t")]
@@ -27,4 +24,11 @@ public unsafe partial struct AccelerationStructureBuildInputProceduralPrimitives
     /// <include file='AccelerationStructureBuildInputProceduralPrimitives.xml' path='doc/member[@name="AccelerationStructureBuildInputProceduralPrimitives.flags"]/*' />
     [NativeTypeName("rhi::AccelerationStructureGeometryFlags")]
     public AccelerationStructureGeometryFlags flags;
+
+    /// <include file='_aabbBuffers_e__FixedBuffer.xml' path='doc/member[@name="_aabbBuffers_e__FixedBuffer"]/*' />
+    [InlineArray(2)]
+    public partial struct _aabbBuffers_e__FixedBuffer
+    {
+        public BufferOffsetPair e0;
+    }
 }

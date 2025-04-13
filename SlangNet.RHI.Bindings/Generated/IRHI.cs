@@ -38,6 +38,13 @@ public unsafe partial struct IRHI
         return lpVtbl->getAdapters((IRHI*)Unsafe.AsPointer(ref this), type, outAdaptersBlob);
     }
 
+    /// <include file='IRHI.xml' path='doc/member[@name="IRHI.enableDebugLayers"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void enableDebugLayers()
+    {
+        lpVtbl->enableDebugLayers((IRHI*)Unsafe.AsPointer(ref this));
+    }
+
     /// <include file='IRHI.xml' path='doc/member[@name="IRHI.createDevice"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [return: NativeTypeName("rhi::Result")]
@@ -54,6 +61,22 @@ public unsafe partial struct IRHI
         return lpVtbl->reportLiveObjects((IRHI*)Unsafe.AsPointer(ref this));
     }
 
+    /// <include file='IRHI.xml' path='doc/member[@name="IRHI.setTaskPoolWorkerCount"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::Result")]
+    public int setTaskPoolWorkerCount([NativeTypeName("uint32_t")] uint count)
+    {
+        return lpVtbl->setTaskPoolWorkerCount((IRHI*)Unsafe.AsPointer(ref this), count);
+    }
+
+    /// <include file='IRHI.xml' path='doc/member[@name="IRHI.setTaskScheduler"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::Result")]
+    public int setTaskScheduler([NativeTypeName("rhi::ITaskScheduler *")] ITaskScheduler* scheduler)
+    {
+        return lpVtbl->setTaskScheduler((IRHI*)Unsafe.AsPointer(ref this), scheduler);
+    }
+
     public partial struct Vtbl
     {
         [NativeTypeName("const FormatInfo &(Format) __attribute__((nothrow)) __attribute__((stdcall))")]
@@ -68,10 +91,19 @@ public unsafe partial struct IRHI
         [NativeTypeName("Result (DeviceType, ISlangBlob **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRHI*, DeviceType, SlangNet.Unsafe.ISlangBlob**, int> getAdapters;
 
+        [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRHI*, void> enableDebugLayers;
+
         [NativeTypeName("Result (const DeviceDesc &, IDevice **) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRHI*, DeviceDesc*, IDevice**, int> createDevice;
 
         [NativeTypeName("Result () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRHI*, int> reportLiveObjects;
+
+        [NativeTypeName("Result (uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRHI*, uint, int> setTaskPoolWorkerCount;
+
+        [NativeTypeName("Result (ITaskScheduler *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRHI*, ITaskScheduler*, int> setTaskScheduler;
     }
 }

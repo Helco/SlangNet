@@ -8,6 +8,7 @@ public unsafe partial struct FenceDesc
     public StructType structType;
 
     /// <include file='FenceDesc.xml' path='doc/member[@name="FenceDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='FenceDesc.xml' path='doc/member[@name="FenceDesc.initialValue"]/*' />

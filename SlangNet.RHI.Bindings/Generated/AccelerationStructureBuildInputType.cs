@@ -11,4 +11,10 @@ public enum AccelerationStructureBuildInputType
 
     /// <include file='AccelerationStructureBuildInputType.xml' path='doc/member[@name="AccelerationStructureBuildInputType.ProceduralPrimitives"]/*' />
     ProceduralPrimitives,
+
+    /// <include file='AccelerationStructureBuildInputType.xml' path='doc/member[@name="AccelerationStructureBuildInputType.Spheres"]/*' />
+    Spheres,
+
+    /// <include file='AccelerationStructureBuildInputType.xml' path='doc/member[@name="AccelerationStructureBuildInputType.LinearSweptSpheres"]/*' />
+    LinearSweptSpheres,
 }

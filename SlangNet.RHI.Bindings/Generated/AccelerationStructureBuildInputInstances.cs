@@ -1,16 +1,11 @@
 namespace SlangNet.RHI.Unsafe;
 
 /// <include file='AccelerationStructureBuildInputInstances.xml' path='doc/member[@name="AccelerationStructureBuildInputInstances"]/*' />
-[NativeTypeName("struct AccelerationStructureBuildInputInstances : rhi::AccelerationStructureBuildInput")]
 public partial struct AccelerationStructureBuildInputInstances
 {
-    /// <include file='AccelerationStructureBuildInputInstances.xml' path='doc/member[@name="AccelerationStructureBuildInputInstances.type"]/*' />
-    [NativeTypeName("const AccelerationStructureBuildInputType")]
-    public AccelerationStructureBuildInputType type;
-
     /// <include file='AccelerationStructureBuildInputInstances.xml' path='doc/member[@name="AccelerationStructureBuildInputInstances.instanceBuffer"]/*' />
-    [NativeTypeName("rhi::BufferWithOffset")]
-    public BufferWithOffset instanceBuffer;
+    [NativeTypeName("rhi::BufferOffsetPair")]
+    public BufferOffsetPair instanceBuffer;
 
     /// <include file='AccelerationStructureBuildInputInstances.xml' path='doc/member[@name="AccelerationStructureBuildInputInstances.instanceStride"]/*' />
     [NativeTypeName("uint32_t")]

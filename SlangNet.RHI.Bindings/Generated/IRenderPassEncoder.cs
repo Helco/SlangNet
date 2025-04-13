@@ -61,6 +61,21 @@ public unsafe partial struct IRenderPassEncoder
         lpVtbl->end((IRenderPassEncoder*)Unsafe.AsPointer(ref this));
     }
 
+    /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.bindPipeline"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public void bindPipeline([NativeTypeName("rhi::IRenderPipeline *")] IRenderPipeline* pipeline, [NativeTypeName("rhi::IShaderObject *")] IShaderObject* rootObject)
+    {
+        lpVtbl->bindPipeline((IRenderPassEncoder*)Unsafe.AsPointer(ref this), pipeline, rootObject);
+    }
+
+    /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.bindPipeline"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::IShaderObject *")]
+    public IShaderObject* bindPipeline([NativeTypeName("rhi::IRenderPipeline *")] IRenderPipeline* pipeline)
+    {
+        return lpVtbl->bindPipeline1((IRenderPassEncoder*)Unsafe.AsPointer(ref this), pipeline);
+    }
+
     /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.setRenderState"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void setRenderState([NativeTypeName("const RenderState &")] RenderState* state)
@@ -84,16 +99,16 @@ public unsafe partial struct IRenderPassEncoder
 
     /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.drawIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndirect([NativeTypeName("uint32_t")] uint maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("uint64_t")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("uint64_t")] ulong countOffset = 0)
+    public void drawIndirect([NativeTypeName("uint32_t")] uint maxDrawCount, [NativeTypeName("rhi::BufferOffsetPair")] BufferOffsetPair argBuffer, [NativeTypeName("rhi::BufferOffsetPair")] BufferOffsetPair countBuffer = new BufferOffsetPair())
     {
-        lpVtbl->drawIndirect((IRenderPassEncoder*)Unsafe.AsPointer(ref this), maxDrawCount, argBuffer, argOffset, countBuffer, countOffset);
+        lpVtbl->drawIndirect((IRenderPassEncoder*)Unsafe.AsPointer(ref this), maxDrawCount, argBuffer, countBuffer);
     }
 
     /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.drawIndexedIndirect"]/*' />
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public void drawIndexedIndirect([NativeTypeName("uint32_t")] uint maxDrawCount, [NativeTypeName("rhi::IBuffer *")] IBuffer* argBuffer, [NativeTypeName("uint64_t")] ulong argOffset, [NativeTypeName("rhi::IBuffer *")] IBuffer* countBuffer = null, [NativeTypeName("uint64_t")] ulong countOffset = 0)
+    public void drawIndexedIndirect([NativeTypeName("uint32_t")] uint maxDrawCount, [NativeTypeName("rhi::BufferOffsetPair")] BufferOffsetPair argBuffer, [NativeTypeName("rhi::BufferOffsetPair")] BufferOffsetPair countBuffer = new BufferOffsetPair())
     {
-        lpVtbl->drawIndexedIndirect((IRenderPassEncoder*)Unsafe.AsPointer(ref this), maxDrawCount, argBuffer, argOffset, countBuffer, countOffset);
+        lpVtbl->drawIndexedIndirect((IRenderPassEncoder*)Unsafe.AsPointer(ref this), maxDrawCount, argBuffer, countBuffer);
     }
 
     /// <include file='IRenderPassEncoder.xml' path='doc/member[@name="IRenderPassEncoder.drawMeshTasks"]/*' />
@@ -126,6 +141,12 @@ public unsafe partial struct IRenderPassEncoder
         [NativeTypeName("void () __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, void> end;
 
+        [NativeTypeName("void (IRenderPipeline *, IShaderObject *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, IRenderPipeline*, IShaderObject*, void> bindPipeline;
+
+        [NativeTypeName("IShaderObject *(IRenderPipeline *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, IRenderPipeline*, IShaderObject*> bindPipeline1;
+
         [NativeTypeName("void (const RenderState &) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, RenderState*, void> setRenderState;
 
@@ -135,11 +156,11 @@ public unsafe partial struct IRenderPassEncoder
         [NativeTypeName("void (const DrawArguments &) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, DrawArguments*, void> drawIndexed;
 
-        [NativeTypeName("void (uint32_t, IBuffer *, uint64_t, IBuffer *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, uint, IBuffer*, ulong, IBuffer*, ulong, void> drawIndirect;
+        [NativeTypeName("void (uint32_t, BufferOffsetPair, BufferOffsetPair) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, uint, BufferOffsetPair, BufferOffsetPair, void> drawIndirect;
 
-        [NativeTypeName("void (uint32_t, IBuffer *, uint64_t, IBuffer *, uint64_t) __attribute__((nothrow)) __attribute__((stdcall))")]
-        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, uint, IBuffer*, ulong, IBuffer*, ulong, void> drawIndexedIndirect;
+        [NativeTypeName("void (uint32_t, BufferOffsetPair, BufferOffsetPair) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, uint, BufferOffsetPair, BufferOffsetPair, void> drawIndexedIndirect;
 
         [NativeTypeName("void (uint32_t, uint32_t, uint32_t) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<IRenderPassEncoder*, uint, uint, uint, void> drawMeshTasks;

@@ -8,26 +8,12 @@ public unsafe partial struct TextureDesc
     public StructType structType;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.type"]/*' />
     [NativeTypeName("rhi::TextureType")]
     public TextureType type;
-
-    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.memoryType"]/*' />
-    [NativeTypeName("rhi::MemoryType")]
-    public MemoryType memoryType;
-
-    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.usage"]/*' />
-    [NativeTypeName("rhi::TextureUsage")]
-    public TextureUsage usage;
-
-    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.defaultState"]/*' />
-    [NativeTypeName("rhi::ResourceState")]
-    public ResourceState defaultState;
-
-    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.isShared"]/*' />
-    public bool isShared;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.size"]/*' />
     [NativeTypeName("rhi::Extents")]
@@ -53,8 +39,20 @@ public unsafe partial struct TextureDesc
     [NativeTypeName("uint32_t")]
     public uint sampleQuality;
 
+    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.memoryType"]/*' />
+    [NativeTypeName("rhi::MemoryType")]
+    public MemoryType memoryType;
+
+    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.usage"]/*' />
+    [NativeTypeName("rhi::TextureUsage")]
+    public TextureUsage usage;
+
+    /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.defaultState"]/*' />
+    [NativeTypeName("rhi::ResourceState")]
+    public ResourceState defaultState;
+
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.optimalClearValue"]/*' />
-    [NativeTypeName("rhi::ClearValue *")]
+    [NativeTypeName("const ClearValue *")]
     public ClearValue* optimalClearValue;
 
     /// <include file='TextureDesc.xml' path='doc/member[@name="TextureDesc.label"]/*' />

@@ -57,6 +57,22 @@ public unsafe partial struct ITexture
         return lpVtbl->getSharedHandle((ITexture*)Unsafe.AsPointer(ref this), outHandle);
     }
 
+    /// <include file='ITexture.xml' path='doc/member[@name="ITexture.createView"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::Result")]
+    public int createView([NativeTypeName("const TextureViewDesc &")] TextureViewDesc* desc, ITextureView** outTextureView)
+    {
+        return lpVtbl->createView((ITexture*)Unsafe.AsPointer(ref this), desc, outTextureView);
+    }
+
+    /// <include file='ITexture.xml' path='doc/member[@name="ITexture.getSubresourceLayout"]/*' />
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [return: NativeTypeName("rhi::Result")]
+    public int getSubresourceLayout([NativeTypeName("uint32_t")] uint mipLevel, [NativeTypeName("size_t")] nuint rowAlignment, [NativeTypeName("rhi::SubresourceLayout *")] SubresourceLayout* outLayout)
+    {
+        return lpVtbl->getSubresourceLayout((ITexture*)Unsafe.AsPointer(ref this), mipLevel, rowAlignment, outLayout);
+    }
+
     public partial struct Vtbl
     {
         [NativeTypeName("SlangResult (const SlangUUID &, void **) __attribute__((nothrow)) __attribute__((stdcall))")]
@@ -76,5 +92,11 @@ public unsafe partial struct ITexture
 
         [NativeTypeName("Result (NativeHandle *) __attribute__((nothrow)) __attribute__((stdcall))")]
         public delegate* unmanaged[Stdcall]<ITexture*, NativeHandle*, int> getSharedHandle;
+
+        [NativeTypeName("Result (const TextureViewDesc &, ITextureView **) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ITexture*, TextureViewDesc*, ITextureView**, int> createView;
+
+        [NativeTypeName("Result (uint32_t, size_t, SubresourceLayout *) __attribute__((nothrow)) __attribute__((stdcall))")]
+        public delegate* unmanaged[Stdcall]<ITexture*, uint, nuint, SubresourceLayout*, int> getSubresourceLayout;
     }
 }

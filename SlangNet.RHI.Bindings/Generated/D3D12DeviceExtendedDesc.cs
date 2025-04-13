@@ -8,6 +8,7 @@ public unsafe partial struct D3D12DeviceExtendedDesc
     public StructType structType;
 
     /// <include file='D3D12DeviceExtendedDesc.xml' path='doc/member[@name="D3D12DeviceExtendedDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='D3D12DeviceExtendedDesc.xml' path='doc/member[@name="D3D12DeviceExtendedDesc.rootParameterShaderAttributeName"]/*' />

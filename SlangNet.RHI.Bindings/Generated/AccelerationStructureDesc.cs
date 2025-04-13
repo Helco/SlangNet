@@ -8,6 +8,7 @@ public unsafe partial struct AccelerationStructureDesc
     public StructType structType;
 
     /// <include file='AccelerationStructureDesc.xml' path='doc/member[@name="AccelerationStructureDesc.next"]/*' />
+    [NativeTypeName("const void *")]
     public void* next;
 
     /// <include file='AccelerationStructureDesc.xml' path='doc/member[@name="AccelerationStructureDesc.size"]/*' />

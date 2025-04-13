@@ -134,10 +134,6 @@ public sealed class SlangException : Exception
         HResult = result.RawValue;
     }
 
-    public SlangException(SerializationInfo info, StreamingContext context) : base(info, context)
-    {
-    }
-
     public SlangException(string message) : this(message, SlangResult.Fail)
     {
     }
